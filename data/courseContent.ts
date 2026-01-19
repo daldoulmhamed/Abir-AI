@@ -773,5 +773,114 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include source quality matrix as table. Use red flags/green flags format for easy scanning. Emphasize citation verification and bias detection throughout. Include audit template as downloadable checklist.',
     expansionIdeas: 'Create advanced courses: "Enterprise Perplexity: Team Research Systems" or "AI Verification for Academic Institutions." Offer downloadable "Perplexity Verification Checklist PDF" for daily audits. Include case studies of commonly mis-cited sources. Build source quality database by domain type.'
+  },
+  'perplexity-research/pro-perplexity-workflow': {
+    courseTitle: 'Pro Perplexity Research Workflow + Series Wrap-Up: Enterprise Mastery',
+    metaTitle: 'Pro Perplexity Research Workflow + Complete Mastery Guide (2026)',
+    metaDescription: 'Master professional Perplexity AI workflows combining Deep Research, Spaces, Collections, and API automation. This final intermediate course + series capstone delivers your complete research operating system.',
+    modules: [
+      {
+        id: 'pro-research-os',
+        title: 'The Pro Research Operating System (ROS)',
+        learningOutcome: 'Build a repeatable, scalable professional research system that compounds knowledge across time.',
+        lessons: [
+          {
+            id: 'ros-philosophy',
+            title: 'Core Philosophy: Research Compounds',
+            content: 'Your research doesn\'t exist in isolation:\n\nWeek 1 Output → Week 2 Context → Week 3 Strategic Foresight\nSingle query → Living knowledge system → Competitive weapon\n\nThe ROS (Research Operating System) transforms reactive research into proactive strategic intelligence.'
+          },
+          {
+            id: 'ros-architecture',
+            title: 'ROS Architecture: 5 Core Systems',
+            content: 'Your complete research machine has 5 interconnected systems:\n\n1. DAILY BRIEFING SYSTEM (5 min) - Stay aware\n2. WEEKLY DEEP DIVE SYSTEM (45 min) - Find patterns\n3. PROJECT RESEARCH SYSTEM (Spaces) - Execute\n4. KNOWLEDGE EXTRACTION SYSTEM (Collections) - Preserve\n5. STRATEGIC SYNTHESIS SYSTEM (Copilot) - Decide\n\nYour New Reality: 80% less research time, 300% better insights.'
+          }
+        ]
+      },
+      {
+        id: 'daily-briefing',
+        title: 'Daily Briefing System (Reactive → Proactive)',
+        learningOutcome: 'Build a 5-minute daily intelligence routine that keeps you ahead of the curve.',
+        lessons: [
+          {
+            id: 'morning-stack',
+            title: 'Morning Intelligence Stack (15 Prompts)',
+            content: 'Create a Space called "Daily Intelligence Hub" and use these prompts daily:\n\n1. "Top 5 stories impacting [your industry/niche] in last 24 hours"\n2. "Competitor mentions across news + social + forums today"\n3. "Trending questions people ask about [your focus area]"\n4. "New research papers/publications in [field] past 48 hours"\n5. "Key people talking about [topic] - what are they saying?"\n\nPin top 3 insights → Forward to team\n\nPro Automation: Save as Space template → Daily refresh with new dates.\nTime Saved: 2 hours manual scanning → 10 minutes automated.'
+          }
+        ]
+      },
+      {
+        id: 'weekly-deep-dive',
+        title: 'Weekly Deep Dive System (Pattern Recognition)',
+        learningOutcome: 'Extract strategic patterns and predictions from daily research.',
+        lessons: [
+          {
+            id: 'friday-synthesis',
+            title: 'Friday Strategic Synthesis (7-Step Sequence)',
+            content: 'Create a Space called "Weekly Synthesis [Date]" and run this sequence:\n\n1. DEEP RESEARCH: "Week in review: [your 3 focus areas]"\n2. TREND TRACKING: "Velocity changes in key metrics vs last week"\n3. COMPETITOR MOVES: "Strategic analysis of competitor actions"\n4. CUSTOMER SENTIMENT: "Voice of customer synthesis from all channels"\n5. CONTENT GAPS: "Emerging topics competitors missed"\n6. PREDICTION: "3 bold predictions for next 30 days"\n7. ACTION PLAN: "Prioritized 3 initiatives for next week"\n\nExport → Notion/Obsidian → Team briefing\n\nCompound Effect: Week 4 insights reference Weeks 1-3 automatically.'
+          }
+        ]
+      },
+      {
+        id: 'project-research',
+        title: 'Project Research System (Spaces Mastery)',
+        learningOutcome: 'Organize complex projects with systematic Space architecture.',
+        lessons: [
+          {
+            id: 'space-architecture',
+            title: 'Enterprise Space Architecture',
+            content: 'Structure every project Space like this:\n\nMASTER SPACE: "[Project Name] Command Center"\n├── 01-Discovery (Deep Research reports)\n├── 02-Competitors (Pinned weekly competitor intel)\n├── 03-Audience (Persona evolution + sentiment)\n├── 04-Trends (Velocity tracking + predictions)\n├── 05-Synthesis (Copilot Pages + final deliverables)\n└── 06-Archive (Closed projects for reference)\n\nThis creates systematic, discoverable research that scales.'
+          },
+          {
+            id: 'file-upload-power',
+            title: 'File Upload Power User Techniques',
+            content: 'Leverage file uploads for maximum research power:\n\nUpload: Sales call transcripts → "Extract customer pain points + objections"\nUpload: Competitor pricing sheets → "Benchmark analysis + opportunity gaps"\nUpload: Past campaign performance → "Pattern recognition + optimization"\n\nPro Move: Share read-only links to client-facing Pages for transparency and collaboration.'
+          }
+        ]
+      },
+      {
+        id: 'knowledge-extraction',
+        title: 'Knowledge Extraction System (Collections)',
+        learningOutcome: 'Build reusable research assets that compound across projects.',
+        lessons: [
+          {
+            id: 'collections-mastery',
+            title: 'Turn Research into Reusable Assets',
+            content: 'Create a Collection called "Industry Playbook [2026]" containing:\n\n• Competitor frameworks (reusable templates)\n• Audience personas (living documents)\n• Content briefs (pre-researched angles)\n• Trend reports (historical context)\n• Prediction logs (accuracy tracking)\n\nWeekly Harvest: Tag valuable insights → Add to Collections during research.\n\nROI: Research compounds across projects, clients, and years.'
+          }
+        ]
+      },
+      {
+        id: 'strategic-copilot',
+        title: 'Strategic Copilot System (Thinking Partner)',
+        learningOutcome: 'Use Copilot as your strategic advisor for monthly planning.',
+        lessons: [
+          {
+            id: 'copilot-strategy',
+            title: 'Monthly Strategy Sessions with Copilot',
+            content: 'Use this prompt for monthly strategic sessions:\n\n"Act as my Chief of Staff. Review all research from [Space name]. Create:\n\n1. Executive summary (3 key insights)\n2. Strategic risks/opportunities (matrix format)\n3. Decision framework (3 options ranked)\n4. Action roadmap (90-day priorities)\n5. Key questions for next month"\n\nResult: Instant boardroom-ready strategy brief.'
+          }
+        ]
+      },
+      {
+        id: 'series-complete',
+        title: 'Series Wrap-Up – Your Complete Perplexity Mastery',
+        learningOutcome: 'Consolidate all 5 courses and activate your research operating system immediately.',
+        lessons: [
+          {
+            id: 'mastery-stack',
+            title: 'You\'ve Built This Complete Research Stack',
+            content: 'Congratulations! You\'ve mastered:\n\n✅ FOUNDATIONS: What is Perplexity? (3 min)\n✅ PROMPTING: Smart Questions (4 min)\n✅ INTEGRITY: Source Verification (4 min)\n✅ CONTENT: Market Research (4 min)\n✅ ENTERPRISE: Pro Workflow (5 min)\n\nTotal Investment: ~20 minutes\nLifetime ROI: 10,000+ hours saved, millions in better decisions\n\nBEFORE: Manual research, scattered notes, guesswork\nAFTER: Systematic intelligence, compound knowledge, strategic clarity'
+          },
+          {
+            id: 'mastery-checklist',
+            title: 'Complete Mastery Activation Checklist',
+            content: 'Implement your ROS immediately:\n\nDaily (5 min): Intelligence briefing\nWeekly (45 min): Deep synthesis\nMonthly (2 hrs): Strategic Copilot\nPer Project: Space + Collection system\n\nPro Upgrade Path: API automation → Custom research agents\n\nYour research now works for you, not the other way around.',
+            reflection: 'Review the complete 5-course journey. Which module will you implement first? Start with Daily Briefing or Weekly Synthesis and track your time savings over 30 days.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include ROS architecture diagram. Use 5-system framework throughout. Emphasize compound growth, time savings, and ROI. Include implementation checklist and automation templates.',
+    expansionIdeas: 'Create advanced courses: "Perplexity Enterprise: Teams + API + Custom Agents" or "Building Research Automation at Scale." Offer downloadable "Complete 5-Course Mastery Package" with 50 pro prompts, Space templates, ROS dashboard (Notion), and 90-day tracker. Include certification challenge and community sharing.'
   }
 };
