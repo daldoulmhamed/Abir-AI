@@ -1288,5 +1288,171 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include parameter tables and workflow diagrams. Use side-by-side before/after images showing parameter effects. Emphasize --cref + --sref combination throughout. Include aspect ratio quick reference.',
     expansionIdeas: 'Create advanced courses: "Midjourney Multi-Project Management" or "Style Systems for Brand Consistency." Offer downloadable "Production Checklist + Folder Templates" and "50 Verified Style Reference Codes by Aesthetic." Include case studies showing 45-minute pipeline in action. Build video tutorial library for camera parameters.'
+  },
+  'midjourney-design/using-parameters': {
+    courseTitle: 'Midjourney Parameters Mastery: Advanced Control Arsenal',
+    metaTitle: 'Midjourney Parameters Complete Guide – Advanced Control (2026)',
+    metaDescription: 'Master every Midjourney parameter for surgical visual control. Complete breakdown of --ar, --s, --q, --c, --sref, --cref, --iw, --cw, --sw, --v, --tile, --video, and parameter stacking for production-grade AI art.',
+    modules: [
+      {
+        id: 'core-parameter-hierarchy',
+        title: 'Core Parameter Hierarchy (Priority Order)',
+        learningOutcome: 'Understand the correct sequence for applying parameters to achieve maximum control.',
+        lessons: [
+          {
+            id: 'control-cascade',
+            title: 'The Control Cascade (Always This Sequence)',
+            content: 'Apply parameters in this exact order for optimal results:\n\n1. --ar (canvas first) → 2. --cref (character lock) → 3. --sref (style DNA) → 4. --s (artistic intent) → 5. --q (render quality) → 6. --c (variation range)\n\nWhy Order Matters:\n--ar 16:9 then --sref = Style fits frame\n--sref then --ar 16:9 = Cropped style disaster\n\nSequence prevents conflicts and ensures predictable outputs.'
+          },
+          {
+            id: 'parameter-categories',
+            title: 'Parameter Categories by Impact',
+            content: 'Parameters fall into three impact levels:\n\nStructural (80% control): --ar, --cref, --sref\nCreative (15% control): --s, --c, --sw, --cw\nTechnical (5% control): --q, --v, --tile\n\nPrioritize structural parameters for maximum visual control.'
+          }
+        ]
+      },
+      {
+        id: 'structural-parameters',
+        title: 'Structural Parameters (Foundation Layer)',
+        learningOutcome: 'Master the three parameters that define output shape, character, and style.',
+        lessons: [
+          {
+            id: 'aspect-ratio-mathematics',
+            title: '--ar: Aspect Ratio Mathematics',
+            content: 'Aspect ratio defines canvas shape:\n\nSOCIAL MEDIA:\n--ar 9:16 (Stories/Reels) 1080×1920\n--ar 16:9 (Landscape) 1920×1080\n--ar 1:1 (Square) 1080×1080\n--ar 4:5 (Instagram Post) 1080×1350\n\nPRINT/DISPLAY:\n--ar 2:3 (Portrait) 1080×1620\n--ar 3:2 (Landscape Print) 1800×1200\n--ar 21:9 (Ultrawide) 3440×1440\n\nPro Formula: width ÷ height = exact ratio'
+          },
+          {
+            id: 'character-consistency-params',
+            title: '--cref / --cw: Character Consistency System',
+            content: '--cref locks character identity across variations:\n\n--cref [image_url] --cw 100 = Perfect face match\n--cw 0 = No character influence (pose/clothes free)\n--cw 50 = Face preserved, pose variation\n--cw 100 = Face + hair + body locked\n\nMulti-Character: --cref img1 img2 img3 --cw 75\n\nPro Practice: Use 3 reference images for maximum consistency.'
+          },
+          {
+            id: 'style-dna-transfer',
+            title: '--sref / --sw: Style DNA Transfer',
+            content: '--sref transfers atmosphere and visual style:\n\n--sref [style_image] --sw 100 = Light style influence\n--sw 500 = Medium style transfer\n--sw 1000 = Complete metamorphosis\n\nKey Principle: Extract sref codes from successful generations and reuse across projects for brand consistency.'
+          }
+        ]
+      },
+      {
+        id: 'creative-parameters',
+        title: 'Creative Parameters (Art Direction Layer)',
+        learningOutcome: 'Control artistic style and exploration level.',
+        lessons: [
+          {
+            id: 'stylization-dial',
+            title: '--s: Stylization (The Creative Dial)',
+            content: '--s determines artistic vs photographic balance:\n\n--s 0 = Pure photography\n--s 100 = Subtle artistic touch\n--s 250 = Balanced realism/art\n--s 500 = Painterly (production sweet spot)\n--s 750 = Strong artistic style\n--s 1000 = Abstract/experimental\n\nUSE CASE MATRIX:\nProduct Photography: --s 100\nCinematic Film: --s 400\nConcept Art: --s 600\nGallery Art: --s 800+\n\nPro Discovery: --s 500 is optimal for most commercial work.'
+          },
+          {
+            id: 'chaos-exploration',
+            title: '--c: Chaos (Exploration vs Precision)',
+            content: '--c controls randomness and variation:\n\n--c 0 = Predictable, formulaic\n--c 20 = Production safe\n--c 50 = Creative exploration\n--c 80+ = Wild experimentation (AVOID)\n\nPro Rule: Never exceed --c 30 for client work to maintain consistency.'
+          }
+        ]
+      },
+      {
+        id: 'technical-parameters',
+        title: 'Technical Parameters (Quality Layer)',
+        learningOutcome: 'Optimize render speed, quality, and model selection.',
+        lessons: [
+          {
+            id: 'quality-render-investment',
+            title: '--q: Quality (Render Investment)',
+            content: '--q controls render time and detail:\n\n--q 0.25 = Thumbnails (4x speed)\n--q 0.5 = Web use (2x speed)\n--q 1 = Default (balanced)\n--q 2 = Print quality (2x time, 4x detail)\n\nSmart Quality Ladder:\nStep 1: --q 0.25 → Concept\nStep 2: --q 1 → Client review\nStep 3: --q 2 → Final delivery\n\nThis strategy saves GPU time while ensuring quality.'
+          },
+          {
+            id: 'model-version-selection',
+            title: '--v: Model Version (Capability)',
+            content: '--v selects the AI model for generation:\n\n--v 6.1 = Current gold standard (2026) - best overall quality\n--v 5.2 = Legacy compatibility - older projects\n--v niji 6 = Anime/illustration - stylized animation\n\nRecommendation: Use --v 6.1 for all new projects.'
+          },
+          {
+            id: 'seamless-patterns',
+            title: '--tile: Seamless Patterns',
+            content: '--tile creates seamlessly repeating textures:\n\n--ar 1:1 --tile = Perfect Instagram pattern tiles\n--sref pattern_image --tile = Designer textures\n\nUse Case: Background patterns, fabric textures, tileable designs.'
+          }
+        ]
+      },
+      {
+        id: 'advanced-reference-parameters',
+        title: 'Advanced Reference Parameters',
+        learningOutcome: 'Master multi-image referencing and motion capture.',
+        lessons: [
+          {
+            id: 'image-weight-control',
+            title: '--iw: Image Weight (Reference Strength)',
+            content: '--iw controls how strongly an image influences output:\n\nSingle image: [prompt] [reference.jpg] --iw 0.25\n--iw 0 = Text prompt only\n--iw 1 = Balanced text/image\n--iw 2 = Image dominant\n\nMulti-Image Distribution:\n[prompt] [img1] [img2] [img3] --iw 1.5\nAI auto-balances unless --cw/--sw overrides.'
+          },
+          {
+            id: 'motion-capture',
+            title: '--video: Motion Capture',
+            content: '--video captures animation sequences:\n\nGenerate → Vary → Envelope → "Make video"\n\nFeatures:\n- Captures 2-second camera pan/zoom\n- Perfect for social media motion graphics\n- Smooth transitions between variations\n\nUse: Create animated shorts from static compositions.'
+          }
+        ]
+      },
+      {
+        id: 'parameter-stacking-systems',
+        title: 'Parameter Stacking Systems',
+        learningOutcome: 'Combine parameters for production-grade consistency.',
+        lessons: [
+          {
+            id: 'production-formula',
+            title: 'The Production Formula (Copy This)',
+            content: 'Master production template:\n\n[scene] [cref_character] [sref_style] --ar 16:9 --v 6.1 --s 500 --q 2 --c 20 --cw 100 --sw 600 --iw 1.0\n\nBreakdown:\n- Scene/context description\n- Character reference image\n- Style reference image\n- Aspect ratio for deliverable\n- Model version (6.1)\n- Stylization 500 (painterly)\n- Quality 2 (print)\n- Chaos 20 (production safe)\n- Character weight 100 (exact match)\n- Style weight 600 (strong transfer)\n- Image weight 1.0 (balanced)'
+          },
+          {
+            id: 'workflow-presets',
+            title: 'Workflow-Specific Presets',
+            content: 'Copy these ready-to-use parameter sets:\n\nPRODUCT SHOT:\n--ar 1:1 --s 100 --q 2 --c 10\n\nSOCIAL HERO:\n--ar 16:9 --s 400 --c 20\n\nPRINT POSTER:\n--ar 2:3 --s 600 --q 2\n\nPATTERN:\n--ar 1:1 --tile --s 750\n\nAdapt these templates for your specific projects.'
+          },
+          {
+            id: 'conflict-resolution',
+            title: 'Conflict Resolution Rules',
+            content: 'Handle parameter conflicts:\n\n--cref + high --c = Character breaks → reduce chaos\n--sref + low --s = Style disappears → increase stylization\nHigh --iw + complex prompt = Prompt ignored → reduce image weight\nMultiple --cref + low --cw = Conflicting faces → increase weight\n\nRule: When conflicts occur, adjust the secondary parameter (not your primary intent).'
+          }
+        ]
+      },
+      {
+        id: 'complete-workflow-integration',
+        title: 'Complete Workflow Integration',
+        learningOutcome: 'Execute complete production workflows using parameters.',
+        lessons: [
+          {
+            id: 'five-minute-pipeline',
+            title: '5-Minute Production Pipeline',
+            content: 'Execute rapid production cycle:\n\nSTEP 1 (30s): /imagine prompt --ar 16:9 --q 0.25 --c 30\nRapid thumbnails to explore concept\n\nSTEP 2 (2min): U1-U4 → V1-V4 refinement\nSelect winner, create variations\n\nSTEP 3 (1min): --sref extraction from winner\nExtract sref code from best result\n\nSTEP 4 (1min): Final: --q 2 --s 500 pipeline\nRender final at print quality\n\nTotal: 5 minutes from concept to deliverable.'
+          },
+          {
+            id: 'discord-shortcuts',
+            title: 'Discord Command Shortcuts',
+            content: 'Efficient Discord workflows:\n\n/shorten → Parameter cleanup\n/prefer suffix → Save prompt presets\n/prefer option → Default parameter sets\n/tune → Custom model training (Pro+)\n\nThese commands scale your workflow.'
+          },
+          {
+            id: 'bulk-generation',
+            title: 'Bulk Generation System',
+            content: 'Managing large-scale production:\n\nWeb Alpha: Side-by-side parameter testing\nDiscord Server: /imagine → DM privacy\n/switch: Clean slate between clients\n\nTip: Use web interface for client reviews, Discord for team collaboration.'
+          }
+        ]
+      },
+      {
+        id: 'quality-control-checklist',
+        title: 'Quality Control Checklist',
+        learningOutcome: 'Implement QA gates for consistent production.',
+        lessons: [
+          {
+            id: 'pre-generation-audit',
+            title: 'Pre-Generation Audit',
+            content: 'Verify parameters before hitting generate:\n\n[ ] --ar matches deliverable\n[ ] --cref character tested\n[ ] --sref style extracted\n[ ] --c ≤ 30 (production)\n[ ] Parameter order correct\n[ ] No parameter conflicts\n\nThis checklist prevents wasted GPU time.'
+          },
+          {
+            id: 'post-generation-validation',
+            title: 'Post-Generation Validation',
+            content: 'Verify quality after generation:\n\n[ ] Consistent lighting\n[ ] Correct aspect ratio\n[ ] Readable text elements\n[ ] Hands/anatomy correct (v6.1)\n[ ] Export resolution verified\n[ ] Ready for client delivery\n\nOnly approve outputs that pass all checks.',
+            reflection: 'Create your own parameter checklist for your next project. Track success rate before/after implementation.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include complete parameter reference table. Use decision matrix (use case → parameter values). Emphasize parameter priority order throughout. Include production formula as highlighted box. Include workflow diagrams.',
+    expansionIdeas: 'Create advanced courses: "Parameter API Integration + Batch Processing" or "Custom Model Training with /tune." Offer downloadable "Complete Parameter Matrix + 50 Production Presets by Use Case." Include video tutorials for each parameter. Build interactive parameter calculator tool. Create parameter decision tree flowchart.'
   }
 };
