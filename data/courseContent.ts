@@ -882,5 +882,122 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include ROS architecture diagram. Use 5-system framework throughout. Emphasize compound growth, time savings, and ROI. Include implementation checklist and automation templates.',
     expansionIdeas: 'Create advanced courses: "Perplexity Enterprise: Teams + API + Custom Agents" or "Building Research Automation at Scale." Offer downloadable "Complete 5-Course Mastery Package" with 50 pro prompts, Space templates, ROS dashboard (Notion), and 90-day tracker. Include certification challenge and community sharing.'
+  },
+  'midjourney-design/what-is-midjourney': {
+    courseTitle: 'What is Midjourney & Prompt Engineering? Intermediate Guide to AI Visual Mastery',
+    metaTitle: 'Midjourney AI Explained + Prompt Engineering Guide – Intermediate',
+    metaDescription: 'Master Midjourney AI image generation and advanced prompt engineering techniques. Learn parameters, style control, image referencing, and professional workflows for stunning AI-generated visuals.',
+    modules: [
+      {
+        id: 'midjourney-fundamentals',
+        title: 'Midjourney Fundamentals + Access Methods',
+        learningOutcome: 'Understand Midjourney\'s core technology and choose the right access method for your workflow.',
+        lessons: [
+          {
+            id: 'core-technology',
+            title: 'Core Technology: Latent Diffusion Model',
+            content: 'Midjourney transforms text into art through a latent diffusion model trained on billions of image-text pairs. It converts natural language into photorealistic, artistic, or abstract visuals through iterative noise reduction.'
+          },
+          {
+            id: 'access-methods',
+            title: 'Access Methods in 2026',
+            content: 'Multiple ways to access Midjourney:\n\n• Discord (primary): /imagine → text prompt → 4 image variations\n• Web Alpha: midjourney.com (browser-based, faster iteration)\n• API: Enterprise plans for automation\n\nEach offers different advantages for different workflows.'
+          },
+          {
+            id: 'subscription-tiers',
+            title: 'Subscription Tiers & GPU Minutes',
+            content: 'Choose the plan that matches your volume:\n\n• Basic: 3.3 hrs GPU/month, Limited Fast Mode\n• Standard: 15 hrs GPU/month, Full Fast Mode\n• Pro: 30 hrs GPU/month, Full Fast Mode + Stealth Mode\n• Mega: 60 hrs GPU/month, Full Fast Mode + Stealth Mode\n\nPro Move: Standard plan + Relax Mode = unlimited generations (slower queue). Perfect for experimentation.'
+          }
+        ]
+      },
+      {
+        id: 'prompt-engineering',
+        title: 'Prompt Engineering Framework (The 7-Layer Method)',
+        learningOutcome: 'Master the 7-layer prompt structure that separates amateur from professional results.',
+        lessons: [
+          {
+            id: 'basic-to-pro',
+            title: 'From Basic to Professional Prompts',
+            content: 'Prompt Structure:\n[LAYER 1: Subject] + [2: Medium] + [3: Style] + [4: Lighting] + [5: Composition] + [6: Mood] + [7: Parameters]\n\nExample Evolution:\nAmateur: "dragon"\nPro: "highly detailed iridescent dragon perched on ancient castle turret, digital painting by Greg Rutkowski, dramatic golden hour lighting, cinematic depth of field, epic fantasy atmosphere --ar 16:9 --v 6 --s 750 --q 2"\n\nNotice how the pro prompt specifies every visual element.'
+          },
+          {
+            id: 'parameter-mastery',
+            title: 'Parameter Mastery (Essential Commands)',
+            content: 'Essential parameters for controlling output:\n\n• --ar (Aspect Ratio): 16:9, 1:1, 9:16 → Social to Print optimization\n• --v (Model Version): 6.1, 6 → Latest features and improvements\n• --s (Stylization): 0-1000 → Artistic (750) vs Realistic (100)\n• --q (Quality): 0.25, 0.5, 1, 2 → Detail level vs Speed\n• --c (Chaos): 0-100 → Creative exploration and variation\n• --iw (Image Weight): 0-2 → Reference image influence\n\nMastering these parameters gives you complete visual control.',
+            exercise: 'Generate the same subject with --s 100, --s 500, and --s 750. Study how stylization parameter dramatically affects artistic expression.'
+          }
+        ]
+      },
+      {
+        id: 'advanced-techniques',
+        title: 'Advanced Techniques – Image Referencing + Remix',
+        learningOutcome: 'Use image referencing and remix mode to achieve consistent, iterative results.',
+        lessons: [
+          {
+            id: 'image-prompting',
+            title: 'Image Prompting (Combining Text + Visual Reference)',
+            content: 'Double your control with image prompting:\n\n/imagine prompt: [your text] [image_url_1] [image_url_2] --iw 1.5\n\nPro Reference Strategy:\n• Character Consistency: Reuse same character image across scenes\n• Style Matching: Reference artist portfolio image\n• Mood Transfer: Reference perfect lighting/atmosphere\n\nImage references are your secret weapon for consistency.'
+          },
+          {
+            id: 'remix-mode',
+            title: 'Remix Mode (Evolution, Not Recreation)',
+            content: 'Remix workflow for iterative refinement:\n\n1. Generate base image\n2. V1-V4 → Select favorite\n3. Remix ON → Edit prompt → New variations preserving composition\n\nProduction Workflow: Base image → Remix chain → Final polish\n\nRemix mode lets you evolve an image without starting over.'
+          }
+        ]
+      },
+      {
+        id: 'professional-workflow',
+        title: 'Professional Workflow Systems',
+        learningOutcome: 'Build scalable systems for production-quality output at speed.',
+        lessons: [
+          {
+            id: 'production-pipeline',
+            title: 'The 5-Step Production Pipeline',
+            content: 'Professional output follows this sequence:\n\n1. THUMBNAILS: Low --q 0.25 --s 250 → 12+ concepts\n2. SELECTION: Pick 2-3 winners → Upscale (U1-U4)\n3. VARIATION: Vary subtle (--c 10) → Pick production candidate\n4. POLISH: Remix with refined prompt + style references\n5. FINAL: --q 2 --s 500 → Export 4K\n\nThis pipeline ensures speed without sacrificing quality.'
+          },
+          {
+            id: 'batch-processing',
+            title: 'Batch Processing & Asset Organization',
+            content: 'Professional systems need organization:\n\nBatch Processing:\n• Discord DM: Private generations (no public gallery)\n• Web Alpha: Side-by-side comparison + faster iterations\n• /switch: Clean slate between projects\n\nAsset Library Building:\n• Organize by: Character designs → Scene templates → Style references → Lighting setups\n• Tag system: --ar, --s, artist names for instant reuse\n\nOrganization enables rapid iteration and consistency.'
+          }
+        ]
+      },
+      {
+        id: 'style-control',
+        title: 'Style Control + Artist Referencing',
+        learningOutcome: 'Master artistic style transfer and parameter fine-tuning for any aesthetic.',
+        lessons: [
+          {
+            id: 'artist-styles',
+            title: 'Artist Style Transfer (Legal + Effective)',
+            content: 'Use artist references ethically:\n\n"by [artist], in the style of [artist]" → Direct homage\nSpecific works: Upload portfolio images as --iw 1.0 references\n\nTop 2026 Artists for Midjourney:\n• Greg Rutkowski: Cinematic fantasy\n• Alphonse Mucha: Art nouveau\n• James Gurney: Dinotopia realism\n• Studio Ghibli: Whimsical environments\n\nArtist references are your creative foundation.'
+          },
+          {
+            id: 'style-matrix',
+            title: 'Parameter Fine-Tuning Matrix by Style',
+            content: 'Different aesthetics need different parameters:\n\nPhotorealistic: --s 100 --q 2 --v 6\nCinematic: --s 400 --ar 21:9\nIllustrated: --s 750 --style raw\nAbstract: --s 1000 --c 80\n\nUnderstanding these combinations unlocks any visual aesthetic.'
+          }
+        ]
+      },
+      {
+        id: 'commercial-applications',
+        title: 'Commercial Applications + Best Practices',
+        learningOutcome: 'Deploy Midjourney visuals professionally across all platforms with confidence.',
+        lessons: [
+          {
+            id: 'platform-optimization',
+            title: 'Production-Ready Outputs for Every Platform',
+            content: 'Optimize for each platform:\n\n• Social Media: --ar 16:9, 9:16, 1:1 (platform optimized)\n• Print: --ar 8.5:11, --q 2 (300 DPI)\n• Web: --ar 16:9, 1920px wide\n• Video Thumbnails: --ar 16:9, high contrast\n\nFormat matters. Tailor output to destination.'
+          },
+          {
+            id: 'legal-ethical',
+            title: 'Legal & Ethical Best Practices',
+            content: 'Navigate AI-generated content responsibly:\n\n✅ Commercial rights included (paid plans)\n✅ Artist style reference OK (homage, not copying)\n❌ Direct trademarked characters/IP\n✅ Original characters + inspired environments\n\nPro Tip: Watermark during testing, remove for final delivery.\n\nAlways respect intellectual property and ethical guidelines.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include parameter comparison tables. Use example prompt evolution to show basic vs pro. Emphasize 7-layer method throughout. Include access method comparison and subscription matrix.',
+    expansionIdeas: 'Create advanced courses: "Midjourney for Teams + API Automation" or "Professional Branding with AI Visuals." Offer downloadable "Midjourney Pro Prompt Library: 100 Production Templates" with style combinations. Include production challenge framework. Build parameter recipe database by aesthetic.'
   }
 };
