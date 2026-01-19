@@ -1,6 +1,11 @@
+'use client';
+
+import Link from 'next/link';
+
 export default function TutorialsPage() {
   const tutorials = [
     {
+      id: 'chatgpt-content-creation',
       title: 'Getting Started with ChatGPT for Content Creation',
       category: 'Content Creation',
       level: 'Beginner',
@@ -8,6 +13,7 @@ export default function TutorialsPage() {
       description: 'Learn how to use ChatGPT effectively for writing blog posts, social media content, and marketing copy.',
     },
     {
+      id: 'perplexity-research',
       title: 'AI-Powered Research: Using Perplexity AI',
       category: 'Research',
       level: 'Intermediate',
@@ -15,6 +21,7 @@ export default function TutorialsPage() {
       description: 'Master the art of AI-assisted research with real-time fact-checking and source verification.',
     },
     {
+      id: 'midjourney-design',
       title: 'Midjourney Prompt Engineering for Stunning Images',
       category: 'Design',
       level: 'Advanced',
@@ -22,6 +29,7 @@ export default function TutorialsPage() {
       description: 'Create professional-quality images with precise control over AI-generated artwork.',
     },
     {
+      id: 'buffer-social-media',
       title: 'Automating Social Media with Buffer and AI',
       category: 'Marketing',
       level: 'Intermediate',
@@ -29,6 +37,7 @@ export default function TutorialsPage() {
       description: 'Streamline your social media workflow with AI-powered content suggestions and scheduling.',
     },
     {
+      id: 'github-copilot-coding',
       title: 'GitHub Copilot for Faster Coding',
       category: 'Development',
       level: 'Beginner',
@@ -36,6 +45,7 @@ export default function TutorialsPage() {
       description: 'Boost your programming productivity with AI code suggestions and autocompletion.',
     },
     {
+      id: 'ethical-ai-business',
       title: 'Ethical AI Usage in Business',
       category: 'Ethics',
       level: 'All Levels',
@@ -57,35 +67,37 @@ export default function TutorialsPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {tutorials.map((tutorial, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-              <div className="flex justify-between items-start mb-4">
-                <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                  tutorial.level === 'Beginner'
-                    ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                    : tutorial.level === 'Intermediate'
-                    ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-                    : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-                }`}>
-                  {tutorial.level}
-                </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {tutorial.duration}
-                </span>
+          {tutorials.map((tutorial) => (
+            <Link key={tutorial.id} href={`/tutorials/${tutorial.id}`}>
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow cursor-pointer h-full">
+                <div className="flex justify-between items-start mb-4">
+                  <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                    tutorial.level === 'Beginner'
+                      ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                      : tutorial.level === 'Intermediate'
+                      ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                      : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                  }`}>
+                    {tutorial.level}
+                  </span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {tutorial.duration}
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  {tutorial.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  {tutorial.category}
+                </p>
+                <p className="text-gray-700 dark:text-gray-400 mb-6">
+                  {tutorial.description}
+                </p>
+                <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
+                  Start Tutorial
+                </button>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                {tutorial.title}
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                {tutorial.category}
-              </p>
-              <p className="text-gray-700 dark:text-gray-400 mb-6">
-                {tutorial.description}
-              </p>
-              <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
-                Start Tutorial
-              </button>
-            </div>
+            </Link>
           ))}
         </div>
 

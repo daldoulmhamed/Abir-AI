@@ -20,27 +20,7 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="flex items-center space-x-8">
-            <div className="hidden sm:flex sm:space-x-8">
-              <Link
-                href="/learn"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white px-1 pt-1 border-b-2 text-sm font-medium"
-              >
-                Learn
-              </Link>
-              <Link
-                href="/tutorials"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white px-1 pt-1 border-b-2 text-sm font-medium"
-              >
-                Tutorials
-              </Link>
-              <Link
-                href="/news"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white px-1 pt-1 border-b-2 text-sm font-medium"
-              >
-                News
-              </Link>
-            </div>
+          <div className="flex items-center">
             <ThemeToggle />
           </div>
         </div>

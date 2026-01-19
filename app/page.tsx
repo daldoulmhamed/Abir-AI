@@ -1,4 +1,5 @@
 import ProfileSelector from "@/components/ProfileSelector";
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
@@ -37,6 +38,90 @@ export default function Home() {
             Choose your profile
           </h2>
           <ProfileSelector />
+        </div>
+      </section>
+
+      {/* Discover More Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Discover More
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Explore our comprehensive resources and stay updated with the latest in AI
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Link
+              href="/learn"
+              className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div className="p-8">
+                <div className="w-14 h-14 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-200 dark:group-hover:bg-indigo-800 transition-colors">
+                  <svg className="w-7 h-7 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747S17.5 6.253 12 6.253z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  Learn
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Master AI fundamentals, safe usage practices, and productivity workflows with our comprehensive guides.
+                </p>
+                <div className="flex items-center text-indigo-600 dark:text-indigo-400 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                  Explore →
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/tutorials"
+              className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div className="p-8">
+                <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-200 dark:group-hover:bg-purple-800 transition-colors">
+                  <svg className="w-7 h-7 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                  Tutorials
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Step-by-step guides to help you get the most out of popular AI tools and applications.
+                </p>
+                <div className="flex items-center text-purple-600 dark:text-purple-400 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                  Explore →
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/news"
+              className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500 via-red-500 to-orange-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div className="p-8">
+                <div className="w-14 h-14 bg-pink-100 dark:bg-pink-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-pink-200 dark:group-hover:bg-pink-800 transition-colors">
+                  <svg className="w-7 h-7 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2m2 2a2 2 0 002-2m-2 2v-1m0-6V9a2 2 0 00-2-2m0 0V7a2 2 0 00-2-2m0 0H7a2 2 0 00-2 2v1m0 6v1m0 1" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                  News
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Stay updated with the latest AI trends, product launches, and digital technology developments.
+                </p>
+                <div className="flex items-center text-pink-600 dark:text-pink-400 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                  Explore →
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
