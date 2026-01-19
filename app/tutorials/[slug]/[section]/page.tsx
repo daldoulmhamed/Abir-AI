@@ -3,6 +3,8 @@
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import CourseContent from '@/components/CourseContent';
+import { courseContentData } from '@/data/courseContent';
 
 interface Section {
   id: string;
@@ -50,11 +52,19 @@ const sectionData: Record<string, Section[]> = {
     { id: 'pro-workflow-copilot', title: 'Pro Workflow + Wrap-Up', position: 4, totalSections: 4, duration: '14 min', description: 'Build professional coding workflows and master advanced Copilot techniques.', hasContent: false },
   ],
   'ethical-ai-business': [
-    { id: 'what-is-ethical-ai', title: 'What Is Ethical AI in Business?', position: 1, totalSections: 5, duration: '16 min', description: 'Understanding ethical AI principles, responsibilities, and business implications.', hasContent: false },
+    { id: 'what-is-ethical-ai', title: 'What Is Ethical AI in Business?', position: 1, totalSections: 5, duration: '15 min', description: 'Understanding ethical AI principles, responsibilities, and business implications.', hasContent: false },
     { id: 'data-privacy-security', title: 'Data Privacy & Security', position: 2, totalSections: 5, duration: '18 min', description: 'Learn how to handle data responsibly and protect user information in AI systems.', hasContent: false },
     { id: 'bias-fairness-ai', title: 'Bias and Fairness in AI', position: 3, totalSections: 5, duration: '20 min', description: 'Identify and mitigate bias in AI models to ensure fair and equitable outcomes.', hasContent: false },
     { id: 'transparency-oversight', title: 'Transparency & Human Oversight', position: 4, totalSections: 5, duration: '17 min', description: 'Implement transparency measures and maintain human control in AI decision-making.', hasContent: false },
     { id: 'ethical-best-practices', title: 'Ethical AI Best Practices', position: 5, totalSections: 5, duration: '19 min', description: 'Apply ethical AI principles and build sustainable responsible AI frameworks.', hasContent: false },
+  ],
+  'getting-started-chatgpt-basics': [
+    { id: 'what-is-chatgpt', title: 'What is ChatGPT?', position: 1, totalSections: 6, duration: '5 min', description: 'Understand what ChatGPT is and how to access it. Learn how this AI chatbot generates human-like text responses powered by large language models.', hasContent: true },
+    { id: 'free-vs-paid', title: 'Free vs. Paid Access', position: 2, totalSections: 6, duration: '5 min', description: 'Explore free GPT-3.5 for basics vs. paid ChatGPT Plus ($20/month) with GPT-4o for better accuracy and advanced features.', hasContent: true },
+    { id: 'signing-up', title: 'Signing Up and Logging In', position: 3, totalSections: 6, duration: '5 min', description: 'Create your free ChatGPT account at chatgpt.com—no credit card needed. Learn to access the clean, intuitive chat interface.', hasContent: true },
+    { id: 'exploring-interface', title: 'Exploring the Chat Interface', position: 4, totalSections: 6, duration: '5 min', description: 'Navigate the conversation area, prompt box, sidebar for managing chats, and settings for custom instructions.', hasContent: true },
+    { id: 'writing-prompts', title: 'Writing Your First Prompt', position: 5, totalSections: 6, duration: '5 min', description: 'Master clear instructions with context. Use roles like "Act as a teacher" to guide ChatGPT for better results.', hasContent: true },
+    { id: 'simple-use-cases', title: 'Simple Use Cases and Next Steps', position: 6, totalSections: 6, duration: '5 min', description: 'Generate ideas, summarize articles, translate text. Always fact-check as AI can hallucinate. Be specific for targeted results.', hasContent: true },
   ],
 };
 
@@ -65,6 +75,7 @@ const colorGradients: Record<string, string> = {
   'buffer-social-media': 'from-amber-600 to-orange-600',
   'github-copilot-coding': 'from-indigo-600 to-purple-600',
   'ethical-ai-business': 'from-red-600 to-rose-600',
+  'getting-started-chatgpt-basics': 'from-blue-600 to-violet-600',
 };
 
 // YouTube video URLs - Add video links here
@@ -104,6 +115,13 @@ const videoData: Record<string, string | null> = {
   'bias-fairness-ai': null,
   'transparency-oversight': null,
   'ethical-best-practices': null,
+  // ChatGPT Basics sections
+  'what-is-chatgpt': null,
+  'free-vs-paid': null,
+  'signing-up': null,
+  'exploring-interface': null,
+  'writing-prompts-basics': null,
+  'simple-use-cases': null,
 };
 
 const getPreviousSectionId = (slug: string, currentPosition: number): string | null => {
@@ -199,10 +217,16 @@ function TutorialSectionPage() {
           )}
         </div>
 
-        {/* Coming Soon Placeholder */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-12 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Coming Soon</h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg">This section is being prepared with comprehensive learning materials. Check back soon!</p>
+        {/* Content Section */}
+        <div className="space-y-12">
+          {courseContentData[slug] ? (
+            <CourseContent courseData={courseContentData[slug]} gradientClass={gradientClass} />
+          ) : (
+            <div className="text-center py-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Coming Soon</h2>
+              <p className="text-gray-600 dark:text-gray-300 text-lg">This section is being prepared with comprehensive learning materials. Check back soon!</p>
+            </div>
+          )}
         </div>
 
         {/* Navigation */}

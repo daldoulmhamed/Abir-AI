@@ -52,6 +52,14 @@ export default function TutorialsPage() {
       duration: '30 min',
       description: 'Understanding privacy, bias, and responsible AI implementation in professional settings.',
     },
+    {
+      id: 'getting-started-chatgpt-basics',
+      title: 'Getting Started with ChatGPT: A Beginner\'s Hands-On Guide',
+      category: 'Fundamentals',
+      level: 'Beginner',
+      duration: '30 min',
+      description: 'New to ChatGPT? Learn how to sign up, navigate the interface, craft your first prompts, and apply it practically with core skills fast.',
+    },
   ];
 
   return (
