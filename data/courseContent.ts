@@ -665,5 +665,113 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use workflow diagrams showing research progression. Include prompt templates as copy-paste code blocks. Emphasize time savings and ROI metrics throughout. Include Space organization matrix.',
     expansionIdeas: 'Create advanced courses: "Perplexity Deep Research for Teams" or "Enterprise Content Intelligence Systems." Offer downloadable "Content Research Power Pack: 25 Pro Prompts + Space Templates" bundle. Include case studies showing content performance improvements. Build templates library for different industries.'
+  },
+  'perplexity-research/source-verification': {
+    courseTitle: 'Verifying Sources and Fact-Checking in Perplexity AI: Intermediate Guide to Research Integrity',
+    metaTitle: 'Verify Sources & Fact-Check in Perplexity AI – Intermediate Research Methods',
+    metaDescription: 'Master source verification and fact-checking techniques in Perplexity AI. Learn citation analysis, cross-verification workflows, Academic Focus mode, and bias detection for trustworthy intermediate research.',
+    modules: [
+      {
+        id: 'reading-citations-detective',
+        title: 'Reading Perplexity Citations Like a Detective',
+        learningOutcome: 'Systematically validate every Perplexity citation before trusting it.',
+        lessons: [
+          {
+            id: 'citation-numbers-truth',
+            title: 'Citation Numbers ≠ Truth',
+            content: 'Every Perplexity answer links to sources, but smart researchers verify what sources actually say. Citation presence doesn\'t guarantee accuracy — context matching matters.'
+          },
+          {
+            id: 'source-checklist',
+            title: 'The 30-Second Source Checklist',
+            content: 'Use this rapid verification protocol for every citation:\n\n1. CLICK → Does the link work? (Dead links = red flag)\n2. DOMAIN → .edu/.gov/.org vs blogspot.com? (Authority matters)\n3. CONTEXT → Does quoted text match source claim? (AI can mis-summarize)\n4. DATE → Freshness relevant? (2026 data ≠ 2022 stats)\n5. AUTHOR → Credentials or anonymous? (Expertise signals)\n\nPro Move: Hover citations before clicking to preview domain/quality instantly.'
+          },
+          {
+            id: 'ghost-citation-detection',
+            title: 'Ghost Citation Detection',
+            content: 'Detect fabricated references:\n\nPrompt: "Verify if \'[Book Title]\' by [Author] exists. Provide DOI or publisher link."\n\nNo results = fabricated reference. Never cite fabricated sources.',
+            exercise: 'Pick your last Perplexity answer. Audit all 5+ citations using the 30-second checklist. Note which pass and which require deeper investigation.'
+          }
+        ]
+      },
+      {
+        id: 'focus-modes-quality',
+        title: 'Focus Modes for Source Quality Control',
+        learningOutcome: 'Select focus modes strategically based on source quality needs.',
+        lessons: [
+          {
+            id: 'academic-focus-gold',
+            title: 'Academic Focus = Gold Standard',
+            content: 'Different queries need different sources:\n\nExample Query: "AI ethics regulation impact"\n• Default: Mixed blog/forum results\n• Academic: Peer-reviewed papers only (.edu/.gov/.org)\n\nAcademic Focus delivers highest-authority sources for research that needs citations.'
+          },
+          {
+            id: 'focus-mode-matrix',
+            title: 'When to Use Each Focus Mode',
+            content: 'Strategic mode selection by use case:\n\n• Academic: Research papers, citations → Highest quality\n• Wolfram: Math/stats validation → Highest quality\n• YouTube: Tutorials, demos → Medium quality\n• Reddit: User sentiment → Lowest quality\n• Default: General research → Mixed quality\n\nPro Workflow: Academic → Default → Reddit (Validation → Context → Reality check)'
+          }
+        ]
+      },
+      {
+        id: 'cross-verification',
+        title: 'Cross-Verification Systems (Never Trust One Source)',
+        learningOutcome: 'Never accept single-source validation; systematic cross-checking becomes automatic.',
+        lessons: [
+          {
+            id: 'validation-triangle',
+            title: 'The 3-Way Validation Triangle',
+            content: 'Never rely on single source:\n\nPerplexity Answer → Source Documents → Independent Confirmation\n\nThis three-step process ensures robustness and catches errors/misinterpretations.'
+          },
+          {
+            id: 'cross-check-prompts',
+            title: 'Practical Cross-Check Prompts',
+            content: 'Use these prompts to validate Perplexity claims:\n\n1. "Verify this claim using sources published after [date]"\n2. "What do peer-reviewed studies say about [Perplexity claim]?"\n3. "Counterarguments to [main finding from Perplexity]?"\n\nRed Flags Requiring Triple-Check:\n• Single-source answers (no multiple citations)\n• Very recent events (<48 hours)\n• Controversial topics (politics, medicine)\n• Statistical claims without ranges',
+            handsOn: 'Case Study Example:\nPerplexity: "X increased revenue 300% in Q4"\nVerification: Check earnings call transcript + SEC filing + analyst reports',
+            exercise: 'Take one Perplexity stat from today. Run 3 cross-verification prompts and compare results across sources.'
+          }
+        ]
+      },
+      {
+        id: 'advanced-fact-checking',
+        title: 'Advanced Fact-Checking Workflows',
+        learningOutcome: 'Command comprehensive fact-checking systems beyond basic citation clicking.',
+        lessons: [
+          {
+            id: 'bias-detection',
+            title: 'Bias Detection Framework',
+            content: 'Identify subtle biases in sources:\n\n1. SOURCE AFFILIATION → Who funds/publishes? (Industry vs Independent)\n2. LANGUAGE TONE → Alarmist/neutral/authoritative?\n3. MISSING COUNTERPOINTS → Only one side presented?\n4. PREDICTION vs EVIDENCE → "Will happen" vs "Has happened"\n\nThese indicators reveal whether sources present balanced analysis.'
+          },
+          {
+            id: 'perplexity-library-method',
+            title: 'The "Perplexity + Library" Method for Depth',
+            content: 'Combine speed with depth:\n\nStep 1: Perplexity scouting (speed)\nStep 2: Google Scholar/JSTOR validation (depth)\nStep 3: Primary source access (.gov filings, transcripts)\n\nPro Prompt Template:\n"Analyze [claim] using these criteria: [list 3-5 validation factors]. Cite tier-1 sources only (WSJ, HBR, peer-reviewed). Flag potential biases."'
+          },
+          {
+            id: 'timestamp-discipline',
+            title: 'Timestamp Discipline for Data Freshness',
+            content: 'Always track data vintage:\n\nAlways note: Query date + Source publication date + Data vintage\n\n"2026 analysis using 2024 data" = Stale\n"Q1 2026 figures using live web data" = Fresh\n\nTimestamp discipline prevents acting on outdated information.'
+          }
+        ]
+      },
+      {
+        id: 'verification-sop',
+        title: 'Building Your Verification SOP',
+        learningOutcome: 'Build sustainable verification systems that scale across research projects.',
+        lessons: [
+          {
+            id: 'audit-template',
+            title: 'Daily Research Audit Template',
+            content: 'Use this standardized template for every research session:\n\nQuery: ___________\nCitations: [1✓] [2✗] [3✓] (✓=Verified, ✗=Flagged)\nCross-Check: Google Scholar [✓] Primary Source [✓]\nConfidence: High/Medium/Low → Actionable?\n\nThis creates accountability and traceability.'
+          },
+          {
+            id: 'enterprise-practices',
+            title: 'Enterprise-Grade Verification Practices',
+            content: 'Professional standards for high-stakes research:\n\n• Never cite Perplexity directly (cite original sources)\n• Log query timestamps + source URLs\n• Flag >30% questionable sources → Redo research\n• Weekly audit: 10% of citations manually re-verified\n\nThese practices ensure credibility and auditability.',
+            reflection: 'Review your last 3 research sessions. What % of citations did you actually verify? Set a goal to increase verification rate.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include source quality matrix as table. Use red flags/green flags format for easy scanning. Emphasize citation verification and bias detection throughout. Include audit template as downloadable checklist.',
+    expansionIdeas: 'Create advanced courses: "Enterprise Perplexity: Team Research Systems" or "AI Verification for Academic Institutions." Offer downloadable "Perplexity Verification Checklist PDF" for daily audits. Include case studies of commonly mis-cited sources. Build source quality database by domain type.'
   }
 };
