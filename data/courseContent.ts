@@ -126,5 +126,83 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use comparison tables for vague vs. clear prompts. Hands-on exercises with real examples boost engagement and practical learning.',
     expansionIdeas: 'Create follow-up modules on "Advanced Prompt Techniques," "Prompts for Specific Industries," and "Custom Instructions." Offer downloadable "Prompt Starter Worksheet" with 5 templates for email capture. Link to tool-specific guides like ChatGPT prompt examples.'
+  },
+  'chatgpt-content-creation/content-types': {
+    courseTitle: 'Creating Blog Posts with ChatGPT: A Beginner\'s Guide to Smart AI Writing',
+    metaTitle: 'Learn to Create Blog Posts with ChatGPT – Step‑by‑Step Writing Guide for Beginners',
+    metaDescription: 'Learn how to plan, write, and optimize blog posts using ChatGPT. This quick beginner\'s course teaches prompt design, editing strategies, and SEO‑friendly AI writing techniques that help you create original, engaging content fast.',
+    modules: [
+      {
+        id: 'understanding-chatgpt-blogging',
+        title: 'Understanding ChatGPT for Blogging',
+        learningOutcome: 'Understand ChatGPT\'s capabilities and limitations for blog writing, and how it fits into your workflow.',
+        lessons: [
+          {
+            id: 'what-chatgpt-can-do',
+            title: 'What ChatGPT Can Do for You',
+            content: 'ChatGPT is an AI language model that can generate ideas, outlines, and full blog drafts based on your instructions. It accelerates research, brainstorming, and early drafting, freeing you to focus on creativity and storytelling.\n\nWhat It Can\'t Do: It doesn\'t understand context the way humans do and can produce errors, clichés, or generic phrasing. The secret to success is maintaining editorial control — using ChatGPT as your assistant, not a substitute for your judgment.\n\nHow It Fits into Your Workflow:\n• Idea phase: Generate blog ideas or keyword topics.\n• Draft phase: Outline or write first versions.\n• Revision phase: Refine wording, add facts, inject personal insight.'
+          }
+        ]
+      },
+      {
+        id: 'crafting-blog-prompts',
+        title: 'Crafting Effective Blog Prompts',
+        learningOutcome: 'Create structured, precise prompts that guide ChatGPT to deliver relevant, organized, and on‑brand content.',
+        lessons: [
+          {
+            id: 'what-is-blog-prompt',
+            title: 'Writing with ChatGPT Begins with Writing to ChatGPT',
+            content: 'A prompt is your instruction. Instead of saying "write a blog about healthy eating," specify audience, format, and tone:\n\n"Write an 800-word blog post for beginners about healthy eating habits, in a friendly tone. Include 3 practical tips, a short introduction, and a conclusion inviting readers to start small."',
+            handsOn: 'Prompt Design Framework:\n1. Define the topic and audience. Who are you helping and why?\n2. Set tone and style. Is it formal, conversational, or expert?\n3. Add structure. Tell ChatGPT how to organize your ideas.\n4. Request examples or formatting. Lists, paragraphs, or bullet points?\n5. Iterate. Use follow‑ups like "expand point 2 with real‑world examples."'
+          },
+          {
+            id: 'prompt-exercise',
+            title: 'Hands‑On Prompt Exercise',
+            content: 'Pick a subject you care about. Write two prompts — one vague and one clear — and generate both versions with ChatGPT.',
+            exercise: 'Compare the clarity, structure, and tone of each result. Note which prompt produces more useful content for your needs.'
+          }
+        ]
+      },
+      {
+        id: 'editing-humanizing-text',
+        title: 'Editing and Humanizing AI‑Generated Text',
+        learningOutcome: 'Transform AI‑assisted drafts into engaging, human‑sounding blog posts with your unique voice.',
+        lessons: [
+          {
+            id: 'editing-steps',
+            title: 'The Four-Step Editing Process',
+            content: 'Step 1 – Read for Substance: Check the facts and ensure the content aligns with your expertise. If data is missing, fill it in with real sources or personal experience.\n\nStep 2 – Inject Your Voice: Replace generic phrases with personal language, vivid examples, or experiences that feel "you." Readers connect with authenticity.\n\nStep 3 – Trim or Restructure: Cut repetition or filler. Reorder sections if the flow feels mechanical. Add transitions to smooth jumps between ideas.\n\nStep 4 – Ethical Editing: Credit sources, avoid plagiarism, and never pass off AI‑generated content as fully human work. Transparency builds trust.',
+            handsOn: 'Practical Tip: Ask ChatGPT to rewrite a section in your voice by providing a sample paragraph you\'ve written. It learns your rhythm and adapts its tone.'
+          },
+          {
+            id: 'voice-authenticity',
+            title: 'Adding Your Personal Voice',
+            content: 'Your human judgment transforms generic AI text into authentic content that resonates with readers. Personal stories and your unique perspective are what differentiate your blog from others.',
+            reflection: 'How does adding your personal stories change the feel of an AI‑written blog post?'
+          }
+        ]
+      },
+      {
+        id: 'seo-optimization',
+        title: 'SEO and Optimization Basics',
+        learningOutcome: 'Guide ChatGPT to produce search‑friendly content that reads naturally and ranks well.',
+        lessons: [
+          {
+            id: 'structuring-readability',
+            title: 'Structuring for Readability',
+            content: 'Use clear headings (H1‑H3) to organize sections. Keep paragraphs short for screen readers. Include bullet points or numbered lists to simplify information.',
+            handsOn: 'SEO Best Practices:\n• Focus on topics, not repetition.\n• For example, in a post about "creating blog posts with ChatGPT," include related terms naturally like "AI writing tools," "prompt techniques," and "SEO‑friendly blogging."\n• Never stuff keywords or rely solely on AI suggestions.'
+          },
+          {
+            id: 'chatgpt-seo-enhancement',
+            title: 'Enhancing SEO with ChatGPT',
+            content: 'AI can generate optimized text when directed well. The best‑ranking content reads as if written for humans first, algorithms second.',
+            exercise: 'Prompt ChatGPT: "Suggest a meta title and description for this blog post about using ChatGPT for content writing, targeting beginners and emphasizing authenticity."'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use comparison tables showing vague vs. clear blog prompts. Include real examples of before/after AI editing. Emphasize authenticity and human oversight throughout.',
+    expansionIdeas: 'Create follow-up courses: "Advanced Prompting for Content Strategy" or "AI‑Powered SEO for Bloggers." Offer downloadable "ChatGPT Blog Prompt Builder – From Idea to Published Post" worksheet. Build a prompt library for different content types. Create FAQ addressing ethical use and SEO concerns.'
   }
 };
