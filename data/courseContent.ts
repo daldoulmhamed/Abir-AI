@@ -1454,5 +1454,157 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include complete parameter reference table. Use decision matrix (use case → parameter values). Emphasize parameter priority order throughout. Include production formula as highlighted box. Include workflow diagrams.',
     expansionIdeas: 'Create advanced courses: "Parameter API Integration + Batch Processing" or "Custom Model Training with /tune." Offer downloadable "Complete Parameter Matrix + 50 Production Presets by Use Case." Include video tutorials for each parameter. Build interactive parameter calculator tool. Create parameter decision tree flowchart.'
+  },
+  'midjourney-design/pro-prompt-workflow': {
+    courseTitle: 'Pro Midjourney Prompt Workflow + Complete Series Wrap-Up: Advanced Production Mastery',
+    metaTitle: 'Midjourney Pro Prompt Workflow + Complete Mastery (2026 Advanced)',
+    metaDescription: 'Master production-grade Midjourney workflows combining 9-layer prompts, parameter systems, style libraries, and team scaling. Final advanced course + series capstone delivers your complete AI visual operating system.',
+    modules: [
+      {
+        id: 'production-operating-system',
+        title: 'The Complete Production Operating System (POS)',
+        learningOutcome: 'Build an integrated 7-system production framework that scales.',
+        lessons: [
+          {
+            id: 'pos-philosophy',
+            title: 'Core Philosophy: "Visual Assets Compound"',
+            content: 'System thinking transforms individual outputs into compounding assets:\n\nWeek 1: Style library → Week 2: Character systems → Week 3: Production templates\nSingle image → Asset ecosystem → Revenue engine\n\nYour New Reality: 1 designer = 10 manual hours/day → 50 production assets/day\n\nKey Insight: Each asset you create strengthens your entire system.'
+          },
+          {
+            id: 'pos-architecture',
+            title: 'POS Architecture (7 Integrated Systems)',
+            content: 'The complete production operating system integrates:\n\n1. STYLE LIBRARY SYSTEM (sref codes)\n2. CHARACTER VAULT SYSTEM (cref sheets)\n3. PROMPT TEMPLATE SYSTEM (9-layer)\n4. PARAMETER PRESET SYSTEM (deliverable-optimized)\n5. ASSET PIPELINE SYSTEM (45-min production)\n6. TEAM/COLLABORATION SYSTEM (client approval)\n7. ARCHIVE & REUSE SYSTEM (compound value)\n\nThese 7 systems working together create industrial-scale visual production.'
+          }
+        ]
+      },
+      {
+        id: 'style-library-system',
+        title: 'Style Library System (The DNA Bank)',
+        learningOutcome: 'Build a reusable style library that compounds across projects.',
+        lessons: [
+          {
+            id: 'style-extraction-workflow',
+            title: 'Professional Style Extraction Workflow',
+            content: 'Build production-grade style library systematically:\n\n1. GENERATE: Same subject, --s 100→1000 (10 images)\nExperiment across full stylization range\n\n2. SELECT: 3 production winners\nChoose most versatile styles\n\n3. EXTRACT: /tune or --sref [job_id] → Style codes\nCapture style as reusable code\n\n4. CATALOG: "cinematic_fantasy_01", "product_clean_02", "portrait_dramatic_03"\nOrganize systematically for reuse\n\n5. TEST: Apply across 5 subjects → Verify consistency\nEnsure style works across contexts'
+          },
+          {
+            id: 'style-matrix',
+            title: 'Style Matrix (Production Essential)',
+            content: 'Document styles in structured matrix:\n\nSTYLE CODE | USE CASE | PARAMETERS | MOOD\ncinematic_01 | Film posters | --sw 600 | Epic\nproduct_02 | E-commerce | --s 100 | Clean\nsocial_03 | Instagram | --ar 4:5 | Vibrant\n\nWeekly Maintenance: Add 3 new styles from client wins.\n\nThis matrix becomes your visual asset database.'
+          }
+        ]
+      },
+      {
+        id: 'character-vault-system',
+        title: 'Character Vault System (Consistency Engine)',
+        learningOutcome: 'Create persistent characters that maintain consistency across scenes.',
+        lessons: [
+          {
+            id: 'character-sheet-generation',
+            title: 'Enterprise Character Pipeline',
+            content: 'Generate comprehensive character sheets:\n\nCHARACTER SHEET GENERATION (Day 1):\n1. Face: 5 angles, neutral expressions\n2. Body: 3 poses, full outfits\n3. Hands: 10 gestures (critical!)\n4. Lighting: 3 setups (key, rim, fill)\n\nDEPLOYMENT (Production):\n/imagine [scene] [face_sheet] [body_sheet] [hand_sheet] --cref --cw 100 --ar 16:9\n\nPro Reality: Same characters across 100+ scenes, zero consistency issues.'
+          },
+          {
+            id: 'multi-character-scenes',
+            title: 'Multi-Character Scenes',
+            content: '--cref supports multiple character references:\n\n--cref hero.jpg villain.jpg background.jpg --cw 100\n\nAI auto-positions based on prompt order + image weight.\n\nUse Case: Create complex narrative scenes with perfect character consistency.'
+          }
+        ]
+      },
+      {
+        id: 'prompt-parameter-fusion',
+        title: '9-Layer Prompt + Parameter Fusion',
+        learningOutcome: 'Combine prompting and parameters into master production prompts.',
+        lessons: [
+          {
+            id: 'master-production-prompt',
+            title: 'The Master Production Prompt (Copy This Exactly)',
+            content: 'Universal template that works across all use cases:\n\n[1]Art director at [studio] [2]creating [deliverable] for [client/audience] [3][scene description] [4]--ar [ratio] [cref/sref refs] [5]--s [stylization] --q 2 --c 20 [6]cinematic composition, professional lighting [7]review for anatomy, consistency, brand alignment [8]production ready [9]flag issues before final output\n\nBreakdown:\n- Layer 1: Role assignment\n- Layer 2: Context/deliverable\n- Layer 3: Scene description\n- Layer 4: Format + references\n- Layer 5: Creative parameters\n- Layer 6: Technical specifications\n- Layer 7: Self-critique\n- Layer 8: Quality gate\n- Layer 9: Error handling'
+          },
+          {
+            id: 'preset-deployment',
+            title: 'Preset Deployment System',
+            content: 'Save reusable parameter combinations:\n\n/prefer suffix v1: --ar 16:9 --v 6.1 --s 500 --q 2 --c 20\n/prefer option 1: --sref cinematic_01 --sw 600\n/prefer option 2: --sref product_02 --sw 400 --s 100\n\nBenefit: Paste once, apply to all future prompts in that project.'
+          }
+        ]
+      },
+      {
+        id: 'production-pipeline-scalable',
+        title: '45-Minute Production Pipeline (Scalable)',
+        learningOutcome: 'Execute complete production workflows efficiently.',
+        lessons: [
+          {
+            id: 'asset-generation-sequence',
+            title: 'Complete Asset Generation Sequence',
+            content: 'Execute this exact workflow for consistent output:\n\nMINUTE 0-5: CONCEPT (12 thumbs, --q 0.25 --c 30)\nGenerate rapid concepts for client review\n\nMINUTE 6-10: STYLE EXTRACTION (sref from winners)\nExtract sref codes from selected concepts\n\nMINUTE 11-20: CHARACTER LOCK (--cref testing)\nVerify character consistency across variations\n\nMINUTE 21-30: COMPOSITION VARIANTS (3 aspect ratios)\nGenerate for web, mobile, print\n\nMINUTE 31-40: PRODUCTION RENDER (--q 2 pipeline)\nFinal high-quality render at print quality\n\nMINUTE 41-45: SOCIAL SUITE EXPORT (9:16, 1:1, 16:9)\nExport platform-optimized variants\n\nResult: 5-10 production-ready assets in 45 minutes.'
+          },
+          {
+            id: 'discord-command-flow',
+            title: 'Discord Command Flow',
+            content: 'Execute production in Discord efficiently:\n\n1. /imagine prompt --ar 16:9 --q 0.25\nGenerate initial concepts\n\n2. U1 U2 U3 U4 → V1 V2 (refine)\nUpscale winners, create variations\n\n3. Remix → Add sref/cref → Production pass\nIntegrate style + character into final\n\n4. /tune (style catalog) → /prefer suffix (reuse)\nCapture for future use\n\nThis flow creates consistent, scalable output.'
+          }
+        ]
+      },
+      {
+        id: 'team-client-systems',
+        title: 'Team & Client Systems (Enterprise Scale)',
+        learningOutcome: 'Implement collaborative workflows for team and client management.',
+        lessons: [
+          {
+            id: 'agency-collaboration',
+            title: 'Agency Collaboration Framework',
+            content: 'Organize team assets and workflows:\n\nSHARED ASSETS:\n├── Style Library (Team sref codes)\n├── Character Vault (Brand characters)\n├── Deliverable Presets (/prefer suffix per client)\n├── Archive (Closed projects)\n\nCLIENT WORKFLOW:\n1. Web Alpha: Live side-by-side review\nClient sees options simultaneously\n\n2. U1-U4 → Client selects\nClient picks favorite to develop\n\n3. Remix chain → Custom iteration\nRefined variations based on feedback\n\n4. Final delivery: 4K ZIP + social variants\nAll formats ready for deployment'
+          },
+          {
+            id: 'quality-gates-enterprise',
+            title: 'Quality Control Gates (Never Skip)',
+            content: 'Implement mandatory quality checkpoints:\n\n[ ] Character consistency verified\n[ ] Style matches mood board\n[ ] Aspect ratios platform correct\n[ ] Anatomy/lighting approved\n[ ] Client sign-off documented\n\nThese gates prevent rework and ensure professional delivery.'
+          }
+        ]
+      },
+      {
+        id: 'series-wrap-up',
+        title: 'SERIES WRAP-UP – Complete Midjourney Mastery Stack',
+        learningOutcome: 'Integrate all course learnings into complete visual mastery.',
+        lessons: [
+          {
+            id: 'complete-mastery-stack',
+            title: 'You\'ve Conquered This Visual Power Stack',
+            content: 'Complete 5-course progression achieved:\n\n✅ FOUNDATIONS: What is Midjourney? (Beginner)\n✅ PROMPTS: Anatomy of Powerful Prompts (Advanced)\n✅ STYLE: Style & Composition Control (Advanced)\n✅ PARAMETERS: Complete Parameter Mastery (Advanced)\n✅ PRODUCTION: Pro Workflow Systems (Advanced)\n\n20 minutes invested → Lifetime production superpower\n\nYour Transformation Complete:\nBEFORE: Random images, endless iterations\nAFTER: Visual factory, 95% first-pass, agency scale'
+          },
+          {
+            id: 'mastery-checklist',
+            title: 'Complete Mastery Checklist',
+            content: 'Implement these production rhythms:\n\nDAILY PRODUCTION (45 min):\nFull pipeline → 5-10 final assets\n\nWEEKLY MAINTENANCE (30 min):\nStyle library + character vault updates\n\nMONTHLY STRATEGY (2 hrs):\nNew /tune models + preset optimization\n\nENTERPRISE PATH:\nAPI automation → Custom visual agents\n\nThis rhythm keeps your systems fresh and competitive.'
+          },
+          {
+            id: 'production-certification',
+            title: 'Production Certification Path',
+            content: '🎓 PRODUCTION CERTIFICATION:\nComplete 5 client projects using full POS. Document results.\n\n📦 INDUSTRIAL DOWNLOAD PACKAGE:\n• Complete 5-course production binder (60 pages)\n• 150 Pro prompt templates + parameter presets\n• Style library starter pack (25 sref codes)\n• Character sheet templates (10 professions)\n• Notion dashboard (asset tracking + client delivery)\n• 90-day production roadmap\n\nNext Evolution: "Midjourney Enterprise: Teams + API + Custom Models"',
+            reflection: 'Plan your first 5 client projects using the complete POS. Document before/after metrics for your visual production capacity.'
+          }
+        ]
+      },
+      {
+        id: 'final-mastery-synthesis',
+        title: 'Final Mastery Synthesis',
+        learningOutcome: 'Understand the complete Midjourney mastery framework.',
+        lessons: [
+          {
+            id: 'production-faq',
+            title: 'Production FAQ',
+            content: 'Common scaling questions answered:\n\nQ: Scaling beyond 1 designer?\nA: Shared /prefer systems + style libraries enable multi-person scaling\n\nQ: GPU cost optimization?\nA: --q 0.25 → client review → --q 2 delivery only (saves 75% GPU)\n\nQ: Legal for client work?\nA: Paid plans = full commercial rights. Always verify with legal.\n\nQ: Team consistency across projects?\nA: Shared style codes + character vault + /prefer presets maintain brand.'
+          },
+          {
+            id: 'final-frame',
+            title: 'The Final Frame',
+            content: 'Your production evolution complete:\n\nYou no longer create images. You manufacture visual advantage.\n\nThis complete system turns Midjourney into your unfair production weapon. Every asset compounds across clients, projects, and revenue streams.\n\n✅ Run your first 45-minute pipeline tomorrow.\n✅ The production curve begins now.\n✅ Your visual factory is operational.\n\nWelcome to enterprise-scale AI visual production.',
+            summary: 'This series transformed you from image creator to production engineer. You now have the complete stack: foundations, prompts, style, parameters, and production systems. Every tool is proven, every workflow is tested, every system scales.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include complete POS architecture diagram. Use checklists for readability. Emphasize compound asset growth throughout. Include timeline diagrams for 45-minute pipeline. Highlight series capstone positioning.',
+    expansionIdeas: 'Create certification program: "Midjourney Production Certified Professional" with portfolio requirements. Offer "Midjourney Enterprise Consulting" services. Build "Production Systems Bootcamp" (2-day intensive). Offer "Custom /tune Model Training" for agencies. Create "Visual Asset Licensing Platform" leveraging style libraries. Develop "Team Collaboration Templates + Notion Dashboard Pro."'
   }
 };
