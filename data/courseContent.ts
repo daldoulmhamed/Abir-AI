@@ -530,5 +530,140 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use side-by-side comparison of basic vs. smart questions. Include prompt templates as code blocks for easy copying. Emphasize ROI and time-savings throughout. Include focus mode selection matrix.',
     expansionIdeas: 'Create advanced courses: "Perplexity for Enterprise Research" or "Automated Insight Generation Systems." Offer downloadable "20 Intermediate Perplexity Prompts" template collection. Include 30-day challenge framework. Build prompt library organized by industry and use case.'
+  },
+  'perplexity-research/research-workflows': {
+    courseTitle: 'Using Perplexity AI for Content & Market Research: Intermediate Strategies for Professionals',
+    metaTitle: 'Using Perplexity AI for Content & Market Research – Intermediate Workflows',
+    metaDescription: 'Leverage Perplexity AI\'s Deep Research, Spaces, and Copilot for professional content planning and market analysis. Master intermediate workflows that save hours on competitor research, audience insights, and content gap analysis.',
+    modules: [
+      {
+        id: 'deep-research-accelerator',
+        title: 'Deep Research – Your Content Planning Accelerator',
+        learningOutcome: 'Deploy Deep Research to instantly generate professional-grade research reports.',
+        lessons: [
+          {
+            id: 'deep-research-overview',
+            title: 'What Deep Research Does',
+            content: '2-4 minute automated research reports that read hundreds of sources, synthesize findings, and deliver structured insights. Perfect for content briefs and market overviews.'
+          },
+          {
+            id: 'deploy-deep-research',
+            title: 'When to Deploy Deep Research',
+            content: 'Use Deep Research for:\n• Content Strategy: "Market analysis for [niche] content creators 2026"\n• Competitor Research: "Content gaps in [competitor] publishing strategy"\n• Trend Forecasting: "Emerging [industry] content formats for Q2 2026"',
+            handsOn: 'Pro Workflow Example:\nQuery: "Create comprehensive competitor analysis for newsletter platforms serving B2B marketers. Include pricing models, feature gaps, customer pain points from reviews, and content marketing strategies."\nResult: 15-page report with tables, citations, SWOT analysis'
+          },
+          {
+            id: 'deep-research-exercise',
+            title: 'Deep Research Exercise',
+            content: 'Put Deep Research into practice immediately.',
+            exercise: 'Run Deep Research on your top competitor\'s content strategy. Export as PDF and review the structured findings.'
+          }
+        ]
+      },
+      {
+        id: 'spaces-research-hub',
+        title: 'Spaces – Your Research Command Center',
+        learningOutcome: 'Organize complex research projects into actionable Spaces with persistent context.',
+        lessons: [
+          {
+            id: 'why-spaces-matter',
+            title: 'Why Spaces Beat Single Threads',
+            content: 'Dedicated research hubs with file uploads, pinned results, and cross-referencing. Perfect for multi-week content projects.'
+          },
+          {
+            id: 'spaces-setup',
+            title: 'Content Research Space Setup',
+            content: 'Organize your research by project phase:\n\nSpace 1: "Q1 Content Strategy" → Upload audience personas, brand guidelines\nSpace 2: "Competitor Tracking" → Pin weekly Deep Research reports\nSpace 3: "Content Calendar 2026" → Live calendar + performance data\n\nPro Tip: Name Spaces by project phase (Discovery → Planning → Execution → Analysis)'
+          },
+          {
+            id: 'file-upload-power',
+            title: 'File Upload Power for Research',
+            content: 'Leverage file uploads in Spaces:\n\nUpload: Past content performance spreadsheet → "Analyze which formats drove most engagement"\nUpload: Competitor content calendar → "Identify their publishing cadence and gaps"\n\nFiles stay in context across all your follow-up questions in that Space.'
+          }
+        ]
+      },
+      {
+        id: 'competitor-intelligence',
+        title: 'Competitor Content Intelligence Framework',
+        learningOutcome: 'Systematically extract actionable intelligence from competitor content ecosystems.',
+        lessons: [
+          {
+            id: 'five-query-dive',
+            title: 'The 5-Query Competitor Deep Dive',
+            content: 'Run these 5 queries sequentially for comprehensive competitor analysis:\n\n1. "Analyze [competitor] top 10 articles by traffic - topics, formats, headlines"\n2. "Customer sentiment analysis from reviews of [competitor] content/products"\n3. "Backlink profile analysis of [competitor]\'s highest traffic pages"\n4. "Social media content gaps - what gets engagement vs what doesn\'t"\n5. "Content promotion channels ranked by ROI for [competitor niche]"'
+          },
+          {
+            id: 'content-gap-analysis',
+            title: 'Content Gap Analysis Template',
+            content: 'Use this powerful template for competitive positioning:\n\nPrompt: "Compare content coverage across these 5 competitors: [list]. Create matrix showing:\n• Topics covered (heatmap)\n• Format preferences\n• Keyword opportunities (low competition, high intent)\n• Publishing frequency by content type"\n\nThis reveals exactly where your content can differentiate.',
+            exercise: 'Run the 5-query sequence on your #1 competitor today. Save results to a Perplexity Space for ongoing tracking.'
+          }
+        ]
+      },
+      {
+        id: 'audience-trend-research',
+        title: 'Audience & Trend Research Systems',
+        learningOutcome: 'Predict content performance using multi-source audience and trend intelligence.',
+        lessons: [
+          {
+            id: 'persona-extraction',
+            title: 'Audience Persona Extraction',
+            content: 'Build detailed buyer personas with Perplexity:\n\n"Create detailed buyer personas for [niche] from:\n1. Reddit discussions (r/[subreddits])\n2. Product reviews on G2/Capterra\n3. LinkedIn job postings\n4. Recent surveys/studies"\n\nThis generates data-backed personas instead of guesswork.'
+          },
+          {
+            id: 'trend-velocity',
+            title: 'Trend Velocity Tracking & Forecasting',
+            content: 'Stay ahead of trends:\n\nWeekly: "Show content trend growth rates for [3 topics] across 6 platforms"\nMonthly: "Predict Q2 content format winners based on 90-day social data"\n\nUse these insights to publish before trends peak.'
+          },
+          {
+            id: 'seasonal-planning',
+            title: 'Seasonal Content Planning',
+            content: 'Build comprehensive calendars with data:\n\n"Build 6-month content calendar for [niche] incorporating:\n• Major industry events/holidays\n• Historical performance peaks\n• Emerging topic clusters\n• Competitor content gaps"\n\nCombines seasonality with trend data for maximum relevance.'
+          }
+        ]
+      },
+      {
+        id: 'content-brief-workflow',
+        title: 'Content Brief Generation Workflow',
+        learningOutcome: 'Automate professional content briefs with research citations and SEO optimization.',
+        lessons: [
+          {
+            id: 'perfect-brief',
+            title: 'The Perfect Content Brief (3 Prompts)',
+            content: 'Use this three-step process for complete briefs:\n\n1. RESEARCH: "Deep Research: Comprehensive background on [topic] for [audience]"\n2. STRUCTURE: "Create SEO-optimized content brief including:\n   • Target keywords + search intent\n   • Content outline with word counts\n   • Featured snippet opportunities\n   • Supporting data/statistics needed"\n3. ANGLED: "Generate 5 unique angles for [topic] targeting [buyer persona]"'
+          },
+          {
+            id: 'brief-export',
+            title: 'Export & Reuse Content Briefs',
+            content: 'All briefs export to markdown/Notion with citations intact. Pro Tip: Pin your 3-prompt sequence to a Space for reuse across projects.\n\nThis creates a scalable content production system without quality loss.'
+          }
+        ]
+      },
+      {
+        id: 'performance-tracking',
+        title: 'Performance Tracking & Iteration',
+        learningOutcome: 'Build data-driven content cycles that continuously improve ROI.',
+        lessons: [
+          {
+            id: 'weekly-audit',
+            title: 'Weekly Content Audit System',
+            content: 'Use Perplexity for weekly analysis:\n\n"Analyze my last 10 posts performance data: [paste analytics]\nRank by engagement, identify patterns, recommend format adjustments."\n\nThis turns raw analytics into actionable insights.'
+          },
+          {
+            id: 'roi-formula',
+            title: 'ROI Content Formula & Tracking',
+            content: 'Track what actually matters:\n\nHigh ROI = (Traffic + Engagement + Conversions) × Evergreen Potential\n\nPerplexity tracks all variables across competitors + your performance, helping you focus on high-impact content types.'
+          },
+          {
+            id: 'calendar-challenge',
+            title: 'Build Your Content Calendar Using This System',
+            content: 'Combine all 6 modules into a complete workflow:\n\n1. Deep Research → Market understanding\n2. Spaces → Organized research hub\n3. Competitor Intelligence → Differentiation gaps\n4. Audience Research → Persona targeting\n5. Brief Generation → Production ready\n6. Performance Tracking → Continuous improvement\n\nYou now have a complete, data-driven content system.',
+            reflection: 'Build your Q2 content calendar using this 6-module system. Measure time saved vs. manual research methods.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use workflow diagrams showing research progression. Include prompt templates as copy-paste code blocks. Emphasize time savings and ROI metrics throughout. Include Space organization matrix.',
+    expansionIdeas: 'Create advanced courses: "Perplexity Deep Research for Teams" or "Enterprise Content Intelligence Systems." Offer downloadable "Content Research Power Pack: 25 Pro Prompts + Space Templates" bundle. Include case studies showing content performance improvements. Build templates library for different industries.'
   }
 };
