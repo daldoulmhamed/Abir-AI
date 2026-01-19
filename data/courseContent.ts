@@ -284,5 +284,82 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include platform-specific examples (Instagram, LinkedIn, TikTok, Twitter). Use comparison formats showing weak vs. strong captions. Emphasize authenticity and audience connection throughout.',
     expansionIdeas: 'Create follow-up courses: "Advanced Prompting for Brand Storytelling" or "AI Tools for Visual Media Management." Offer downloadable "10 Prompts for Better Social Media Posts – From Idea to Engagement" worksheet. Include FAQ addressing authenticity concerns and platform-specific best practices.'
+  },
+  'chatgpt-content-creation/advanced-workflows': {
+    courseTitle: 'Creating Marketing Copy with ChatGPT: Write Smarter, Sell Better',
+    metaTitle: 'Create Marketing Copy with ChatGPT – Quick Beginner\'s Guide to Persuasive AI Writing',
+    metaDescription: 'Learn how to craft effective marketing copy using ChatGPT. This short beginner guide reveals prompt structures, brand voice techniques, and editing tips that turn AI copy into authentic, high‑performing content.',
+    modules: [
+      {
+        id: 'understanding-ai-copywriting',
+        title: 'Understanding AI\'s Role in Copywriting',
+        learningOutcome: 'Position ChatGPT as your partner for first drafts and understand its capabilities and limitations in marketing copy.',
+        lessons: [
+          {
+            id: 'ai-copywriting-capabilities',
+            title: 'What ChatGPT Can Do for Marketing Copy',
+            content: 'ChatGPT can generate product descriptions and brand messaging, suggest variations of headlines, slogans, or taglines, and transform features into customer‑focused benefits.\n\nWhat You Provide: AI imitates patterns — you provide the empathy and insight that makes the message credible. Your job is to guide tone, clarity, and emotion.\n\nCopywriting Success = AI Pattern + Your Human Intent + Audience Insight'
+          }
+        ]
+      },
+      {
+        id: 'writing-marketing-prompts',
+        title: 'Writing Marketing Copy Prompts that Persuade',
+        learningOutcome: 'Guide AI to write targeted, emotionally resonant marketing messages that convert.',
+        lessons: [
+          {
+            id: 'prompt-building-formula',
+            title: 'Prompt Building Formula for Marketing Copy',
+            content: 'The goal of marketing copy is influence through clarity and emotion. Good prompts combine both.\n\nPrompt Building Elements:\n• Audience: Who are you persuading?\n• Goal: What action should they take?\n• Tone: Choose emotional energy (friendly, trustworthy, bold).\n• Format: Specify what kind of copy — headline, ad, landing intro, or email.\n• Voice Example (optional): Provide a short sample of your brand copy.'
+          },
+          {
+            id: 'example-marketing-prompts',
+            title: 'Example Prompts for Different Copy Types',
+            content: 'Copy Type Examples:\n• Product Description: "Write a 50‑word product description for an eco‑friendly water bottle. Tone: playful, benefit‑focused. Include a short call to action."\n• Headlines & Taglines: "Create three headline options and a tagline for a landing page promoting an online writing course for beginners."\n• Email Copy: "Draft a 3‑sentence email subject line and preview text for a promotion targeting busy professionals."\n• Ad Copy: "Write two versions of ad copy (50 words each) for a fitness app — one for beginners, one for experienced users."',
+            exercise: 'Pick one product or service you know. Write two prompts — one vague, one structured — and compare how specific variables change the result.'
+          }
+        ]
+      },
+      {
+        id: 'editing-polishing-copy',
+        title: 'Editing and Polishing for Conversion',
+        learningOutcome: 'Convert AI drafts into compelling, polished copy that feels both persuasive and authentic.',
+        lessons: [
+          {
+            id: 'human-editing-steps',
+            title: 'The Four-Step Human Editing Process',
+            content: 'Clarity: Replace filler phrases with action verbs. Look for words like "is," "helps," or "offers" and replace with stronger verbs.\n\nEmotion: Add real stories, outcomes, or proof points. Show results, not features.\n\nVoice Match: Read aloud — does it sound like your brand? Your unique personality matters.\n\nCTA Strength: Ensure every piece invites action naturally. Words like "Start," "Discover," or "Join" outperform generic CTAs.',
+            handsOn: 'Quick Example:\nChatGPT draft: "Our app is easy to use and helps you stay organized."\nHuman‑edited: "Simplify your week — organize every task in one app that runs like second nature."\nA small shift in tone builds more connection.'
+          },
+          {
+            id: 'humanizing-copy',
+            title: 'Humanizing AI Copy with Your Voice',
+            content: 'The best marketing copy combines AI speed with human authenticity. Your stories, insights, and personality are what differentiate your brand.',
+            reflection: 'Which part of your copy feels most AI‑generated — tone, flow, or emotion? How can you humanize it?'
+          }
+        ]
+      },
+      {
+        id: 'wrapping-up-confidence',
+        title: 'Wrapping Up — Building Confidence with AI Writing',
+        learningOutcome: 'Master the complete AI writing workflow from awareness to conversion across all content types.',
+        lessons: [
+          {
+            id: 'complete-workflow',
+            title: 'The Three Pillars of Digital Writing with AI',
+            content: 'Blog Posts: structure and clarity — establish authority and provide value.\n\nSocial Media Posts: engagement and variety — build community and maintain presence.\n\nMarketing Copy: persuasion and emotion — convert interest into action.\n\nEach stage reinforces the next — from awareness to conversion. The key takeaway? AI writing works best when guided by human intent, empathy, and expertise.'
+          },
+          {
+            id: 'next-steps',
+            title: 'Practice Challenges and Continued Growth',
+            content: 'Build your AI writing skills through real practice with your own content and audience feedback.',
+            exercise: 'Practice Challenge:\n1. Create one marketing headline in three tones: friendly, bold, and luxurious.\n2. Test which version resonates most with your audience in real campaigns.\n3. Build a prompt library for different marketing scenarios in your industry.',
+            reflection: 'How will you integrate AI writing into your workflow while maintaining your authentic brand voice?'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include before/after copy examples showing AI draft vs. human‑edited version. Use comparison tables for vague vs. persuasive prompts. Emphasize authenticity, human oversight, and conversion strategy throughout.',
+    expansionIdeas: 'Create advanced courses: "AI Copywriting Strategy 2.0" or "Building Authentic Brand Voice with AI." Offer downloadable "Prompt Templates for Persuasive Marketing Copy" worksheet. Include case studies of high‑converting AI‑assisted marketing copy. Build comprehensive prompt library for different industries and copy types.'
   }
 };
