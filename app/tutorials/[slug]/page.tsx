@@ -101,21 +101,6 @@ const tutorialData: {
       { id: 'ethical-best-practices', title: 'Ethical AI Best Practices', duration: '6 min' },
     ],
   },
-  'getting-started-chatgpt-basics': {
-    title: 'Getting Started with ChatGPT: A Beginner\'s Hands-On Guide',
-    description: 'New to ChatGPT? Learn how to sign up, navigate the interface, craft your first prompts, and apply it practically in this quick beginner tutorial. Build core skills fast—no experience needed.',
-    duration: '5 min',
-    category: 'AI Fundamentals',
-    level: 'Beginner',
-    sections: [
-      { id: 'what-is-chatgpt', title: 'What is ChatGPT?', duration: '1 min' },
-      { id: 'free-vs-paid', title: 'Free vs. Paid Access', duration: '1 min' },
-      { id: 'signing-up', title: 'Signing Up and Logging In', duration: '1 min' },
-      { id: 'exploring-interface', title: 'Exploring the Chat Interface', duration: '1 min' },
-      { id: 'writing-prompts', title: 'Writing Your First Prompt', duration: '1 min' },
-      { id: 'simple-use-cases', title: 'Simple Use Cases and Next Steps', duration: '1 min' },
-    ],
-  },
 };
 
 const categoryColors: { [key: string]: string } = {
@@ -125,7 +110,6 @@ const categoryColors: { [key: string]: string } = {
   'Marketing': 'from-amber-600 to-orange-600',
   'Development': 'from-indigo-600 to-purple-600',
   'Ethics': 'from-red-600 to-pink-600',
-  'AI Fundamentals': 'from-blue-600 to-violet-600',
 };
 
 export default function TutorialPage() {
