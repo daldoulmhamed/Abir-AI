@@ -999,5 +999,154 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include parameter comparison tables. Use example prompt evolution to show basic vs pro. Emphasize 7-layer method throughout. Include access method comparison and subscription matrix.',
     expansionIdeas: 'Create advanced courses: "Midjourney for Teams + API Automation" or "Professional Branding with AI Visuals." Offer downloadable "Midjourney Pro Prompt Library: 100 Production Templates" with style combinations. Include production challenge framework. Build parameter recipe database by aesthetic.'
+  },
+  'midjourney-design/prompt-anatomy': {
+    courseTitle: 'The Anatomy of a Powerful Prompt: Advanced Prompt Engineering Mastery',
+    metaTitle: 'Anatomy of Powerful AI Prompts – Advanced Engineering Guide (2026)',
+    metaDescription: 'Dissect the 9-layer structure of production-grade prompts for Midjourney, Perplexity, ChatGPT, and Claude. Master constraint stacking, meta-prompting, chain-of-thought, and output formatting for enterprise AI results.',
+    modules: [
+      {
+        id: 'nine-layer-architecture',
+        title: 'The 9-Layer Prompt Architecture',
+        learningOutcome: 'Master the complete 9-layer prompt framework that transforms generic outputs into production-grade results.',
+        lessons: [
+          {
+            id: 'prompt-dna',
+            title: 'Complete Prompt DNA Framework',
+            content: 'Advanced prompting is systems engineering for AI. The 9-layer framework:\n\n[1.ROLE] [2.CONTEXT] [3.TASK] [4.FORMAT] [5.CONSTRAINTS]\n[6.CHAIN] [7.REFINE] [8.QUALITY] [9.META]\n\nExample Dissection:\n"[1]Senior market analyst [2]reviewing Q4 SaaS competitor data [3]create [4]3-page executive brief [5]under 800 words, data-driven only, no speculation [6]analyze pricing trends → identify gaps → recommend positioning [7]flag low-confidence data points [8]Fortune 500 quality, cited sources [9]if missing data, state explicitly with research next steps"\n\nThis framework applies across every AI platform and use case.'
+          }
+        ]
+      },
+      {
+        id: 'foundation-layers',
+        title: 'Layers 1-3 – Foundation (90% of Prompt Power)',
+        learningOutcome: 'Master the three foundation layers that determine output quality.',
+        lessons: [
+          {
+            id: 'layer-1-role',
+            title: 'Layer 1: Role Assignment (Context Switching)',
+            content: 'Role assignment is your most powerful tool:\n\n❌ "Write a report" → ✅ "Act as McKinsey partner leading SaaS practice"\n❌ "Generate image" → ✅ "Channel Greg Rutkowski\'s cinematic fantasy style"\n\nPower Roles by Domain:\n• Analysis: "McKinsey partner"\n• Creative: "[Artist] studio director"\n• Code: "Staff engineer at Stripe"\n• Strategy: "General partner at a16z"\n\nRole clarity determines perspective, depth, and professional tone.'
+          },
+          {
+            id: 'layer-2-context',
+            title: 'Layer 2: Situational Context (Specificity Wins)',
+            content: 'Context transforms generic prompts into precise systems:\n\n"Q4 2026 SaaS pricing for mid-market CRM, $10-50/user/month, US enterprises 500-5K employees, competitive with HubSpot"\n\nSpecificity drives accuracy. Every detail narrows the solution space toward your exact need.'
+          },
+          {
+            id: 'layer-3-task',
+            title: 'Layer 3: Atomic Task Definition',
+            content: 'Define exactly what you need:\n\n❌ NOT: "Help me understand SaaS pricing"\n✅ INSTEAD: "Extract 3 pricing insights + 2 competitive gaps + 1 positioning recommendation"\n\nAtomic task definition prevents rambling and keeps AI focused on deliverables.'
+          }
+        ]
+      },
+      {
+        id: 'execution-layers',
+        title: 'Layers 4-6 – Execution Control',
+        learningOutcome: 'Control execution through ruthless format enforcement and constraint stacking.',
+        lessons: [
+          {
+            id: 'layer-4-format',
+            title: 'Layer 4: Ruthless Format Enforcement',
+            content: 'Format enforcement guarantees usable output:\n\n"Format EXACTLY as:\nEXECUTIVE SUMMARY (75 words)\nKEY FINDINGS (3 bullets, 25 words each)\nACTIONABLE RECOMMENDATIONS (numbered 1-3)\nSOURCES (URLs only, no descriptions)"\n\nExact format requirements prevent AI from deciding structure on your behalf.'
+          },
+          {
+            id: 'layer-5-constraints',
+            title: 'Layer 5: Constraint Stacking (Precision Sculpting)',
+            content: 'Layer constraints eliminate noise and define boundaries:\n\n"Word count: 750 max. Data only from 2025-2026. Exclude speculation. US market only. B2B enterprise. 3 sources minimum per claim. No industry jargon."\n\nConstraint stacking sculpts outputs toward your exact requirements by elimination.'
+          },
+          {
+            id: 'layer-6-chain',
+            title: 'Layer 6: Chain-of-Thought Instructions',
+            content: 'Chain-of-thought reasoning dramatically improves quality:\n\n"Step 1: List all pricing data points. Step 2: Rank by recency. Step 3: Identify outliers. Step 4: Cross-reference competitors. Step 5: Synthesize 3 insights. Step 6: Derive recommendations."\n\nPro Discovery: CoT doubles reasoning accuracy, triples actionable output.'
+          }
+        ]
+      },
+      {
+        id: 'polish-layers',
+        title: 'Layers 7-9 – Polish & Error-Proofing',
+        learningOutcome: 'Perfect outputs through self-critique, quality benchmarks, and edge case handling.',
+        lessons: [
+          {
+            id: 'layer-7-critique',
+            title: 'Layer 7: Self-Critique Mechanisms',
+            content: 'Build AI review into the prompt:\n\n"After generating, review for: factual accuracy, actionability, word count compliance. Flag issues and fix before final output."\n\nSelf-critique reduces errors by forcing AI to validate its own work.'
+          },
+          {
+            id: 'layer-8-quality',
+            title: 'Layer 8: Quality Benchmarks',
+            content: 'Set explicit quality targets:\n\n"Quality standards: Fortune 500 boardroom ready. Every claim cited. Zero fluff. Maximum signal."\n\nBenchmarks establish what excellence looks like for this specific project.'
+          },
+          {
+            id: 'layer-9-meta',
+            title: 'Layer 9: Meta-Instructions (Handle Edge Cases)',
+            content: 'Edge case handling prevents failures:\n\n"If data insufficient: State clearly + suggest 3 next research steps.\nIf ambiguous requirements: Ask 1 clarifying question then proceed with assumptions stated."\n\nMeta-instructions prepare AI for incomplete information and ambiguity.'
+          }
+        ]
+      },
+      {
+        id: 'platform-optimization',
+        title: 'Platform-Specific Optimizations',
+        learningOutcome: 'Apply the 9-layer framework across different AI platforms.',
+        lessons: [
+          {
+            id: 'midjourney-visual',
+            title: 'Midjourney (Visual Precision)',
+            content: 'Visual platform optimization:\n\n"hyper-detailed [subject], [medium], by [artist1] and [artist2], [lighting], [composition], [mood] --ar 16:9 --v 6.1 --s 750 --q 2 --c 20 --style raw"\n\nVisual platforms need role + medium + artists + parameters stacked for control.'
+          },
+          {
+            id: 'perplexity-research',
+            title: 'Perplexity (Research Rigor)',
+            content: 'Research platform optimization:\n\n"Deep Research: [topic]. Include: peer-reviewed sources post-2025, competitor analysis, pricing benchmarks, customer sentiment. Format: Executive brief + data tables + 3 predictions."\n\nResearch platforms need source recency + data types + output format.'
+          },
+          {
+            id: 'reasoning-models',
+            title: 'Claude/ChatGPT (Reasoning Depth)',
+            content: 'Reasoning platform optimization:\n\n"Chain-of-thought reasoning. Think step-by-step. First [step 1]. Then [step 2]. Finally [step 3]. Output only final answer."\n\nReasoning platforms need step-by-step guidance + output gate.'
+          }
+        ]
+      },
+      {
+        id: 'advanced-systems',
+        title: 'Advanced Prompt Systems',
+        learningOutcome: 'Scale prompts through cascades, inheritance, and negative prompting.',
+        lessons: [
+          {
+            id: 'three-prompt-cascade',
+            title: 'The 3-Prompt Cascade (Enterprise Gold)',
+            content: 'Sequential prompting builds depth:\n\nPROMPT 1: Research/scoping → "Map current landscape"\nPROMPT 2: Analysis → "Synthesize patterns + gaps"\nPROMPT 3: Strategy → "Convert insights to 90-day roadmap"\n\nCascading lets AI build on prior outputs, creating strategic depth impossible in single prompts.'
+          },
+          {
+            id: 'constraint-inheritance',
+            title: 'Constraint Inheritance (Scale Winner)',
+            content: 'Reusable prompt systems:\n\nSave master prompt → Reuse across projects → Swap only [context/subject] variables\n\nConstraint inheritance scales consistency across teams and projects without rebuilding prompts.'
+          },
+          {
+            id: 'negative-prompting',
+            title: 'Negative Prompting (Elimination Power)',
+            content: 'Define what to exclude:\n\n"Exclude: generic stock photos, blurry images, poor anatomy, over-saturated colors, amateur composition"\n\nNegative prompts are often more powerful than positive ones for visual+text generation.'
+          }
+        ]
+      },
+      {
+        id: 'measuring-roi',
+        title: 'Measuring Prompt ROI',
+        learningOutcome: 'Quantify the business value of advanced prompting systems.',
+        lessons: [
+          {
+            id: 'success-metrics',
+            title: 'Success Metrics for Advanced Prompts',
+            content: 'Track measurable outcomes:\n\n✅ 1 prompt = 3 manual hours saved\n✅ 80% reduction in editing/revision\n✅ 95% first-pass quality acceptance\n✅ Cross-platform consistency (Midjourney → Perplexity → Claude)\n\nThese metrics show the true business impact of prompt engineering investment.'
+          },
+          {
+            id: 'audit-checklist',
+            title: 'Prompt Audit Checklist',
+            content: 'Validate your prompts:\n\n[ ] Role clarity (Layer 1)\n[ ] Format enforced (Layer 4)\n[ ] Constraints explicit (Layer 5)\n[ ] Chain-of-thought present (Layer 6)\n[ ] Error handling included (Layer 9)\n\nUse this checklist to ensure every production prompt meets professional standards.',
+            reflection: 'Rewrite your last 5 prompts using the full 9-layer architecture. Compare quality metrics before and after.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include 9-layer architecture diagram. Use side-by-side examples (bad vs good prompts). Include platform comparison matrix. Emphasize constraint stacking and chain-of-thought throughout.',
+    expansionIdeas: 'Create advanced courses: "Prompt Systems Engineering" (API chaining + agent orchestration) or "Enterprise Prompt Management." Offer downloadable "9-Layer Prompt Builder Worksheet + 25 Production Templates." Include before/after case studies. Build platform-specific prompt template library.'
   }
 };
