@@ -203,8 +203,8 @@ function TutorialSectionPage() {
 
         {/* Content Section */}
         <div className="space-y-12">
-          {courseContentData[slug] ? (
-            <CourseContent courseData={courseContentData[slug]} gradientClass={gradientClass} />
+          {courseContentData[`${slug}/${sectionId}`] ? (
+            <CourseContent courseData={courseContentData[`${slug}/${sectionId}`]} gradientClass={gradientClass} />
           ) : (
             <div className="text-center py-12">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Coming Soon</h2>
