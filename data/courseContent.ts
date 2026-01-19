@@ -1148,5 +1148,145 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include 9-layer architecture diagram. Use side-by-side examples (bad vs good prompts). Include platform comparison matrix. Emphasize constraint stacking and chain-of-thought throughout.',
     expansionIdeas: 'Create advanced courses: "Prompt Systems Engineering" (API chaining + agent orchestration) or "Enterprise Prompt Management." Offer downloadable "9-Layer Prompt Builder Worksheet + 25 Production Templates." Include before/after case studies. Build platform-specific prompt template library.'
+  },
+  'midjourney-design/style-composition': {
+    courseTitle: 'Controlling Style & Composition in Midjourney AI: Advanced Visual Engineering',
+    metaTitle: 'Midjourney Style & Composition Control – Advanced Techniques (2026)',
+    metaDescription: 'Master advanced Midjourney parameters for precise style transfer, composition control, camera techniques, and production-grade visual engineering. Learn --sref, --cw, --camera control, and multi-image referencing for cinematic results.',
+    modules: [
+      {
+        id: 'style-control-system',
+        title: 'Style Control System – --sref + Style DNA',
+        learningOutcome: 'Master style reference codes and style weight precision for instant atmosphere transfer.',
+        lessons: [
+          {
+            id: 'style-reference-codes',
+            title: 'Style Reference Codes (Production Essential)',
+            content: 'Style reference codes instantly transfer atmosphere:\n\n--sref [code] → Instant atmosphere transfer\n--sref [image_url] → Perfect style matching\n--sref [multiple] → Style fusion\n\nStyle Code Library Building:\nCollect: Vary same subject with --s 100→1000\nExtract: --sref [your_image_job_id]\nCatalog: "cinematic_01", "product_02", "portrait_03"\n\nPro Style Stacking:\n--sref cinematic_01 product_02 --sw 75 → 75% style weight\n\nPrinciple: Subject + Style DNA = Predictable perfection'
+          },
+          {
+            id: 'style-weight-precision',
+            title: 'Style Weight Precision (--sw 0-1000)',
+            content: '--sw controls style influence intensity:\n\n--sw 100 = Light influence (composition preserved)\n--sw 500 = Balanced style transfer\n--sw 1000 = Complete style metamorphosis\n\nPro Discovery: --sw 300-400 works best for production quality.',
+            handsOn: 'Generate 3 subjects → Extract sref codes → Apply across 3 different compositions. Compare output at --sw 100, 500, and 1000.'
+          }
+        ]
+      },
+      {
+        id: 'character-consistency-system',
+        title: 'Character Consistency System (Absolute Must)',
+        learningOutcome: 'Achieve perfect character consistency across multiple scenes and variations.',
+        lessons: [
+          {
+            id: 'character-reference-mastery',
+            title: 'Character Reference (--cref) Mastery',
+            content: 'Character reference locks face, body, and style:\n\n--cref [character_image] --cw 100 → Perfect face match\n--cref [multiple_images] → Face + body + clothing consistency\n\nThe 3-Image Character Formula:\nImage 1: Face closeup (primary reference)\nImage 2: Full body pose\nImage 3: Expression/emotion reference\n\n/imagine prompt: [scene] [face] [body] [expression] --cref --cw 80\n\nProduction Pipeline: Character sheet → Scene variations → Perfect consistency'
+          },
+          {
+            id: 'clothing-pose-control',
+            title: 'Clothing & Pose Control (--cw Fine-Tuning)',
+            content: '--cw (character weight) controls consistency level:\n\n--cw 0 = Pose/attire freedom (character essence only)\n--cw 50 = Medium consistency (recognizable character)\n--cw 100 = Exact replication (face/hair/hands precision)\n\nPro Tip: Use --cw 80 for 95% consistency with slight creative variation.'
+          }
+        ]
+      },
+      {
+        id: 'composition-control-matrix',
+        title: 'Composition Control Matrix (Camera Simulation)',
+        learningOutcome: 'Master aspect ratios and camera positioning for cinematic composition.',
+        lessons: [
+          {
+            id: 'aspect-ratio-mathematics',
+            title: 'Aspect Ratio Mathematics (Beyond 16:9)',
+            content: 'Different deliverables require different ratios:\n\nHero Banner: --ar 3:1 (3000×1000px)\nInstagram Post: --ar 4:5 (1080×1350px)\nLinkedIn Hero: --ar 16:10 (1920×1200px)\nYouTube Thumbnail: --ar 16:9 (1280×720px)\nSquare Product: --ar 1:1\nPortrait: --ar 2:3\n\nPro Practice: Lock aspect ratio early in your workflow to prevent re-cropping.'
+          },
+          {
+            id: 'camera-position-parameters',
+            title: 'Camera Position Parameters',
+            content: '--camera simulates real photography perspectives:\n\n--camera top-down → Drone photography\n--camera low-angle → Heroic/epic perspective\n--camera eye-level → Natural documentary\n--camera dutch-angle → Tension/drama\n--camera macro → Product closeups\n\nPro Composition Formula:\nSubject + --camera [angle] + --ar [ratio] + --sref [composition] = Cinematic precision'
+          }
+        ]
+      },
+      {
+        id: 'advanced-parameter-interactions',
+        title: 'Advanced Parameter Interactions (The Control Matrix)',
+        learningOutcome: 'Understand how parameters interact and prioritize them correctly.',
+        lessons: [
+          {
+            id: 'style-composition-matrix',
+            title: 'The Style-Composition Matrix',
+            content: 'Stylization level determines best use cases:\n\nHIGH STYLIZATION (--s 750+):\n✓ Epic fantasy, concept art\n✗ Photorealism, product shots\n\nLOW STYLIZATION (--s 100-250):\n✓ Product photography, realism\n✗ Abstract art, painterly effects\n\nPro Insight: Match stylization to deliverable type, not personal preference.'
+          },
+          {
+            id: 'chaos-control-spectrum',
+            title: 'Chaos vs Control Spectrum',
+            content: '--c (chaos) controls randomness:\n\n--c 0 = Predictable, formulaic\n--c 30 = Balanced creativity (PRODUCTION STANDARD)\n--c 80+ = Wild experimentation\n\nProduction Rule: Never exceed --c 30 for client work.'
+          },
+          {
+            id: 'parameter-priority-order',
+            title: 'Complete Parameter Priority Order',
+            content: 'Apply parameters in this sequence:\n\n1. --cref (character lock) → Character consistency first\n2. --sref (style lock) → Style atmosphere second\n3. --ar (format) → Aspect ratio for deliverable\n4. --cw/--sw (weights) → Fine-tune intensity\n5. --camera (perspective) → Composition angle\n6. --s (final polish) → Stylization level last\n\nThis order prevents conflicts and ensures quality.'
+          }
+        ]
+      },
+      {
+        id: 'multi-image-referencing',
+        title: 'Multi-Image Referencing (Production Power)',
+        learningOutcome: 'Master 4-image referencing systems for production-grade precision.',
+        lessons: [
+          {
+            id: 'four-image-control-system',
+            title: 'The 4-Image Control System',
+            content: 'Combine multiple references for complete control:\n\n/imagine [scene description] [style_ref] [character_ref] [composition_ref] [lighting_ref]\n--iw 1.5 --cw 80 --sw 600 --ar 16:9 --v 6.1 --q 2\n\nImage Roles:\nImage 1: Primary subject/character (--cref)\nImage 2: Style reference (--sref)\nImage 3: Perfect composition example\nImage 4: Desired lighting/mood\n\nPro Reality: 95% first-pass perfection vs endless variations.'
+          },
+          {
+            id: 'weight-distribution-strategy',
+            title: 'Weight Distribution Strategy',
+            content: 'Balance multiple references:\n\nPrimary subject: --cw 100\nStyle: --sw 500\nComposition: --iw 1.0\nLighting: Natural blending\n\nKey Principle: Character > Style > Composition > Lighting in importance.'
+          }
+        ]
+      },
+      {
+        id: 'professional-workflow-systems',
+        title: 'Professional Workflow Systems',
+        learningOutcome: 'Execute complete production pipelines from brief to deliverables.',
+        lessons: [
+          {
+            id: 'production-pipeline',
+            title: 'The Production Pipeline (45 Minutes → Final Deliverables)',
+            content: 'Execute production in phases:\n\nMINUTE 0-5: Thumbnails (12 images, --q 0.25)\nMINUTE 6-10: Style extraction (--sref codes)\nMINUTE 11-20: Character system (--cref sheet)\nMINUTE 21-30: Composition testing (3 aspect ratios)\nMINUTE 31-40: Final polish (--q 2 pipeline)\nMINUTE 41-45: Export suite (4K + social variants)\n\nThis timing ensures efficiency and quality gates.'
+          },
+          {
+            id: 'asset-management-system',
+            title: 'Asset Management System',
+            content: 'Organize production assets:\n\nFOLDERS:\n├── 01_Style-DNA (sref codes + images)\n├── 02_Character-Library (cref sheets)\n├── 03_Composition-Templates\n├── 04_Project-Final (delivered assets)\n├── 05_Social-Variants (platform optimized)\n\nThis structure scales across multiple projects.'
+          },
+          {
+            id: 'client-presentation-codes',
+            title: 'Client Presentation Codes',
+            content: 'Efficient client selection workflow:\n\nU1-U4 → Client selects favorites\nV1-V4 → Subtle variations\nA1/A2 → Artistic alternates\n🔄 Remix → Custom iteration\n\nPro Tip: Present 4 options max to prevent decision paralysis.'
+          }
+        ]
+      },
+      {
+        id: 'troubleshooting-quality-control',
+        title: 'Troubleshooting + Quality Control',
+        learningOutcome: 'Diagnose problems and implement quality gates.',
+        lessons: [
+          {
+            id: 'common-failure-patterns',
+            title: 'Common Failure Patterns + Fixes',
+            content: 'Quick troubleshooting guide:\n\nBLURRY TEXT: --no text, letters, typography\nWRONG HANDS: --cref with perfect hand reference, --v 6.1\nINCONSISTENT LIGHTING: Fixed lighting reference image\nPOOR COMPOSITION: --sref perfect composition example\nWrong Character: Double-check --cref URL and --cw value\n\nPro Workflow: Test one variable at a time.'
+          },
+          {
+            id: 'quality-gates',
+            title: 'Quality Gates (Never Skip)',
+            content: 'Mandatory checks before delivery:\n\n[ ] Character consistency test (--cref verified)\n[ ] Style lock confirmed (--sref code works)\n[ ] Composition approved (3 angles tested)\n[ ] Aspect ratio correct for deliverable\n[ ] 4K export (--q 2 final pass)\n\nThese gates prevent client revisions.',
+            reflection: 'Create your own style-composition checklist for your next project.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include parameter tables and workflow diagrams. Use side-by-side before/after images showing parameter effects. Emphasize --cref + --sref combination throughout. Include aspect ratio quick reference.',
+    expansionIdeas: 'Create advanced courses: "Midjourney Multi-Project Management" or "Style Systems for Brand Consistency." Offer downloadable "Production Checklist + Folder Templates" and "50 Verified Style Reference Codes by Aesthetic." Include case studies showing 45-minute pipeline in action. Build video tutorial library for camera parameters.'
   }
 };
