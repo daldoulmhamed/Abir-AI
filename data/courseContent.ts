@@ -361,5 +361,71 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include before/after copy examples showing AI draft vs. human‑edited version. Use comparison tables for vague vs. persuasive prompts. Emphasize authenticity, human oversight, and conversion strategy throughout.',
     expansionIdeas: 'Create advanced courses: "AI Copywriting Strategy 2.0" or "Building Authentic Brand Voice with AI." Offer downloadable "Prompt Templates for Persuasive Marketing Copy" worksheet. Include case studies of high‑converting AI‑assisted marketing copy. Build comprehensive prompt library for different industries and copy types.'
+  },
+  'perplexity-research/introduction-perplexity': {
+    courseTitle: 'What is Perplexity AI? A Beginner\'s 3-Minute Guide to the Smart Answer Engine',
+    metaTitle: 'What is Perplexity AI? Features, Uses & Beginner Guide (2026)',
+    metaDescription: 'Discover what Perplexity AI is, how it works, and why it\'s different from ChatGPT or Google. This quick beginner guide explains its real-time search, citations, and practical uses in just 3 minutes.',
+    modules: [
+      {
+        id: 'what-makes-perplexity-different',
+        title: 'What Makes Perplexity AI Different',
+        learningOutcome: 'Understand Perplexity\'s unique position as a hybrid search-AI tool built for truth and efficiency.',
+        lessons: [
+          {
+            id: 'perplexity-core-concept',
+            title: 'Core Concept: The Answer Engine',
+            content: 'Perplexity AI is an "answer engine" — not just a chatbot or search engine. It delivers direct, conversational responses backed by live web sources, blending AI reasoning with real-time research.\n\nKey Differences from Others:\n• ChatGPT: Trained on static data (can hallucinate facts).\n• Google: Link lists, no synthesized answers.\n• Perplexity: Real-time search + citations + natural explanations.\n\nSimple Analogy: Think of it as a brilliant research assistant who reads the entire internet in seconds, then writes you a concise report with footnotes.'
+          }
+        ]
+      },
+      {
+        id: 'standout-features',
+        title: 'Standout Features You\'ll Actually Use',
+        learningOutcome: 'Know Perplexity\'s killer features and when to use each one effectively.',
+        lessons: [
+          {
+            id: 'citation-backed-answers',
+            title: '1. Citation-Backed Answers',
+            content: 'Every response includes verifiable sources. Click any citation to read the original page — perfect for research, fact-checking, or building trust.'
+          },
+          {
+            id: 'multi-model-choice',
+            title: '2. Multi-Model Choice (Pro Feature)',
+            content: 'Switch between GPT-4o, Claude 3.5, Llama 3.1, and more based on your needs — coding, creative writing, or analysis.'
+          },
+          {
+            id: 'real-time-web-search',
+            title: '3. Real-Time Web Search',
+            content: 'Ask current events, stock prices, or news. Answers update continuously, unlike static AI models.'
+          },
+          {
+            id: 'focus-modes',
+            title: '4. Focus Modes',
+            content: 'Narrow searches to Academic, YouTube, Reddit, or Wolfram for specialized results.\n\nQuick Example:\nQuery: "Latest iPhone release date" → Gets today\'s answer with Apple\'s press release cited.'
+          }
+        ]
+      },
+      {
+        id: 'who-uses-perplexity',
+        title: 'Who Uses Perplexity & Real-World Applications',
+        learningOutcome: 'Identify if Perplexity fits your workflow and which plan matches your needs.',
+        lessons: [
+          {
+            id: 'perplexity-use-cases',
+            title: 'Perfect Use Cases for Different Roles',
+            content: 'Perplexity AI is ideal for:\n• Students: Research papers with cited sources.\n• Professionals: Competitive analysis, market trends.\n• Content Creators: Fast, accurate background info.\n• Developers: API for custom research tools.\n\nFree vs Pro ($20/month):\n• Free: Quick answers, basic search functionality.\n• Pro: Model choice, file uploads, unlimited searches, advanced features.'
+          },
+          {
+            id: 'hands-on-exercise',
+            title: 'Getting Started with Perplexity',
+            content: 'Visit perplexity.ai and explore its interface. The free version gives you immediate access to core features.',
+            exercise: 'Ask Perplexity: "Summarize the top 3 AI trends in 2026 with sources." Notice how citations are provided for each claim. This demonstrates Perplexity\'s key strength.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use comparison tables (Perplexity vs. ChatGPT vs. Google). Include feature tables showing Free vs Pro capabilities. Emphasize accuracy, citations, and real-time search advantages throughout.',
+    expansionIdeas: 'Create follow-up courses: "Advanced Search with Perplexity" or "Perplexity for Business Intelligence." Offer downloadable "Perplexity Quickstart Guide: 10 Power Prompts for Better Research" PDF. Include FAQ addressing accuracy, free vs paid, and comparison with Google.'
   }
 };
