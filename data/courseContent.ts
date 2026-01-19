@@ -204,5 +204,85 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use comparison tables showing vague vs. clear blog prompts. Include real examples of before/after AI editing. Emphasize authenticity and human oversight throughout.',
     expansionIdeas: 'Create follow-up courses: "Advanced Prompting for Content Strategy" or "AI‑Powered SEO for Bloggers." Offer downloadable "ChatGPT Blog Prompt Builder – From Idea to Published Post" worksheet. Build a prompt library for different content types. Create FAQ addressing ethical use and SEO concerns.'
+  },
+  'chatgpt-content-creation/refining-content': {
+    courseTitle: 'Creating Social Media Posts with ChatGPT: A Beginner\'s Guide to Smart, Engaging Content',
+    metaTitle: 'Create Social Media Posts with ChatGPT – Quick Beginner\'s Guide to Engaging AI Content',
+    metaDescription: 'Learn how to use ChatGPT to craft social media posts that grab attention and express your brand voice. Discover prompt strategies, editing tips, and content planning ideas in just a few minutes.',
+    modules: [
+      {
+        id: 'understanding-chatgpt-social',
+        title: 'Understanding ChatGPT\'s Role in Social Media Creation',
+        learningOutcome: 'Identify which parts of your social media process AI can enhance without losing personal authenticity.',
+        lessons: [
+          {
+            id: 'chatgpt-social-capabilities',
+            title: 'What ChatGPT Can Do for Social Media',
+            content: 'ChatGPT can suggest ideas, write captions, craft storytelling hooks, and adapt tone across platforms. It\'s particularly useful for brainstorming campaigns or rewriting messages to fit specific character limits.\n\nWhat It Can\'t Do: It doesn\'t know your audience\'s current reactions or the algorithm of each platform. You still manage timing, visuals, and strategy — ChatGPT helps you save time on language and ideation.\n\nHow It Fits into the Workflow:\n• Planning: Generate content ideas, hashtags, and campaign themes.\n• Creation: Write captions, descriptions, or calls to action.\n• Refinement: Edit tone, test variations, and A/B test post wording.'
+          }
+        ]
+      },
+      {
+        id: 'crafting-social-prompts',
+        title: 'Crafting Effective Prompts for Social Posts',
+        learningOutcome: 'Create clear, structured prompts that produce post variations suitable for different platforms and audiences.',
+        lessons: [
+          {
+            id: 'social-prompt-framework',
+            title: 'Key Prompt Framework for Social Media',
+            content: 'The right prompt produces content that fits your audience, platform, and personality.\n\nKey Framework Elements:\n• Objective: "Promote a new product," "share a tip," "boost engagement."\n• Platform: Each network has its own tone – LinkedIn is professional, Instagram is visual, TikTok is playful.\n• Tone & Style: Friendly, bold, confident, educational, or humorous.\n• Format: Captions, carousels, threads, or short descriptions.\n• Length & CTA: "Keep it under 100 words and end with an engaging call to action."'
+          },
+          {
+            id: 'example-prompts',
+            title: 'Example Prompts for Different Platforms',
+            content: 'Platform-Specific Examples:\n• Instagram: "Write three short, engaging Instagram captions for a sustainable fashion brand\'s new eco‑friendly collection. Include hashtags."\n• LinkedIn: "Create a LinkedIn post sharing a productivity tip, professional tone, 100 words, with a question to invite discussion."\n• Twitter/X: "Write a witty, concise tweet about AI productivity tools, under 140 characters, with a call to action."\n• TikTok: "Create an energetic, casual TikTok script about morning routines for busy professionals."',
+            exercise: 'Pick one platform you use most. Write a simple prompt like the examples above, test it in ChatGPT, and adjust wording until the tone feels right for your brand.'
+          }
+        ]
+      },
+      {
+        id: 'editing-personalizing-social',
+        title: 'Editing, Personalizing, and Adding Visual Ideas',
+        learningOutcome: 'Edit AI‑generated captions into authentic posts aligned with your brand voice and audience expectations.',
+        lessons: [
+          {
+            id: 'making-it-yours',
+            title: 'Make It Sound Like You',
+            content: 'AI can mimic tone, but your genuine personality makes it engaging. Add stories from your experience, brand language, and emotional authenticity.',
+            handsOn: 'Platform-Specific Editing Tips:\n• Instagram: Keep it conversational and image‑focused.\n• Twitter/X: Prioritize brevity and hooks.\n• LinkedIn: Add insights or professional reflections.\n• TikTok/Short‑Form: Use energetic, conversational language.'
+          },
+          {
+            id: 'visual-direction',
+            title: 'Adding Visual Direction to Posts',
+            content: 'Don\'t limit AI to text — use it to brainstorm visual concepts too.',
+            handsOn: 'Ask ChatGPT: "Suggest image or video concepts to match this post caption about morning routines."',
+            exercise: 'Quick Editing Routine:\n1. Review for clarity, emotion, and accuracy.\n2. Simplify complex sentences.\n3. Reword generic phrases to reflect your voice.\n4. Add specifics from your experience or brand.',
+            reflection: 'What tone feels most natural for your brand — friendly, confident, or storytelling? How can AI support that tone consistently?'
+          }
+        ]
+      },
+      {
+        id: 'planning-scheduling-engagement',
+        title: 'Planning, Scheduling, and Measuring Engagement',
+        learningOutcome: 'Design consistent, ethical content workflows supported by AI that improve efficiency and engagement.',
+        lessons: [
+          {
+            id: 'content-planning',
+            title: 'Using ChatGPT for Content Planning',
+            content: 'AI\'s usefulness extends beyond writing — it can help you plan and optimize future posts.\n\nContent Calendar Ideas: Ask for recommendations like: "Create a 2‑week content calendar for Instagram around wellness and productivity, with post ideas and hashtags."',
+            handsOn: 'Optimizing for Engagement:\nPrompt idea: "Rewrite this post to increase engagement by asking a question or encouraging comments."'
+          },
+          {
+            id: 'ethical-practices',
+            title: 'Ethical and Practical Tips for AI Social Content',
+            content: 'Always check facts before sharing. Disclose AI involvement when relevant to maintain transparency. Combine AI outputs with real visuals, testimonials, or stats.',
+            exercise: 'Practice Challenges:\n1. Repurpose one ChatGPT‑generated caption across three platforms.\n2. Run a quick A/B test using two prompt styles.\n3. Build a monthly post calendar template with AI assistance.',
+            reflection: 'Which platform will you experiment with first using ChatGPT? Set one mini goal and measure how your audience responds.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include platform-specific examples (Instagram, LinkedIn, TikTok, Twitter). Use comparison formats showing weak vs. strong captions. Emphasize authenticity and audience connection throughout.',
+    expansionIdeas: 'Create follow-up courses: "Advanced Prompting for Brand Storytelling" or "AI Tools for Visual Media Management." Offer downloadable "10 Prompts for Better Social Media Posts – From Idea to Engagement" worksheet. Include FAQ addressing authenticity concerns and platform-specific best practices.'
   }
 };
