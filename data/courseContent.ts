@@ -427,5 +427,108 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use comparison tables (Perplexity vs. ChatGPT vs. Google). Include feature tables showing Free vs Pro capabilities. Emphasize accuracy, citations, and real-time search advantages throughout.',
     expansionIdeas: 'Create follow-up courses: "Advanced Search with Perplexity" or "Perplexity for Business Intelligence." Offer downloadable "Perplexity Quickstart Guide: 10 Power Prompts for Better Research" PDF. Include FAQ addressing accuracy, free vs paid, and comparison with Google.'
+  },
+  'perplexity-research/advanced-search': {
+    courseTitle: 'Asking Smart Questions in Perplexity AI: Intermediate Guide to Precision Research',
+    metaTitle: 'Asking Smart Questions in Perplexity AI – Intermediate Prompting Techniques',
+    metaDescription: 'Master intermediate prompting strategies for Perplexity AI. Learn layered questioning, context stacking, focus modes, and source analysis to extract precise, actionable insights from your research engine.',
+    modules: [
+      {
+        id: 'anatomy-precision-prompts',
+        title: 'The Anatomy of Precision Prompts',
+        learningOutcome: 'Transform simple questions into precision research requests using a 4-layer framework.',
+        lessons: [
+          {
+            id: 'why-questions-fail',
+            title: 'Why Most Questions Fail & How to Fix Them',
+            content: 'Vague queries = generic answers. "AI trends" gives surface-level buzzwords. Context-rich prompts trigger deeper analysis.\n\nIntermediate Prompt Framework (4 Layers):\n[Context] + [Specific Ask] + [Format] + [Constraints]',
+            handsOn: 'Layer Breakdown:\n• Context: Your situation/expertise level\n• Specific Ask: Exact deliverable (analysis, ranking, timeline)\n• Format: Table, bullet points, pros/cons, timeline\n• Constraints: Budget, timeframe, exclusions\n\nBasic: "SEO tools"\nSmart: "Compare Ahrefs vs SEMrush for small business SEO in 2026. Include pricing, core features, and learning curve. Format as comparison table with recommendations."'
+          },
+          {
+            id: 'rewrite-exercise',
+            title: 'Precision Prompt Exercise',
+            content: 'Take your existing research questions and restructure them using the 4-layer framework.',
+            exercise: 'Rewrite your last 3 Perplexity queries using this 4-layer structure. Notice how much more specific the responses become.'
+          }
+        ]
+      },
+      {
+        id: 'mastering-focus-modes',
+        title: 'Mastering Focus Modes & Model Selection',
+        learningOutcome: 'Know exactly which mode/model delivers optimal results for each use case.',
+        lessons: [
+          {
+            id: 'focus-modes-guide',
+            title: 'Focus Modes: Target Specific Knowledge Domains',
+            content: 'Beyond default web search, target specific knowledge domains:\n\n• Academic: "Latest peer-reviewed studies on [topic]"\n• YouTube: "Top 5 tutorial videos explaining [concept]"\n• Reddit: "Real user experiences with [product/service]"\n• Wolfram: "Mathematical analysis of [problem]"\n\nPro Tip: Combine modes in sequence:\n1. Reddit → real user sentiment\n2. Academic → validated research\n3. YouTube → visual explanations'
+          },
+          {
+            id: 'model-selection',
+            title: 'Model Selection Strategy for Different Tasks',
+            content: 'Choose the right AI model for the right task:\n\n• Claude 3.5: Creative analysis, writing, nuance\n• GPT-4o: Speed, broad knowledge, coding\n• Llama 3.1: Technical accuracy, math\n• Sonar: Perplexity\'s search-optimized model\n\nKey insight: Different models excel at different domains. Match the model to your question type.'
+          }
+        ]
+      },
+      {
+        id: 'layered-questioning',
+        title: 'Layered Questioning & Follow-Up Chains',
+        learningOutcome: 'Chain questions to build comprehensive strategic insights.',
+        lessons: [
+          {
+            id: 'research-funnel',
+            title: 'The 3-Question Research Funnel',
+            content: 'Build depth progressively:\n\n1. BROAD SCAN: "Current landscape of [industry] 2026"\n2. DEEP DIVE: "Analyze [specific trend from Q1] - drivers, risks, 3-year forecast"\n3. ACTION PLAN: "Create implementation roadmap for [insight from Q2] for [your role/industry]"\n\nExample Chain:\n• Q1: "EV market leaders 2026"\n• Q2: "Tesla vs BYD supply chain advantages"\n• Q3: "Procurement strategy for EV fleet manager buying 50 vehicles"'
+          },
+          {
+            id: 'context-stacking',
+            title: 'Context Stacking Technique for Deeper Analysis',
+            content: 'Reference prior answers to build deeper analysis:\n\n"Using your previous analysis of [specific point], now compare with [new variable]. Update recommendations."\n\nThis technique transforms surface-level research into strategic business intelligence.',
+            exercise: 'Ask Perplexity about your industry. Follow with 2 increasingly specific questions. Notice the depth improvement compared to asking all at once.'
+          }
+        ]
+      },
+      {
+        id: 'advanced-techniques',
+        title: 'Advanced Techniques for Pro Results',
+        learningOutcome: 'Command Perplexity like a research director, not a casual user.',
+        lessons: [
+          {
+            id: 'constraint-analysis',
+            title: 'Constraint-Based Analysis & Filtering',
+            content: 'Use specific constraints to get targeted results:\n\nExample: "Recommend CRM software under $100/user/month, excluding Salesforce, with mobile-first design and Zapier integration. Rank by implementation speed."\n\nConstraints unlock precision by eliminating irrelevant options.'
+          },
+          {
+            id: 'advanced-request-types',
+            title: 'Time-Series & Multi-Perspective Analysis',
+            content: 'Advanced request types for complex research:\n\nTime-Series: "Show revenue growth comparison: HubSpot vs ActiveCampaign 2022-2026. Include market share changes and acquisition costs."\n\nMulti-Perspective: "Analyze [policy change] from 3 perspectives: consumer impact, business strategy, regulatory implications. Format as 3-column comparison."\n\nSource Quality: "Find case studies of [strategy] implementation from tier-1 publications (Forbes, HBR, WSJ) in last 12 months only."'
+          },
+          {
+            id: 'pro-template',
+            title: 'Pro Prompt Template for Research Direction',
+            content: 'Master template for maximum results:\n\n"Act as [expert role]. Analyze [topic] for [your situation]. Consider [3 key variables]. Format as [specific deliverable]. Sources from [quality/time constraints]."\n\nThis template ensures all critical elements are addressed in a single, structured request.'
+          }
+        ]
+      },
+      {
+        id: 'workflow-integration',
+        title: 'Workflow Integration & Pro Tips',
+        learningOutcome: 'Build sustainable research workflows that save time and drive decisions.',
+        lessons: [
+          {
+            id: 'daily-research-stack',
+            title: 'Daily Research Stack Integration',
+            content: 'Integrate Perplexity into your daily workflow:\n\nMorning: "Top 3 stories impacting [your industry] today"\nMidday: "Deep dive on [morning insight] - 3 actionable takeaways"\nEvening: "Weekly synthesis: connect this week\'s insights into 2026 strategy"\n\nExport & Action: "Format this analysis as Notion-ready markdown with action items tagged" or "Create Trello card structure from these recommendations"'
+          },
+          {
+            id: 'pitfalls-best-practices',
+            title: 'Common Pitfalls & Best Practices',
+            content: 'What works and what doesn\'t:\n\n❌ AVOID: "Tell me about X"\n✅ DO: "Benchmark X against Y and Z for [specific use case]"\n\n❌ AVOID: Vague timeframes\n✅ DO: "Changes in the last 90 days"\n\n❌ AVOID: Generic format requests\n✅ DO: "Format as actionable checklist with ROI estimates"\n\nKey principle: Specificity drives quality. Every detail improves the result.',
+            reflection: 'Review your last 5 Perplexity sessions. How many used layered prompting? Rewrite your weakest query using these advanced techniques.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Use side-by-side comparison of basic vs. smart questions. Include prompt templates as code blocks for easy copying. Emphasize ROI and time-savings throughout. Include focus mode selection matrix.',
+    expansionIdeas: 'Create advanced courses: "Perplexity for Enterprise Research" or "Automated Insight Generation Systems." Offer downloadable "20 Intermediate Perplexity Prompts" template collection. Include 30-day challenge framework. Build prompt library organized by industry and use case.'
   }
 };
