@@ -108,18 +108,18 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                     </div>
 
                     {/* Lesson Content - Beautiful Formatting */}
-                    <div className="space-y-4 mb-6 ml-14">
+                    <div className="space-y-6 mb-8 ml-14">
                       {/* Main Content */}
-                      <div className="prose prose-sm dark:prose-invert max-w-none">
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
+                      <div className="prose prose-lg dark:prose-invert max-w-none">
+                        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
                           {lesson.content}
                         </p>
                       </div>
 
                       {/* Summary Box - Premium */}
                       {lesson.summary && (
-                        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-l-4 border-emerald-500 pl-4 py-4 pr-4 rounded-lg backdrop-blur-sm">
-                          <p className="text-emerald-900 dark:text-emerald-200 text-sm leading-relaxed">
+                        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-l-4 border-emerald-500 pl-5 py-5 pr-5 rounded-lg backdrop-blur-sm">
+                          <p className="text-emerald-900 dark:text-emerald-200 text-base leading-relaxed">
                             <span className="font-bold mr-2">💡 Quick Summary:</span>
                             {lesson.summary}
                           </p>
@@ -128,14 +128,14 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
 
                       {/* Problem-Solution Box */}
                       {lesson.problem && lesson.solution && (
-                        <div className="space-y-3 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border-l-4 border-orange-500 pl-4 py-4 pr-4 rounded-lg backdrop-blur-sm">
+                        <div className="space-y-4 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border-l-4 border-orange-500 pl-5 py-5 pr-5 rounded-lg backdrop-blur-sm">
                           <div>
-                            <p className="text-orange-900 dark:text-orange-200 text-sm">
+                            <p className="text-orange-900 dark:text-orange-200 text-base leading-relaxed">
                               <span className="font-bold">⚠️ Challenge:</span> {lesson.problem}
                             </p>
                           </div>
                           <div>
-                            <p className="text-orange-900 dark:text-orange-200 text-sm">
+                            <p className="text-orange-900 dark:text-orange-200 text-base leading-relaxed">
                               <span className="font-bold">✅ Solution:</span> {lesson.solution}
                             </p>
                           </div>
@@ -144,58 +144,58 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                     </div>
 
                     {/* Interactive Elements - Premium Cards */}
-                    <div className="space-y-3 pt-5 border-t-2 border-gray-100 dark:border-gray-700 ml-14">
+                    <div className="space-y-4 pt-6 border-t-2 border-gray-100 dark:border-gray-700 ml-14">
                       {lesson.handsOn && (
-                        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800 hover:shadow-md transition-all">
+                        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg p-5 border border-amber-200 dark:border-amber-800 hover:shadow-md transition-all">
                           <div className="flex gap-3">
                             <Zap className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
-                              <p className="font-semibold text-amber-900 dark:text-amber-200 text-sm mb-1">
+                              <p className="font-semibold text-amber-900 dark:text-amber-200 text-base mb-2">
                                 🚀 Hands-On Practice
                               </p>
-                              <p className="text-amber-800 dark:text-amber-300 text-sm leading-relaxed">{lesson.handsOn}</p>
+                              <p className="text-amber-800 dark:text-amber-300 text-base leading-relaxed">{lesson.handsOn}</p>
                             </div>
                           </div>
                         </div>
                       )}
 
                       {lesson.action && (
-                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-4 border border-green-200 dark:border-green-800 hover:shadow-md transition-all">
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-5 border border-green-200 dark:border-green-800 hover:shadow-md transition-all">
                           <div className="flex gap-3">
                             <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
-                              <p className="font-semibold text-green-900 dark:text-green-200 text-sm mb-1">
+                              <p className="font-semibold text-green-900 dark:text-green-200 text-base mb-2">
                                 ✨ Action Item
                               </p>
-                              <p className="text-green-800 dark:text-green-300 text-sm leading-relaxed">{lesson.action}</p>
+                              <p className="text-green-800 dark:text-green-300 text-base leading-relaxed">{lesson.action}</p>
                             </div>
                           </div>
                         </div>
                       )}
 
                       {lesson.exercise && (
-                        <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-4 border border-purple-200 dark:border-purple-800 hover:shadow-md transition-all">
+                        <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-5 border border-purple-200 dark:border-purple-800 hover:shadow-md transition-all">
                           <div className="flex gap-3">
                             <Target className="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
-                              <p className="font-semibold text-purple-900 dark:text-purple-200 text-sm mb-1">
+                              <p className="font-semibold text-purple-900 dark:text-purple-200 text-base mb-2">
                                 💪 Exercise
                               </p>
-                              <p className="text-purple-800 dark:text-purple-300 text-sm leading-relaxed">{lesson.exercise}</p>
+                              <p className="text-purple-800 dark:text-purple-300 text-base leading-relaxed">{lesson.exercise}</p>
                             </div>
                           </div>
                         </div>
                       )}
 
                       {lesson.reflection && (
-                        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800 hover:shadow-md transition-all">
+                        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg p-5 border border-blue-200 dark:border-blue-800 hover:shadow-md transition-all">
                           <div className="flex gap-3">
                             <Lightbulb className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
-                              <p className="font-semibold text-blue-900 dark:text-blue-200 text-sm mb-1">
+                              <p className="font-semibold text-blue-900 dark:text-blue-200 text-base mb-2">
                                 🤔 Reflection
                               </p>
-                              <p className="text-blue-800 dark:text-blue-300 text-sm leading-relaxed">{lesson.reflection}</p>
+                              <p className="text-blue-800 dark:text-blue-300 text-base leading-relaxed">{lesson.reflection}</p>
                             </div>
                           </div>
                         </div>
