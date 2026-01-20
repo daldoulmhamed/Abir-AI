@@ -1607,7 +1607,7 @@ export const courseContentData: Record<string, CourseData> = {
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include complete POS architecture diagram. Use checklists for readability. Emphasize compound asset growth throughout. Include timeline diagrams for 45-minute pipeline. Highlight series capstone positioning.',
     expansionIdeas: 'Create certification program: "Midjourney Production Certified Professional" with portfolio requirements. Offer "Midjourney Enterprise Consulting" services. Build "Production Systems Bootcamp" (2-day intensive). Offer "Custom /tune Model Training" for agencies. Create "Visual Asset Licensing Platform" leveraging style libraries. Develop "Team Collaboration Templates + Notion Dashboard Pro."'
   },
-  'buffer-social-media/what-is-buffer': {
+  'automating-social-media-buffer-ai/what-is-buffer': {
     courseTitle: 'What is Buffer + Why Use AI? Intermediate Guide to Social Media Mastery',
     metaTitle: 'What is Buffer? AI Social Media Management Guide – Intermediate',
     metaDescription: 'Discover Buffer\'s AI-powered social media scheduling, content creation, and analytics. Learn intermediate workflows combining Buffer AI, automation rules, and cross-platform strategies for professional results.',
@@ -1922,7 +1922,7 @@ export const courseContentData: Record<string, CourseData> = {
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include 5-part prompt structure diagram. Use content clustering workflow visuals. Emphasize brand voice preservation throughout. Include quality control checklist. Highlight batching time savings data.',
     expansionIdeas: 'Create advanced courses: "Building Your AI Content System: Weekly Workflow and Metrics" or "Multi-Platform Content Mastery + Analytics." Offer downloadable "Prompt Template Library: 50 Reusable Templates by Goal" and "Voice Guide Worksheet." Build video tutorials for batching workflows. Create interactive prompt builder tool. Develop "Brand Voice Analysis AI Tool."'
   },
-  'buffer-social-media/creating-social-posts-with-ai': {
+  'automating-social-media-buffer-ai/creating-social-posts-with-ai': {
     courseTitle: 'Creating Social Posts with AI: Intermediate AI-Assisted Content Creation',
     metaTitle: 'Creating Social Posts with AI – Intermediate Guide (2026)',
     metaDescription: 'Master intermediate social media content creation using AI as a co-creator. Learn smart prompting, 4-post clustering, brand voice preservation, batch creation, and ethical guardrails for professional social media operations.',
