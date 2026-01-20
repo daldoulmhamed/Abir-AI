@@ -3,6 +3,7 @@
 import { CourseData } from '@/data/courseContent';
 import { BookOpen, CheckCircle2, Lightbulb, Zap, Target, MessageSquare, Sparkles, ArrowRight, Code2 } from 'lucide-react';
 import { useState } from 'react';
+import { convertToolNamesToLinks } from '@/utils/toolLinks';
 
 interface CourseContentProps {
   courseData: CourseData;
@@ -112,7 +113,7 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                       {/* Main Content */}
                       <div className="prose prose-lg dark:prose-invert max-w-none">
                         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
-                          {lesson.content}
+                          {convertToolNamesToLinks(lesson.content)}
                         </p>
                       </div>
 
@@ -121,7 +122,7 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                         <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-l-4 border-emerald-500 pl-5 py-5 pr-5 rounded-lg backdrop-blur-sm">
                           <p className="text-emerald-900 dark:text-emerald-200 text-base leading-relaxed">
                             <span className="font-bold mr-2">💡 Quick Summary:</span>
-                            {lesson.summary}
+                            {convertToolNamesToLinks(lesson.summary)}
                           </p>
                         </div>
                       )}
@@ -131,12 +132,12 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                         <div className="space-y-4 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border-l-4 border-orange-500 pl-5 py-5 pr-5 rounded-lg backdrop-blur-sm">
                           <div>
                             <p className="text-orange-900 dark:text-orange-200 text-base leading-relaxed">
-                              <span className="font-bold">⚠️ Challenge:</span> {lesson.problem}
+                              <span className="font-bold">⚠️ Challenge:</span> {convertToolNamesToLinks(lesson.problem)}
                             </p>
                           </div>
                           <div>
                             <p className="text-orange-900 dark:text-orange-200 text-base leading-relaxed">
-                              <span className="font-bold">✅ Solution:</span> {lesson.solution}
+                              <span className="font-bold">✅ Solution:</span> {convertToolNamesToLinks(lesson.solution)}
                             </p>
                           </div>
                         </div>
@@ -153,7 +154,7 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                               <p className="font-semibold text-amber-900 dark:text-amber-200 text-base mb-2">
                                 🚀 Hands-On Practice
                               </p>
-                              <p className="text-amber-800 dark:text-amber-300 text-base leading-relaxed">{lesson.handsOn}</p>
+                              <p className="text-amber-800 dark:text-amber-300 text-base leading-relaxed">{convertToolNamesToLinks(lesson.handsOn)}</p>
                             </div>
                           </div>
                         </div>
@@ -167,7 +168,7 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                               <p className="font-semibold text-green-900 dark:text-green-200 text-base mb-2">
                                 ✨ Action Item
                               </p>
-                              <p className="text-green-800 dark:text-green-300 text-base leading-relaxed">{lesson.action}</p>
+                              <p className="text-green-800 dark:text-green-300 text-base leading-relaxed">{convertToolNamesToLinks(lesson.action)}</p>
                             </div>
                           </div>
                         </div>
@@ -181,7 +182,7 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                               <p className="font-semibold text-purple-900 dark:text-purple-200 text-base mb-2">
                                 💪 Exercise
                               </p>
-                              <p className="text-purple-800 dark:text-purple-300 text-base leading-relaxed">{lesson.exercise}</p>
+                              <p className="text-purple-800 dark:text-purple-300 text-base leading-relaxed">{convertToolNamesToLinks(lesson.exercise)}</p>
                             </div>
                           </div>
                         </div>
@@ -195,7 +196,7 @@ export default function CourseContent({ courseData, gradientClass }: CourseConte
                               <p className="font-semibold text-blue-900 dark:text-blue-200 text-base mb-2">
                                 🤔 Reflection
                               </p>
-                              <p className="text-blue-800 dark:text-blue-300 text-base leading-relaxed">{lesson.reflection}</p>
+                              <p className="text-blue-800 dark:text-blue-300 text-base leading-relaxed">{convertToolNamesToLinks(lesson.reflection)}</p>
                             </div>
                           </div>
                         </div>
