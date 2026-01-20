@@ -1769,5 +1769,157 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include ROI calculation tables. Use before/after time comparisons. Emphasize AI content generation benefits throughout. Include automation rule examples. Highlight 15+ platform support.',
     expansionIdeas: 'Create advanced courses: "Buffer Team Operations for Agencies" or "Advanced Buffer Analytics + Custom Reporting." Offer downloadable "Buffer AI Content Templates: 100 Posts by Niche" and "Automation Rules Playbook." Build video tutorials for content customization. Create "Buffer + Zapier Integration Guide." Develop certification: "Buffer Social Media Specialist."'
+  },
+  'buffer-social-media/building-content-calendar': {
+    courseTitle: 'Building a Content Calendar Strategy: Intermediate AI-Assisted Content Creation',
+    metaTitle: 'Content Calendar Strategy + AI-Assisted Creation – Intermediate Guide (2026)',
+    metaDescription: 'Master intermediate social media content creation using AI as a co-creator. Learn smart prompting, 4-post clustering, brand voice preservation, batch creation, and ethical guardrails for professional social media operations.',
+    modules: [
+      {
+        id: 'ai-co-creator-foundation',
+        title: 'Core Idea: AI as Your Social Media Co-Creator',
+        learningOutcome: 'Understand AI\'s role in your content workflow while maintaining creative control.',
+        lessons: [
+          {
+            id: 'ai-role-definition',
+            title: 'AI as Your Social Media Co-Creator',
+            content: 'At intermediate level, AI transforms from "caption generator" into a structured, semi-automated content system.\n\nAI\'s Three Main Roles:\n1. Generate ideas for content planning\n2. Draft platform-specific posts\n3. Remix and repurpose content across channels\n\nYou Remain in Control:\n- You provide direction and constraints\n- You define brand voice and strategy\n- You maintain final quality approval\n\nThis partnership amplifies your creativity while protecting your brand.'
+          }
+        ]
+      },
+      {
+        id: 'smart-inputs-design',
+        title: 'Module 1: Designing Smart Inputs (So Outputs Don\'t Suck)',
+        learningOutcome: 'Structure AI prompts to consistently generate useful, on-brand content.',
+        lessons: [
+          {
+            id: 'five-part-prompt-structure',
+            title: 'The 5-Part Prompt Structure',
+            content: 'Professional prompts follow this structure:\n\n1. Audience: Who are these posts for?\n2. Platform: Instagram? LinkedIn? TikTok? X?\n3. Objective: What action should the post drive?\n4. Tone & Brand Voice: How should it sound?\n5. Format & Constraints: Word count, emojis, hashtags?\n\nExample:\n"Create 3 LinkedIn posts for B2B marketers about using AI for content planning. Tone: professional but friendly, no hype. Each 80–120 words, end with a question to spark comments."\n\nThis structure prevents vague outputs and wasted iterations.'
+          },
+          {
+            id: 'intermediate-best-practices',
+            title: 'Key Intermediate Practices',
+            content: 'Apply these proven techniques:\n\n- Always name WHO the post is for and WHAT you want the post to achieve (save time, click, comment, sign up).\n- Specify PLATFORM NORMS: short/punchy for X; more context for LinkedIn; visual-first for Instagram.\n- Add HARD LIMITS: word count, no emojis, max 3 hashtags, etc.\n- Include EXAMPLES of what you like to train AI on your preferences.\n\nThese constraints dramatically improve output quality.'
+          },
+          {
+            id: 'practical-exercise',
+            title: 'Practical Exercise: Multi-Platform Adaptation',
+            content: 'Take one old post of yours and ask AI:\n"Rewrite this for TikTok/LinkedIn/Instagram, same message, different style."\n\nCompare the outputs to see how AI adapts for each platform. This teaches you what works where.',
+            handsOn: 'Select your best-performing post from the last 30 days. Use the 5-part structure to create AI adaptations for 2 different platforms. Compare engagement patterns.'
+          }
+        ]
+      },
+      {
+        id: 'four-post-content-sets',
+        title: 'Module 2: Building a 4-Post Content Set from One Idea',
+        learningOutcome: 'Cluster content ideas into strategic 4-post sets for greater impact.',
+        lessons: [
+          {
+            id: 'content-clustering-concept',
+            title: 'Content Clustering: From Single Posts to Sets',
+            content: 'Intermediate users build CONTENT CLUSTERS, not individual posts.\n\nStarting Point: A single core idea\nExample: "Why posting daily isn\'t as important as consistency over months."\n\nSingle Post = Limited reach\nContent Cluster = Owned audience mind-share\n\nThis approach maximizes message penetration and consistency.'
+          },
+          {
+            id: 'four-post-formula',
+            title: 'The 4-Post Formula',
+            content: 'Turn one idea into a strategic content cluster:\n\n1. HOOK POST (Awareness)\n"Write a 280-character X post with a strong contrarian hook about consistency beating daily posting."\n- Short, opinionated, built for scroll-stopping\n\n2. VALUE POST (Education)\n"Turn this idea into a 5-slide carousel outline for Instagram, each slide with 1 key sentence and supporting detail."\n- Educational, detailed, visual\n\n3. STORY POST (Credibility)\n"Write a LinkedIn post telling a 3-paragraph story about a creator who posted 3x/week for 6 months and grew steadily."\n- Personal, narrative-driven, relatable\n\n4. ACTION POST (Engagement/Conversion)\n"Create an Instagram caption that invites people to share what posting schedule they actually can keep for 90 days."\n- Questions, calls-to-action, community building'
+          },
+          {
+            id: 'content-clustering-practice',
+            title: 'Clustering in Practice',
+            content: 'The workflow:\n\nSTEP 1: Pick a core belief or lesson from your niche\nSTEP 2: Use AI to generate all 4 post types in this structure\nSTEP 3: Edit for voice and brand alignment\nSTEP 4: Schedule across different days\nSTEP 5: Track engagement as a cluster\n\nPro Insight: One 4-post cluster often outperforms 4 individual random posts by 3x+',
+            handsOn: 'Pick a core belief or lesson from your niche and generate a 4-post set in this exact structure. Schedule them 2-3 days apart and track engagement differences.'
+          }
+        ]
+      },
+      {
+        id: 'brand-voice-preservation',
+        title: 'Module 3: Maintaining Brand Voice with AI',
+        learningOutcome: 'Keep your authentic voice while leveraging AI assistance.',
+        lessons: [
+          {
+            id: 'voice-concern-solution',
+            title: 'The Generic Voice Problem (And The Solution)',
+            content: 'Intermediate worry: "Will AI make me sound generic?"\n\nAnswer: No, if you teach it your voice.\n\nTwo-Step Process:\n\n1. TEACH THE AI YOUR VOICE\nPaste 3–5 of your best posts and ask:\n"Analyze my style: sentence length, tone, typical phrases, pacing, and structure. Summarize it as a reusable style guide."\n\n2. USE IT EVERY TIME\nEvery new prompt:\n"Write this post in the style defined in the previous voice guide."\n\nThis training prevents generic outputs.'
+          },
+          {
+            id: 'voice-check-process',
+            title: 'The Voice Check Pass',
+            content: 'After AI drafts, run this quality check:\n\nAsk AI: "Highlight any sentences that sound generic or don\'t match this voice. Suggest 2 alternatives for each."\n\nYou Remain Editor:\n- Replace generic hooks with specific, lived-experience phrasing\n- Add personal details, examples, or references only you would use\n- Strengthen unique perspectives\n\nThis ensures authenticity even with AI assistance.'
+          },
+          {
+            id: 'voice-guide-creation',
+            title: 'Creating Your Voice Guide',
+            content: 'Build a personal style reference:\n\nCapture 3–6 bullets about your voice:\n- Sentence length tendency (short and punchy vs longer, narrative)\n- Key phrases you always use\n- Tone (funny, serious, educational, conversational)\n- Pacing preference\n- Common structure patterns\n\nExample:\n• Short sentences, rarely over 15 words\n• Uses contractions and casual language\n• Includes questions to audiences\n• Tells mini-stories with specific examples\n• Skeptical of buzzwords, prefers specificity\n\nPaste this into all future prompts.'
+          }
+        ]
+      },
+      {
+        id: 'ai-batching-systems',
+        title: 'Module 4: Using AI for Batching, Not One-Off Posts',
+        learningOutcome: 'Create content in batches rather than post-by-post for efficiency.',
+        lessons: [
+          {
+            id: 'batching-concept',
+            title: 'The Big Intermediate Jump: Batching',
+            content: 'Ad hoc posts: 1 post = 30 min work\nBatch creation: 10 posts = 90 min total (9 min/post)\n\nBatching multiplies efficiency.\n\nWhy It Works:\n- Setup once (theme, guidelines, voice guide)\n- Generate 10-20 ideas at once\n- AI applies consistent parameters across all\n- Fewer context switches = faster execution\n- More strategic coherence across content'
+          },
+          {
+            id: 'batch-workflow',
+            title: 'The Batch Creation Workflow',
+            content: 'Execute batching in 4 steps:\n\n1. START WITH A CONTENT THEME\nExample: "Beginner mistakes with AI tools for small business owners"\n\n2. ASK FOR IDEA GENERATION\n"Generate 20 social media post ideas on this theme for Instagram and LinkedIn, labeled by platform and objective (awareness, trust, conversion)."\n\n3. SELECT AND REFINE\nPick 8–12 that fit your strategy and audience.\nAsk AI to fully draft the top 8, following your voice and format rules.\n\n4. SCHEDULE & ADAPT\nAdapt each draft per platform (shorter for X, more context for LinkedIn, more visual for Instagram).\nSchedule in Buffer or your scheduling tool.'
+          },
+          {
+            id: 'batching-challenge',
+            title: 'Batching Challenge',
+            content: 'Transform your workflow:\n\nTarget: Create at least 10 posts in ONE 60–90 minute session using AI as your assistant.\n\nBefore Batching: 10 posts = 300+ minutes (5+ hours)\nAfter Batching: 10 posts = 60–90 minutes\n\nTime Savings: 75%+ reduction\n\nQuality Improvement: More consistent due to unified theme and guidelines',
+            handsOn: 'In your next content session, aim to create 10 posts minimum in 90 minutes using batching. Track time spent and compare quality to your solo-written posts.'
+          }
+        ]
+      },
+      {
+        id: 'quality-control-ethics',
+        title: 'Module 5: Quality Control & Ethical Guardrails',
+        learningOutcome: 'Maintain trustworthiness and brand integrity with AI-assisted content.',
+        lessons: [
+          {
+            id: 'always-checks',
+            title: 'Essential Quality Checks (Always Do These)',
+            content: 'Protect your reputation with mandatory checks:\n\n✓ Check FACTUAL CORRECTNESS\nUpdate any stats, dates, or references\n\n✓ Remove OVER-PROMISING or CLICKBAIT LANGUAGE\nEnsure claims match your brand integrity\n\n✓ Verify EXAMPLES ARE ACCURATE\nClarify whether examples are hypothetical or from real experience\n\n✓ Check AUTHENTICITY\n"Does this sound like how I talk?"\n"Would I be happy saying this live on a call or podcast?"\n"Is there anything here that over-promises results?"\n\nIf something feels off, use AI again to refine.'
+          },
+          {
+            id: 'ethical-guardrails',
+            title: 'Ethical Guardrails for AI Content',
+            content: 'Stay trustworthy and on-brand:\n\nFACTUAL INTEGRITY:\n- Verify stats are current (not outdated AI training data)\n- Cite sources for claims\n- Distinguish opinion from fact\n\nBRAND CONSISTENCY:\n- No false promises of results\n- No claims you can\'t back up\n- No exaggerated testimonials\n\nAUTHENTICITY:\n- Your voice, not AI-generic voice\n- Your actual experience, not fabricated stories\n- Your genuine expertise\n\nPro Prompt for Refinement:\n"Tone this down to be realistic and grounded, no hype, focus on small, believable wins."'
+          },
+          {
+            id: 'quality-workflow',
+            title: 'Complete Quality Control Workflow',
+            content: 'Before publishing any AI-assisted post:\n\nSTEP 1: Voice Check\n"Does this sound like me?"\n\nSTEP 2: Fact Check\nVerify all claims, stats, references\n\nSTEP 3: Authenticity Check\n"Would I say this live?"\n\nSTEP 4: Brand Check\n"Does this represent my brand accurately?"\n\nSTEP 5: Hype Check\nRemove over-promising, add realistic context\n\nONLY THEN: Schedule or publish\n\nThis 5-step process takes 5 minutes and saves reputational damage.'
+          }
+        ]
+      },
+      {
+        id: 'next-level-mastery',
+        title: 'Next Level: Reusable Prompt Templates & Systems',
+        learningOutcome: 'Build systems for consistent, scalable content creation.',
+        lessons: [
+          {
+            id: 'prompt-templates',
+            title: 'Building Reusable Prompt Templates',
+            content: 'Stop writing prompts from scratch. Build a template library:\n\n1. IDEA GENERATION TEMPLATE\n"Generate [N] ideas on [THEME] for [PLATFORMS], focused on [OBJECTIVE]"\n\n2. 4-POST CONTENT CLUSTER TEMPLATE\n"Turn [IDEA] into a 4-post cluster: Hook, Value, Story, Action"\n\n3. VOICE-CONSISTENT REWRITE TEMPLATE\n"Rewrite for [PLATFORM] using my voice guide: [VOICE]"\n\n4. PLATFORM ADAPTATION TEMPLATE\n"Adapt this for [PLATFORM] with [SPECIFIC REQUIREMENTS]"\n\nCreate a simple doc you can copy-paste from each session.'
+          },
+          {
+            id: 'prompt-library',
+            title: 'Your Personal Prompt Library',
+            content: 'Organization system:\n\nCreate a single document or spreadsheet:\n\n| Purpose | Template | Notes |\n| Idea Gen | "Generate X ideas..." | For monthly planning |\n| Cluster | "Turn into 4-post set..." | For strategic content |\n| Voice Check | "Highlight generic sentences..." | Always after drafting |\n| Adapt | "Rewrite for [platform]..." | For cross-platform use |\n\nCopy-paste these into every AI session.\n\nResult: Consistent inputs = Consistent, professional outputs',
+            reflection: 'Document your 3 most-used prompts right now. Add them to a reusable template library. How much time would you save each month by copy-pasting templates instead of rewriting?'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include 5-part prompt structure diagram. Use content clustering workflow visuals. Emphasize brand voice preservation throughout. Include quality control checklist. Highlight batching time savings data.',
+    expansionIdeas: 'Create advanced courses: "Building Your AI Content System: Weekly Workflow and Metrics" or "Multi-Platform Content Mastery + Analytics." Offer downloadable "Prompt Template Library: 50 Reusable Templates by Goal" and "Voice Guide Worksheet." Build video tutorials for batching workflows. Create interactive prompt builder tool. Develop "Brand Voice Analysis AI Tool."'
   }
 };
