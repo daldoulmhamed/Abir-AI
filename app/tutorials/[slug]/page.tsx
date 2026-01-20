@@ -107,9 +107,9 @@ const categoryColors: { [key: string]: string } = {
   'Content Creation': 'from-purple-600 to-pink-600',
   'Research': 'from-cyan-600 to-blue-600',
   'Design': 'from-emerald-600 to-teal-600',
-  'Marketing': 'from-amber-600 to-orange-600',
+  'Marketing': 'from-violet-600 to-purple-600',
   'Development': 'from-indigo-600 to-purple-600',
-  'Ethics': 'from-red-600 to-pink-600',
+  'Ethics': 'from-purple-600 to-violet-600',
 };
 
 export default function TutorialPage() {
