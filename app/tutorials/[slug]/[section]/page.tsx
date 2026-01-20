@@ -64,9 +64,9 @@ const colorGradients: Record<string, string> = {
   'chatgpt-content-creation': 'from-purple-600 to-pink-600',
   'perplexity-research': 'from-cyan-600 to-blue-600',
   'midjourney-design': 'from-emerald-600 to-teal-600',
-  'buffer-social-media': 'from-amber-600 to-orange-600',
+  'buffer-social-media': 'from-teal-600 to-blue-600',
   'github-copilot-coding': 'from-indigo-600 to-purple-600',
-  'ethical-ai-business': 'from-red-600 to-rose-600',
+  'ethical-ai-business': 'from-violet-600 to-fuchsia-600',
 };
 
 // YouTube video URLs - Add video links here
