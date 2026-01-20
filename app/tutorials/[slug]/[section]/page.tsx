@@ -56,7 +56,7 @@ const sectionData: Record<string, Section[]> = {
     { id: 'data-privacy-security', title: 'Data Privacy & Security', position: 2, totalSections: 5, duration: '18 min', description: 'Learn how to handle data responsibly and protect user information in AI systems.', hasContent: true },
     { id: 'bias-fairness-ai', title: 'Bias and Fairness in AI', position: 3, totalSections: 5, duration: '20 min', description: 'Identify and mitigate bias in AI models to ensure fair and equitable outcomes.', hasContent: true },
     { id: 'transparency-oversight', title: 'Transparency & Human Oversight', position: 4, totalSections: 5, duration: '17 min', description: 'Implement transparency measures and maintain human control in AI decision-making.', hasContent: true },
-    { id: 'ethical-best-practices', title: 'Ethical AI Best Practices', position: 5, totalSections: 5, duration: '19 min', description: 'Apply ethical AI principles and build sustainable responsible AI frameworks.', hasContent: false },
+    { id: 'ethical-best-practices', title: 'Ethical AI Best Practices', position: 5, totalSections: 5, duration: '19 min', description: 'Apply ethical AI principles and build sustainable responsible AI frameworks.', hasContent: true },
   ],
 };
 
