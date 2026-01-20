@@ -2590,6 +2590,142 @@ export const courseContentData: Record<string, CourseData> = {
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include practical examples with code snippets. Emphasize learning benefits and time savings. Use clear before/after comparisons. Include beginner-friendly language. Highlight real-world use cases. Address common fears (cheating, job replacement). Include actionable next steps.',
     expansionIdeas: 'Create advanced courses: "Copilot Chat Mastery for Beginners," "Advanced AI-Assisted Debugging," "Building AI-Augmented Projects." Offer templates: "Copilot Prompt Library," "Framework-Specific Guides," "Testing with Copilot." Build video tutorials for setup and first project. Create case studies: "How I Built [Project] in 1/3 the Time." Develop challenges: "30-Day Copilot Learning Challenge."'
   },
+  'github-copilot-coding/pro-workflow-copilot': {
+    courseTitle: 'Pro GitHub Copilot Workflow + Series Wrap-Up: Beginner to Production',
+    metaTitle: 'Pro GitHub Copilot Workflow – Ship Production Apps with AI',
+    metaDescription: 'Master the daily Copilot workflow to ship production-ready apps with tests and documentation. Beginner to production in minutes. Your complete GitHub Copilot mastery guide.',
+    modules: [
+      {
+        id: 'daily-workflow',
+        title: 'The 3-Minute Daily Workflow',
+        learningOutcome: 'Master the exact workflow to build features, debug, test, and deploy production code daily.',
+        lessons: [
+          {
+            id: 'morning-routine',
+            title: '9AM: New Feature (70% Done in Minutes)',
+            content: 'Start your day by creating new features with minimal effort:\n\n**The Workflow:**\n1. Create new file\n2. Write feature comment: `// Build [feature name]`\n3. Press Tab → Copilot generates core logic\n4. Press Tab again → Additional methods added\n5. Press Tab third time → Complete, production-ready code\n\n**Example:**\n```\n// Build user authentication with email\n[Tab] [Tab] [Tab]\n↓\nComplete auth system with:\n- Email validation\n- Password hashing\n- Token generation\n- Error handling\n```\n\n**Why this works:**\nCopilot understands intent from comments. More specific comment = better code.\n\n**Time Investment:** 3 minutes\n**Code Generated:** 70% of feature complete\n**Your Job:** Review, adjust details, add business logic\n\n**Pro tip:**\nGeneric comments: "// add function" → Generic code\nSpecific comments: "// user authentication with JWT tokens and email verification" → Production code',
+            handsOn: 'Create a new file. Write: "// Build todo app with add/delete/complete". Hit Tab 3 times. Watch it generate 70% of your app.'
+          },
+          {
+            id: 'midday-fixes',
+            title: '11AM: Bug Appears (Fixed in 60 Seconds)',
+            content: 'When bugs inevitably appear, eliminate them instantly:\n\n**The Workflow:**\n1. See error in console\n2. Highlight buggy code\n3. Press Ctrl+I (or /fix in chat)\n4. Accept suggestion\n5. Done\n\n**Timeline:**\n- See bug: 5 seconds\n- Highlight code: 5 seconds\n- Ctrl+I: 2 seconds\n- Review fix: 20 seconds\n- Accept: 3 seconds\n- Verify works: 25 seconds\n**Total: 60 seconds**\n\n**Common bugs Copilot crushes:**\n- Null reference errors → Optional chaining (?.) + check\n- Type mismatches → Proper conversion + validation\n- API failures → Try/catch + error UI\n- Logic errors → Correct implementation\n\n**Vs Manual Debugging:**\nManual: 30-60 minutes\nCopilot: 60 seconds\n**Time saved: 29-59 minutes per bug**\n\n**Daily reality:**\n2-3 bugs/day × 59 minutes saved = 2-3 hours freed per day',
+            exercise: 'Intentionally create a bug. Use Ctrl+I to fix it. Time yourself. Target: under 60 seconds.'
+          },
+          {
+            id: 'afternoon-testing',
+            title: '2PM: Test Generation (/tests)',
+            content: 'Before shipping, ensure quality with instant tests:\n\n**The Workflow:**\n1. Go to your function\n2. Type `/tests`\n3. Copilot generates full test suite\n4. Run tests\n5. All pass ✓\n\n**What Copilot Generates:**\n- Unit tests for each function\n- Edge case coverage\n- Error scenarios\n- Happy path + sad path\n\n**Example:**\nYour function:\n```typescript\nfunction calculateDiscount(price, quantity) {\n  return price * (1 - (quantity > 10 ? 0.2 : 0))\n}\n```\n\n/tests generates:\n```typescript\ntest(\'no discount for small qty\', () => {\n  expect(calculateDiscount(100, 5)).toBe(100);\n});\n\ntest(\'20% discount for qty > 10\', () => {\n  expect(calculateDiscount(100, 15)).toBe(80);\n});\n\ntest(\'handles edge case qty = 10\', () => {\n  expect(calculateDiscount(100, 10)).toBe(100);\n});\n```\n\n**Quality Assurance:**\nBefore: Manual tests (tedious, incomplete)\nAfter: Auto-generated (comprehensive, instant)\n\n**Time saved:** 30-60 minutes per feature',
+            handsOn: 'Write any function. Type /tests above it. Generate tests. Run them. See instant coverage.'
+          },
+          {
+            id: 'evening-polish',
+            title: '4PM: Code Review + Security Check',
+            content: 'Before end of day, polish your code:\n\n**The Workflow:**\n1. Open Copilot Chat\n2. Ask: "Review today\'s code for security/performance issues"\n3. Read recommendations\n4. Apply top 3-5 improvements\n5. Commit polished code\n\n**What Copilot Checks:**\n- Security vulnerabilities (hardcoded secrets, SQL injection, XSS)\n- Performance issues (N+1 queries, inefficient loops, memory leaks)\n- Best practice violations (outdated patterns, missing error handling)\n- Code quality (readability, maintainability, testability)\n\n**Example Issues Found:**\n```\n1. SECURITY: API key hardcoded → Move to .env\n2. PERFORMANCE: Unoptimized query → Add pagination\n3. QUALITY: Missing null check → Add validation\n4. PATTERN: Callback hell → Convert to async/await\n5. TESTING: No error tests → Add edge cases\n```\n\n**Result:**\nCode shipped is:\n✓ Secure\n✓ Fast\n✓ Professional quality\n✓ Future-proof\n\n**Time investment:** 15 minutes\n**Quality lift:** 50%+',
+            reflection: 'Shipping code at 4PM that\'s been reviewed, tested, and optimized = confidence you shipped something good.'
+          },
+          {
+            id: 'eod-documentation',
+            title: '5PM: Auto-Documentation (/docs)',
+            content: 'End your day with complete documentation:\n\n**The Workflow:**\n1. Highlight your function/module\n2. Type `/docs`\n3. Copilot generates full documentation\n4. Paste into code comments or README\n5. Done\n\n**What Copilot Generates:**\n- Function purpose and description\n- Parameter explanations\n- Return value documentation\n- Usage examples\n- Edge cases and limitations\n\n**Example:**\nYour function:\n```typescript\nfunction validateEmail(email) {\n  return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n}\n```\n\n/docs generates:\n```typescript\n/**\n * Validates if a string is a properly formatted email address.\n * \n * Uses regex pattern to check for: username@domain.extension\n * \n * @param {string} email - The email address to validate\n * @returns {boolean} true if valid email format, false otherwise\n * \n * @example\n * validateEmail(\'user@example.com\'); // returns true\n * validateEmail(\'invalid.email\'); // returns false\n * \n * @limitations\n * - Does not verify if email actually exists\n * - Does not handle all RFC 5322 edge cases\n * - No domain verification\n */\n```\n\n**Documentation at End of Day:**\n✓ Users understand your code\n✓ Future-you remembers why you built it\n✓ Team onboarding faster\n✓ Maintenance easier\n\n**Time saved:** 20-30 minutes\n**Quality of documentation:** Professional grade',
+            handsOn: 'Highlight any complex function. Type /docs. Read the documentation Copilot generates. Paste into your code.'
+          }
+        ]
+      },
+      {
+        id: 'weekly-power-routine',
+        title: 'Weekly Power Routine',
+        learningOutcome: 'Master the weekly practices that keep your skills sharp and code professional.',
+        lessons: [
+          {
+            id: 'monday-learning',
+            title: 'Monday: Learn New Frameworks (15 Minutes)',
+            content: 'Start your week by learning something new:\n\n**The Workflow:**\n1. Pick new framework (React → Vue, or Django → FastAPI)\n2. Copilot Chat: "Show me [framework] basics with examples"\n3. Read examples (5 minutes)\n4. Build hello-world app (10 minutes)\n5. Understand the pattern\n\n**Example Learning Session:**\n```\nYou: "Explain Vue 3 composition API with a counter example"\nCopilot: [Detailed explanation + working code]\nResult: Understand Vue in 15 minutes\n```\n\n**Why Mondays:**\nFresh week → Fresh skills\nCopilot acceleration: 15 minutes vs 2 hours self-taught\n\n**By End of Year:**\n52 weeks × 1 new skill = Master 52 frameworks/languages\n\n**Reality:**\nLearn React Monday\nBuild something with Vue Wednesday\nCombine both Thursday\nShip production app Friday\n\nThat\'s how you become a polyglot developer.',
+            handsOn: 'Pick a framework you\'ve never used. Ask Copilot to teach it in 15 minutes. Build a small app. Done.'
+          },
+          {
+            id: 'wednesday-refactor',
+            title: 'Wednesday: /refactor Entire Project',
+            content: 'Midweek, ensure code quality stays high:\n\n**The Workflow:**\n1. Open Copilot Chat\n2. Ask: "/refactor my entire project for code quality"\n3. Review suggestions (top 10)\n4. Apply improvements\n5. Re-run tests\n6. Commit polished code\n\n**What Gets Refactored:**\n- Outdated patterns → Modern syntax\n- Duplication → DRY principles\n- Performance bottlenecks → Optimizations\n- Unreadable code → Clear, maintainable code\n- Missing error handling → Comprehensive guards\n\n**Example Refactoring Results:**\n```\nBefore: 500 lines of callback hell\nAfter: 150 lines of clean async/await\nBefore: 4 separate database queries\nAfter: 1 optimized query with batch operations\nBefore: 60% test coverage\nAfter: 95% test coverage\n```\n\n**Weekly Improvement:**\nWednesday refactor → Code gets 20-30% better\n4 weeks → Code is 80-120% improvement\n12 weeks → Professional-grade codebase\n\n**Time investment:** 30-45 minutes\n**Quality lift:** Massive\n**Debt reduction:** Prevented future headaches',
+            reflection: 'Code that gets refactored weekly never becomes a legacy nightmare. That\'s your competitive advantage.'
+          },
+          {
+            id: 'friday-deploy',
+            title: 'Friday: Production Checklist + Deploy',
+            content: 'End your week shipping production code:\n\n**The Workflow:**\n1. Open Copilot Chat\n2. Ask: "Give me production deployment checklist for my app"\n3. Review full checklist\n4. Go through each item\n5. Deploy when all green\n6. Ship with confidence\n\n**Complete Checklist Copilot Generates:**\n```\n✓ Security\n  - No hardcoded secrets\n  - HTTPS enabled\n  - Input validation complete\n  - Auth/authorization working\n  - CORS properly configured\n\n✓ Performance\n  - Bundle size optimized\n  - Database queries optimized\n  - Caching implemented\n  - CDN configured (if applicable)\n  - Lazy loading active\n\n✓ Testing\n  - Unit tests passing (>80% coverage)\n  - Integration tests passing\n  - E2E tests passing\n  - Error scenarios tested\n  - Load testing done\n\n✓ Monitoring\n  - Error tracking enabled\n  - Performance monitoring active\n  - Logging configured\n  - Alerts set up\n  - Backup strategy in place\n\n✓ Documentation\n  - Code commented\n  - API docs complete\n  - README updated\n  - Deployment guide written\n  - Runbook for on-call created\n\n✓ DevOps\n  - CI/CD pipeline working\n  - Automated testing passing\n  - Staging environment matches production\n  - Rollback plan documented\n  - Deployment slots configured\n```\n\n**Why Friday Deployment:**\n- Week\'s work finalized\n- Full week to monitor in production\n- Team available if issues arise\n- Fresh week starts with confidence\n\n**Deploy Confidence:**\nNo checklist → Hope you didn\'t break something\nWith Copilot checklist → Deploy with confidence\n\n**Weekly Cadence:**\nFriday ship → Monitor weekend → Monday improvements → Rinse repeat\n\nThat\'s sustainable shipping.',
+            handsOn: 'This Friday: Ask Copilot for deployment checklist. Go through each item. Ship something you built this week.'
+          }
+        ]
+      },
+      {
+        id: 'complete-journey',
+        title: 'Your Complete GitHub Copilot Journey',
+        learningOutcome: 'Understand the full arc from beginner to shipping production apps.',
+        lessons: [
+          {
+            id: 'series-recap',
+            title: 'Complete Beginner Stack Achieved',
+            content: '**4 Modules → Complete Mastery Path**\n\n**Module 1: What is Copilot?**\n✅ Understand what Copilot is\n✅ How to access it (VS Code, free trial)\n✅ Why beginners need it (3x faster coding)\n✅ Core features (code generation, chat, /commands)\n\n**Result:** You know what tool you have\n\n---\n\n**Module 2: Writing Code with Copilot**\n✅ How to write effective comments\n✅ Line completion magic\n✅ Full function generation\n✅ Boilerplate elimination\n✅ Framework-specific generation\n\n**Result:** You can build 70% of features instantly\n\n---\n\n**Module 3: Debugging & Refactoring**\n✅ /fix command (instant bug fixes)\n✅ Error explanation (learn patterns)\n✅ Auto-refactoring (pro code quality)\n✅ Test generation (/tests)\n✅ Code review automation\n\n**Result:** You ship quality code confidently\n\n---\n\n**Module 4: Pro Workflow + Series Wrap-Up**\n✅ Daily workflow (build, debug, test, review, deploy)\n✅ Weekly power routine (learn, refactor, ship)\n✅ Production workflows\n✅ Shipping apps weekly\n✅ Sustainable development process\n\n**Result:** You\'re now a production developer\n\n---\n\n**TRANSFORMATION:**\n\n**BEFORE (Week 0):**\n- Can\'t code\n- Google every error\n- Writing functions takes hours\n- Debugging paralysis\n- Never shipped anything\n- 0 apps in production\n\n**AFTER (Week 4):**\n- Fluent with Copilot\n- Fixes errors in 60 seconds\n- Functions in minutes\n- Confident debugging\n- Shipped 4 apps\n- All production-ready\n\n**That\'s the Copilot transformation.**',
+            handsOn: 'Look back at where you started with this series. Now look at where you are. That\'s real growth.'
+          }
+        ]
+      },
+      {
+        id: 'reality-check',
+        title: 'Your New Reality',
+        learningOutcome: 'Understand exactly what\'s changed about how you work.',
+        lessons: [
+          {
+            id: 'before-after',
+            title: 'Before vs After: The Daily Difference',
+            content: '**BEFORE Copilot (The Old Way):**\n```\n9AM: Open project\n     Stare at blank screen\n     "How do I build this?"\n     Open 15 Stack Overflow tabs\n\n10AM: Copy-paste code from internet\n      Doesn\'t quite work\n      Spend 1 hour tweaking\n      Still broken\n\n11AM: Give up, try different approach\n      Found a tutorial\n      Copy entire example\n      Don\'t understand what it does\n\n12PM: Still on step 1\n      Frustrated\n      Unmotivated\n      Considering career change\n\n1PM: Finally got basic version working\n     Bugs everywhere\n     No tests\n     No documentation\n     Terrified to ship\n\n2PM-5PM: Debugging session\n          Try random fixes\n          Break more things\n          Nothing works\n          End day: 0 progress\n\nRESULT:\n- One simple feature takes 8 hours\n- Code is fragile, poorly tested\n- Constantly afraid of breaking things\n- No confidence to deploy\n- Never ships anything\n```\n\n**AFTER Copilot (Your New Way):**\n```\n9AM: Open project\n     Write: "// Build todo app"\n     Tab Tab Tab\n     Feature done: 5 minutes\n     Review suggestions: OK\n\n10AM: Add another feature\n      Same process: 5 minutes\n      Two features done\n\n11AM: Bug appears\n      Highlight code\n      Ctrl+I\n      Fixed: 60 seconds\n\n12PM: /tests\n      Full test suite auto-generated\n      All tests pass\n      Confidence high\n\n1PM: /docs\n     Documentation complete\n     Code production-ready\n\n2PM: Deploy to production\n     No fear\n     Fully tested\n     Well documented\n     Production app live\n\n3PM: Build next feature\n     Same speed\n     High quality\n     Shipping regularly\n\n4PM: Code review with Copilot\n     Security check passed\n     Performance optimized\n     Best practices followed\n\n5PM: End of day\n     3 features shipped\n     All tested\n     All documented\n     All production-ready\n\nRESULT:\n- One feature: 15 minutes (not 8 hours)\n- Code is professional, well-tested\n- Confident shipping daily\n- Quality improves weekly\n- Career accelerating\n```\n\n**THE DIFFERENCE:**\n- Speed: 30x faster (8 hours → 15 minutes)\n- Quality: 10x better (untested → tested + documented)\n- Confidence: Infinite (paralysis → shipping)\n- Growth: Exponential (learning patterns daily)\n\n**This is your new normal.**',
+            reflection: 'In one month with Copilot, you\'ll accomplish more than a year without it. That\'s not hype—that\'s measurable reality.'
+          }
+        ]
+      },
+      {
+        id: 'pro-tips',
+        title: 'Pro Tips (Do These)',
+        learningOutcome: 'Master the best practices that separate great Copilot users from average ones.',
+        lessons: [
+          {
+            id: 'pro-best-practices',
+            title: 'Essential Best Practices',
+            content: '**✅ Always Read Suggestions (Security Matters)**\n\nCopilot is 95% correct, but that 5% could be a security vulnerability.\n\n**What to look for:**\n- Hardcoded secrets (API keys, passwords)\n- SQL injection risks (always parameterize queries)\n- XSS vulnerabilities (always escape user input)\n- Auth bypasses (verify security logic)\n- Unsafe dependencies (check package versions)\n\n**Rule:** Never Tab blindly. Read first, understand, then accept.\n\n---\n\n**✅ Tab = Accept, Esc = Next Try**\n\nCopilot gives you options:\n- Press Tab: Accept current suggestion\n- Press Esc: See next alternative\n- Ctrl+Enter: Try different approach\n- /refactor: Auto-improve suggestion\n\n**When to use Esc:**\n- Suggestion doesn\'t match your style\n- Performance could be better\n- Doesn\'t handle edge cases\n- More elegant solution exists\n\n**Tip:** If first suggestion isn\'t right, press Esc 1-2 times. Second option is often better.\n\n---\n\n**✅ /tests Before Every Commit**\n\nDon\'t ship code without tests:\n\n1. Finish feature\n2. Type /tests\n3. Copilot generates tests\n4. Run: npm test\n5. All pass? Commit\n6. Doesn\'t pass? Fix issues\n7. Repeat until all pass\n\n**Why:**\n- Confidence before shipping\n- Catch bugs before production\n- Document expected behavior\n- Enable safe refactoring\n\n**Workflow:**\nCode → /tests → Green ✓ → Commit → Safe\n\nNever commit untested code.\n\n---\n\n**✅ Copilot Chat = Your 24/7 Senior Dev**\n\nCopilot Chat is your constant mentor:\n\n```\n"Why does this pattern work?"\n"How would a pro refactor this?"\n"What\'s the security risk here?"\n"Explain this error message"\n"What\'s best practice for [topic]?"\n"Code review my function"\n"Generate production checklist"\n```\n\n**Use Chat for:**\n- Learning (not just doing)\n- Understanding (not just copying)\n- Mentorship (not just code)\n- Architecture (not just implementation)\n\n**Chat changes everything:**\nBefore: Google → Confusion → Frustration\nNow: Chat → Understanding → Confidence\n\n---\n\n**✅ Specific Comments = Better Code**\n\nGeneric comments produce generic code.\nSpecific comments produce production code.\n\n**Bad:**\n```\n// Add function\n```\nResult: Generic implementation\n\n**Good:**\n```\n// Validate email format, check domain exists, return error if invalid\n```\nResult: Production implementation with error handling\n\n**Better:**\n```\n// Validate email format using RFC 5322 standards, check domain DNS records, return specific error messages for: invalid format, non-existent domain, blocked provider\n```\nResult: Enterprise-grade implementation\n\n**Rule:** The better you describe what you want, the better code you get.\n\n---\n\n**✅ Never Skip Learning**\n\nDon\'t just Tab through code.\nPause. Understand. Learn patterns.\n\nIf Copilot shows you something you don\'t understand:\n1. Don\'t just accept it\n2. Ask Copilot: "Explain this code"\n3. Read explanation\n4. Understand the pattern\n5. Now you\'ll recognize it next time\n6. Eventually write it yourself\n\n**This is how you become a real developer:**\nCopilot codes → You learn → You understand → You teach others\n\n**Don\'t be lazy. Learn every day.**',
+            summary: 'These practices separate developers who use Copilot from developers who master Copilot. Follow them religiously.'
+          }
+        ]
+      },
+      {
+        id: 'your-next-step',
+        title: 'Your Next Step: Build Your First Production App',
+        learningOutcome: 'Apply everything you\'ve learned to ship your first real production app.',
+        lessons: [
+          {
+            id: 'challenge-build',
+            title: 'Challenge: Weather App + Tests → Deploy (45 Minutes)',
+            content: '**Your First Real App:**\n\nBuild a weather app with Copilot, test it, deploy it. Real production code.\n\n**The Challenge (45 minutes total):**\n\nSTEP 1: Setup (5 minutes)\n```bash\n# Create new Next.js/React app\nnpx create-next-app weather-app\ncd weather-app\n```\n\nSTEP 2: Build (15 minutes)\n```\nCreate: src/components/WeatherSearch.tsx\nWrite: "// Search for city, display current weather, temp, humidity, forecast"\n[Tab] [Tab] [Tab]\n→ Full weather component generated\n```\n\nSTEP 3: Integrate API (10 minutes)\n```\nCopilot Chat: "Integrate OpenWeatherMap API into my component"\nCopilot: [Full integration with error handling]\nResult: Working weather app\n```\n\nSTEP 4: Add Tests (8 minutes)\n```\nHighlight component\n/tests\n→ Full test suite generated\nnpm test\n→ All pass ✓\n```\n\nSTEP 5: Deploy (7 minutes)\n```bash\ngit add .\ngit commit -m "Weather app with tests"\ngit push\n# Connect to Vercel\n# Deploy\n→ Live app on internet\n```\n\n**What You Just Built:**\n✓ Real React component\n✓ External API integration\n✓ Error handling\n✓ Full test coverage\n✓ Production deployment\n✓ Live on internet\n\n**Time Comparison:**\nManual (without Copilot): 4-8 hours\nWith Copilot: 45 minutes\n**Time saved: 3.25-7.25 hours**\n\n**What You Accomplished:**\n- Went from "I don\'t know how to code" → Production app live\n- App has tests (professional quality)\n- App is deployed (real users can access)\n- Code is documented (future you remembers)\n\n**This is real.**\n\n**Next Challenges (After This):**\n1. Todo app with database (60 minutes)\n2. User authentication (90 minutes)\n3. Real SaaS product (1 week)\n4. Side hustle monetization (ongoing)\n5. Your first freelance client (monthly)\n\n**The Path:**\nChallenge → Ship → Learn → Next challenge → Repeat\n\n**12 Months of This:**\n- 50+ projects shipped\n- Real portfolio\n- Paid freelance work\n- Job offers incoming\n\n**That\'s your future.**',
+            handsOn: 'Today or this week: Build the weather app. Ship it. Get the URL. That\'s your first production app. You did that with Copilot.'
+          }
+        ]
+      },
+      {
+        id: 'series-conclusion',
+        title: 'Series Wrap-Up: You\'re Now a Copilot Developer',
+        learningOutcome: 'Understand your mastery level and your path forward.',
+        lessons: [
+          {
+            id: 'final-message',
+            title: 'Install Copilot. Type. Ship. Win.',
+            content: '**The Complete Journey:**\n\nWEEK 1: Learn Copilot basics\nWEEK 2: Build first feature\nWEEK 3: Debug and refactor confidently\nWEEK 4: Ship first production app\n\n**That\'s 1 month from zero to production developer.**\n\n**The Exact Path Forward:**\n\n✅ Install GitHub Copilot ($10/month)\n✅ Complete this series (you\'re done!)\n✅ Build the weather app challenge\n✅ Ship it to production\n✅ Show your friends\n✅ Build next project faster\n✅ Repeat: Ship → Learn → Faster shipping\n\n**Your Competitive Advantage:**\n\nDevelopers without Copilot:\n- 8 hours per feature\n- Manual testing\n- Poor documentation\n- Frustrated/burned out\n- Shipping slowly\n\nYou with Copilot:\n- 15 minutes per feature\n- Automated testing\n- Auto-documentation\n- Confident/energized\n- Shipping weekly\n\n**You\'re 30x faster than developers without AI assistance.**\n\n**That\'s not a small advantage. That\'s a career difference.**\n\n---\n\n**Your First Action (Do This Today):**\n\n1. Install VS Code\n2. Install GitHub Copilot extension\n3. Create new file: app.js\n4. Type: `// todo app`\n5. Press Tab 5 times\n6. Watch code appear\n7. Welcome to the future\n\n**You\'re now a Copilot-powered developer.**\n\nThe rest is just building.\n\n---\n\n**Remember:**\n\nOne year ago: "I\'ve never coded before"\nToday: "I shipped production apps with Copilot"\nOne year from now: "I\'m a professional developer making money building apps"\n\nThat\'s your trajectory.\n\nStart today. Ship this week. Win forever.\n\n**Welcome to the future of development. Your competitive advantage just arrived.**',
+            summary: 'You\'ve completed the GitHub Copilot mastery series. You know:\n✓ What Copilot is and how to use it\n✓ How to write code 30x faster\n✓ How to debug professionally\n✓ How to refactor to production standards\n✓ How to ship production apps weekly\n\nNow: Build your first app. Ship it. Change your career.\n\nThe power is in your hands. Use it.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include daily workflows and routines. Emphasize practical execution over theory. Use before/after comparisons. Highlight time savings and productivity gains. Include specific action items. Motivate with transformation stories. Use clear timelines.',
+    expansionIdeas: 'Create advanced courses: "Ship 10 Projects in 10 Weeks" or "Build SaaS with Copilot." Offer templates: "Daily Workflow Template," "Weekly Checklist," "Deployment Playbook." Build accountability community: "30-Day Shipping Challenge." Create video walkthroughs of all daily workflows. Offer mentorship: "1-on-1 Copilot Coaching." Build premium tier: "Advanced production patterns."'
+  },
   'github-copilot-coding/debugging-refactoring-copilot': {
     courseTitle: 'Debug & Refactor Code with GitHub Copilot – Beginner\'s 4-Minute Guide',
     metaTitle: 'Debug & Refactor Code with GitHub Copilot – Beginner Guide',
