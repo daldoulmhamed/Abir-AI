@@ -201,6 +201,13 @@ function TutorialSectionPage() {
           )}
         </div>
 
+        {/* Video Description */}
+        <div className="mb-12 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-lg">
+          <p className="text-blue-900 dark:text-blue-200 text-base">
+            This video shows you the <span className="font-semibold">how</span> — the written lesson explains the <span className="font-semibold">why</span>. For best results, enjoy both!
+          </p>
+        </div>
+
         {/* Content Section */}
         <div className="space-y-12">
           {courseContentData[`${slug}/${sectionId}`] ? (
