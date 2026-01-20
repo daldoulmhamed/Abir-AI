@@ -3244,5 +3244,154 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include regulatory requirements (GDPR, CCPA, LGPD, PIPL) with specific fines. Use real company failures (Clearview, Facebook, UnitedHealth, Apple). Include practical checklists and weekly implementation. Emphasize ROI calculations ($5-20M avoided fines vs $500K investment). Include technical solutions (anonymization, federated learning, differential privacy). Highlight vendor management and audit frameworks.',
     expansionIdeas: 'Create advanced courses: "Building Enterprise Privacy Programs" or "Privacy Compliance for Global Companies." Offer downloadable: "Data Processing Agreement Template," "Privacy Audit Checklist," "Vendor Audit Questions," "Incident Response Plan," "Weekly Privacy Checklist," "Regulatory Requirement Matrix." Build case study library showing privacy failures and fixes. Create industry-specific guides (healthcare, finance, retail). Develop certification: "Data Privacy Professional."'
+  },
+  'ethical-ai-business/bias-fairness-ai': {
+    courseTitle: 'Bias and Fairness in AI: Beginner\'s Business Guide',
+    metaTitle: 'AI Bias & Fairness Guide – Business Protection (2026)',
+    metaDescription: 'Understand how AI bias happens, real business costs, detection tests, and 4 simple fixes. Protect your company from discrimination lawsuits and PR disasters.',
+    modules: [
+      {
+        id: 'bias-happens',
+        title: 'How AI Bias Actually Happens (3 Causes)',
+        learningOutcome: 'Understand the three root causes of AI bias and how discrimination becomes embedded in systems.',
+        lessons: [
+          {
+            id: 'training-data-bias',
+            title: 'Cause 1: Training Data Reflects Human Bias',
+            content: 'AI learns from data. If data is biased, AI becomes biased.\n\nREAL EXAMPLE:\nSoftware engineering workforce:\n- 85% male engineers historically\n- Company trains AI hiring model on past resumes\n- AI learns: "Developer candidate = male person"\n- Result: Female candidates rejected 2x more often\n\nWHY THIS HAPPENS:\n1. Historical inequality in workforce\n2. AI sees pattern (85% male success)\n3. Generalizes: "Male = good hire"\n4. Rejects women as "unusual"\n\nTHE MATH:\nTraining data: 850 male engineers, 150 female engineers\nAI learned: Probability of success = function of gender\nWhen new female applicant arrives: "Unusual pattern" = Rejected\n\nCOST TO COMPANY:\n- Lost talent pool (50% of population)\n- Lawsuit risk (gender discrimination)\n- PR disaster ("AI sexist hiring")\n- Development cost wasted ($1M+)\n\nTHE PATTERN:\nWhatever group is underrepresented in training data = AI rejects them going forward\n- Mostly white data → AI biased against minorities\n- Mostly young data → AI biased against older workers\n- Mostly wealthy neighborhoods → AI biased against poor areas\n\nBOTTOM LINE:\nTraining data = AI values. Biased history = Biased AI.',
+            summary: 'AI mirrors training data. If past was discriminatory, AI becomes discriminatory by default.',
+            reflection: 'What historical bias might be in YOUR company\'s training data?'
+          },
+          {
+            id: 'historical-inequality',
+            title: 'Cause 2: Historical Inequality Baked In',
+            content: 'Sometimes the bias isn\'t about who gets selected—it\'s about who qualified before.\n\nREAL EXAMPLE:\nRedlining (1930s-1970s discrimination):\n- Banks denied loans to Black neighborhoods\n- Marked maps with red lines ("no loans here")\n- Created generational wealth gap\n\nAI in 2025:\n- Banks train AI on 50 years of loan approvals\n- Data shows: "Neighborhood ZIP code 90210 = loan approvals"\n- Another ZIP code 93210: "Historically denied loans"\n- AI learns: "90210 = good loans, 93210 = risky"\n- Modern applicants in 93210: Automatically denied\n\nTHE TRAGEDY:\n✓ Discrimination is illegal now\n✓ But AI perpetuates it automatically\n✓ Original bias (1960s redlining) → Modern AI denial\n✓ Executive says: "Algorithm decided" (not my discrimination)\n\nWHY EXECUTIVES DON\'T SEE THIS:\n- They don\'t know the history\n- ZIP code looks "neutral" (not race)\n- Algorithm is opaque (can\'t see the discrimination)\n- Results look random ("Market conditions")\n\nCOST TO COMPANY:\n- Legal liability: Fair Housing Act violations\n- Settlement: $5M-$50M typical\n- Regulatory investigation\n- Loss of market access (high-risk label)\n\nBOTTOM LINE:\nBias perpetuates. Historical discrimination → Modern AI discrimination → Expensive lawsuits.',
+            exercise: 'Identify a historical bias in your industry (maybe lending, hiring, insurance). How might that bias appear in modern AI trained on old data?'
+          },
+          {
+            id: 'proxy-discrimination',
+            title: 'Cause 3: Proxy Discrimination (Sneaky)',
+            content: 'Sometimes bias hides. AI uses "neutral" variables that actually encode discrimination.\n\nTHE TRICK:\nYou remove race from AI model\nBUT the algorithm notices:\n- ZIP code correlates with race (historical segregation)\n- First name correlates with race (statistical fact)\n- Neighborhood correlates with race\n- School district correlates with race\n\nAI then uses these as proxies:\n"I don\'t see race, but I see ZIP code 90210 (mostly white) vs 93210 (mostly Black)"\nResult: Same discrimination, hidden behind "neutral" variables\n\nEXECUTIVE DEFENSE:\n"We didn\'t use race! Algorithm is fair!"\nReality: Algorithm used race proxies instead\nLegal verdict: Still discrimination (Fair Housing Act)\nFine: Still $5M+\n\nWHY IT\'S HIDDEN:\n- Obvious discrimination variables removed (name, race, gender)\n- Obvious bias not visible on surface\n- But mathematician can prove it (forensic analysis)\n- Regulators will find it in lawsuit\n\nREAL CASE:\nGoogle Ads discriminated against women\n- Company didn\'t explicitly exclude women\n- Algorithm noticed: "men click more on ads"\n- System learned to show ads less to women\n- Same discrimination, invisible mechanism\n\nCOST:\n- $5M+ FTC settlement\n- Reputation destroyed ("sexist advertising")\n- Regulatory scrutiny intensified\n- Advertisers abandoned platform\n\nBOTTOM LINE:\nRemoving race ≠ Removing bias. Proxies hide discrimination but don\'t prevent it.\nRegulators will find it. Lawsuits will prove it. Settlement will hurt.',
+            problem: 'You built an AI model without race/gender variables. But reviewers found it\'s still discriminating against minorities.',
+            solution: 'Audit correlated variables (ZIP code, name patterns, school district). These are proxies for race. Either remove them or accept you\'re using race discrimination indirectly.'
+          }
+        ]
+      },
+      {
+        id: 'business-catastrophes',
+        title: 'Business Catastrophes: Real Cost of Bias',
+        learningOutcome: 'Learn the expensive consequences of AI bias that companies actually faced.',
+        lessons: [
+          {
+            id: 'amazon-case',
+            title: 'Amazon Recruiting Disaster ($10M+ Loss)',
+            content: 'THE FAILURE:\nAmazon built internal AI recruiting tool to screen resumes for software engineer roles.\n\nWHAT HAPPENED:\nTraining data: 10 years of Amazon hired engineers = 85% male (tech industry baseline)\nAI learned: "Successful engineer = male pattern"\nSystem noticed: Women with "Women\'s Chess Club" in resume?\nAction: Penalized the resume (treats "Women\'s X" as negative signal)\n\nRESULT:\nFemale candidates rejected at 2x higher rate than males\nSame qualifications = Different outcome\n\nCOST TO AMAZON:\n- $1.3M+ project development cost (thrown away)\n- System scrapped entirely (can\'t fix without massive retraining)\n- PR disaster ("Amazon AI sexist")\n- Internal team morale hit (engineers ashamed)\n- News coverage damaging (recruitment brand damaged)\n- Lost talented female engineers (competitive disadvantage)\n\nTIMELINE:\nMonth 1-12: Build and train system ($1M)\nMonth 13: Deploy system\nMonth 14: Notice bias (external reviewers discovered it)\nMonth 15-18: Investigation, media coverage\nMonth 19+: Develop fixes, rebuild systems\n\nLEASONS:\n❌ What they didn\'t do: Pre-deployment bias testing\n❌ What they didn\'t do: Demographic performance audits\n❌ What they didn\'t do: Human review of edge cases\n\n✅ What would have prevented: 1 person, 1 week, demographic testing = ~$50K\n\nBOTTOM LINE:\nAmazon\'s bias cost $1M+ in wasted development. Bias testing would have cost 1% of that.\n\nINDUSTRY IMPACT:\nEvery tech company now knows: Recruiting AI = High bias risk\nResult: Increased scrutiny, compliance requirements, delayed AI projects',
+            exercise: 'If you were Amazon\'s AI ethics officer in 2015, what pre-deployment test would you have run?'
+          },
+          {
+            id: 'healthcare-case',
+            title: 'Healthcare Algorithm Disaster (Lawsuits Pending)',
+            content: 'THE FAILURE:\nMajor healthcare provider used AI algorithm to allocate resources (which patients get priority treatment).\n\nWHAT HAPPENED:\nTraining data: Historical healthcare spending = Black patients spent less (due to systemic barriers)\nAI learned: "Less spending = Less sick = Less urgent"\nSystem noticed: Black patients = Lower historical spending\nAction: Deprioritized Black patients for treatment\n\nRESULT:\nSame illness = Different treatment priority based on race\nLife-and-death consequences for patients\n\nCOST TO COMPANY:\n- $8.5B+ settlement (announced)\n- Federal investigation (ongoing)\n- Criminal negligence investigation considered\n- Reputation destroyed (medical racism allegations)\n- Lost patients and clinician trust\n- Regulatory restrictions on AI use\n\nTHE TRAGEDY:\nCompany didn\'t intend racism\nBut algorithm replicated systemic racism automatically\nExecutive couldn\'t see it (algorithm is opaque)\nPatients suffered (medical care denied)\n\nPROBLEM WITH THE DATA:\nAlgorithm assumed: Historical spending = Medical need\nReality: Historical spending = Access to care\nBlack patients = Less access historically = Lower spending\nNot less sick = Actually same sickness, less treatment\n\nWHAT WOULD HAVE PREVENTED:\n✅ Domain expert review: "Why do Black patients spend less?" (reveals access gap)\n✅ Outcome audits: "Are Black patients actually healthier?" (data would say no)\n✅ Bias testing: Run algorithm on synthetic data where spending ≠ health (reveals bias)\n✅ Cost: $2M in audits/testing vs $8.5B+ in fines\n\nBOTTOM LINE:\nHealthcare AI bias has life-or-death consequences. Testing is mandatory, not optional.',
+            summary: 'Healthcare is highest-stakes domain. AI bias here kills people. Every healthcare AI needs rigorous bias testing.'
+          },
+          {
+            id: 'financial-case',
+            title: 'Financial Services Settlement ($18M+)',
+            content: 'THE FAILURE:\nCredit scoring AI denied loans at different rates to men vs women.\n\nWHAT HAPPENED:\nTraining data: Historical lending decisions\nAI noticed: Married women historically had co-signer requirements (1960s law)\nAI learned: "Married woman = higher risk"\nModern application: Married women = Lower credit limits vs husbands\n\nEXAMPLE:\nHusband: Credit score 650 → Approved for $50K\nWife: Credit score 680 (higher!) → Approved for $35K\nSame household = Different outcomes\n\nCOST:\n- $18M+ settlement\n- Regulatory investigation\n- CEO testimony\n- Lawsuit class action ongoing\n- Brand damage (financial firm known for discrimination)\n\nWHAT MADE IT OBVIOUS:\n- Regression testing: Same score, different gender = Different outcome\n- Statistical proof of discrimination\n- Can\'t argue with the math (variance explained = gender)\n\nBOTTOM LINE:\nFinancial discrimination has clear damage (people denied money). Testing catches this immediately.\n\nKEY INSIGHT:\nAll three cases would have been caught by basic demographic testing:\n- Run same data, different groups\n- Compare outcomes\n- If >10% variance by protected attribute = Red flag',
+            reflection: 'Why do you think companies with advanced technology still have these basic bias problems?'
+          }
+        ]
+      },
+      {
+        id: 'detection-tests',
+        title: '3 Simple Detection Tests (Do These Now)',
+        learningOutcome: 'Learn practical tests to identify bias before deployment.',
+        lessons: [
+          {
+            id: 'demographic-testing',
+            title: 'Test 1: Demographic Split Testing',
+            content: 'Simplest test. Catches most obvious biases.\n\nTHE PROCESS:\n1. Remove identifying info (names, photos)\n2. Split test data by protected attributes:\n   - Gender (male/female/non-binary)\n   - Age groups (18-25, 26-35, 36-50, 50+)\n   - ZIP codes (urban vs rural)\n   - Race (if data available)\n3. Run AI model on each group separately\n4. Compare error rates\n\nRED FLAG THRESHOLD:\nIf error rate differs >10% between groups = Bias confirmed\nExample:\n- Group A accuracy: 92%\n- Group B accuracy: 83%\n= 9% gap (borderline concern)\n- Group A accuracy: 95%\n- Group B accuracy: 80%\n= 15% gap (STOP - bias confirmed)\n\nWHAT TO DO:\n- If gap >10%: Do NOT deploy\n- Investigate why (data quality, feature bias, etc)\n- Retrain on balanced data\n- Test again\n- Deploy only when <10% gap\n\nTIME TO RUN: 2 hours\nCOST: Free (built-in to any ML platform)\nBENEFIT: Catches 80% of obvious biases\n\nEXAMPLE:\nHiring AI:\n- Test on 1,000 male resumes: 80% "hire" recommendations\n- Test on 1,000 female resumes: 62% "hire" recommendations\n- Gap: 18% → BIAS CONFIRMED\n- Conclusion: Don\'t deploy this model',
+            exercise: 'Take your top AI model. Run demographic split testing on 3 attributes (age, gender, region). Document the gaps.'
+          },
+          {
+            id: 'proxy-testing',
+            title: 'Test 2: Remove Protected Attributes',
+            content: 'Tests whether bias is hidden in proxies.\n\nTHE PROCESS:\nTrain TWO models:\n\nModel A (Full data):\n- Include: Age, gender, ZIP code, name, education, location, salary history, etc\n- Run on test data\n- Accuracy: 92%\n\nModel B (Clean data):\n- Remove: Age, gender, race, name, anything that correlates with protected attributes\n- Remove: ZIP code (proxy for race), first name (proxy for ethnicity)\n- Keep: Skills, work history, education\n- Run on test data\n- Accuracy: 88%\n\nCOMPARISON:\nSame accuracy (~4% difference) = Proxies not major issue\nModel A much better (92% vs 70%) = Bias hidden in proxies\n\nINTERPRETATION:\nIf Model A >> Model B: You\'re using proxy discrimination\n- Accuracy gain comes from knowing protected attributes indirectly\n- This is still discrimination (just harder to see)\n- Regulators will find it in audit\n\nCONCLUSION:\nUse Model B (lower accuracy but fair) or fix Model A (remove proxy bias)\n\nTIME TO RUN: 3-4 hours (retrain model)\nBENEFIT: Reveals hidden discrimination\n\nEXAMPLE:\nLoan approval:\n- Model A (with ZIP): 87% accuracy predicting defaults\n- Model B (no ZIP): 83% accuracy\n- 4% accuracy from knowing ZIP = Using proxy discrimination\n- Decision: Accept 4% accuracy loss for fairness',
+            summary: 'If removing proxy variables doesn\'t hurt accuracy much, you\'re using discrimination. Accept the accuracy cost.'
+          },
+          {
+            id: 'human-override',
+            title: 'Test 3: Human Override Audit',
+            content: 'Tests if humans would make different decisions.\n\nTHE PROCESS:\n1. Select 100 random AI decisions (hiring rejections, loan denials, etc)\n2. Have human experts review independently\n3. Ask: "Would you change this decision?"\n4. Count overrides\n\nRED FLAG:\n>20% override rate = AI too biased\n<5% override rate = AI trustworthy\n\nWHAT OVERRIDES MEAN:\nIf humans override 40% of AI rejections:\n- Either AI is wrong (common problem)\n- Or AI has hidden bias humans catch\n- Investigate which\n\nWHY THIS MATTERS:\nAI decisions on hiring: "Candidate rejected"\nHuman review: "This is discrimination. We\'d hire them."\nOverride rate 35% = AI is systematically discriminating\n\nWHAT TO DO:\nIf override rate >20%:\n- Don\'t deploy alone\n- Require human review on all decisions\n- Investigate bias\n- Retrain model\n- Run test again\n\nTIME TO RUN: 4-6 hours (human review)\nCOST: 100 × reviewer time ($500-$1,000)\nBENEFIT: Catches problems humans can see\n\nEXAMPLE:\nRecruitment AI rejects candidates\n- 100 rejections reviewed by HR team\n- 32 decisions would be reversed by humans\n- Override rate: 32%\n- Conclusion: DON\'T DEPLOY (too much bias)',
+            exercise: 'Audit ONE recent AI decision (hiring, approval, etc). Would a human expert change it? That\'s your bias signal.'
+          }
+        ]
+      },
+      {
+        id: 'bias-fixes',
+        title: '4 Simple Bias Fixes (Implement Today)',
+        learningOutcome: 'Practical solutions to reduce or eliminate bias in your AI systems.',
+        lessons: [
+          {
+            id: 'data-balancing',
+            title: 'Fix 1: Data Balancing',
+            content: 'Most bias comes from imbalanced training data. Balance it.\n\nTHE PROBLEM:\nTraining data: 80% male engineers, 20% female engineers (tech industry reality)\nAI learns the 80/20 split as "normal"\nResult: Biased toward male candidates\n\nTHE FIX:\nResample training data:\n- Select all 20% female examples\n- Select equal male examples (20% instead of 80%)\n- Train on 50/50 balanced data\n\nRESULT:\nBalanced training → Fair model\nError rate by gender: <5% gap (acceptable)\n\nHOW TO DO IT:\n1. Count examples per group\n2. Set to same size (50% minority, 50% majority)\n3. Retrain model\n4. Test for fairness\n\nTRADE-OFF:\n✅ Fairness improved dramatically\n❌ Slightly reduced overall accuracy (1-3%)\n- Accept this trade-off (fairness > accuracy)\n\nCOST TO IMPLEMENT: 2-3 hours\nBENEFIT: Fairness improves 30-50%\n\nEXAMPLE:\nHiring:\nBefore: 1,000 male resumes, 200 female\nTraining set: 800 male, 160 female (80/20)\nAfter: 200 male, 200 female (50/50)\nResult: Model treats genders equally',
+            summary: 'Balance your training data by group. This fixes most bias automatically.'
+          },
+          {
+            id: 'fairness-constraints',
+            title: 'Fix 2: Fairness Constraints',
+            content: 'Build fairness requirements into model training.\n\nTRADITIONAL APPROACH:\n"Optimize for 95% accuracy"\n→ AI finds any path to 95%, including discrimination\n\nFAIRNESS-CONSTRAINED APPROACH:\n"Optimize for 95% accuracy AND <10% demographic disparity"\n→ AI forced to stay fair while hitting accuracy target\n\nHOW TO DO IT:\n1. Define fairness metric: "<5% error variance between groups"\n2. Add as constraint to training\n3. Model optimizes for: Accuracy + Fairness (both matter)\n\nRESULT:\nModel MUST be fair to hit accuracy target\nNo way to cheat by discriminating\n\nTECHNICAL IMPLEMENTATION:\nMost ML frameworks support this:\n- TensorFlow: fairness_constraints parameter\n- PyTorch: Custom loss function combining accuracy + fairness\n- AWS Sagemaker: Built-in fairness monitoring\n\nCOST: 1-2 hours setup\nBENEFIT: Fairness enforced automatically',
+            summary: 'Make fairness a constraint, not an afterthought. Model must be both accurate AND fair.'
+          },
+          {
+            id: 'human-in-loop',
+            title: 'Fix 3: Human-in-the-Loop',
+            content: 'For high-stakes decisions, add mandatory human review.\n\nWHEN TO IMPLEMENT:\nHigh-stakes = Decisions that harm people if wrong\n\nHIRING:\n- Entry level: AI decides\n- Manager role: Human reviews AI → Decides\n- Executive: Human reviews AI, often rejects\n\nLENDING:\n- $5K loan: AI decides\n- $50K loan: Human reviews AI\n- $500K+ loan: Human team + AI recommendation\n\nHEALTHCARE:\n- Symptom check: AI recommends\n- Treatment plan: Doctor reviews + decides\n- Critical surgery: Human surgeon decides (AI assists)\n\nWHY THIS WORKS:\nAI catches obvious cases (80%)\nHuman catches nuance and exceptions (20%)\nCombined: Best of both worlds\n\nHOW TO IMPLEMENT:\n1. Set threshold (e.g., loan >$50K)\n2. Route above threshold to human queue\n3. Human reviews AI recommendation + makes final call\n4. Track: Human override rate (should be 5-20%)\n\nCOST: Additional human review time\nBENEFIT: Catches AI bias + Builds trust\n\nCOMPARISON:\nAI only: Fast, consistent, potentially biased\nHuman + AI: Slower, catches edge cases, fairer',
+            reflection: 'What decisions in your company are high-stakes enough to require human review?'
+          },
+          {
+            id: 'monitoring-dashboard',
+            title: 'Fix 4: Continuous Monitoring Dashboard',
+            content: 'Bias doesn\'t stay fixed. Monitor weekly.\n\nWHAT TO TRACK:\n1. Error rates by demographic group\n   - Target: <5% variance between groups\n   - Red alert: >10% variance\n\n2. Approval/rejection rates by group\n   - Target: Similar rates across demographics\n   - Red flag: 2x approval rate for one group\n\n3. Customer complaints\n   - Any "bias" complaints? Investigate immediately\n   - Track: How many per week/month\n\n4. Model performance\n   - Overall accuracy trending up/down?\n   - Fairness metrics stable?\n\nHOW TO BUILD:\n1. Weekly data pull (automated)\n2. Calculate metrics per demographic\n3. Generate dashboard (visual charts)\n4. Alert: If any metric >threshold\n5. Investigate and fix\n\nBEST PRACTICE:\nMonday morning team meeting:\n"Let\'s review this week\'s fairness metrics"\n- Is fairness maintained?\n- Any concerning trends?\n- Actions needed?\n\nCOST: 2-3 days setup, 2 hours/week monitoring\nBENEFIT: Catch bias before it causes damage\n\nEXAMPLE DASHBOARD:\n```\nGender parity (Hiring AI):\nMale approval rate: 78%\nFemale approval rate: 76%\nDisparity: 2% (✅ OK)\n\nAge parity:\n25-35: 80% approval\n45-55: 72% approval\nDisparity: 8% (⚠️ INVESTIGATE)\n```',
+            action: 'Set up ONE fairness metric for your top AI system. Track it weekly. This is your early warning system.'
+          }
+        ]
+      },
+      {
+        id: 'business-protection',
+        title: 'Business Protection: Checklist + Culture',
+        learningOutcome: 'Build organizational bias detection and prevention into your operations.',
+        lessons: [
+          {
+            id: 'protection-checklist',
+            title: 'Bias Protection Checklist',
+            content: 'Use this checklist before deploying any AI decision-making system:\n\nBEFORE LAUNCH:\n[ ] Demographic testing completed (all 3 tests)\n[ ] Error rates by group <10% variance\n[ ] Human override audit: <20% override rate\n[ ] Data balancing applied (if imbalanced)\n[ ] Fairness constraints added to model\n[ ] Human-in-the-loop designed (high-stakes decisions)\n[ ] Monitoring dashboard built (weekly metrics)\n[ ] Legal review completed (discrimination risk assessed)\n[ ] Ethics committee sign-off obtained\n[ ] Communications plan ready (if issues found)\n\nFIRST MONTH:\n[ ] Weekly fairness metrics reviewed\n[ ] No bias complaints received (or <2)\n[ ] Human override rate 5-20% (stable)\n[ ] Team trained on bias monitoring\n\nONGOING:\n[ ] Monthly fairness review meeting\n[ ] Quarterly fairness audit\n[ ] Annual third-party bias assessment\n[ ] Customer feedback loop (bias concerns)\n\nIF ANY CHECKS FAIL:\n→ STOP. Do not deploy.\n→ Investigate root cause\n→ Retrain or redesign\n→ Test again\n\nBOTTOM LINE:\nThis checklist takes 1-2 weeks. Cost: $50K-$200K.\nAvoided lawsuit cost: $5M-$100M+.\nROI: 1,000%+',
+            action: 'Print this checklist. Use before ANY AI decision-system deployment.'
+          },
+          {
+            id: 'bias-culture',
+            title: 'Building Bias-Aware Culture',
+            content: 'Checklists help. Culture sustains.\n\nWHAT CULTURE CHANGE LOOKS LIKE:\n\nBEFORE:\n"Build the fastest, most accurate AI"\n→ Consequences: Speed + bias\n\nAFTER:\n"Build the fastest, most accurate AND fairest AI"\n→ Consequences: Speed + accuracy + fairness\n\nHOW TO BUILD THIS:\n\n1. LEADERSHIP COMMITMENT\n"Fairness is non-negotiable"\n"Speed never justifies discrimination"\n"We audit every AI decision system"\n"Violations end careers"\n\n2. INCENTIVES\n✅ Reward: "Found and fixed bias before deployment"\n✅ Reward: "Built fairness into new model"\n✅ Penalty: "Deployed biased AI"\n✅ Penalty: "Ignored bias findings"\n\n3. PROCESSES\n"Fairness review = Gate for deployment"\n"No AI goes live without bias testing"\n"Weekly fairness metrics = Non-negotiable\"\n\n4. TRAINING\n- All AI engineers: "Bias fundamentals" (2 hours)\n- All managers: "Identifying bias" (1 hour)\n- All employees: "AI fairness basics" (30 min)\n- Leaders: "Strategic fairness" (4 hours)\n\n5. ACCOUNTABILITY\n"If AI discriminates, we own it"\n"We don\'t blame the model"\n"We fix and communicate"\n"We compensate harmed users"\n\nRESULT:\nTeam thinks fairness first\nBias caught early\nCompany protected\n\nCOMPARE:\nNo bias culture: Bias discovered by regulators → $5M+ fine\nWith bias culture: Bias discovered by us → Fixed, improved\n\nBOTTOM LINE:\nCulture transforms from "speed at all costs" to "speed AND fairness." This takes 3-6 months to establish.',
+            summary: 'Checklist prevents one incident. Culture prevents all incidents. Build both.'
+          }
+        ]
+      },
+      {
+        id: 'faq-summary',
+        title: 'Summary + FAQ: Bias Protection for Leaders',
+        learningOutcome: 'Quick answers to executive-level bias questions.',
+        lessons: [
+          {
+            id: 'bias-faq',
+            title: 'Bias FAQ: Your Top Questions',
+            content: 'Q: "Do we really have a bias problem? Our AI seems fair."\n\nA: Bias is invisible without testing. You probably don\'t know.\n\nBest assumption: All AI has some bias. Your job: Find and fix it.\n\nTesting reveals:\n- Amazon: Found 2x female rejection rate (invisible without testing)\n- Healthcare: Found Black patient discrimination (invisible without testing)\n- Finance: Found gender credit gap (invisible without testing)\n\nConclusion: You have bias. You just haven\'t measured yet.\n\n---\n\nQ: "How much does bias testing cost?"\n\nA: Cheap compared to lawsuits.\n\nCost breakdown:\n- Demographic testing: Free (built-in to ML)\n- Proxy testing: 3-4 hours ($500-$1,000)\n- Human override audit: 4-6 hours ($500-$1,500)\n- Dashboard setup: 2-3 days ($2,000-$5,000)\n- Ongoing monitoring: 2 hours/week ($200/week)\n\nTotal first month: $3,000-$7,500\nTotal ongoing: $200/week\n\nCompare:\n- One lawsuit: $5-50M\n- One regulatory fine: $5-100M\n\nBias testing: 0.1% of lawsuit cost\n\n---\n\nQ: "Can we just use fairness tools instead of testing?"\n\nA: Tools help. Testing is still mandatory.\n\nTools available:\n- TensorFlow Fairness: Free, built-in\n- IBM AI Fairness 360: Free, comprehensive\n- AWS Sagemaker Clarify: Built-in monitoring\n\nWhat tools do:\n✅ Calculate fairness metrics\n✅ Flag potential bias\n✅ Suggest corrections\n\nWhat tools don\'t do:\n❌ Make deployment decision (still your call)\n❌ Guarantee fairness (still need testing)\n❌ Replace human judgment\n\nBest practice: Use tools + Run tests\n\n---\n\nQ: "What if testing reveals bias? Do we have to tell people?"\n\nA: Yes. Transparency is protection.\n\nOptions:\n1. Fix before deployment (best)\n2. Deploy with human review + fairness monitoring (acceptable)\n3. Don\'t deploy (safest)\n\nNever: Deploy + Hide bias. This causes:\n- Discrimination continues\n- Eventually discovered (lawsuits)\n- Liability doubled (hiding + discrimination)\n\nBetter: "We found bias. Here\'s how we\'re fixing it."\nTrust increased, liability limited\n\n---\n\nQ: "Who\'s liable if our AI discriminates?"\n\nA: Everyone.\n\n- Company: Legal liability, fines, settlements\n- CEO/Board: Personal liability if knowing negligence\n- Executives: Job risk if bias ignored\n- Engineers: Professional reputation\n\nConclusion: Everyone benefits from preventing bias\n\n---\n\nQ: "What\'s an acceptable fairness threshold?"\n\nA: Legal threshold:\n- <5% error variance between groups = Safe\n- 5-10% variance = Monitor closely\n- >10% variance = Likely discrimination\n\nBusiness threshold:\n- <2% variance = Excellent\n- 2-5% variance = Good\n- 5-10% variance = Needs work\n- >10% variance = Unacceptable\n\nAlways aim for <5%.\n\n---\n\nQ: "What if competitors don\'t test for bias?"\n\nA: They will eventually.\n\nTimeline:\n- Now (2026): Some companies testing, some not\n- 2027: Regulators increase pressure\n- 2028: Bias testing becomes mandatory\n- 2029: Companies without testing face fines\n\nFirst movers win:\n- Build reputation for fairness\n- Hire ethical talent\n- Avoid lawsuits\n- Market advantage\n\nLatecomers pay:\n- Fines\n- Lawsuits\n- Brand damage\n- Recovery takes 3+ years\n\nConclusion: Start testing now. Don\'t wait for regulations.\n\n---\n\nQ: "Can\'t we just hire more diverse teams to avoid bias?"\n\nA: Diversity helps. Isn\'t sufficient alone.\n\nWhat diversity does:\n✅ Different perspectives on data\n✅ Catches some biases (good catch)\n✅ Builds inclusive culture\n\nWhat diversity doesn\'t do:\n❌ Guarantee unbiased AI (still need testing)\n❌ Replace demographic testing\n❌ Fix biased training data\n\nBest approach: Diverse team + Bias testing\n\n---\n\nFINAL SUMMARY:\n✅ Bias is predictable (3 causes)\n✅ Bias is detectable (3 tests)\n✅ Bias is fixable (4 solutions)\n✅ Bias is preventable (checklist + culture)\n\nNot detecting bias = Business risk\nDetecting + fixing = Competitive advantage\n\nTest one AI system this month. Protect your company now.',
+            summary: 'Bias isn\'t inevitable. It\'s preventable with testing, fixes, and culture. Start today.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include real business failures (Amazon $1M+, Healthcare $8.5B, Finance $18M). Use ROI calculations ($50K testing vs $5M+ fines). Include 3 detection tests (demographic, proxy removal, human override). Emphasize practical checklists and implementation. Use before/after comparisons.',
+    expansionIdeas: 'Create advanced courses: "Advanced Bias Detection & Mitigation" or "Fair AI Engineering at Scale." Offer downloadable: "Bias Testing Checklist," "Fairness Metrics Dashboard Template," "Demographic Testing Guide," "Human Override Audit Form." Build case study library showing bias detection and remediation. Create industry-specific guides (hiring, lending, healthcare). Develop certification: "Bias-Aware AI Practitioner."'
   }
 };
