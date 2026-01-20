@@ -1606,5 +1606,168 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include complete POS architecture diagram. Use checklists for readability. Emphasize compound asset growth throughout. Include timeline diagrams for 45-minute pipeline. Highlight series capstone positioning.',
     expansionIdeas: 'Create certification program: "Midjourney Production Certified Professional" with portfolio requirements. Offer "Midjourney Enterprise Consulting" services. Build "Production Systems Bootcamp" (2-day intensive). Offer "Custom /tune Model Training" for agencies. Create "Visual Asset Licensing Platform" leveraging style libraries. Develop "Team Collaboration Templates + Notion Dashboard Pro."'
+  },
+  'buffer-social-media/what-is-buffer': {
+    courseTitle: 'What is Buffer + Why Use AI? Intermediate Guide to Social Media Mastery',
+    metaTitle: 'What is Buffer? AI Social Media Management Guide – Intermediate',
+    metaDescription: 'Discover Buffer\'s AI-powered social media scheduling, content creation, and analytics. Learn intermediate workflows combining Buffer AI, automation rules, and cross-platform strategies for professional results.',
+    modules: [
+      {
+        id: 'buffer-core-architecture',
+        title: 'Buffer Core + AI Architecture',
+        learningOutcome: 'Understand Buffer\'s complete capabilities and AI advantages for social media management.',
+        lessons: [
+          {
+            id: 'buffer-core-features',
+            title: 'What Buffer Actually Does (2026 Reality)',
+            content: 'Buffer\'s comprehensive platform covers:\n\nSCHEDULING: 15+ platforms (Instagram, LinkedIn, TikTok, X, Threads)\nAI CONTENT: Generate, repurpose, customize by platform\nANALYTICS: Cross-platform performance + AI insights\nAUTOMATION: Rules, queues, evergreen recycling\nTEAM: Approval workflows, permissions, client dashboards\n\nThese five pillars work together to automate social media management at scale.'
+          },
+          {
+            id: 'ai-advantage',
+            title: 'The AI Advantage (Why Upgrade)',
+            content: 'Time comparison reveals the Buffer AI difference:\n\nMANUAL: Write → Design → Schedule → Monitor (4+ hours/post)\nBUFFER AI: Generate → Customize → Auto-schedule → Analyze (15 min/post)\n\nResults: 90% time savings, 3x content volume, consistent quality\n\nPro Reality: Buffer AI generates 80% of content, humans polish 20%.\n\nThis efficiency multiplier transforms social media operations.'
+          }
+        ]
+      },
+      {
+        id: 'ai-content-generation',
+        title: 'AI Content Generation System',
+        learningOutcome: 'Master Buffer\'s AI writing modes for automated content creation.',
+        lessons: [
+          {
+            id: 'buffer-ai-modes',
+            title: 'Buffer AI Writing (3 Power Modes)',
+            content: 'Buffer AI operates in three generation modes:\n\n1. IDEA GENERATOR: "10 post ideas for [topic] targeting [audience]"\nQuick ideation for content planning\n\n2. FULL POST: "Write Instagram caption for [topic], emoji-friendly, 120 chars"\nComplete, platform-optimized posts\n\n3. BATCH MODE: "Generate 30-day content calendar for [niche]"\nMass content generation for scheduling\n\nEach mode outputs are platform-specific and brand-aware.'
+          },
+          {
+            id: 'platform-optimization',
+            title: 'Platform-Optimized Output',
+            content: 'Buffer AI adapts content to platform norms:\n\nINSTAGRAM: Emoji-rich, visual-first, questions\nLINKEDIN: Professional, value-driven, discussion starters\nTIKTOK: Short, energetic, trend-aware\nX/TWITTER: Concise, conversational, timely\n\nThis platform-specific approach ensures authenticity and engagement.'
+          },
+          {
+            id: 'customization-workflow',
+            title: 'Customization Workflow',
+            content: 'AI output workflow:\n\nAI Draft → Brand Voice Slider → Platform Tweaks → Visual Pairing → Schedule\n\nBrand Voice Adjustment: "Make more [professional/playful/formal] for [LinkedIn/Instagram]"\n\nHands-On: Generate your next 7 posts using Buffer AI. Compare time vs quality.',
+            handsOn: 'Use Buffer AI to generate 7 posts for your niche. Track time spent vs manual writing. Measure engagement lift vs historical average.'
+          }
+        ]
+      },
+      {
+        id: 'intelligent-scheduling',
+        title: 'Intelligent Scheduling + Automation',
+        learningOutcome: 'Implement smart scheduling and automation rules for consistent posting.',
+        lessons: [
+          {
+            id: 'best-time-recommendations',
+            title: 'AI Best Time Recommendations',
+            content: 'Buffer analyzes YOUR audience data (not industry averages):\n\n"Post at 8:42am, 1:17pm, 7:03pm Wednesday based on your 30-day performance"\n\nThis personalization delivers:\n- 2.3x higher engagement than average posting\n- Platform-specific timing optimization\n- Automatic seasonal adjustment\n\nPro Practice: Enable automatic optimal time scheduling for all posts.'
+          },
+          {
+            id: 'automation-rules',
+            title: 'Automation Rules (Set Once, Run Forever)',
+            content: 'Buffer\'s automation rules eliminate manual work:\n\nEVERGREEN QUEUE: Recycle top 10% performers every 90 days\nReuse successful content automatically\n\nPERFORMANCE BOOST: Double-post top formats automatically\nAmplify what works\n\nFOLLOW-UP SEQUENCE: Low engagement → Repost variant in 48 hours\nAutomatically reschedule underperformers\n\nThese rules run continuously, improving ROI over time.'
+          },
+          {
+            id: 'cross-platform-magic',
+            title: 'Cross-Platform Magic',
+            content: 'One-to-many content distribution:\n\n1 Instagram post → 5 platform variants → AI-customized → Optimal timing\n\n"One post, five audiences, zero extra work"\n\nBuffer automatically:\n- Adapts captions for each platform\n- Optimizes for format (carousel, reel, thread)\n- Schedules at best time per platform\n- Tracks performance across all channels'
+          }
+        ]
+      },
+      {
+        id: 'analytics-insights',
+        title: 'Analytics + AI Insights Engine',
+        learningOutcome: 'Use Buffer analytics to drive continuous improvement.',
+        lessons: [
+          {
+            id: 'beyond-vanity-metrics',
+            title: 'Beyond Vanity Metrics',
+            content: 'Buffer\'s AI insights go beyond basic metrics:\n\n1. CROSS-PLATFORM COMPARISON: Instagram vs LinkedIn vs TikTok ROI\nCompare platform effectiveness\n\n2. AI TREND DETECTION: "Carousels outperform static 3.2x this month"\nIdentify emerging patterns\n\n3. FORMAT RECOMMENDATIONS: "Try 7+ image carousels for 28% lift"\nData-driven content guidance\n\n4. AUDIENCE INSIGHTS: "Your 25-34 segment engages 2x on Wednesdays"\nSegment-specific optimization\n\nThese insights transform data into action.'
+          },
+          {
+            id: 'competitor-benchmarking',
+            title: 'Competitor Benchmarking',
+            content: '"Compare my Instagram performance vs [competitor handle]"\n\nBuffer delivers:\n- Follower growth rates\n- Engagement rate comparison\n- Content format gap analysis\n- Optimal posting frequency\n\nPro Move: Set weekly AI insight emails → Action top 3 recommendations monthly.'
+          }
+        ]
+      },
+      {
+        id: 'team-agency-workflows',
+        title: 'Team + Agency Workflows',
+        learningOutcome: 'Manage multiple accounts and team members efficiently.',
+        lessons: [
+          {
+            id: 'professional-collaboration',
+            title: 'Professional Collaboration System',
+            content: 'Buffer team features support professional operations:\n\nROLES: Admin, Creator, Scheduler, Analyst, Client\nGranular permission control\n\nAPPROVAL WORKFLOWS: Draft → Review → Schedule → Publish\nContent governance built-in\n\nCLIENT DASHBOARDS: Branded analytics, performance reports\nWhite-label client access\n\nBILLING INTEGRATION: Usage tracking per client/project\nTransparent cost allocation\n\nThese features enable agency operations at scale.'
+          },
+          {
+            id: 'multi-account-power',
+            title: 'Multi-Account Power',
+            content: 'Scale social media management:\n\n50 connected profiles → AI content generation → Team approval → Auto-scheduling\n\nAgency Reality: 1 junior staff member = 20 client accounts with AI assistance\n\nBefore Buffer: 1 account per manager\nWith Buffer: 50 accounts per junior with AI\n\nThis scaling multiplier transforms agency economics.'
+          },
+          {
+            id: 'white-label-dashboards',
+            title: 'White-Label Dashboards',
+            content: 'Client-facing branded analytics:\n\nCLIENT SEES: "Your branded analytics portal"\nYOU SEE: Buffer backend + AI automation\n\nBenefits:\n- Professional client reporting\n- Recurring revenue justification\n- Clear performance tracking\n- Seamless client experience'
+          }
+        ]
+      },
+      {
+        id: 'roi-analysis',
+        title: 'Why AI + Buffer Beats Manual (ROI Math)',
+        learningOutcome: 'Quantify the business value of Buffer implementation.',
+        lessons: [
+          {
+            id: 'time-value-calculation',
+            title: 'Time Value Calculation',
+            content: 'Direct time savings:\n\nMANUAL: 4 hours/post × 30 posts/month = 120 hours/month\nBUFFER AI: 15 min/post × 30 posts = 7.5 hours/month\n112.5 hours saved = $5,625/month (at $50/hr)\n\nAnnual value: $67,500+ saved hours\n\nThis ROI justifies Buffer subscription immediately.'
+          },
+          {
+            id: 'quality-multiplier',
+            title: 'Quality Multiplier',
+            content: 'Beyond time savings, Buffer improves quality:\n\nAI CONSISTENCY: 90% brand voice match\nConsistent messaging across channels\n\nOPTIMAL TIMING: 2.3x engagement lift\nAutomated posting at peak audience moments\n\nPERFORMANCE INSIGHTS: 18% monthly improvement\nContinuous data-driven optimization\n\nBottom Line: 5x content volume, 3x engagement, 15x ROI'
+          }
+        ]
+      },
+      {
+        id: 'integration-ecosystem',
+        title: 'Integration Ecosystem (Force Multiplier)',
+        learningOutcome: 'Extend Buffer capabilities through integrations.',
+        lessons: [
+          {
+            id: 'native-ai-stack',
+            title: 'Native AI Stack',
+            content: 'Buffer integrates with key tools:\n\nBuffer AI → Canva integration → Visual automation\nAuto-generate social-sized visuals\n\nBuffer → Zapier → CRM/Email sync\nConnect to your entire stack\n\nBuffer Analytics → Google Sheets → Custom dashboards\nBuild proprietary reporting'
+          },
+          {
+            id: 'content-repurposing',
+            title: 'Content Repurposing System',
+            content: 'Multiply content value across channels:\n\n1. Long-form blog → AI extracts 10 social posts\nOne article = full month of content\n\n2. Top posts → AI creates carousel, Reel, Thread variants\nRepurpose winners in new formats\n\n3. Video clips → AI generates static + caption versions\nMaximize media asset usage\n\nPro Strategy: Create once, repurpose 5x across formats and platforms.',
+            reflection: 'Audit your existing content library. How many pieces could be repurposed into 5-10 social posts each?'
+          }
+        ]
+      },
+      {
+        id: 'complete-buffer-mastery',
+        title: 'Complete Buffer AI Mastery Achieved',
+        learningOutcome: 'Integrate Buffer as your core social media operating system.',
+        lessons: [
+          {
+            id: 'transformation-summary',
+            title: 'Complete Transformation Achieved',
+            content: 'Buffer AI capabilities mastered:\n\n✅ AI content at scale (90% time savings)\nAutomate content generation while maintaining quality\n\n✅ Intelligent scheduling (2.3x engagement)\nOptimal posting powered by your audience data\n\n✅ Cross-platform mastery (15+ networks)\nManage all channels from one dashboard\n\n✅ Team/agency systems (50 accounts)\nScale social media across multiple clients\n\n✅ Performance automation (18% monthly gains)\nContinuous improvement through data-driven insights\n\nReality Shift: Social media grind → Automated growth engine'
+          },
+          {
+            id: 'next-steps',
+            title: 'Next Steps + Learning Path',
+            content: 'Pro Path: "Buffer Enterprise: Teams + Custom AI"\n\nDownload: "Buffer AI Content System: 30-Day Templates + Automation Rules"\n\n30-Day Challenge: Replace 100% manual posting with Buffer AI workflow\n\nImplementation Timeline:\nDay 1-2: Setup accounts + configure team\nDay 3-7: Generate first 30-day content calendar\nDay 8-30: Run full automation pipeline\n\nExpected Results: 90% time savings, 3x content volume, measurable engagement lift.',
+            summary: 'Buffer transforms social media from manual labor to intelligent operations. Your 30 minutes of setup today enables months of automated growth. Connect your first account and let AI generate your next 30 days of content.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons for scannable hierarchy. Include ROI calculation tables. Use before/after time comparisons. Emphasize AI content generation benefits throughout. Include automation rule examples. Highlight 15+ platform support.',
+    expansionIdeas: 'Create advanced courses: "Buffer Team Operations for Agencies" or "Advanced Buffer Analytics + Custom Reporting." Offer downloadable "Buffer AI Content Templates: 100 Posts by Niche" and "Automation Rules Playbook." Build video tutorials for content customization. Create "Buffer + Zapier Integration Guide." Develop certification: "Buffer Social Media Specialist."'
   }
 };
