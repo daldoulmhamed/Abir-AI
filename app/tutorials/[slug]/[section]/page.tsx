@@ -48,7 +48,7 @@ const sectionData: Record<string, Section[]> = {
   'github-copilot-coding': [
     { id: 'what-is-github-copilot', title: 'What is GitHub Copilot?', position: 1, totalSections: 4, duration: '12 min', description: 'Introduction to GitHub Copilot and how AI-powered coding assistance accelerates development.', hasContent: false },
     { id: 'writing-code-copilot', title: 'Writing Code with Copilot', position: 2, totalSections: 4, duration: '18 min', description: 'Master using Copilot to write, autocomplete, and generate code faster and smarter.', hasContent: false },
-    { id: 'debugging-refactoring-copilot', title: 'Debugging and Refactoring with Copilot', position: 3, totalSections: 4, duration: '16 min', description: 'Use Copilot to identify bugs, refactor code, and improve code quality automatically.', hasContent: false },
+    { id: 'debugging-refactoring-copilot', title: 'Debugging and Refactoring with Copilot', position: 3, totalSections: 4, duration: '16 min', description: 'Use Copilot to identify bugs, refactor code, and improve code quality automatically.', hasContent: true },
     { id: 'pro-workflow-copilot', title: 'Pro Workflow + Wrap-Up', position: 4, totalSections: 4, duration: '14 min', description: 'Build professional coding workflows and master advanced Copilot techniques.', hasContent: false },
   ],
   'ethical-ai-business': [

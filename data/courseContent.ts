@@ -2238,198 +2238,16 @@ export const courseContentData: Record<string, CourseData> = {
         ]
       }
     ],
-    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include practical debugging examples with before/after code. Emphasize speed and clarity. Include real error messages and solutions. Use beginner-friendly language. Address security and review practices. Include actionable debugging commands. Highlight time savings vs manual debugging.',
-    expansionIdeas: 'Create advanced courses: "Production Debugging Mastery," "Security Code Review with Copilot," "Performance Optimization Workflows." Offer templates: "Debug Prompt Library," "Refactoring Patterns," "Security Review Checklist." Build video tutorials for each debugging scenario. Create case studies: "How Copilot Fixed Production Bugs." Develop challenges: "Debug-a-thon: Fix 20 Bugs in 1 Hour."'
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include performance metrics and comparisons. Emphasize data-driven approach. Include A/B testing examples and frameworks. Use before/after engagement rates. Include recycling strategies. Highlight compound growth effects over time.',
+    expansionIdeas: 'Create advanced courses: "AI Social Media Analytics Mastery" or "Building Automated Performance Dashboards." Offer templates: "Performance Analysis Toolkit," "Template Library Builder," "A/B Testing Framework," "Weekly Optimization Checklist," "Recycling Calendar." Build video tutorials for performance analysis and optimization. Create case studies: "How [Creator] Grew Engagement 150%." Develop certification: "Social Media Performance Engineer."'
   },
-  'github-copilot-coding/debugging-refactoring-copilot': {
-    courseTitle: 'Debugging & Refactoring with GitHub Copilot: Beginner\'s 4-Minute Guide',
-    metaTitle: 'Debug & Refactor Code with GitHub Copilot – Beginner Guide (2026)',
-    metaDescription: 'Learn how GitHub Copilot fixes bugs, explains errors, refactors messy code, and improves your functions automatically. Simple beginner workflows that turn error frustration into instant solutions.',
+  'github-copilot-coding/writing-code-copilot': {
+    courseTitle: 'Writing Code with GitHub Copilot: Beginner\'s 4-Minute Hands-On Guide',
+    metaTitle: 'Write Code Faster with GitHub Copilot – Beginner\'s Hands-On Guide (2026)',
+    metaDescription: 'Master real-world code writing with Copilot through comment-driven development, acceptance patterns, and 15-minute projects. Learn to ship apps 3x faster as a beginner.',
     modules: [
       {
-        id: 'copilot-personal-debugger',
-        title: 'Copilot = Your Personal Debugger',
-        learningOutcome: 'Understand how Copilot transforms debugging from frustration to instant fixes.',
-        lessons: [
-          {
-            id: 'debugging-transformation',
-            title: 'From Debugging Hell to Debug Heaven',
-            content: 'Debugging feels like **mental torture** for beginners—staring at error messages, Googling for hours, trying random fixes. GitHub Copilot transforms it into **3-second fixes** by reading error messages, highlighting broken code, and suggesting complete solutions.\n\nEven better, it refactors your messy code into professional patterns automatically.\n\n**The Reality:**\nPreviously: 2 hours debugging → Stack Overflow rabbit hole → Maybe fixed\nNow: 60 seconds with Copilot → Understood & fixed → Tests written\n\nThis 4-minute guide shows exact commands and workflows that eliminate 80% of beginner debugging pain.',
-            summary: 'Copilot reads errors, explains them, and fixes them. Debugging transforms from painful to productive.',
-            handsOn: 'Reflect: What\'s your most frustrating bug experience? Copilot would have solved it in seconds.'
-          }
-        ]
-      },
-      {
-        id: 'debug-trifecta-3-commands',
-        title: 'The Debug Trifecta (3 Commands)',
-        learningOutcome: 'Master three commands that solve 80% of beginner bugs instantly.',
-        lessons: [
-          {
-            id: 'fix-command',
-            title: 'Command 1: "/fix" (Instant Bug Killer)',
-            content: '**The Command:**\nHighlight broken code → Type `/fix` → Copilot fixes immediately\n\n**Example Scenario:**\n\n**Broken Code:**\n```javascript\nfunction add(a, b) { \n  return a + b;\n}\n\nadd("5", "3"); // Returns "53" instead of 8\n```\n\n**Error:** NaN or string concatenation when you expected a number\n\n**You Type:** Highlight code → `/fix`\n\n**Copilot Suggests:**\n```javascript\nfunction add(a, b) {\n  return Number(a) + Number(b);\n}\n\nadd("5", "3"); // Now returns 8 correctly\n```\n\n**Why It Works:** Copilot recognizes the pattern (type coercion issue) and fixes it automatically.\n\n**Real-World Examples Fixed by `/fix`:**\n- `undefined.map()` → Add null checks\n- `async function forgot await` → Add awaits automatically\n- `useState wrong dependency` → Add missing dependencies\n- `setInterval memory leak` → Add cleanup function',
-            summary: '/fix highlights broken code and generates corrected version in seconds.',
-            exercise: 'Find 3 broken functions in your codebase. Use /fix on each. Compare to manual debugging time.'
-          },
-          {
-            id: 'explain-error-command',
-            title: 'Command 2: "Explain This Error"',
-            content: '**The Workflow:**\nConsole error appears → Copy error message → Copilot Chat → Paste error → "Why does this error happen?"\n\n**Real Example:**\n\n**Console Error:**\n```\nTypeError: Cannot read property \'map\' of undefined\n  at getUserPosts (components/UserList.js:45)\n```\n\n**You Type in Copilot Chat:**\n```\n"I got this error in React:\nTypeError: Cannot read property \'map\' of undefined\nat getUserPosts (UserList.js:45)\nWhy does this happen?"\n```\n\n**Copilot Explains:**\n```\n"Your posts array is undefined when you\'re trying to call .map() on it.\n\nCause: The component renders before the API call completes.\nFetch returns undefined initially.\nYou call .map() on undefined → Error\n\nFix: Add null check or optional chaining:\n{posts?.map(post => <Post key={post.id} post={post} />) || <Loading />}\n\nOr safer:\n{posts && posts.length > 0 ? posts.map(...) : <p>No posts</p>}"\n```\n\n**Why This Matters:** You don\'t just fix the bug—you UNDERSTAND it.\n\n**Common Beginner Errors Explained:**\n- "Cannot read property X of undefined" → null check missing\n- "setState is not a function" → import wrong, or not a class component\n- "Unexpected token" → Syntax error, often missing bracket or semicolon\n- "Maximum call stack exceeded" → Infinite recursion or loop\n- "CORS error" → API doesn\'t allow your domain',
-            summary: 'Error explanation shows root cause, not just the fix. You learn while debugging.'
-          },
-          {
-            id: 'explain-command',
-            title: 'Command 3: "/explain" (Code Translator)',
-            content: '**The Command:**\nHighlight confusing code → Type `/explain` → Plain English breakdown\n\n**Example 1: Complex Arrow Function**\n\n**Confusing Code:**\n```javascript\nconst users = data\n  .filter(u => u.age > 18)\n  .map(u => ({ ...u, active: true }))\n  .sort((a, b) => b.age - a.age);\n```\n\n**You Type:** Highlight → `/explain`\n\n**Copilot Explains:**\n```\n"This code:\n1. Filters users to only those over 18\n2. Maps each user and adds active: true property\n3. Sorts by age (descending, oldest first)\n\nResult: Array of adult users marked active, sorted by age oldest to youngest"\n```\n\n**Example 2: Async/Await Flow**\n\n**Confusing Code:**\n```javascript\nconst fetchData = async () => {\n  try {\n    const res = await fetch(url);\n    const data = await res.json();\n    setData(data);\n  } catch (err) {\n    setError(err);\n  } finally {\n    setLoading(false);\n  }\n};\n```\n\n**Copilot Explains:**\n```\n"This async function:\n1. Fetches data from URL\n2. Waits for response, converts to JSON\n3. Sets the data in state\n4. If any step fails, catches error and sets error state\n5. Regardless of success/failure, marks loading as false\n\nThe finally block runs every time, ensuring loading state resets."\n```\n\n**When to Use `/explain`:**\n- Confused by arrow functions\n- Don\'t understand async/await flow\n- Recursion feels complex\n- Chained operations look confusing\n- New syntax you haven\'t seen before',
-            handsOn: 'Find 3 pieces of code that confuse you. Use /explain on each. Notice how it builds understanding.'
-          }
-        ]
-      },
-      {
-        id: 'real-debugging-examples',
-        title: 'Real Debugging Examples (Copy These)',
-        learningOutcome: 'Learn from concrete debugging scenarios you can immediately apply.',
-        lessons: [
-          {
-            id: 'react-cannot-read-property',
-            title: 'Example 1: React "Cannot Read Property" (30 seconds)',
-            content: '**The Error:**\n```\nTypeError: Cannot read property \'map\' of undefined\nError location: Post.js line 23\n```\n\n**Your Code:**\n```javascript\nfunction PostList({ posts }) {\n  return (\n    <div>\n      {posts.map(post => (\n        <Post key={post.id} data={post} />\n      ))}\n    </div>\n  );\n}\n```\n\n**Problem:** Component renders before posts load from API. posts is undefined.\n\n**You:** Highlight code → Copilot Chat → "Fix this React error:"\n\n**Copilot Writes:**\n```javascript\nfunction PostList({ posts }) {\n  // Null check: If posts undefined, show loading\n  // If posts empty, show empty state\n  // Otherwise render posts\n  return (\n    <div>\n      {posts?.length ? (\n        posts.map(post => (\n          <Post key={post.id} data={post} />\n        ))\n      ) : (\n        <p>No posts available</p>\n      )}\n    </div>\n  );\n}\n```\n\n**What Changed:**\n- `posts.map` → `posts?.length` (optional chaining)\n- Conditional render (show message if empty)\n- Component never crashes\n\n**Pro Pattern:** Always add null checks for arrays before calling .map()',
-            exercise: 'Find a component with .map() in your project. Add null checks using optional chaining.'
-          },
-          {
-            id: 'async-await-hell',
-            title: 'Example 2: Async/Await Hell',
-            content: '**The Mess (Callback Hell):**\n```javascript\n❌ fetch(\'/api/users\')\n  .then(res => res.json())\n  .then(users => {\n    fetch(\'/api/posts\')\n      .then(res => res.json())\n      .then(posts => {\n        fetch(\'/api/comments\')\n          .then(res => res.json())\n          .then(comments => {\n            setData({ users, posts, comments });\n          });\n      });\n  });\n```\n\n**The Problem:** Deeply nested promises (callback hell). Hard to read, harder to debug.\n\n**You:** Paste code → Copilot Chat → "Convert to async/await:"\n\n**Copilot Converts:**\n```javascript\n✅ const fetchAllData = async () => {\n  try {\n    const usersRes = await fetch(\'/api/users\');\n    const users = await usersRes.json();\n    \n    const postsRes = await fetch(\'/api/posts\');\n    const posts = await postsRes.json();\n    \n    const commentsRes = await fetch(\'/api/comments\');\n    const comments = await commentsRes.json();\n    \n    setData({ users, posts, comments });\n  } catch (error) {\n    console.error(\'Failed to fetch data:\', error);\n    setError(\'Failed to load data\');\n  }\n};\n\nfetchAllData();\n```\n\n**What Changed:**\n- Flat structure (easy to read)\n- Error handling (try/catch)\n- Clear variable names\n- No nesting nightmares',
-            summary: 'Callback hell → Async/await heaven. Copilot converts instantly.'
-          },
-          {
-            id: 'infinite-loop-rescue',
-            title: 'Example 3: Infinite Loop Rescue',
-            content: '**The Infinite Loop:**\n```javascript\n❌ function removeCompletedTodos(todos) {\n  while (todos.length > 0) {\n    if (todos[0].completed) {\n      todos.pop();\n    } else {\n      break;\n    }\n  }\n  return todos;\n}\n```\n\n**Problem:** Array mutates during iteration. Infinite loop freezes browser.\n\n**You:** Highlight broken code → `/fix`\n\n**Copilot Fixes:**\n```javascript\n✅ function removeCompletedTodos(todos) {\n  // Create copy so we don\'t mutate original\n  // Filter out completed todos\n  return todos.filter(todo => !todo.completed);\n}\n\n// Or if you must use while loop:\nfunction removeCompletedTodos(todos) {\n  let index = todos.length - 1;\n  while (index >= 0) {\n    if (todos[index].completed) {\n      todos.splice(index, 1);\n    }\n    index--;\n  }\n  return todos;\n}\n```\n\n**What Changed:**\n- Used `.filter()` (functional approach, no mutations)\n- Or used reverse iteration (avoids index issues)\n- No more infinite loop\n\n**Pro Pattern:** Prefer `.filter()`, `.map()`, `.reduce()` over while loops when possible.',
-            reflection: 'Why does mutating arrays during iteration cause infinite loops? How does Copilot prevent this?'
-          }
-        ]
-      },
-      {
-        id: 'refactoring-workflows',
-        title: 'Refactoring Workflows (Polish Instantly)',
-        learningOutcome: 'Learn workflows that transform messy code into professional patterns.',
-        lessons: [
-          {
-            id: 'make-this-better-workflow',
-            title: 'Workflow 1: "Make This Better"',
-            content: '**The Process:**\nHighlight messy function → Copilot Chat → "Refactor this to be cleaner and more professional"\n\n**Messy Code (Beginner Level):**\n```javascript\nfunction calc(a,b,c) {\n  var result = a + b + c;\n  return result;\n}\n\nfunction get_user_total(price, tax, shipping) {\n  let t = price * tax;\n  let s = price + t + shipping;\n  return s;\n}\n```\n\n**Problems:**\n- Poor naming (a, b, c, t, s)\n- Unnecessary variables\n- Snake_case instead of camelCase\n- No documentation\n- No error handling\n\n**You:** Highlight → Copilot Chat → "Refactor this"\n\n**Copilot Refactors:**\n```javascript\n/**\n * Calculates total cart cost including tax and shipping\n * @param {number} price - Base product price\n * @param {number} taxRate - Tax percentage (e.g., 0.08 for 8%)\n * @param {number} shippingCost - Flat shipping fee\n * @returns {number} Total cost\n */\nconst calculateCartTotal = (price, taxRate, shippingCost) => {\n  if (price < 0 || taxRate < 0 || shippingCost < 0) {\n    throw new Error(\'Price values must be positive\');\n  }\n  \n  return price * (1 + taxRate) + shippingCost;\n};\n```\n\n**What Changed:**\n- Clear function name (calculateCartTotal)\n- Clear parameter names (price, taxRate, shippingCost)\n- Documentation (JSDoc)\n- Error handling\n- Arrow function (modern)\n- Single return statement\n- No intermediate variables\n\n**Refactoring Transforms:**\nMessy → Professional\nConfusing → Clear\nError-prone → Robust',
-            exercise: 'Find 3 messy functions in your project. Use Copilot to refactor each one.'
-          },
-          {
-            id: 'test-generation-workflow',
-            title: 'Workflow 2: "/tests" → Auto Test Generation',
-            content: '**The Process:**\nWrite function → Select function → Type `/tests` → Instant test suite\n\n**Your Function:**\n```javascript\nfunction validateEmail(email) {\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return emailRegex.test(email);\n}\n```\n\n**You:** Highlight function → `/tests`\n\n**Copilot Generates:**\n```javascript\ndescribe(\'validateEmail\', () => {\n  it(\'should validate correct email formats\', () => {\n    expect(validateEmail(\'user@example.com\')).toBe(true);\n    expect(validateEmail(\'john.doe@company.co.uk\')).toBe(true);\n  });\n  \n  it(\'should reject emails without @\', () => {\n    expect(validateEmail(\'userexample.com\')).toBe(false);\n  });\n  \n  it(\'should reject emails without domain\', () => {\n    expect(validateEmail(\'user@\\.com\')).toBe(false);\n  });\n  \n  it(\'should reject emails with spaces\', () => {\n    expect(validateEmail(\'user @example.com\')).toBe(false);\n  });\n  \n  it(\'should reject empty string\', () => {\n    expect(validateEmail(\'\'))).toBe(false);\n  });\n});\n```\n\n**What\'s Included:**\n- Happy path tests (valid emails)\n- Edge cases (missing @, no domain, spaces)\n- Empty input handling\n- Professional test structure\n\n**Why Tests Matter:**\n- Proves your code works\n- Catches regressions\n- Documents expected behavior\n- Gives you confidence to refactor',
-            summary: '/tests generates complete test suites instantly. Never write tests manually again.'
-          },
-          {
-            id: 'style-modernization-workflow',
-            title: 'Workflow 3: Style Modernization',
-            content: '**Pattern 1: Legacy jQuery → Modern React**\n\n**Old jQuery:**\n```javascript\n$(\'#button\').click(function() {\n  $(\'#content\').html(\'<p>Loading...</p>\');\n  $.ajax({\n    url: \'/api/data\',\n    success: function(data) {\n      $(\'#content\').html(data.html);\n    },\n    error: function() {\n      $(\'#content\').html(\'Error!\');\n    }\n  });\n});\n```\n\n**You:** Paste → Copilot Chat → "Convert to modern React 18"\n\n**Modern React:**\n```javascript\nfunction DataLoader() {\n  const [content, setContent] = useState(null);\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState(null);\n  \n  const handleClick = async () => {\n    setLoading(true);\n    try {\n      const response = await fetch(\'/api/data\');\n      const data = await response.json();\n      setContent(data.html);\n    } catch (err) {\n      setError(\'Error loading data\');\n    } finally {\n      setLoading(false);\n    }\n  };\n  \n  return (\n    <button onClick={handleClick}>\n      {loading ? \'Loading...\' : \'Load Data\'}\n    </button>\n    {error && <p>{error}</p>}\n    {content && <div>{content}</div>}\n  );\n}\n```\n\n**Pattern 2: Vanilla Loops → Functional Methods**\n\n**Old (Imperative):**\n```javascript\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = [];\nfor (let i = 0; i < numbers.length; i++) {\n  doubled.push(numbers[i] * 2);\n}\n```\n\n**Modern (Declarative):**\n```javascript\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(n => n * 2);\n```\n\n**Pattern 3: Class Components → Functional + Hooks**\n\n**Old Class:**\n```javascript\nclass UserProfile extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { user: null };\n  }\n  componentDidMount() {\n    fetch(\'/api/user\').then(r => r.json()).then(u => this.setState({ user: u }));\n  }\n  render() {\n    return <div>{this.state.user?.name}</div>;\n  }\n}\n```\n\n**Modern Functional:**\n```javascript\nfunction UserProfile() {\n  const [user, setUser] = useState(null);\n  \n  useEffect(() => {\n    const fetchUser = async () => {\n      const response = await fetch(\'/api/user\');\n      const userData = await response.json();\n      setUser(userData);\n    };\n    fetchUser();\n  }, []);\n  \n  return <div>{user?.name}</div>;\n}\n```',
-            summary: 'Copilot modernizes your codebase: jQuery → React, loops → methods, classes → hooks.'
-          }
-        ]
-      },
-      {
-        id: 'sixty-second-debug-system',
-        title: 'The 60-Second Debug System',
-        learningOutcome: 'Master the fastest end-to-end debugging workflow.',
-        lessons: [
-          {
-            id: 'debug-cycle',
-            title: 'Error to Fixed in 60 Seconds',
-            content: '**The System:**\n```\nERROR APPEARS → 60 SECONDS MAX → FIXED\n\n5s   → Copy full error message + context\n10s  → Copilot Chat → Paste error\n20s  → Review suggestion → Tab to accept\n15s  → /tests → Verify fix works\n10s  → /docs → Document solution\n```\n\n**Real Example: 60-Second Timeline**\n\n**0:00** Error appears:\n```\nTypeError: Cannot read property \'filter\' of undefined\n  at filterUsers (helpers.js:12)\n```\n\n**0:05** You copy error + context\n\n**0:15** You paste to Copilot Chat:\n```\n"Got this error in helpers.js:\nTypeError: Cannot read property \'filter\' of undefined\nCode: data.filter(item => item.active)\nFix this?"\n```\n\n**0:35** Copilot responds:\n```javascript\n// Add null check\nconst activeUsers = data?.filter(item => item.active) || [];\n```\nYou: Tab to accept\n\n**0:50** Type `/tests` → Copilot generates test\n```javascript\ntest(\'filters active users\', () => {\n  expect(filterUsers(null)).toEqual([]);\n  expect(filterUsers([{active: true}, {active: false}])).toEqual([{active: true}]);\n});\n```\n\n**1:00** Done. Error fixed, tested, documented.\n\n**Comparison:**\n- Manual debugging: 2+ hours (Google, test, debug cycle)\n- With Copilot: 60 seconds\n\n**Pro Debug Prompts (Bookmark These):**\n```\n"Debug this JavaScript error: [paste error]"\n"Why is this async function not working?"\n"Convert this callback hell to async/await"\n"Fix this React useEffect infinite loop"\n"Add error boundaries to this component"\n"Why is this array undefined?"\n"Null reference error in: [paste code]"\n```',
-            summary: '5 steps, 60 seconds: Error → Copied → Explained → Fixed → Tested.'
-          }
-        ]
-      },
-      {
-        id: 'common-beginner-bugs-copilot-crushes',
-        title: 'Common Beginner Bugs Copilot Crushes',
-        learningOutcome: 'Recognize and instantly fix the 5 most common beginner bugs.',
-        lessons: [
-          {
-            id: 'bug-crushing-guide',
-            title: '5 Most Common Bugs (Instantly Fixed)',
-            content: '**Bug #1: Null Reference** 🎯 Most Common\n```\nSymptom: "Cannot read property X of undefined"\nCause: Trying to use .map(), .length, properties on undefined/null\nCopilot Fix: Add optional chaining (?.) or null check\nCode: data?.map() || [] or if (data) { ... }\nTime to fix: 5 seconds\n```\n\n**Bug #2: Async Hell** 🔄 Most Frustrating\n```\nSymptom: Promises nested 5 levels deep, can\'t track execution\nCause: .then().then().then() chains\nCopilot Fix: Convert to async/await\nCode: const data = await fetch(); vs .then().then()\nTime to fix: 10 seconds\n```\n\n**Bug #3: Infinite Loops** 🔁 Most Dangerous\n```\nSymptom: Browser freezes, CPU spikes\nCause: Loop condition never changes, or mutating array during iteration\nCopilot Fix: Fix loop condition or use .filter()/.map()\nCode: Use reverse iteration or functional methods\nTime to fix: 15 seconds\n```\n\n**Bug #4: State Updates Not Working** ⚛️ Most Common in React\n```\nSymptom: "setState is not a function" or state doesn\'t update\nCause: Wrong import, not in function component, forgot useState\nCopilot Fix: Add useState import, check component type\nCode: const [state, setState] = useState(initial);\nTime to fix: 5 seconds\n```\n\n**Bug #5: API Errors (404, CORS, Auth)** 🌐 Most Common in Real Projects\n```\nSymptom: Network tab shows 404/403, CORS error in console\nCause: Wrong API endpoint, missing auth headers, CORS not configured\nCopilot Fix: Add proper error handling + auth headers\nCode: Full try/catch with error UI + bearer token\nTime to fix: 20 seconds\n```\n\n**Reality: 80% of beginner bugs fall into these 5 categories.**\n\nCopilot instantly recognizes and fixes all of them.',
-            summary: '5 bug types, 5 Copilot fixes, 80% of beginner bugs solved instantly.'
-          }
-        ]
-      },
-      {
-        id: 'code-review-with-copilot',
-        title: 'Code Review with Copilot (Pro Pattern)',
-        learningOutcome: 'Implement weekly code quality improvements automatically.',
-        lessons: [
-          {
-            id: 'friday-code-quality',
-            title: 'Friday Code Quality Check (Professional Pattern)',
-            content: '**The Weekly Ritual:**\n```\nEvery Friday, 15 minutes, 10x code quality improvement\n```\n\n**Step 1: Comprehensive Code Review (5 minutes)**\n```\n1. Copilot Chat:\n   "Review my entire codebase for:\n   - Security vulnerabilities\n   - Performance issues\n   - Outdated patterns\n   - Missing error handling\n   - Accessibility issues\n   \n   Flag top 10 improvements needed"\n\n2. Copilot analyzes and returns ranked list\n```\n\n**Step 2: Apply Top Improvements (5 minutes)**\n```\n1. For each flagged issue:\n   Highlight code → /fix or /refactor\n   \n2. Accept changes\n   Tab to approve improvements\n   \n3. Repeat for top 5\n```\n\n**Step 3: Test Coverage (3 minutes)**\n```\n1. Highlight functions with no tests\n2. Type /tests\n3. Copilot generates complete test suite\n4. Add to CI/CD\n```\n\n**Step 4: Documentation (2 minutes)**\n```\n1. Functions without docs → /docs\n2. Copilot adds JSDoc automatically\n3. Professional documentation auto-generated\n```\n\n**Example: Real Friday Review**\n\n**Issues Found:**\n1. ❌ SQL query vulnerable to injection\n   ✅ Parameterized query added\n   \n2. ❌ Nested loop causes O(n²) performance\n   ✅ Converted to .filter().map() O(n)\n   \n3. ❌ Console.log() left in production code\n   ✅ Removed\n   \n4. ❌ Missing error handling in API calls\n   ✅ Try/catch added\n   \n5. ❌ No tests for core function\n   ✅ 8 test cases generated\n\n**Result:** Weekly, your codebase improves automatically.',
-            summary: 'Friday 15-minute ritual: Review → Fix → Test → Document. Weekly 10x quality improvement.',
-            reflection: 'What would happen if you did this every Friday for a year? Your code quality would be elite.'
-          }
-        ]
-      },
-      {
-        id: 'honest-limitations',
-        title: 'Honest Limitations (Beginner Reality)',
-        learningOutcome: 'Understand where Copilot struggles and maintain healthy skepticism.',
-        lessons: [
-          {
-            id: 'limitations-and-caution',
-            title: 'Where Copilot Struggles',
-            content: '**Copilot Struggles With:**\n\n⚠️ **Business Logic Bugs** (NOT obvious from code)\n```\nCopilot can\'t know: "This calculation uses wrong formula"\nYour job: Review business logic manually\nExample: Discount should be $10 fixed, not 10% of price\n```\n\n⚠️ **Framework-Specific Edge Cases**\n```\nCopilot doesn\'t know every React Hook quirk\nCopilot struggles with: Next.js specific issues\nCopilot misses: Custom framework edge cases\nYour job: Know your framework deeply\n```\n\n⚠️ **Third-Party Library Quirks**\n```\nCopilot doesn\'t know why: MongoDB query returns empty\nCopilot struggles with: Obscure library version issues\nYour job: Read library documentation\n```\n\n⚠️ **Security Vulnerabilities**\n```\nCopilot sometimes generates:\n❌ Weak password validation\n❌ SQL injection vulnerabilities\n❌ XSS exploitable code\nYour job: ALWAYS review security code manually\n```\n\n⚠️ **System Design Issues**\n```\nCopilot doesn\'t think about:\n- Database indexing\n- Cache invalidation\n- API rate limiting\n- Scalability\nYour job: Architect these properly\n```\n\n**Important Reality:**\nCopilot fixes 80% of beginner bugs instantly.\nThe remaining 20% need your critical thinking.',
-            problem: 'Beginners sometimes trust Copilot blindly, leading to security issues or architectural mistakes.',
-            solution: 'Always review critical code (auth, database, payments) manually. Use Copilot for 80%, your brain for 20%.'
-          },
-          {
-            id: 'best-practices-always',
-            title: 'Always Do This',
-            content: '**Safety Checklist:**\n\n✅ **Read Every Suggestion**\nDon\'t Tab blindly. Understand what Copilot wrote.\n\n✅ **Test After Fixes**\nEven Copilot can be wrong. Run your test suite.\n\n✅ **Review Security Code**\nAuth, payments, database queries—always human review.\n\n✅ **Learn Patterns**\nDon\'t just Tab. Ask yourself: Why did Copilot write this?\n\n✅ **Know When Not to Trust**\nBusiness logic, system design, architecture—you decide.\n\n✅ **Comment Your Review**\nAdd comment: "Reviewed by human - security critical"\n\n✅ **Keep Debugging Skills Sharp**\nCopilot won\'t exist forever. Learn actual debugging.\n\n**The Developer\'s Creed:**\nCopilot is a tool. Your brain is the master.',
-            summary: 'Read. Test. Review. Learn. Trust yourself more than AI.'
-          }
-        ]
-      },
-      {
-        id: 'summary-debug-heaven',
-        title: 'Summary: Debug Hell → Debug Heaven',
-        learningOutcome: 'Recap what you\'ve learned and prepare to debug like a pro.',
-        lessons: [
-          {
-            id: 'four-minute-mastery',
-            title: 'Four-Minute Debugging Mastery',
-            content: '**You\'ve Mastered:**\n\n✅ **/fix command**\nInstant bug fixes for 80% of beginner errors\n\n✅ **Error explanation**\nUnderstand root causes, not just band-aids\n\n✅ **/explain command**\nTransform confusing code into plain English\n\n✅ **Three real debugging examples**\nReact null reference, async hell, infinite loops\n\n✅ **Three refactoring workflows**\nMake better, test generation, style modernization\n\n✅ **60-second debug system**\nError to fixed in one minute\n\n✅ **Five common bug patterns**\nNull reference, async, infinite loops, state, API errors\n\n✅ **Weekly code review ritual**\nFriday 15-minute quality boost\n\n**The New Reality:**\nPreviously: Hours debugging → Stack Overflow → Maybe fixed → Resume guessing\nNow: 60 seconds → Understood → Fixed → Tested → Documented\n\n**Impact:**\nDebugging transforms from your biggest weakness into your unfair advantage.\n\n**Speed Increase:**\n- Manual debugging: 100% baseline (1-2 hours per bug)\n- With Copilot: 2000% faster (3-5 minutes per bug)\n\nYou\'ve now achieved professional-level debugging speed.',
-            summary: 'You\'ve mastered 80% of beginner debugging. You now debug faster than experienced developers.',
-            action: 'Find a bug in your project RIGHT NOW. Use /fix. Watch it disappear in 60 seconds. Welcome to the future.'
-          }
-        ]
-      },
-      {
-        id: 'continue-learning-faq',
-        title: 'Continue Learning & FAQ',
-        learningOutcome: 'Know what\'s next and answer your remaining questions.',
-        lessons: [
-          {
-            id: 'next-steps-and-faq',
-            title: 'Next Steps & Beginner FAQ',
-            content: '**Next Course:** "Copilot for Testing + Production Deployments"\n\n**Your Challenge:** Fix 5 bugs in your current project using ONLY Copilot Chat. Time yourself. Compare to manual debugging time.\n\n**FAQ:**\n\n**Q: What if Copilot\'s fix is wrong?**\nA: Escape → Ask again → Manual fix. Copilot is helpful, not infallible. You\'re always in control.\n\n**Q: Does debugging with Copilot actually teach me?**\nA: Yes – you see correct patterns repeatedly. Each fix teaches you the proper way to handle that bug category.\n\n**Q: Is it safe to use Copilot for production code?**\nA: Generally yes for regular features. For security code (auth, payments, database)—always review manually.\n\n**Q: Will I still learn real debugging skills?**\nA: Yes, because you understand WHAT Copilot fixed and WHY. Reading explanations teaches deeper than reading docs.\n\n**Q: What if Copilot introduces a security bug?**\nA: Always review security-critical code. That\'s your job. Copilot handles the mundane bugs; you oversee the important ones.\n\n**Q: How do I trust Copilot suggestions?**\nA: Review + test. If it passes tests, it\'s probably right. If it doesn\'t work, Copilot tries again.',
-            summary: 'Next: Testing + Deployments. Challenge: Fix 5 bugs today. You\'re ready.'
-          },
-          {
-            id: 'final-debug-truth',
-            title: 'Next Bug? Don\'t Google. Highlight & Fix.',
-            content: '**The New Workflow:**\n\n**Before Copilot:**\n1. See error → Panic\n2. Google error message\n3. Read 10+ Stack Overflow posts\n4. Try random solutions\n5. Maybe fix it\n6. Waste 2 hours\n\n**With Copilot:**\n1. See error → Stay calm\n2. Copy error → Copilot Chat\n3. Read explanation → Understand it\n4. Accept fix → Test it\n5. Move on\n6. 60 seconds\n\n**The Difference:**\nPreviously: Debugging was your worst day.\nNow: Debugging is your superpower.\n\nCopilot just made debugging your unfair advantage.\n\n**Your competitive edge:** Errors that paralyze other beginners are solved in seconds for you.',
-            action: 'Next time you see an error: STOP Googling. HIGHLIGHT code. Type /fix. PROBLEM SOLVED. Welcome to the future of debugging.'
-          }
-        ]
-      }
-    ],
+        id: 'introduction-copilot-training-wheels',
         title: 'Copilot = Training Wheels for Real Coding',
         learningOutcome: 'Understand how Copilot reads your intent and generates production-ready code while you learn proper patterns.',
         lessons: [
@@ -2771,6 +2589,155 @@ export const courseContentData: Record<string, CourseData> = {
     ],
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include practical examples with code snippets. Emphasize learning benefits and time savings. Use clear before/after comparisons. Include beginner-friendly language. Highlight real-world use cases. Address common fears (cheating, job replacement). Include actionable next steps.',
     expansionIdeas: 'Create advanced courses: "Copilot Chat Mastery for Beginners," "Advanced AI-Assisted Debugging," "Building AI-Augmented Projects." Offer templates: "Copilot Prompt Library," "Framework-Specific Guides," "Testing with Copilot." Build video tutorials for setup and first project. Create case studies: "How I Built [Project] in 1/3 the Time." Develop challenges: "30-Day Copilot Learning Challenge."'
+  },
+  'github-copilot-coding/debugging-refactoring-copilot': {
+    courseTitle: 'Debug & Refactor Code with GitHub Copilot – Beginner\'s 4-Minute Guide',
+    metaTitle: 'Debug & Refactor Code with GitHub Copilot – Beginner Guide',
+    metaDescription: 'Learn how GitHub Copilot fixes bugs, explains errors, refactors messy code, and improves your functions automatically. Simple beginner workflows that turn error frustration into instant solutions.',
+    modules: [
+      {
+        id: 'debug-trifecta',
+        title: 'The Debug Trifecta (3 Commands)',
+        learningOutcome: 'Master the three essential Copilot commands that fix 80% of bugs instantly.',
+        lessons: [
+          {
+            id: 'fix-command',
+            title: 'Command 1: "/fix" (Instant Bug Killer)',
+            content: 'The fastest way to fix broken code:\n\n**How it works:**\n1. Highlight broken code\n2. Press Ctrl+I (or type /fix)\n3. Copilot fixes immediately\n\n**Example:**\n❌ function add(a, b) { return a + b }\n// Error: NaN with strings\n\n✅ Copilot suggests:\nfunction add(a, b) {\n  return Number(a) + Number(b);\n}\n\n**Why it\'s magic:**\nCopilot reads your code, sees the bug pattern, and applies the professional fix instantly. No googling, no debugging steps—just fixed code.\n\n**Common fixes Copilot handles:**\n- Type coercion issues\n- Null/undefined checks\n- Missing error handling\n- Logic errors\n- API response formatting\n\n**Pro tip:**\nAlways review the fix. Copilot is 95% accurate but not 100%. Reading suggestions teaches you debugging patterns.',
+            handsOn: 'Open a project with a bug. Highlight the broken code. Hit Ctrl+I and watch Copilot fix it in 3 seconds.'
+          },
+          {
+            id: 'explain-error',
+            title: 'Command 2: "Explain This Error"',
+            content: 'When you see a cryptic error message, Copilot translates it.\n\n**Workflow:**\n1. Copy full error message from console\n2. Open Copilot Chat\n3. Paste: "Why does this error happen: [paste error]"\n4. Copilot explains in plain English\n\n**Real Example:**\nError: "Cannot read property \'map\' of undefined"\n\nCopilot: "Your array is undefined. The code tries to call .map() on something that doesn\'t exist. Add a null check before calling .map():\n\narray?.map() || []"\n\n**Why this matters:**\nBeginner errors are usually:\n- Null/undefined issues (60%)\n- Type mismatches (20%)\n- Async/timing problems (15%)\n- Other (5%)\n\nCopilot explains exactly which category and how to fix it.\n\n**Common error explanations:**\n- "Cannot read property X of undefined"\n- "TypeError: X is not a function"\n- "ReferenceError: X is not defined"\n- "Unexpected end of JSON input"\n- "CORS error"\n\nAll solved in seconds with explanation.',
+            exercise: 'Take an error from your current project. Paste it to Copilot Chat with "Fix this error: [paste]". You\'ll learn the pattern for future.'
+          },
+          {
+            id: 'explain-command',
+            title: 'Command 3: "/explain" (Code Translator)',
+            content: 'When code confuses you, ask Copilot to translate to English.\n\n**How it works:**\n1. Highlight confusing code\n2. Type /explain (or use Copilot Chat)\n3. Get plain English breakdown\n\n**Example:**\nConfusing code:\nconst result = users\n  .filter(u => u.active)\n  .map(u => ({ ...u, premium: true }))\n  .reduce((acc, u) => ({ ...acc, [u.id]: u }), {});\n\nCopilot /explain:\n"This code:\n1. Filters users to only active ones\n2. Adds a \'premium\' flag to each\n3. Converts array into object with user IDs as keys\n\nResult: { \'123\': { id: \'123\', name: \'John\', active: true, premium: true }, ... }"\n\n**Why beginners need this:**\nChained functions (.filter().map().reduce()) look like magic.\nCopilot breaks it into digestible steps.\n\n**Learning benefit:**\nAs Copilot explains, you learn functional patterns naturally.\nYou see the chain works, understand why, and eventually write it yourself.',
+            reflection: 'Confusing code today with /explain → Same pattern understood → You write it next time'
+          }
+        ]
+      },
+      {
+        id: 'real-debugging-examples',
+        title: 'Real Debugging Examples (Copy These)',
+        learningOutcome: 'See exact workflows for common beginner bugs you\'ll encounter.',
+        lessons: [
+          {
+            id: 'react-error-fix',
+            title: 'Example 1: React "Cannot Read Property" (30 seconds)',
+            content: 'The #1 React beginner error:\n\n**The Error:**\nposts.map is not a function\n\n**Why it happens:**\nposts is undefined when component renders. .map() only works on arrays.\n\n**60-Second Copilot Fix:**\n1. Open Copilot Chat\n2. Paste: "Fix this React error: posts.map is not a function"\n3. Copilot responds:\n\n✅ {posts?.length ? posts.map(post => (\n  <Post key={post.id} post={post} />\n)) : <p>No posts</p>}\n\n**What Copilot did:**\n- Added optional chaining (posts?)\n- Checked if posts exists before mapping\n- Added fallback UI if no posts\n- Zero runtime errors\n\n**Why this works:**\nOptional chaining (?.) is the professional React pattern.\nCopilot always suggests it for undefined issues.',
+            handsOn: 'Create a React component that renders an undefined array. Trigger the error. Use Copilot /fix. See the pattern.'
+          },
+          {
+            id: 'async-await-conversion',
+            title: 'Example 2: Async/Await Hell',
+            content: 'Converting callback nightmare to clean async/await:\n\n**Callback Hell (Messy):**\nfetch(\'/api/users\')\n  .then(res => res.json())\n  .then(users => {\n    fetch(\'/api/posts\')\n      .then(res => res.json())\n      .then(posts => {\n        // Now use users + posts\n      })\n  })\n\n**The Problem:**\nNested callbacks are unreadable and error-prone.\n\n**Copilot Chat Workflow:**\n1. Paste messy code\n2. Ask: "Convert this callback chain to async/await"\n3. Copilot writes:\n\n✅ const response = await fetch(\'/api/users\');\nconst users = await response.json();\n\nconst postsResponse = await fetch(\'/api/posts\');\nconst posts = await postsResponse.json();\n\n// Now use users + posts\n\n**Why it\'s better:**\n- Reads top to bottom (like normal code)\n- Same logic, cleaner syntax\n- Errors more obvious\n- Beginners understand it\n\n**Pattern to learn:**\nEvery .then() callback = one await line',
+            exercise: 'Find callback chains in your code. Ask Copilot: "Convert to async/await". You\'ll see the transformation.'
+          },
+          {
+            id: 'infinite-loop-rescue',
+            title: 'Example 3: Infinite Loop Rescue',
+            content: 'Browser freeze? Infinite loop in your code. Copilot finds it.\n\n**The Problem:**\n❌ while (todos.length > 0) { todos.pop() }\n\nSeems innocent but creates infinite loop if todos mutates during iteration.\n\n**What goes wrong:**\nTodos array changes while while loop checks it.\nLoop never exits.\nBrowser: 💀 (frozen)\n\n**Copilot Debug Workflow:**\n1. Highlight weird loop\n2. Type /fix\n3. Copilot suggests:\n\n✅ while (todos.slice().length > 0) {\n  todos.pop();\n}\n\n**Why it works:**\n.slice() creates copy of array. Loop checks copy (stable). .pop() mutates original (safe).\n\n**The Pattern:**\nMutating arrays in loops = infinite loop risk\nCopilot catches this pattern instantly\n\n**Prevention:**\nCopilot tests your loops mentally so you don\'t.\nYou learn: Don\'t mutate while iterating.',
+            reflection: 'Browser freeze = infinite loop 80% of time. Copilot /fix finds it in seconds. Stack Overflow would take 20 minutes.'
+          }
+        ]
+      },
+      {
+        id: 'refactoring-workflows',
+        title: 'Refactoring Workflows (Polish Instantly)',
+        learningOutcome: 'Turn messy code into professional-grade code using Copilot refactoring commands.',
+        lessons: [
+          {
+            id: 'make-better-workflow',
+            title: 'Workflow 1: "Make This Better"',
+            content: 'Generic refactoring prompt that improves any code:\n\n**The Command:**\n1. Highlight messy function\n2. Copilot Chat: "Refactor this function for clarity and performance"\n3. Copilot rewrites professionally\n\n**Example – Before (Messy):**\nfunction calc(a,b,c) { return a+b+c; }\n\n**Example – After (Professional):**\nconst calculateTotal = (price, tax, shipping) => \n  price * (1 + tax) + shipping;\n\n**Improvements Copilot made:**\n- Better function name (calc → calculateTotal)\n- Named parameters (a,b,c → price, tax, shipping)\n- Explicit calculation (shows intent)\n- Modern syntax (arrow function)\n- Clear business logic\n\n**What "better" means:**\n✓ Readable variable names\n✓ Clear intent from function name\n✓ Appropriate syntax for scenario\n✓ No performance issues\n✓ Follows current best practices\n\n**You just learned:**\nGood code isn\'t about cleverness. It\'s about clarity.\nCopilot refactors for clarity first, always.',
+            handsOn: 'Take the messiest function in your project. Ask Copilot: "Refactor for clarity". Compare the improvements. Apply them.'
+          },
+          {
+            id: 'tests-generation',
+            title: 'Workflow 2: "/tests" → Auto Test Generation',
+            content: 'Write function once, get tests automatically:\n\n**The Workflow:**\n1. Write your function\n2. Type /tests above it\n3. Copilot generates full test suite\n\n**Example:**\nYour function:\nfunction add(a, b) { return a + b; }\n\n/tests command → Copilot generates:\ntest(\'adds 1 + 2 to equal 3\', () => {\n  expect(add(1, 2)).toBe(3);\n});\n\ntest(\'adds negative numbers\', () => {\n  expect(add(-1, -2)).toBe(-3);\n});\n\ntest(\'adds zero\', () => {\n  expect(add(0, 5)).toBe(5);\n});\n\n**Why this matters:**\nBeginners skip tests (they\'re tedious).\nCopilot generates them instantly.\nNow you have confidence your code works.\n\n**Test coverage Copilot thinks about:**\n- Normal cases\n- Edge cases (zero, negative)\n- Boundary conditions\n- Type mismatches\n\n**The benefit:**\nOne /tests command = 90% code coverage\nInstead of: Skip tests → Ship buggy code\nNow: Auto tests → Confidence → Quality',
+            exercise: 'Write a simple function (calculate age, validate email, format date). Use /tests. See instant test suite. Run them. Watch green checkmarks.'
+          },
+          {
+            id: 'style-modernization',
+            title: 'Workflow 3: Style Modernization',
+            content: 'Modernize old code patterns instantly:\n\n**Patterns Copilot modernizes:**\n\n1. **Legacy jQuery → Modern React/Vue**\n$(\'#button\').on(\'click\', function() { /* code */ });\n→ <button onClick={handleClick}>Click</button>\n\n2. **Vanilla loops → Functional methods**\nfor (let i = 0; i < todos.length; i++) { /* */ }\n→ todos.map(todo => /* code */)\n\n3. **Class components → Functional + Hooks**\nclass MyComponent extends React.Component {\n  render() { return <div>...</div>; }\n}\n→ function MyComponent() {\n  return <div>...</div>;\n}\n\n4. **Callbacks → Async/Await**\nfunction then pattern\n→ async/await pattern\n\n5. **var → const/let**\nvar x = 5;\n→ const x = 5;\n\n**How to use:**\nHighlight old code → Copilot Chat:\n"Modernize this to [pattern]. Use [framework version]"\n\n**Example prompt:**\n"Convert this jQuery code to modern React hooks"\n\n**Why this matters:**\nOld patterns still work but:\n- Harder to read\n- Slower performance\n- Vulnerable to bugs\n- Can\'t hire new developers to understand it\n\nCopilot modernizes to current best practices.',
+            reflection: 'Code written 3 years ago might look ancient in 2026. Copilot keeps you current automatically.'
+          }
+        ]
+      },
+      {
+        id: 'debug-system',
+        title: 'The 60-Second Debug System',
+        learningOutcome: 'Solve any bug in 60 seconds with a proven workflow.',
+        lessons: [
+          {
+            id: 'debug-workflow',
+            title: '60-Second Complete Debug Cycle',
+            content: '**ERROR APPEARS → 60 SECONDS MAX → FIXED**\n\n**The Workflow:**\n\nSTEP 1 (5 seconds): COPY ERROR\nCopy full error message from console\nInclude stack trace if visible\n\nSTEP 2 (10 seconds): PASTE TO COPILOT\nOpen Copilot Chat\nType: "Fix this error: [paste]\"\nHit enter\n\nSTEP 3 (20 seconds): REVIEW SUGGESTION\nRead Copilot\'s fix\nMake sure it makes sense\nTab to accept suggested code\n\nSTEP 4 (15 seconds): VERIFY WITH TEST\nType /tests\nCopilot generates quick test\nRun test → Passes\n✓ Fix confirmed\n\nSTEP 5 (10 seconds): DOCUMENT\nType /docs\nCopilot explains what went wrong + why fix works\nPaste into code comment\n\n**TOTAL TIME: 60 seconds**\n\n**Compare to Manual Debugging:**\nManual Stack Overflow search: 20-60 minutes\nCopilot instant fix: 60 seconds\n\n**Time Saved Per Bug:**\n1,200-3,600 seconds\n= 20-60 minutes\n= 1 developer hour\n\nIf you fix 5 bugs/week:\nManual: 5-25 hours/week\nCopilot: 5 minutes/week\nTime savings: 4.95 hours/week\n= 257 hours/year\n\n**Pro Debug Prompts (Bookmark These):**\n\n"Debug this JavaScript error: [paste]"\n"Convert this callback hell to async/await"\n"Fix null reference error in React component"\n"Why does this useEffect infinite loop?"\n"Add error boundaries to this API call"\n"Explain this cryptic TypeScript error"\n"What\'s wrong with this SQL query?"\n\n**The System:**\nEvery bug: Same 5-step workflow\nConsistency → Speed\nSpeed → Reduced frustration\nReduced frustration → Better learning\n\n**Your new debugging reality:**\nBefore: Error appears → Frustration → Stack Overflow rabbit hole → 1 hour later → Fixed\nNow: Error appears → Copilot Chat → 60 seconds → Fixed → Learn pattern\n\nThat\'s the power.',
+            handsOn: 'Next time you encounter an error, time yourself using this 60-second workflow. You\'ll be amazed.'
+          }
+        ]
+      },
+      {
+        id: 'common-beginner-bugs',
+        title: 'Common Beginner Bugs Copilot Crushes',
+        learningOutcome: 'Recognize the top 5 bugs beginners encounter and how Copilot fixes them instantly.',
+        lessons: [
+          {
+            id: 'bug-reference-guide',
+            title: 'Top 5 Beginner Bugs & Copilot Fixes',
+            content: '**80% of beginner bugs fall into these 5 categories:**\n\n| Bug | Symptom | Copilot Fix |\n|-----|---------|----------|\n| **Null Reference** | "Cannot read property X of undefined" | `?.` optional chaining + nullcheck |\n| **Async Hell** | `.then().then().then()` chains | `async/await` conversion + proper error handling |\n| **Infinite Loops** | Browser freezes | `.slice()` or break conditions + loop guards |\n| **State Updates** | React "setState not working" | `useEffect` dependencies + hooks explanation |\n| **API Errors** | 404s, CORS, auth issues | Full try/catch + error UI + status handling |\n\n**Bug 1: Null Reference (Most Common)**\nError: "Cannot read property \'map\' of undefined"\nWhy: Variable is undefined when you try to use it\nCopilot fix: Add optional chaining (?.) + null check\nExample: array?.map() || []\n\n**Bug 2: Async Hell**\nError: Code doesn\'t wait for API response\nWhy: Callback chains confuse execution order\nCopilot fix: Convert to async/await\nExample: const data = await fetch(url);\n\n**Bug 3: Infinite Loops**\nError: Browser freezes / page unresponsive\nWhy: Loop condition never becomes false\nCopilot fix: Add proper break condition or use .slice()\nExample: Check loop exits after N iterations\n\n**Bug 4: State Updates**\nError: Component shows old data\nWhy: useEffect dependency array missing\nCopilot fix: Add proper dependencies\nExample: useEffect(() => { /* */ }, [dependency])\n\n**Bug 5: API Errors**\nError: Network request fails silently\nWhy: Missing error handling\nCopilot fix: Wrap in try/catch + show error UI\nExample: try { ... } catch(error) { showError(error); }\n\n**The Pattern Copilot Recognizes:**\nBeginner makes bug → Copilot recognizes pattern → Applies proven fix\n\n**Your learning path:**\nBug 1 → See Copilot fix → Learn pattern\nBug 1 again → You remember pattern → Fix yourself\nBug 1 third time → Automatic, no thinking needed\n\nRepeat 1000x over months → Expert developer\n\n**Copilot accelerates this learning cycle by 10x**',
+            reflection: 'Each Copilot fix teaches you a pattern. Over 6 months, you\'ve learned 1000+ patterns. That\'s advanced developer knowledge.'
+          }
+        ]
+      },
+      {
+        id: 'code-review',
+        title: 'Code Review with Copilot (Pro Pattern)',
+        learningOutcome: 'Use Copilot to audit your entire codebase weekly for quality improvements.',
+        lessons: [
+          {
+            id: 'weekly-code-review',
+            title: 'Friday Code Quality Check',
+            content: '**Weekly ritual: 15-minute code review that improves quality automatically**\n\n**The Workflow:**\n\n1. Open your project\n2. Copilot Chat → Ask:\n"Review my codebase for:\n- Security vulnerabilities\n- Performance issues\n- Outdated patterns\n- Missing error handling\n- Test coverage gaps"\n\n3. Copilot analyzes → Reports top 10 improvements\n4. Apply top 5 suggestions\n5. Run /tests on changed code\n6. Commit improvements\n\n**Example Review Output:**\n```\nSecurity Issues Found: 3\n1. Hardcoded API keys (CRITICAL)\n   → Move to .env file\n\n2. SQL injection risk (HIGH)\n   → Use parameterized queries\n\n3. XSS vulnerability (MEDIUM)\n   → Escape user input\n\nPerformance Issues: 5\n1. Unoptimized database queries\n2. Missing pagination\n3. Inefficient component re-renders\n4. Large bundle size\n5. Synchronous API calls\n\nModernization Needed:\n1. Update deprecated packages\n2. Convert var to const\n3. Use modern syntax features\n4. Add type safety (TypeScript)\n5. Improve error handling\n```\n\n**After Review:**\n✓ Security issues fixed\n✓ Performance improved 15-30%\n✓ Code modernized\n✓ Test coverage improved\n✓ Confidence increased\n\n**Weekly Result:**\nCode quality improves compounding\nWeek 1: Fix top 5 issues\nWeek 2: New review finds 4 issues left + 3 new ones\nWeek 3: Issues decreasing, quality rising\nMonth 3: Codebase is professional-grade\n\n**Time Investment:**\n15 minutes/week\n= 60 minutes/month\n= 13 hours/year\n\n**Quality Improvement:**\n50%+ fewer bugs\n40%+ better performance\n80%+ improved readability\n\n**That\'s the power of consistent review**',
+            handsOn: 'This Friday: Open Copilot Chat. Paste the code review prompt above. See what issues Copilot finds in your project.'
+          }
+        ]
+      },
+      {
+        id: 'debugging-limitations',
+        title: 'Honest Limitations (Beginner Reality)',
+        learningOutcome: 'Understand where Copilot shines and where you need to think for yourself.',
+        lessons: [
+          {
+            id: 'copilot-limitations',
+            title: 'What Copilot Struggles With',
+            content: '**Copilot Doesn\'t Solve Everything. Here\'s What It Can\'t Do:**\n\n⚠️ **Business Logic Bugs**\nCopilot can\'t debug: "My customer calculation is wrong"\nWhy: Requires understanding business rules\nYour job: Define the logic, Copilot: Implements correctly\n\nExample:\n"Calculate customer loyalty discount"\nCopilot needs you to explain: "10% for $1000+, 5% for $500+"\nThen Copilot: Implements correctly\n\n⚠️ **Framework-Specific Edge Cases**\nCopilot can\'t debug: Complex React lifecycle issues\nWhy: Requires framework mastery\nWhat works: Specific errors (infinite loops, state updates)\nWhat doesn\'t: "Why is my component behaving weird?"\n\n⚠️ **Third-Party Library Quirks**\nCopilot can\'t debug: "Why doesn\'t this npm package work?"\nWhy: Requires library documentation knowledge\nWhat works: Read package docs, give Copilot specifics\nWhat doesn\'t: Vague "it doesn\'t work" questions\n\n**THE PATTERN:**\nCopilot excels at: Syntax, patterns, best practices, common errors\nCopilot struggles at: Domain knowledge, business logic, library internals\n\n**YOUR JOB:**\nProvide context → Copilot writes code correctly\nCopilot can\'t invent business logic from nothing\n\n**Always Do This:**\n✅ Read every suggestion (security risks possible)\n✅ Test after fixes (even Copilot can be wrong)\n✅ Learn patterns (don\'t just Tab blindly)\n✅ Understand why fix works (not just apply it)\n✅ Verify edge cases (not covered in 3-second fix)\n\n**The Golden Rule:**\nCopilot accelerates, but you drive.\nYou: Strategy + business logic\nCopilot: Execution + patterns\n\nThat\'s the partnership.',
+            reflection: 'Copilot is 95% accurate. You\'re the final 5%. That\'s your value as developer.'
+          }
+        ]
+      },
+      {
+        id: 'transformation-summary',
+        title: 'Summary: Debug Hell → Debug Heaven',
+        learningOutcome: 'Understand the transformation from struggling with bugs to solving them instantly.',
+        lessons: [
+          {
+            id: 'mastery-summary',
+            title: 'Four-Minute Debugging Mastery',
+            content: '**Before Copilot (Beginner Reality):**\nError appears → Panic → Google search → Stack Overflow → 20 min browsing → Try random solutions → Finally fixed after 1-2 hours → Frustrated → Don\'t remember the pattern\n\n**After Copilot (Your New Reality):**\nError appears → Copilot Chat → Explain error → See fix → Tab accept → 60 seconds → Fixed → Learn pattern → Prevent next time\n\n**THE TRANSFORMATION:**\n\n✅ **/fix → 80% instant bug fixes**\nHighlight code → Ctrl+I → Done\nNo thinking required\n\n✅ **Error explanation → Learn while fixing**\nUnderstand why error happened\nPattern recognition happens automatically\n\n✅ **Auto-refactoring → Pro code quality**\nMessy code → Copilot improves → Professional patterns\n\n✅ **60-second debug cycle**\nEvery bug: Same workflow\nConsistency = Speed\n\n✅ **Test generation → Confidence boost**\n/tests → Full coverage\nKnow your code works\n\n**REALITY CHECK:**\nHours debugging → Minutes with Copilot\n\nDebugging was: 30-40% of developer time\nNow: 2-3% with Copilot\n\nTime freed up for:\n- Actually building features\n- Learning better patterns\n- Thinking about design\n- Contributing to team\n\n**Next Bug You Encounter:**\nDon\'t Google.\nHighlight code.\nCtrl+I.\nFixed.\n\n**Copilot just made debugging your unfair advantage.**',
+            summary: 'You\'ve mastered debugging with Copilot.\n\nErrors that paralyzed you? Now instant fixes.\nConfusing code? Now clear explanations.\nMessy implementations? Now professional refactoring.\n\nYour debugging workflow is 10x faster than beginners without Copilot.\n\nUse this skill. It separates good developers from great ones.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include practical command examples. Emphasize time savings vs manual debugging. Use real error examples. Include before/after code comparisons. Highlight learning benefits. Address beginner fears about code quality. Include actionable workflows.',
+    expansionIdeas: 'Create advanced courses: "Advanced Debugging Patterns," "Copilot for Testing," "Production Debugging with Copilot." Offer templates: "Debug Command Library," "Common Error Reference," "Refactoring Checklist." Build video tutorials for each debug command. Create case studies: "How I Debugged [Complex Issue]." Develop certification: "Professional Debugger with Copilot."'
   },
   'buffer-social-media/full-automation-workflow': {
     courseTitle: 'Full Social Post Automation Workflow: Build Your Autonomous Growth Engine',
