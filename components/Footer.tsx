@@ -14,6 +14,11 @@ export default function Footer() {
               height={134}
               className="h-16 md:h-32 w-auto mb-2"
             />
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+              <a href="mailto:abir.ai.contact@gmail.com" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+                abir.ai.contact@gmail.com
+              </a>
+            </p>
             <p className="text-sm text-gray-600 dark:text-gray-300">
               Help people choose and use the best AI tools for their job in a simple, ethical, and accessible way.
               <br />
