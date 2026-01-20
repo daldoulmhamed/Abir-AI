@@ -1,7 +1,8 @@
 'use client';
 
 import { CourseData } from '@/data/courseContent';
-import { BookOpen, CheckCircle2, Lightbulb, Zap, Target, MessageSquare } from 'lucide-react';
+import { BookOpen, CheckCircle2, Lightbulb, Zap, Target, MessageSquare, Sparkles, ArrowRight, Code2 } from 'lucide-react';
+import { useState } from 'react';
 
 interface CourseContentProps {
   courseData: CourseData;
@@ -9,201 +10,299 @@ interface CourseContentProps {
 }
 
 export default function CourseContent({ courseData, gradientClass }: CourseContentProps) {
+  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
+
+  const toggleModule = (moduleId: string) => {
+    const newExpanded = new Set(expandedModules);
+    if (newExpanded.has(moduleId)) {
+      newExpanded.delete(moduleId);
+    } else {
+      newExpanded.add(moduleId);
+    }
+    setExpandedModules(newExpanded);
+  };
+
   return (
     <div className="space-y-12">
-      {/* Course Overview */}
-      <div className={`bg-gradient-to-r ${gradientClass} rounded-2xl p-8 md:p-12 text-white shadow-xl`}>
-        <div className="flex items-start gap-4 mb-6">
-          <BookOpen className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0" />
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">{courseData.courseTitle}</h2>
-            <p className="text-white/90 text-lg leading-relaxed">
-              {courseData.metaDescription}
-            </p>
+      {/* Course Overview - Premium Hero Section */}
+      <div className={`bg-gradient-to-br ${gradientClass} rounded-2xl p-8 md:p-12 text-white shadow-2xl overflow-hidden relative`}>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+        <div className="relative z-10">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <Sparkles className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">{courseData.courseTitle}</h2>
+              <p className="text-white/90 text-lg leading-relaxed max-w-3xl">
+                {courseData.metaDescription}
+              </p>
+              <div className="flex flex-wrap gap-3 mt-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                  <Code2 className="w-4 h-4" />
+                  {courseData.modules.length} Modules
+                </span>
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                  <Zap className="w-4 h-4" />
+                  Learn at Your Pace
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Modules Grid */}
+      {/* Modules Grid - Enhanced */}
       <div className="space-y-8">
         {courseData.modules.map((module, moduleIdx) => (
-          <div key={module.id} className="space-y-6">
-            {/* Module Header */}
-            <div className="border-l-4 border-gradient-to-b from-blue-500 to-purple-500 pl-6 mb-6">
-              <div className="flex items-start justify-between mb-2">
-                <div>
-                  <span className="inline-block bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-semibold mb-2">
-                    Module {moduleIdx + 1}
-                  </span>
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-                    {module.title}
-                  </h3>
+          <div key={module.id} className="space-y-4">
+            {/* Module Header - Enhanced with Accordion */}
+            <div 
+              onClick={() => toggleModule(module.id)}
+              className="group bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-750 rounded-xl p-6 md:p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 cursor-pointer transition-all duration-300 hover:shadow-lg"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 text-white font-bold text-lg shadow-lg">
+                      {moduleIdx + 1}
+                    </span>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all">
+                      {module.title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 flex items-center gap-2 mt-3 ml-13">
+                    <Target className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                    <span className="text-sm font-medium">{module.learningOutcome}</span>
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 ml-13">
+                    {module.lessons.length} lesson{module.lessons.length !== 1 ? 's' : ''}
+                  </p>
+                </div>
+                <div className={`flex-shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center transition-transform duration-300 ${expandedModules.has(module.id) ? 'rotate-180' : ''}`}>
+                  <ArrowRight className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 </div>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 flex items-center gap-2 mt-3">
-                <Target className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                <span className="font-medium">Learning outcome:</span> {module.learningOutcome}
-              </p>
             </div>
 
-            {/* Lessons */}
-            <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
-              {module.lessons.map((lesson, lessonIdx) => (
-                <div
-                  key={lesson.id}
-                  className="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8 hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300"
-                >
-                  {/* Lesson Header */}
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
-                      <span className="text-blue-700 dark:text-blue-300 font-bold text-lg">
-                        {lessonIdx + 1}
-                      </span>
+            {/* Lessons - Expanded */}
+            {expandedModules.has(module.id) && (
+              <div className="grid gap-5 md:grid-cols-1 lg:grid-cols-1 pl-0 md:pl-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                {module.lessons.map((lesson, lessonIdx) => (
+                  <div
+                    key={lesson.id}
+                    className="group bg-white dark:bg-gray-800/50 backdrop-blur-sm border-2 border-gray-100 dark:border-gray-700 rounded-xl p-6 md:p-7 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-xl transition-all duration-300"
+                  >
+                    {/* Lesson Header */}
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 flex items-center justify-center border border-blue-200 dark:border-blue-800">
+                        <span className="text-sm font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                          {lessonIdx + 1}
+                        </span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                          {lesson.title}
+                        </h4>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {lesson.title}
-                      </h4>
+
+                    {/* Lesson Content - Beautiful Formatting */}
+                    <div className="space-y-4 mb-6 ml-14">
+                      {/* Main Content */}
+                      <div className="prose prose-sm dark:prose-invert max-w-none">
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
+                          {lesson.content}
+                        </p>
+                      </div>
+
+                      {/* Summary Box - Premium */}
+                      {lesson.summary && (
+                        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-l-4 border-emerald-500 pl-4 py-4 pr-4 rounded-lg backdrop-blur-sm">
+                          <p className="text-emerald-900 dark:text-emerald-200 text-sm leading-relaxed">
+                            <span className="font-bold mr-2">💡 Quick Summary:</span>
+                            {lesson.summary}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Problem-Solution Box */}
+                      {lesson.problem && lesson.solution && (
+                        <div className="space-y-3 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border-l-4 border-orange-500 pl-4 py-4 pr-4 rounded-lg backdrop-blur-sm">
+                          <div>
+                            <p className="text-orange-900 dark:text-orange-200 text-sm">
+                              <span className="font-bold">⚠️ Challenge:</span> {lesson.problem}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-orange-900 dark:text-orange-200 text-sm">
+                              <span className="font-bold">✅ Solution:</span> {lesson.solution}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Interactive Elements - Premium Cards */}
+                    <div className="space-y-3 pt-5 border-t-2 border-gray-100 dark:border-gray-700 ml-14">
+                      {lesson.handsOn && (
+                        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800 hover:shadow-md transition-all">
+                          <div className="flex gap-3">
+                            <Zap className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
+                            <div className="flex-1">
+                              <p className="font-semibold text-amber-900 dark:text-amber-200 text-sm mb-1">
+                                🚀 Hands-On Practice
+                              </p>
+                              <p className="text-amber-800 dark:text-amber-300 text-sm leading-relaxed">{lesson.handsOn}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {lesson.action && (
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-4 border border-green-200 dark:border-green-800 hover:shadow-md transition-all">
+                          <div className="flex gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                            <div className="flex-1">
+                              <p className="font-semibold text-green-900 dark:text-green-200 text-sm mb-1">
+                                ✨ Action Item
+                              </p>
+                              <p className="text-green-800 dark:text-green-300 text-sm leading-relaxed">{lesson.action}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {lesson.exercise && (
+                        <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-4 border border-purple-200 dark:border-purple-800 hover:shadow-md transition-all">
+                          <div className="flex gap-3">
+                            <Target className="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" />
+                            <div className="flex-1">
+                              <p className="font-semibold text-purple-900 dark:text-purple-200 text-sm mb-1">
+                                💪 Exercise
+                              </p>
+                              <p className="text-purple-800 dark:text-purple-300 text-sm leading-relaxed">{lesson.exercise}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {lesson.reflection && (
+                        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800 hover:shadow-md transition-all">
+                          <div className="flex gap-3">
+                            <Lightbulb className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+                            <div className="flex-1">
+                              <p className="font-semibold text-blue-900 dark:text-blue-200 text-sm mb-1">
+                                🤔 Reflection
+                              </p>
+                              <p className="text-blue-800 dark:text-blue-300 text-sm leading-relaxed">{lesson.reflection}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
-
-                  {/* Lesson Content */}
-                  <div className="space-y-4 mb-6">
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {lesson.content}
-                    </p>
-
-                    {/* Summary Box */}
-                    {lesson.summary && (
-                      <div className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 pl-4 py-3 rounded">
-                        <p className="text-emerald-900 dark:text-emerald-200 text-sm font-medium">
-                          💡 <span className="font-semibold">Quick summary:</span> {lesson.summary}
-                        </p>
-                      </div>
-                    )}
-
-                    {/* Problem-Solution Box */}
-                    {lesson.problem && lesson.solution && (
-                      <div className="space-y-2 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-500 pl-4 py-3 rounded">
-                        <p className="text-orange-900 dark:text-orange-200 text-sm">
-                          <span className="font-semibold">⚠️ Problem:</span> {lesson.problem}
-                        </p>
-                        <p className="text-orange-900 dark:text-orange-200 text-sm">
-                          <span className="font-semibold">✅ Solution:</span> {lesson.solution}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Interactive Elements */}
-                  <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    {lesson.handsOn && (
-                      <div className="flex gap-3 items-start">
-                        <Zap className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-                        <div>
-                          <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
-                            Hands-On
-                          </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{lesson.handsOn}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {lesson.action && (
-                      <div className="flex gap-3 items-start">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                        <div>
-                          <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
-                            Action
-                          </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{lesson.action}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {lesson.exercise && (
-                      <div className="flex gap-3 items-start">
-                        <Target className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
-                        <div>
-                          <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
-                            Exercise
-                          </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{lesson.exercise}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {lesson.reflection && (
-                      <div className="flex gap-3 items-start">
-                        <Lightbulb className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
-                        <div>
-                          <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
-                            Reflection
-                          </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{lesson.reflection}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      {/* CTA & Expansion */}
-      <div className="grid gap-6 md:grid-cols-2">
+      {/* CTA & Next Steps Section */}
+      <div className="grid gap-6 md:grid-cols-2 mt-12">
         {/* Next Steps */}
-        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl p-8 border border-blue-200 dark:border-blue-800">
+        <div className="bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-50 dark:from-blue-900/30 dark:via-cyan-900/30 dark:to-blue-900/30 rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all duration-300 backdrop-blur-sm">
           <div className="flex items-center gap-3 mb-4">
-            <MessageSquare className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            <div className="p-2 bg-blue-600 rounded-lg">
+              <MessageSquare className="w-6 h-6 text-white" />
+            </div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white">Continue Learning</h3>
           </div>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-sm">
             {courseData.expansionIdeas}
           </p>
-          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors">
-            Explore Advanced Courses →
+          <button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-2 group">
+            Explore Advanced Courses <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* SEO Notes */}
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-8 border border-purple-200 dark:border-purple-800">
+        {/* Content Structure Info */}
+        <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-purple-900/30 rounded-2xl p-8 border-2 border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all duration-300 backdrop-blur-sm">
           <div className="flex items-center gap-3 mb-4">
-            <BookOpen className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Content Structure</h3>
+            <div className="p-2 bg-purple-600 rounded-lg">
+              <BookOpen className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Structure & Format</h3>
           </div>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
             {courseData.seoNotes}
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="px-3 py-1 bg-purple-200 dark:bg-purple-800 text-purple-900 dark:text-purple-100 rounded-full text-xs font-medium">
+              Well-structured
+            </span>
+            <span className="px-3 py-1 bg-pink-200 dark:bg-pink-800 text-pink-900 dark:text-pink-100 rounded-full text-xs font-medium">
+              SEO optimized
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Completion Tracker */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Your Learning Progress</h3>
+      {/* Learning Progress Tracker */}
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-750 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Your Learning Path</h3>
+            <p className="text-gray-600 dark:text-gray-400">Complete each module at your own pace</p>
+          </div>
+          <div className="text-right">
+            <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{courseData.modules.length}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Modules</p>
+          </div>
+        </div>
+        
         <div className="space-y-3">
-          {courseData.modules.map((module, idx) => (
-            <div key={module.id} className="flex items-center gap-4">
-              <div className="flex-1">
-                <p className="font-semibold text-gray-900 dark:text-white">
-                  {module.title}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {module.lessons.length} lessons
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <div className="w-20 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all"
-                    style={{ width: '0%' }}
-                  ></div>
+          {courseData.modules.map((module, idx) => {
+            const isExpanded = expandedModules.has(module.id);
+            return (
+              <div key={module.id} className="group">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all ${isExpanded ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>
+                        {idx + 1}
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 dark:text-white text-sm md:text-base">
+                          {module.title}
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          {module.lessons.length} lesson{module.lessons.length !== 1 ? 's' : ''}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <div className="w-32 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-500"
+                        style={{ width: isExpanded ? '100%' : '0%' }}
+                      ></div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+
+        {/* Motivation CTA */}
+        <div className="mt-8 p-6 bg-gradient-to-r from-blue-600/10 to-purple-600/10 border-l-4 border-blue-600 rounded-lg">
+          <p className="text-gray-900 dark:text-white font-semibold mb-2">🚀 Ready to Start?</p>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Click on any module above to expand it and start learning. Each lesson is designed to be practical and immediately actionable.
+          </p>
         </div>
       </div>
     </div>
