@@ -2241,6 +2241,215 @@ export const courseContentData: Record<string, CourseData> = {
     seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include performance metrics and comparisons. Emphasize data-driven approach. Include A/B testing examples and frameworks. Use before/after engagement rates. Include recycling strategies. Highlight compound growth effects over time.',
     expansionIdeas: 'Create advanced courses: "AI Social Media Analytics Mastery" or "Building Automated Performance Dashboards." Offer templates: "Performance Analysis Toolkit," "Template Library Builder," "A/B Testing Framework," "Weekly Optimization Checklist," "Recycling Calendar." Build video tutorials for performance analysis and optimization. Create case studies: "How [Creator] Grew Engagement 150%." Develop certification: "Social Media Performance Engineer."'
   },
+  'github-copilot-coding/writing-code-copilot': {
+    courseTitle: 'Writing Code with GitHub Copilot: Beginner\'s 4-Minute Hands-On Guide',
+    metaTitle: 'Write Code Faster with GitHub Copilot – Beginner\'s Hands-On Guide (2026)',
+    metaDescription: 'Master real-world code writing with Copilot through comment-driven development, acceptance patterns, and 15-minute projects. Learn to ship apps 3x faster as a beginner.',
+    modules: [
+      {
+        id: 'introduction-copilot-training-wheels',
+        title: 'Copilot = Training Wheels for Real Coding',
+        learningOutcome: 'Understand how Copilot reads your intent and generates production-ready code while you learn proper patterns.',
+        lessons: [
+          {
+            id: 'copilot-philosophy',
+            title: 'The Copilot Philosophy',
+            content: 'GitHub Copilot reads your partial code, comments, and file context to suggest complete solutions. **You type the "what," Copilot writes the "how."** Perfect for beginners because it teaches proper patterns while you build real projects.\n\n**The Reality:**\nType 10% of code → Accept 70% of suggestions → Edit 20% → Production-ready app\n\nThis ratio means you\'re learning by seeing correct patterns, not just typing blindly.',
+            summary: 'You provide intent, Copilot provides implementation. You remain in control, learning as you go.',
+            handsOn: 'Reflect: What code patterns do you struggle with? Copilot will teach them to you automatically.'
+          }
+        ]
+      },
+      {
+        id: 'basic-code-writing-flow',
+        title: 'The Basic Code Writing Flow (2 Rules)',
+        learningOutcome: 'Master the two fundamental rules that unlock Copilot\'s full power in any coding scenario.',
+        lessons: [
+          {
+            id: 'rule-1-be-specific',
+            title: 'Rule #1: Be Specific in Comments',
+            content: '**Bad Comment (Generic):**\n```\n// add numbers\n```\n\n**Good Comment (Specific):**\n```\n// Calculate total price of shopping cart items with tax\n```\n\n**Copilot\'s Response to Good Comment:**\n```javascript\ntotal = cart_items.reduce((sum, item) => \n  sum + (item.price * item.quantity * 1.08), 0)\n```\n\n**Why It Works:** Specific comments give Copilot context. Generic comments leave it guessing.\n\nThe more detailed your English explanation, the better Copilot\'s code output. Comments are your primary control lever.',
+            exercise: 'Write two versions of a comment for "user validation function" – one generic, one specific. Compare Copilot\'s suggestions.',
+            summary: 'Specific comments = specific code. Generic comments = generic code. Your comment clarity directly determines code quality.'
+          },
+          {
+            id: 'rule-2-accept-reject',
+            title: 'Rule #2: Accept with Tab, Reject with Escape',
+            content: '**Keyboard Shortcuts (Muscle Memory!):**\n\n**TAB** → Accept entire suggestion (✅ "This is perfect!")\n**ESC** → Reject suggestion (❌ "Try again")\n**Right Arrow** → Accept only current line (→ "Just this line")\n**Manual typing** → Override all suggestions (type to ignore)\n\n**The Flow:**\n1. You type partial code + comment\n2. Copilot shows gray suggestion\n3. TAB to accept or ESC to reject\n4. If rejected, Copilot shows alternative\n5. Repeat until you love it\n\n**Real Example:**\nYou: `function calculateTax(amount) {`\nCopilot: `return amount * 0.08;` (suggestion shown in gray)\nYou: TAB (accept) → Code accepted\nYou: Type next line → Copilot suggests next function\n\nThis is the **rhythm of pair programming** with AI.',
+            summary: 'Tab = Yes. Escape = No. Right arrow = Maybe. You always have control.',
+            handsOn: 'Practice in VS Code: Type 5 functions. Tab to accept, Escape to reject. Feel the rhythm.'
+          }
+        ]
+      },
+      {
+        id: 'real-beginner-examples',
+        title: 'Real Beginner Examples (Copy & Try These)',
+        learningOutcome: 'Learn from concrete examples you can immediately copy and experiment with.',
+        lessons: [
+          {
+            id: 'html-landing-page',
+            title: 'Example 1: HTML Landing Page (30 seconds)',
+            content: '**Type this comment + opening tag:**\n```html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>\n```\n\n**Copilot instantly writes:**\n```html\n  <title>Modern SaaS Landing Page</title>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">\n  <style>\n    /* Additional styles if needed */\n  </style>\n</head>\n<body>\n  <!-- Navigation -->\n  <nav class="bg-white shadow-lg">\n    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\n      <div class="flex justify-between h-16">\n        <!-- Navigation content -->\n      </div>\n    </div>\n  </nav>\n```\n\n**What You Learn:** Proper HTML structure, meta tags, responsive design patterns, semantic markup.',
+            exercise: 'Start with just `<!DOCTYPE html>` and Tab 5 times. See how Copilot builds a complete landing page.'
+          },
+          {
+            id: 'todo-list-function',
+            title: 'Example 2: Todo List Function (Python)',
+            content: '**Type this comment:**\n```python\n# Add new task to todos list with timestamp\n# Return updated list\ndef add_todo(todos, task):\n```\n\n**Copilot completes:**\n```python\ndef add_todo(todos, task):\n    new_todo = {\n        \'task\': task,\n        \'completed\': False,\n        \'created_at\': datetime.now().isoformat()\n    }\n    todos.append(new_todo)\n    return todos\n```\n\n**What You Learn:** \n- Dictionary structure (key patterns for beginners)\n- Timestamp handling\n- List methods (append)\n- Return patterns\n\n**Pro Move:** After accepting this, type `# Delete task` and watch Copilot write the delete function perfectly.',
+            handsOn: 'Copy this exact Python snippet. Type the comment, then Tab 3 times. Watch complete functions appear.'
+          },
+          {
+            id: 'react-component',
+            title: 'Example 3: React Component',
+            content: '**Type comment + function name:**\n```jsx\nfunction UserProfile({ user }) {\n  // Display user avatar, name, bio, and follow button\n  // Use Tailwind CSS classes\n```\n\n**Copilot generates 60+ lines of production-ready code:**\n```jsx\nfunction UserProfile({ user }) {\n  const [isFollowing, setIsFollowing] = useState(false);\n  \n  return (\n    <div className="bg-white rounded-lg shadow-lg p-6">\n      <div className="flex items-center gap-4">\n        <img \n          src={user.avatar} \n          alt={user.name}\n          className="w-20 h-20 rounded-full object-cover"\n        />\n        <div className="flex-1">\n          <h2 className="text-2xl font-bold text-gray-900">{user.name}</h2>\n          <p className="text-gray-600 mt-1">{user.bio}</p>\n        </div>\n      </div>\n      <button\n        onClick={() => setIsFollowing(!isFollowing)}\n        className={`mt-4 px-4 py-2 rounded-lg font-semibold transition ${\n          isFollowing \n            ? \'bg-gray-200 text-gray-900\'\n            : \'bg-blue-600 text-white hover:bg-blue-700\'\n        }`}\n      >\n        {isFollowing ? \'Unfollow\' : \'Follow\'}\n      </button>\n    </div>\n  );\n}\n```\n\n**What You Learn:**\n- React hooks (useState)\n- Conditional className rendering\n- Event handling\n- Modern component patterns\n- Tailwind CSS integration',
+            summary: 'One comment generates a complete, interactive React component. This is the power of comment-driven development.'
+          }
+        ]
+      },
+      {
+        id: 'four-real-coding-workflows',
+        title: '4 Real Coding Workflows (Start Here)',
+        learningOutcome: 'Choose the workflow that fits your coding style and ship faster.',
+        lessons: [
+          {
+            id: 'comment-driven-development',
+            title: 'Workflow 1: Comment-Driven Development (Easiest)',
+            content: '**The Process:**\n1. Write English comments explaining what each function does\n2. Let Copilot write the actual code\n3. Tab to accept good suggestions\n4. Escape + rewrite comments for bad ones\n\n**Example:**\n```javascript\n// Calculate fibonacci sequence up to n\n// Return array of numbers\nfunction fibonacci(n) {\n  // Copilot writes implementation\n}\n```\n\n**Why Beginners Love This:**\n- Forces you to think in English first (planning)\n- Copilot writes correct syntax automatically\n- You focus on logic, not syntax\n- Perfect for learning proper patterns\n\n**The Loop:**\nThink English → Write comment → Copilot codes → Review → Accept/Reject → Repeat\n\nThis workflow turns coding into thinking + reviewing, not typing.',
+            problem: 'Beginners often struggle with syntax and patterns. This workflow eliminates both problems.',
+            solution: 'Comment-driven development teaches you the "what" (English logic) while Copilot handles the "how" (correct syntax).',
+            exercise: 'Write 3 functions entirely via comment-driven development. Don\'t write any code, let Copilot do it all.'
+          },
+          {
+            id: 'function-stub-method',
+            title: 'Workflow 2: Function Stub Method',
+            content: '**The Process:**\n1. Write function name + parameters\n2. Type first meaningful line\n3. Copilot completes entire function\n\n**Example:**\n```javascript\nasync function fetchUsers() {\n  const response = await fetch(\'/api/users\');\n  // Copilot writes rest + error handling automatically\n}\n```\n\n**What Happens:**\n- You write the function signature\n- You write the first line (showing intent)\n- Copilot writes everything else perfectly\n\n**Real Example - Complete Flow:**\n```javascript\n// You type:\nasync function getTopProducts(category) {\n  const response = await fetch(`/api/products?category=${category}`);\n  \n// Copilot writes:\n  if (!response.ok) {\n    throw new Error(`Failed to fetch products: ${response.statusText}`);\n  }\n  \n  const data = await response.json();\n  return data.products\n    .sort((a, b) => b.rating - a.rating)\n    .slice(0, 10);\n}\n```\n\n**Why This Works:**\n- Shows Copilot your intent (first line)\n- Copilot infers the rest\n- Error handling included automatically\n\nYou provide direction, Copilot provides completion.',
+            handsOn: 'Write 5 function signatures + first lines. Tab to let Copilot complete them all.'
+          },
+          {
+            id: 'copy-paste-learning',
+            title: 'Workflow 3: Copy-Paste Learning',
+            content: '**The Process:**\n1. Find Stack Overflow solution (often old syntax)\n2. Paste into Copilot Chat: "Convert this to modern React 18"\n3. Get updated, production-ready version instantly\n\n**Real Example:**\n\n**Old Stack Overflow Solution (Class Components):**\n```javascript\nclass UserList extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { users: [] };\n  }\n  \n  componentDidMount() {\n    fetch(\'/api/users\')\n      .then(res => res.json())\n      .then(users => this.setState({ users }));\n  }\n  \n  render() {\n    return (\n      <ul>\n        {this.state.users.map(user => (\n          <li key={user.id}>{user.name}</li>\n        ))}\n      </ul>\n    );\n  }\n}\n```\n\n**Copilot Chat Conversion:**\nPrompt: "Convert this class component to modern React 18 with hooks and async/await"\n\n**Modern Version:**\n```javascript\nfunction UserList() {\n  const [users, setUsers] = useState([]);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n  \n  useEffect(() => {\n    const fetchUsers = async () => {\n      try {\n        const response = await fetch(\'/api/users\');\n        if (!response.ok) throw new Error(\'Failed to fetch\');\n        const data = await response.json();\n        setUsers(data);\n      } catch (err) {\n        setError(err.message);\n      } finally {\n        setLoading(false);\n      }\n    };\n    \n    fetchUsers();\n  }, []);\n  \n  if (loading) return <div>Loading...</div>;\n  if (error) return <div>Error: {error}</div>;\n  \n  return (\n    <ul>\n      {users.map(user => (\n        <li key={user.id}>{user.name}</li>\n      ))}\n    </ul>\n  );\n}\n```\n\n**What You Learn:**\n- Modern syntax vs old patterns\n- Error handling (added automatically)\n- Loading states (added automatically)\n- Best practices (included)\n\nCopilot modernizes your code instantly.',
+            action: 'Find an old Stack Overflow snippet. Paste to Copilot Chat with: "Modernize this for 2026 best practices". Compare results.'
+          }
+        ]
+      },
+      {
+        id: 'common-beginner-patterns',
+        title: 'Common Beginner Patterns (Master These)',
+        learningOutcome: 'Learn the 4 patterns that cover 80% of beginner coding.',
+        lessons: [
+          {
+            id: 'tests-pattern',
+            title: 'Pattern #1: Tests (Always Generate)',
+            content: '**The Magic Command:**\nHighlight any function → Type `/tests` → Instant test suite\n\n**Example:**\n\n**Your Function:**\n```javascript\nfunction calculateDiscount(price, discountPercent) {\n  return price * (1 - discountPercent / 100);\n}\n```\n\n**Type `/tests` → Copilot Generates:**\n```javascript\ndescribe(\'calculateDiscount\', () => {\n  it(\'should calculate 10% discount correctly\', () => {\n    expect(calculateDiscount(100, 10)).toBe(90);\n  });\n  \n  it(\'should handle 0% discount\', () => {\n    expect(calculateDiscount(100, 0)).toBe(100);\n  });\n  \n  it(\'should handle 100% discount\', () => {\n    expect(calculateDiscount(100, 100)).toBe(0);\n  });\n  \n  it(\'should handle fractional discounts\', () => {\n    expect(calculateDiscount(99.99, 15.5)).toBeCloseTo(84.495);\n  });\n});\n```\n\n**What You Learn:**\n- Test structure (describe, it, expect)\n- Edge cases (0%, 100%, fractional)\n- Assertion patterns\n- Professional testing standards',
+            summary: '/tests generates production-ready test suites. Never write tests manually again.'
+          },
+          {
+            id: 'error-handling-pattern',
+            title: 'Pattern #2: Error Handling (Copilot\'s Weakness → Fix It)',
+            content: '**Copilot\'s Problem:**\n```javascript\n❌ fetch(url)\n   .then(res => res.json())\n   .then(data => setData(data))\n```\n\n**What\'s Missing:** No error handling, no validation, no edge cases.\n\n**You Fix It:**\n```javascript\n✅ try {\n  const response = await fetch(url);\n  \n  if (!response.ok) {\n    throw new Error(`HTTP error! status: ${response.status}`);\n  }\n  \n  const data = await response.json();\n  setData(data);\n} catch (error) {\n  console.error(\'Error fetching data:\', error);\n  setError(error.message);\n  showNotification(\'Failed to load data. Please try again.\');\n}\n```\n\n**Key Learning:** Copilot writes happy paths. You add reality (errors, edge cases, validation).\n\n**The Pattern:**\n1. Accept Copilot\'s basic code\n2. Wrap in try/catch\n3. Add error notifications\n4. Test error scenarios\n\nThis is where beginner developers level up to professionals.',
+            reflection: 'What could break in this code? Network failures? Invalid JSON? Wrong status? Add handling for all of them.'
+          },
+          {
+            id: 'css-classes-pattern',
+            title: 'Pattern #3: CSS Classes (Production Ready)',
+            content: '**The Comment:**\n```javascript\n// Add Tailwind classes for responsive card component\n```\n\n**Copilot Output:**\n```javascript\nclassName="bg-white shadow-lg rounded-xl p-6 md:p-8 lg:p-10 hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:bg-gray-800 dark:border-gray-700"\n```\n\n**What\'s Included:**\n- Base styles (bg-white, shadow-lg, rounded-xl)\n- Padding (responsive: p-6 md:p-8 lg:p-10)\n- Hover effects (shadow upgrade on hover)\n- Dark mode (dark: prefix styles)\n- Transitions (smooth animations)\n- Border styling\n\n**Why It\'s Great:** Copilot writes production-ready, responsive, accessible CSS automatically.\n\nYou don\'t need to know every Tailwind class—Copilot knows them all.',
+            handsOn: 'Type "// Responsive button with hover state" above a button component. Watch Copilot write perfect Tailwind classes.'
+          },
+          {
+            id: 'documentation-pattern',
+            title: 'Pattern #4: Documentation (/docs)',
+            content: '**The Command:**\nHighlight function → Type `/docs` → Instant documentation\n\n**Example:**\n\n**Your Function:**\n```javascript\nfunction mergeUserData(existingUser, newData) {\n  return {\n    ...existingUser,\n    ...newData,\n    updatedAt: new Date().toISOString()\n  };\n}\n```\n\n**Type `/docs` → Copilot Generates:**\n```javascript\n/**\n * Merges new user data with existing user object.\n * \n * @param {Object} existingUser - The current user object containing user information\n * @param {Object} newData - The new data to merge into the existing user object\n * @returns {Object} A new object containing merged user data with updated timestamp\n * \n * @example\n * const existing = { id: 1, name: \"John\", email: \"john@example.com\" };\n * const updates = { email: \"newemail@example.com\" };\n * const result = mergeUserData(existing, updates);\n * // result: { id: 1, name: \"John\", email: \"newemail@example.com\", updatedAt: \"2026-01-20T...\" }\n */\n```\n\n**What You Learn:**\n- JSDoc format (professional standard)\n- Parameter documentation\n- Return type documentation\n- Usage examples\n\nCopilot writes professional documentation instantly.',
+            summary: '/docs generates JSDoc comments. Your code instantly looks professional and maintainable.'
+          }
+        ]
+      },
+      {
+        id: 'first-project-challenge',
+        title: '15-Minute Project Challenge',
+        learningOutcome: 'Build your first complete app using Copilot from start to finish.',
+        lessons: [
+          {
+            id: 'project-challenge',
+            title: 'Build a Complete Todo App (15 Minutes)',
+            content: '**Your Challenge:**\nBuild a professional todo app in 15 minutes using ONLY Copilot.\n\n**Step 1 (3 min): HTML Structure**\n```\nCreate index.html\nType: <!DOCTYPE html>\nTab 3 times → Copilot writes complete Tailwind landing page\n```\n\n**Step 2 (2 min): CSS Styling**\n```\nCreate style.css\nType: /* Modern component styles for todo app */\nTab → Copilot writes production CSS\n```\n\n**Step 3 (5 min): JavaScript Functionality**\n```\nCreate app.js\nType comments:\n// Add new todo to list\n// Mark todo as complete\n// Delete todo from list\nTab after each → Copilot writes complete functions\n```\n\n**Step 4 (2 min): Test Suite**\n```\nHighlight functions → Type /tests\nCopilot generates complete test suite\n```\n\n**Step 5 (3 min): Copilot Chat Magic**\n```\nOpen Chat: "Add localStorage persistence so todos survive page refresh"\nCopilot writes: Complete localStorage integration\n```\n\n**Expected Result after 15 minutes:**\n✅ Professional todo app with UI\n✅ Add/complete/delete functionality\n✅ Complete test suite\n✅ Data persistence across sessions\n✅ Responsive design\n✅ Dark mode support\n✅ Production-ready code\n\n**The Point:** You went from blank files to deployable app in 15 minutes.',
+            exercise: 'Do this exact challenge today. Time yourself. Screenshot your finished app. This proves Copilot works.',
+            reflection: 'How long would this take manually? 3-4 hours? That\'s the speed difference Copilot delivers.'
+          }
+        ]
+      },
+      {
+        id: 'debugging-with-copilot',
+        title: 'Debugging with Copilot (Saves Hours)',
+        learningOutcome: 'Master three debug commands that catch 80% of beginner errors instantly.',
+        lessons: [
+          {
+            id: 'three-debug-commands',
+            title: 'Three Debug Commands That Save Hours',
+            content: '**Command #1: Highlight + "Fix This"**\n```\n1. Copy broken code\n2. Paste in Copilot Chat\n3. Message: \"Fix this\"\n4. Copilot shows corrected version with explanation\n```\n\n**Example:**\nBroken: `const arr = [1,2,3]; arr.push(4).map(x => x * 2);`\nCopilot Fix: Explains that push() returns array length (number), not array. Shows correct approach.\n\n**Command #2: Console Error → /fix**\n```\n1. Get console error message\n2. Copy entire error\n3. Copilot Chat: \"I got this error: [paste error]\"\n4. Type: /fix\n5. Copilot explains cause + solution\n```\n\n**Example Error:**\n```\nTypeError: Cannot read property \'map\' of undefined\n  at getUserPosts (app.js:45)\n```\nCopilot explains: \"users variable is undefined before you call .map(). Await your API call first.\"\n\n**Command #3: Why Question**\n```\n1. Highlight confusing code\n2. Ask: \"Why doesn\'t this work?\"\n3. Copilot explains + provides working version\n```\n\n**Pro Tip:** Copilot catches 80% of beginner bugs:\n- Async/await misuse (most common)\n- Null/undefined errors\n- Array method mistakes\n- String method confusion\n- State management timing\n\nFor the remaining 20%, Copilot can\'t fix architecture problems. That\'s where reading the error message yourself matters.',
+            summary: 'Three debug commands: Highlight + fix, console error, why question. These solve most beginner bugs instantly.',
+            handsOn: 'Intentionally write 3 broken functions. Use each debug command. Notice how Copilot explains the "why" not just the "how".'
+          }
+        ]
+      },
+      {
+        id: 'honest-reality-check',
+        title: 'Honest Reality Check (The Truth)',
+        learningOutcome: 'Understand Copilot\'s genuine strengths and where you still need your brain.',
+        lessons: [
+          {
+            id: 'copilot-shines',
+            title: 'Where Copilot Shines',
+            content: 'Copilot excels at:\n\n✅ **Learning frameworks quickly**\nReact/Vue/Svelte syntax instantly\n\n✅ **Boilerplate elimination**\nAuth systems, CRUD APIs, user management\n\n✅ **Syntax across 20+ languages**\nPython, JavaScript, Go, Rust, SQL, etc.\n\n✅ **Test suites + documentation**\nProfessional JSDoc, complete test coverage\n\n✅ **Code translation**\nPython to JavaScript instantly, maintaining logic\n\n✅ **Pattern recognition**\nCommon solutions to common problems\n\nCopilot is unbeatable at patterns it\'s seen millions of times.',
+            summary: 'Copilot is exceptional at: frameworks, boilerplate, syntax, tests, translation, patterns.'
+          },
+          {
+            id: 'still-need-human-brain',
+            title: 'Still Need Your Human Brain For',
+            content: 'Copilot still needs YOU for:\n\n⚠️ **Business logic review**\nCopilot doesn\'t understand your business. You do.\n\n⚠️ **Security patterns (ALWAYS double-check)**\nCopilot can generate insecure code. You must validate.\n\n⚠️ **Complex state management**\nCopilot can write Redux, but you need to understand the architecture.\n\n⚠️ **Production deployment steps**\nCopilot writes code, not deployment pipelines.\n\n⚠️ **System design decisions**\nCopilot doesn\'t think about scalability, databases, or infrastructure.\n\n⚠️ **Error handling edge cases**\nCopilot writes happy paths. You add reality.\n\n⚠️ **Performance optimization**\nCopilot writes working code. You optimize it.\n\n**The Perfect Ratio:** Copilot 70% → You 30% thoughtful review.',
+            problem: 'Beginners sometimes trust Copilot blindly, leading to security issues or misaligned business logic.',
+            solution: 'Always review Copilot\'s code with critical thinking. The 30% of human judgment is what separates good code from bad code.',
+            reflection: 'What happened last time you blindly accepted code without understanding it? That\'s why the 30% human review matters.'
+          }
+        ]
+      },
+      {
+        id: 'summary-coding-speed',
+        title: 'Summary: Coding Speed Unlocked',
+        learningOutcome: 'Review what you\'ve learned and prepare to ship your first Copilot-accelerated app.',
+        lessons: [
+          {
+            id: 'mastery-achieved',
+            title: 'Four-Minute Mastery Achieved',
+            content: '**You\'ve Mastered:**\n\n✅ Tab/Escape muscle memory\nThe rhythm of accepting and rejecting suggestions\n\n✅ Comment-driven development\nWrite English → Copilot codes → Review → Accept/Reject\n\n✅ Three core workflows\nComment-driven, function stubs, copy-paste learning\n\n✅ Four beginner patterns\nTests, error handling, CSS classes, documentation\n\n✅ Debug system\nThree commands that fix 80% of beginner errors\n\n✅ 15-minute project capability\nFrom blank files to deployable app in 15 minutes\n\n**The New Reality:**\nBeginner → Shipping real apps in hours, not weeks.\n\n**Speed Increase:**\n- Manual coding: 100% baseline\n- Copilot coding: 300% faster\n- With 30% thoughtful review: Still 2.8x faster overall\n\nYou\'ve now achieved the level of productivity that professional developers use daily.',
+            summary: 'You\'ve gone from not knowing Copilot to shipping production apps with it. That\'s mastery.',
+            action: 'Build your first Copilot app TODAY. Choose: Todo, Weather, E-commerce, or Blog. Ship it in 15 minutes.'
+          }
+        ]
+      },
+      {
+        id: 'continue-and-faq',
+        title: 'Continue Learning & FAQ',
+        learningOutcome: 'Know what\'s next and get answers to your remaining questions.',
+        lessons: [
+          {
+            id: 'next-steps',
+            title: 'Next Steps & Beginner FAQ',
+            content: '**Next Course:** "Copilot Chat for Debugging + Advanced Testing"\n\n**Your Challenge:** Build weather app, e-commerce cart, or blog CMS using ONLY Copilot.\n\n**FAQ:**\n\n**Q: Will I actually learn to code?**\nA: Yes – you see correct patterns immediately. Every suggestion teaches you proper syntax and design.\n\n**Q: Is using Copilot cheating?**\nA: No – 80% of professional developers use it. Companies pay for it because it\'s professional.\n\n**Q: What if Copilot\'s suggestion is wrong?**\nA: Press Escape → Copilot generates alternative. Repeat until perfect. You always control the outcome.\n\n**Q: Will Copilot replace my job?**\nA: No – it amplifies your skills. Developers using Copilot outcompete those without it. The question isn\'t "Will Copilot replace me?" It\'s "Will I use Copilot or let someone else use it?"',
+            summary: 'Next: Advanced debugging and testing. Challenge: Build real apps with Copilot. You\'re ready.'
+          },
+          {
+            id: 'final-call-to-action',
+            title: 'Open VS Code. Install Copilot. Start Shipping.',
+            content: '**Right Now:**\n1. Open VS Code\n2. Install GitHub Copilot extension (if not already)\n3. Type comment: `// Todo app with add/complete/delete`\n4. Hit Tab\n5. Watch your first Copilot app appear\n\n**What You\'re About to Experience:**\nThe moment code appears before you type it is magical. That\'s Copilot reading your intent from a comment and generating production-ready solutions.\n\nCopilot just made professional coding 10x more accessible.\n\n**Your coding life is about to change.** Welcome to the future.',
+            action: 'Code a full app today. Time yourself. Share your result. You\'re now a Copilot developer.'
+          }
+        ]
+      }
+    ],
+    seoNotes: 'H1: Course title; H2: Modules; H3: Lessons. Include practical code examples and real workflows. Emphasize hands-on learning and immediate applicability. Use before/after code comparisons. Include beginner-friendly language. Highlight real-world patterns. Address security and best practices. Include actionable next steps.',
+    expansionIdeas: 'Create advanced courses: "Copilot Chat Mastery," "Advanced AI-Assisted Debugging," "Building Production Apps with AI." Offer templates: "Copilot Prompt Library," "Framework-Specific Guides," "Security Checklist." Build video tutorials for each workflow. Create case studies: "Real Apps Built in 15 Minutes." Develop challenges: "30-Day Copilot Mastery Challenge."'
+  },
   'github-copilot-coding/what-is-github-copilot': {
     courseTitle: 'What is GitHub Copilot? Beginner\'s 3-Minute Guide',
     metaTitle: 'What is GitHub Copilot? Complete Beginner\'s Guide (2026)',
