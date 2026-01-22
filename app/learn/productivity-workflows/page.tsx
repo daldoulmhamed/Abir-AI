@@ -500,7 +500,7 @@ export default function ProductivityWorkflowsPage() {
               </div>
               <div className="prose dark:prose-invert prose-lg max-w-none">
                 <p className="mb-6 text-gray-700 dark:text-gray-300">
-                  Integrating AI into your work routines doesn't have to be complex. By focusing on task management, automation, content creation, research, and communication, you can build smarter workflows that save time, improve output, and allow you to focus on what truly matters.
+                  Integrating AI into your work routines doesn&apos;t have to be complex. By focusing on task management, automation, content creation, research, and communication, you can build smarter workflows that save time, improve output, and allow you to focus on what truly matters.
                 </p>
               </div>
 

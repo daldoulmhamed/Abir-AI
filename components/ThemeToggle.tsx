@@ -1,17 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
+  useLayoutEffect(() => {
     const theme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (theme === 'dark' || (!theme && prefersDark)) {
       document.documentElement.classList.add('dark');
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {

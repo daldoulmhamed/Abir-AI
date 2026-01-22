@@ -1,7 +1,7 @@
 'use client';
 
 import { CourseData } from '@/data/courseContent';
-import { BookOpen, CheckCircle2, Lightbulb, Zap, Target, MessageSquare, Sparkles, ArrowRight, Code2 } from 'lucide-react';
+import { CheckCircle2, Lightbulb, Zap, Target, Sparkles, ArrowRight, Code2 } from 'lucide-react';
 import { useState } from 'react';
 import { convertToolNamesToLinks } from '@/utils/toolLinks';
 

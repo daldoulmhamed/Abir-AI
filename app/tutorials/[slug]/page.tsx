@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight, Clock, BookOpen } from 'lucide-react';
 
@@ -114,7 +114,6 @@ const categoryColors: { [key: string]: string } = {
 
 export default function TutorialPage() {
   const params = useParams();
-  const router = useRouter();
   const slug = params?.slug as string;
 
   const tutorial = tutorialData[slug];
@@ -124,7 +123,7 @@ export default function TutorialPage() {
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Tutorial Not Found</h1>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">The tutorial you're looking for doesn't exist.</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-8">The tutorial you&apos;re looking for doesn&apos;t exist.</p>
           <Link
             href="/tutorials"
             className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"

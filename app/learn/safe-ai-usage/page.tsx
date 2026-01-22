@@ -438,13 +438,13 @@ export default function SafeAIUsagePage() {
                   </h3>
                   <div className="space-y-3">
                     <div className="bg-white dark:bg-gray-700 rounded p-3 text-sm text-gray-700 dark:text-gray-300">
-                      "Summarize this article clearly"
+                      &quot;Summarize this article clearly&quot;
                     </div>
                     <div className="bg-white dark:bg-gray-700 rounded p-3 text-sm text-gray-700 dark:text-gray-300">
-                      "Help me rewrite this text more professionally"
+                      &quot;Help me rewrite this text more professionally&quot;
                     </div>
                     <div className="bg-white dark:bg-gray-700 rounded p-3 text-sm text-gray-700 dark:text-gray-300">
-                      "Give me ideas for marketing my product"
+                      &quot;Give me ideas for marketing my product&quot;
                     </div>
                   </div>
                 </div>
@@ -459,13 +459,13 @@ export default function SafeAIUsagePage() {
                   </h3>
                   <div className="space-y-3">
                     <div className="bg-white dark:bg-gray-700 rounded p-3 text-sm text-gray-700 dark:text-gray-300">
-                      "Write fake reviews"
+                      &quot;Write fake reviews&quot;
                     </div>
                     <div className="bg-white dark:bg-gray-700 rounded p-3 text-sm text-gray-700 dark:text-gray-300">
-                      "Create scam messages"
+                      &quot;Create scam messages&quot;
                     </div>
                     <div className="bg-white dark:bg-gray-700 rounded p-3 text-sm text-gray-700 dark:text-gray-300">
-                      "Pretend to be someone else"
+                      &quot;Pretend to be someone else&quot;
                     </div>
                   </div>
                 </div>
