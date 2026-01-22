@@ -23,13 +23,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/learn"
+              href="#learn-practical"
               className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
             >
               Start Learning AI
             </Link>
             <Link
-              href="/profiles"
+              href="#choose-profile"
               className="inline-flex items-center px-8 py-3 border-2 border-indigo-600 text-base font-medium rounded-md text-indigo-600 dark:text-indigo-400 dark:border-indigo-400 bg-transparent hover:bg-indigo-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
             >
               Find AI Tools for My Job
@@ -39,7 +39,7 @@ export default function Home() {
       </section>
 
       {/* Choose Your Profile Section */}
-      <section className="py-16 bg-white dark:bg-gray-800">
+      <section id="choose-profile" className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-blue-300 to-blue-700 bg-clip-text text-transparent mb-4">
             Choose Your Profile
@@ -92,7 +92,7 @@ export default function Home() {
       </section>
 
       {/* Learning Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
+      <section id="learn-practical" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-700 bg-clip-text text-transparent mb-4">
@@ -233,25 +233,25 @@ export default function Home() {
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-4 mb-12">
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-indigo-600">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <Link href="/learn" className="block p-6 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-indigo-600 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                   Introduction to AI for Everyday Work
                 </h3>
-              </div>
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-purple-600">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              </Link>
+              <Link href="#choose-profile" className="block p-6 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-purple-600 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
                   How to Choose the Right AI Tool for Your Job
                 </h3>
-              </div>
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-pink-600">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              </Link>
+              <Link href="/tutorials" className="block p-6 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-pink-600 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white hover:text-pink-600 dark:hover:text-pink-400 transition-colors">
                   Practical AI Use Cases Across Industries
                 </h3>
-              </div>
+              </Link>
             </div>
             <div className="text-center">
               <Link
-                href="/learn"
+                href="#learn-practical"
                 className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
               >
                 Browse All Learning Resources
@@ -273,13 +273,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/get-started"
+              href="#choose-profile"
               className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
             >
               Get Started
             </Link>
             <Link
-              href="/learn"
+              href="#learn-practical"
               className="inline-flex items-center px-8 py-3 border-2 border-indigo-600 text-base font-medium rounded-md text-indigo-600 dark:text-indigo-400 dark:border-indigo-400 bg-transparent hover:bg-indigo-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
             >
               Browse Learning Content

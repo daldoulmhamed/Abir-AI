@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 import { blogs } from '../../data/blogs';
 
 export default function NewsPage() {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
   const articles = blogs.map(blog => ({
     title: blog.title,
     category: blog.category,
@@ -12,6 +17,10 @@ export default function NewsPage() {
   }));
 
   const categories = ['All', 'AI News', 'Privacy', 'Business', 'Platform Updates', 'Case Studies', 'Education'];
+
+  const filteredArticles = selectedCategory === 'All'
+    ? articles
+    : articles.filter(article => article.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
@@ -30,7 +39,12 @@ export default function NewsPage() {
           {categories.map((category) => (
             <button
               key={category}
-              className="px-4 py-2 text-sm font-medium rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 text-sm font-medium rounded-full transition-all ${
+                selectedCategory === category
+                  ? 'bg-indigo-600 dark:bg-indigo-500 text-white border border-indigo-600 dark:border-indigo-500'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
+              } focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
             >
               {category}
             </button>
@@ -39,7 +53,7 @@ export default function NewsPage() {
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
+          {filteredArticles.map((article, index) => (
             <article key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <span className={`px-2 py-1 text-xs font-medium rounded-full ${
