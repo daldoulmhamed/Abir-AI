@@ -5,16 +5,9 @@ export default function Home() {
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="relative py-20 bg-cover bg-center" style={{ backgroundImage: "url('/images/nature-bg.jpg')" }}>
+      <section className="relative py-28 md:py-36 lg:py-40 bg-cover bg-center" style={{ backgroundImage: "url('/images/nature-bg.jpg')" }}>
         <div className="absolute inset-0 bg-white/70 dark:bg-gray-900/70"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Image
-            src="/images/logo.png"
-            alt="Abir-AI"
-            width={1000}
-            height={334}
-            className="h-20 md:h-32 lg:h-40 w-auto mb-6 mx-auto"
-          />
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-900 via-blue-600 to-blue-300 bg-clip-text text-transparent mb-6">
             Learn and Use AI with Confidence
           </h1>
