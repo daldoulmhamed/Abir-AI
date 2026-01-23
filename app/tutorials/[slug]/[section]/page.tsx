@@ -72,7 +72,7 @@ const colorGradients: Record<string, string> = {
 // YouTube video URLs - Add video links here
 const videoData: Record<string, string | null> = {
   // ChatGPT sections
-  'getting-started-chatgpt': null,
+  'getting-started-chatgpt': 'https://www.youtube.com/embed/sbns0957-ps',
   'writing-prompts': null,
   'content-types': null,
   'refining-content': null,
@@ -186,12 +186,13 @@ function TutorialSectionPage() {
           {videoData[sectionId] ? (
             <div className="aspect-video bg-black">
               <iframe
+                className="rounded-lg shadow-2xl"
                 width="100%"
                 height="100%"
                 src={videoData[sectionId]}
                 title={section.title}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="autoplay; encrypted-media"
                 allowFullScreen
               ></iframe>
             </div>
