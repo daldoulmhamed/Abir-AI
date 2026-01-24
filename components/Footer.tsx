@@ -77,7 +77,16 @@ export default function Footer() {
         </div>
         <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-8">
           <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
-            &copy; 2026 Abir-AI. Built with ❤️ by DALDOUL M&apos;hamed. Contact: abir.ai.contact@gmail.com
+            &copy; 2026 Abir-AI. Built with ❤️ by{' '}
+            <a 
+              href="https://www.linkedin.com/in/m-hamed-daldoul-89a4a93a8" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-indigo-600 dark:text-indigo-400 hover:underline transition-all"
+            >
+              DALDOUL M&apos;hamed
+            </a>
+            . Contact: abir.ai.contact@gmail.com
           </p>
         </div>
       </div>
