@@ -73,7 +73,7 @@ const colorGradients: Record<string, string> = {
 const videoData: Record<string, string | null> = {
   // ChatGPT sections
   'getting-started-chatgpt': 'https://www.youtube.com/embed/sbns0957-ps',
-  'writing-prompts': null,
+  'writing-prompts': 'https://www.youtube.com/embed/BX5c7bxESk0',
   'content-types': null,
   'refining-content': null,
   'advanced-workflows': null,
