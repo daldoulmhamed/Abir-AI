@@ -74,7 +74,7 @@ const videoData: Record<string, string | null> = {
   // ChatGPT sections
   'getting-started-chatgpt': 'https://www.youtube.com/embed/sbns0957-ps',
   'writing-prompts': 'https://www.youtube.com/embed/BX5c7bxESk0',
-  'content-types': null,
+  'content-types': 'https://www.youtube.com/embed/PaMhfCW1SE0',
   'refining-content': null,
   'advanced-workflows': null,
   // Perplexity sections
