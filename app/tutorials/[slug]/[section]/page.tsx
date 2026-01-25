@@ -76,7 +76,7 @@ const videoData: Record<string, string | null> = {
   'writing-prompts': 'https://www.youtube.com/embed/BX5c7bxESk0',
   'content-types': 'https://www.youtube.com/embed/PaMhfCW1SE0',
   'refining-content': 'https://www.youtube.com/embed/jw0gVPJaN94',
-  'advanced-workflows': null,
+  'advanced-workflows': 'https://www.youtube.com/embed/cER4nW7_iH0',
   // Perplexity sections
   'introduction-perplexity': null,
   'advanced-search': null,
