@@ -23,6 +23,12 @@ export default function NavigationBar() {
           >
             News
           </Link>
+          <Link
+            href="/certifications"
+            className="px-8 py-5 text-lg font-semibold text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-200 border-b-4 border-transparent hover:border-indigo-600 hover:bg-indigo-50 dark:hover:bg-gray-700/50"
+          >
+            Certifications
+          </Link>
         </div>
       </div>
     </nav>
