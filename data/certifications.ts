@@ -1,3 +1,6 @@
+import { CERTIFICATION_CONFIG, getPriceForLevel, validateCertification } from '@/config/certifications';
+import { getCertificationUrl } from '@/config/site';
+
 export interface Certification {
   id: string;
   title: string;
@@ -8,6 +11,7 @@ export interface Certification {
   audience: string[];
   level: 'beginner' | 'intermediate' | 'advanced';
   duration: string;
+  price: number;
   topics: string[];
   benefits: string[];
   icon: string;
@@ -18,17 +22,21 @@ export interface Certification {
   metaDescription: string;
 }
 
+// Common benefits now imported from config/certifications.ts
+const { commonBenefits: COMMON_BENEFITS } = CERTIFICATION_CONFIG;
+
 export const certifications: Certification[] = [
   {
     id: '1',
     title: 'Generative AI Practitioner',
     slug: 'generative-ai-practitioner',
     shortTitle: 'Gen AI Practitioner',
-    tagline: 'Master Generative AI for Real-World Applications',
-    description: 'Learn to leverage generative AI tools and techniques for practical business applications. Master prompting, understand AI capabilities, and apply generative AI to solve real-world challenges.',
+    tagline: 'Learn Generative AI Free — Get Certified for Just 49€',
+    description: 'Access free, self-paced learning materials covering generative AI fundamentals, prompting techniques, and real-world applications. Master ChatGPT, Claude, and other tools at your own pace. Once ready, validate your skills with our optional industry-recognized certification exam (49€).',
     audience: ['Students', 'Junior Professionals', 'Freelancers', 'Employees'],
     level: 'beginner',
-    duration: '6-8 weeks',
+    duration: '1–4 weeks, self-paced',
+    price: 49,
     topics: [
       'Generative AI Fundamentals',
       'Advanced Prompting Techniques',
@@ -38,29 +46,30 @@ export const certifications: Certification[] = [
       'Practical Project Implementation'
     ],
     benefits: [
-      'Industry-recognized certification',
-      'Hands-on projects with real AI tools',
-      'Job-ready skills for AI-powered roles',
-      'Access to exclusive community',
-      'Lifetime access to course materials'
+      COMMON_BENEFITS.free,
+      COMMON_BENEFITS.selfPaced,
+      COMMON_BENEFITS.handson,
+      'Optional certification exam for 49€',
+      COMMON_BENEFITS.recognized
     ],
     icon: '🥇',
     color: 'from-blue-500 to-cyan-500',
     featured: true,
     order: 1,
-    metaTitle: 'Generative AI Practitioner Certification - Master Gen AI | Abir-AI',
-    metaDescription: 'Get certified in Generative AI. Learn prompting, business use cases, and real-world AI tools. Perfect for students, juniors, and professionals. Start your AI career today.'
+    metaTitle: 'Free Generative AI Course + Optional Certification (49€) | Abir-AI',
+    metaDescription: 'Learn Generative AI for free with self-paced courses covering ChatGPT, prompting, and AI tools. Get certified for just 49€. Perfect for beginners and career switchers.'
   },
   {
     id: '2',
     title: 'AI Productivity & GitHub Copilot',
     slug: 'ai-productivity-github-copilot',
     shortTitle: 'AI Productivity',
-    tagline: 'Supercharge Your Workflow with AI-Powered Tools',
-    description: 'Master GitHub Copilot and AI-powered productivity tools to 10x your development workflow. Learn how to collaborate effectively with AI in both technical and no-code environments.',
+    tagline: 'Learn AI Productivity Free — Certify Your Skills for 79€',
+    description: 'Access comprehensive free training on GitHub Copilot, AI-assisted development, and productivity automation. Learn at your own pace with hands-on exercises for both technical and no-code workflows. Earn your professional certification with our optional exam (79€) when you\'re ready.',
     audience: ['Developers', 'Product Managers', 'Tech Teams', 'No-Code Builders'],
     level: 'intermediate',
-    duration: '4-6 weeks',
+    duration: '2–6 weeks, self-paced',
+    price: 79,
     topics: [
       'GitHub Copilot Mastery',
       'AI-Assisted Development',
@@ -70,29 +79,30 @@ export const certifications: Certification[] = [
       'Code Quality & AI Review'
     ],
     benefits: [
-      'Boost coding productivity by 40%+',
-      'Master GitHub Copilot best practices',
-      'Learn AI-powered workflow automation',
-      'Certificate recognized by tech companies',
-      'Real-world project portfolio'
+      COMMON_BENEFITS.free,
+      'Learn GitHub Copilot best practices',
+      'Flexible self-paced learning',
+      'Optional certification for 79€',
+      'Credential recognized by tech companies'
     ],
     icon: '🥈',
     color: 'from-purple-500 to-pink-500',
     featured: true,
     order: 2,
-    metaTitle: 'AI Productivity & GitHub Copilot Certification | Abir-AI',
-    metaDescription: 'Master GitHub Copilot and AI productivity tools. Learn AI-assisted development, automation, and human-AI collaboration. Perfect for developers and tech teams.'
+    metaTitle: 'Free GitHub Copilot Course + AI Productivity Certification (79€) | Abir-AI',
+    metaDescription: 'Learn GitHub Copilot and AI productivity for free. Self-paced training for developers and tech teams. Optional certification exam for 79€. Start boosting your workflow today.'
   },
   {
     id: '3',
     title: 'Generative AI for Business Operations',
     slug: 'generative-ai-business-operations',
     shortTitle: 'AI for Business',
-    tagline: 'Transform Your Business with Strategic AI Implementation',
-    description: 'Learn how to implement generative AI in business operations to drive ROI, optimize processes, and make data-driven decisions. Perfect for leaders who want to leverage AI strategically.',
+    tagline: 'Learn Business AI Strategy Free — Certify for 79€',
+    description: 'Free self-paced learning on implementing generative AI in business operations. Master AI strategy, ROI calculation, process optimization, and risk management without any upfront cost. Validate your expertise with our optional professional certification exam (79€) designed for business leaders.',
     audience: ['Managers', 'Business Owners', 'Founders', 'Consultants', 'Operations Leaders'],
     level: 'intermediate',
-    duration: '5-7 weeks',
+    duration: '2–8 weeks, self-paced',
+    price: 79,
     topics: [
       'AI Strategy & Planning',
       'Process Optimization with AI',
@@ -102,29 +112,29 @@ export const certifications: Certification[] = [
       'Change Management & Adoption'
     ],
     benefits: [
-      'Strategic AI implementation framework',
-      'ROI-focused business cases',
-      'Risk mitigation strategies',
-      'Executive-level certification',
-      'Network with AI-forward leaders'
+      COMMON_BENEFITS.free,
+      'Real-world ROI frameworks and templates',
+      'Learn at your own schedule',
+      'Optional certification exam for 79€',
+      'Executive-level professional credential'
     ],
     icon: '🥉',
     color: 'from-orange-500 to-red-500',
     featured: true,
     order: 3,
-    metaTitle: 'Generative AI for Business Operations Certification | Abir-AI',
-    metaDescription: 'Learn to implement AI in business operations. Master AI strategy, ROI optimization, and decision-making. Perfect for managers, founders, and consultants.'
+    metaTitle: 'Free AI for Business Course + Professional Certification (79€) | Abir-AI',
+    metaDescription: 'Free training on AI strategy, ROI, and business operations. Self-paced learning for managers and founders. Optional certification for 79€. Transform your business with AI.'
   },
   {
     id: '4',
     title: 'AI Governance & Responsible AI Foundations',
     slug: 'ai-governance-responsible-ai-foundations',
     shortTitle: 'Responsible AI',
-    tagline: 'Build Ethical, Secure, and Compliant AI Systems',
-    description: 'Understand the critical aspects of responsible AI implementation including bias mitigation, security, compliance, and ethical best practices. Essential knowledge for all AI practitioners.',
+    tagline: 'Learn Responsible AI Free — Get Certified for 79€',
+    description: 'Free access to comprehensive training on AI ethics, governance, bias mitigation, and regulatory compliance. Study GDPR, the EU AI Act, and responsible AI frameworks at your own pace. Demonstrate your expertise with our optional certification exam (79€) recognized across industries.',
     audience: ['All Professional Profiles', 'Compliance Officers', 'Risk Managers', 'AI Practitioners', 'Business Leaders'],
     level: 'intermediate',
-    duration: '4-5 weeks',
+    price: 79,
     topics: [
       'AI Ethics & Principles',
       'Bias Detection & Mitigation',
@@ -134,18 +144,18 @@ export const certifications: Certification[] = [
       'Best Practices & Standards'
     ],
     benefits: [
-      'Essential knowledge for AI careers',
-      'Compliance-focused certification',
-      'Risk management expertise',
-      'Industry best practices',
-      'Recognized by major organizations'
+      COMMON_BENEFITS.free,
+      COMMON_BENEFITS.selfPaced,
+      COMMON_BENEFITS.handson,
+      COMMON_BENEFITS.recognized
     ],
+    duration: '3 weeks',
     icon: '🟠',
     color: 'from-green-500 to-emerald-500',
     featured: true,
     order: 4,
-    metaTitle: 'AI Governance & Responsible AI Foundations Certification | Abir-AI',
-    metaDescription: 'Master responsible AI, governance, and compliance. Learn bias mitigation, security, and ethical best practices. Essential certification for all AI professionals.'
+    metaTitle: 'Free Responsible AI Course + Governance Certification (79€) | Abir-AI',
+    metaDescription: 'Learn AI ethics, compliance, and governance for free. Self-paced training on bias mitigation and GDPR. Optional certification for 79€. Essential for all AI professionals.'
   }
 ];
 
@@ -156,3 +166,47 @@ export const getCertificationBySlug = (slug: string): Certification | undefined 
 export const getFeaturedCertifications = (): Certification[] => {
   return certifications.filter(cert => cert.featured).sort((a, b) => a.order - b.order);
 };
+
+export const getCertificationPrice = (cert: Certification): string => {
+  return `${cert.price}€`;
+};
+
+/**
+ * Get all certifications by level
+ */
+export const getCertificationsByLevel = (level: Certification['level']): Certification[] => {
+  return certifications.filter(cert => cert.level === level);
+};
+
+/**
+ * Get certification by ID
+ */
+export const getCertificationById = (id: string): Certification | undefined => {
+  return certifications.find(cert => cert.id === id);
+};
+
+/**
+ * Get all unique topics across certifications
+ */
+export const getAllTopics = (): string[] => {
+  const topics = new Set<string>();
+  certifications.forEach(cert => cert.topics.forEach(topic => topics.add(topic)));
+  return Array.from(topics).sort();
+};
+
+/**
+ * Get certifications count
+ */
+export const getCertificationsCount = (): number => certifications.length;
+
+/**
+ * Validate all certifications on build
+ */
+if (process.env.NODE_ENV === 'development') {
+  certifications.forEach(cert => {
+    const errors = validateCertification(cert);
+    if (errors.length > 0) {
+      console.warn(`⚠️  Validation errors in certification "${cert.title}":`, errors);
+    }
+  });
+}

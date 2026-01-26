@@ -102,19 +102,26 @@ export default function CertificationPage({ params }: CertificationPageProps) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors">
-                  Enroll Now
+                  Start Learning Free
                 </button>
                 <button className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors">
-                  Download Syllabus
+                  View Certification Exam
                 </button>
               </div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Certification Details
+                Course Details
               </h3>
               <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl">🆓</span>
+                  <div>
+                    <div className="font-semibold text-gray-900 dark:text-white">Learning Content</div>
+                    <div className="text-gray-600 dark:text-gray-300">100% Free</div>
+                  </div>
+                </div>
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">⏱️</span>
                   <div>
@@ -134,7 +141,7 @@ export default function CertificationPage({ params }: CertificationPageProps) {
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">👥</span>
                   <div>
-                    <div className="font-semibold text-gray-900 dark:text-white">Target Audience</div>
+                    <div className="font-semibold text-gray-900 dark:text-white">Perfect For</div>
                     <div className="text-gray-600 dark:text-gray-300">
                       {certification.audience.join(', ')}
                     </div>
@@ -143,9 +150,9 @@ export default function CertificationPage({ params }: CertificationPageProps) {
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">🎓</span>
                   <div>
-                    <div className="font-semibold text-gray-900 dark:text-white">Certificate</div>
+                    <div className="font-semibold text-gray-900 dark:text-white">Optional Certification</div>
                     <div className="text-gray-600 dark:text-gray-300">
-                      Industry-recognized credential
+                      {certification.slug === 'generative-ai-practitioner' ? '49€' : '79€'} exam fee
                     </div>
                   </div>
                 </div>
@@ -158,9 +165,12 @@ export default function CertificationPage({ params }: CertificationPageProps) {
       {/* What You'll Learn */}
       <section className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-            What You'll Learn
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+            Free Learning Materials
           </h2>
+          <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+            Access comprehensive content at no cost. Study at your own pace with practical exercises and real-world projects.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {certification.topics.map((topic, idx) => (
               <div 
@@ -185,7 +195,7 @@ export default function CertificationPage({ params }: CertificationPageProps) {
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-            Certification Benefits
+            Why Learn with Abir-AI
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {certification.benefits.map((benefit, idx) => (
@@ -234,17 +244,17 @@ export default function CertificationPage({ params }: CertificationPageProps) {
       <section className={`py-16 bg-gradient-to-r ${certification.color}`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Get Certified?
+            Ready to Start Learning for Free?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Join professionals who have already advanced their careers with this certification.
+            Access all course materials at no cost. Get certified when you're ready for just {certification.slug === 'generative-ai-practitioner' ? '49€' : '79€'}.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors">
-              Enroll Now
+              Start Learning Now
             </button>
             <button className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors">
-              Schedule a Demo
+              View Exam Details
             </button>
           </div>
         </div>

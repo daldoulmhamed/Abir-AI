@@ -44,24 +44,24 @@ export default function CertificationsPage() {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Get Certified in Artificial Intelligence
+            Learn AI for Free — Get Certified When Ready
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Industry-recognized AI certifications designed to accelerate your career. 
-            Learn from experts, build real projects, and join a community of AI practitioners.
+            Access comprehensive AI training at no cost. Study at your own pace, build real projects, 
+            and validate your expertise with affordable optional certifications (49€–79€).
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="#certifications"
               className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 transition-colors"
             >
-              Browse Certifications
+              Start Learning Free
             </Link>
             <Link
               href="/learn"
               className="inline-flex items-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white/10 transition-colors"
             >
-              Start Learning Free
+              Explore Free Courses
             </Link>
           </div>
         </div>
@@ -71,34 +71,34 @@ export default function CertificationsPage() {
       <section className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            Why Get AI Certified with Abir-AI?
+            Why Learn with Abir-AI?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
+              <div className="text-5xl mb-4">🆓</div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                100% Free Learning
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Access all course materials, videos, and exercises at no cost. Learn at your own pace.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl mb-4">⚡</div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                Self-Paced & Flexible
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Study when it fits your schedule. No deadlines, no pressure. Complete in 1 week or 6 months.
+              </p>
+            </div>
+            <div className="text-center">
               <div className="text-5xl mb-4">🎓</div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Industry Recognition
+                Optional Certification
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Certifications recognized by leading companies and validated by AI experts.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl mb-4">💼</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Career Advancement
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Stand out in the job market with verified AI skills and hands-on experience.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl mb-4">🚀</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Practical Skills
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Learn by doing with real-world projects, not just theory. Build your portfolio.
+                Validate your skills with an affordable exam (49€–79€) and earn an industry-recognized certificate.
               </p>
             </div>
           </div>
@@ -109,10 +109,10 @@ export default function CertificationsPage() {
       <section id="certifications" className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
-            Choose Your Certification Path
+            Choose Your Learning Path
           </h2>
           <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-            Four specialized certifications designed for different career paths and skill levels.
+            All learning content is free. Certification exams are optional and range from 49€ to 79€.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -190,10 +190,10 @@ export default function CertificationsPage() {
                 1
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Choose Your Path
+                Start Learning Free
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Select the certification that matches your career goals
+                Access all course materials, videos, and exercises at no cost
               </p>
             </div>
             <div className="text-center">
@@ -201,10 +201,10 @@ export default function CertificationsPage() {
                 2
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Learn & Practice
+                Learn at Your Pace
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Complete video lessons, hands-on projects, and exercises
+                Study when convenient. Complete in weeks or months—your choice
               </p>
             </div>
             <div className="text-center">
@@ -212,10 +212,10 @@ export default function CertificationsPage() {
                 3
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Pass the Exam
+                Get Certified (Optional)
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Demonstrate your knowledge in a comprehensive assessment
+                When ready, take the certification exam (49€–79€) to validate your skills
               </p>
             </div>
             <div className="text-center">
@@ -223,10 +223,10 @@ export default function CertificationsPage() {
                 4
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Get Certified
+                Share Your Achievement
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Receive your certificate and showcase it on LinkedIn
+                Display your certificate on LinkedIn and advance your career
               </p>
             </div>
           </div>
@@ -237,10 +237,10 @@ export default function CertificationsPage() {
       <section className="py-16 bg-gradient-to-r from-indigo-600 to-purple-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Start Your AI Certification Journey?
+            Ready to Start Learning for Free?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Join thousands of professionals who have already advanced their careers with Abir-AI certifications.
+            Join thousands who are learning AI at their own pace. Access all materials for free, get certified only when you're ready.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -268,26 +268,26 @@ export default function CertificationsPage() {
           <div className="space-y-6">
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Are these certifications recognized by employers?
+                Is the learning content really free?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Yes! Our certifications are designed in collaboration with industry experts and follow best practices recognized by leading tech companies. Many of our graduates have successfully used these certifications to advance their careers.
+                Yes! All course materials, videos, exercises, and projects are 100% free. You only pay if you want to take the optional certification exam (49€–79€).
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Do I need prior AI experience?
+                Do I need to get certified?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                It depends on the certification. The Generative AI Practitioner is beginner-friendly, while others require some familiarity with AI concepts. Check the level indicator on each certification for details.
+                No, certification is optional. You can learn everything for free and use the knowledge immediately. Get certified only when you want to validate your skills professionally.
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Can I access the course materials after completion?
+                How long does it take to complete?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Absolutely! Once enrolled, you get lifetime access to all course materials, including future updates and additions.
+                It's self-paced! Complete a course in 1–8 weeks depending on your schedule. Study full-time or a few hours per week—there are no deadlines.
               </p>
             </div>
           </div>

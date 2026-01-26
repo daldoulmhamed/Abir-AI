@@ -1,4 +1,5 @@
 import type { Certification } from "@/data/certifications";
+import { SITE_CONFIG, getCertificationUrl } from "@/config/site";
 
 interface CourseSchema {
   "@context": string;
@@ -31,9 +32,20 @@ interface CourseSchema {
   teaches?: string[];
 }
 
+const PROVIDER = {
+  "@type": "Organization" as const,
+  name: SITE_CONFIG.name,
+  sameAs: SITE_CONFIG.url
+};
+
+const DEFAULT_RATING = {
+  "@type": "AggregateRating" as const,
+  ratingValue: SITE_CONFIG.seo.defaultRating.value,
+  ratingCount: SITE_CONFIG.seo.defaultRating.count
+};
+
 /**
  * Generate JSON-LD schema for a certification page
- * This helps search engines understand the content better
  */
 export function generateCertificationSchema(certification: Certification): CourseSchema {
   return {
@@ -41,21 +53,13 @@ export function generateCertificationSchema(certification: Certification): Cours
     "@type": "Course",
     name: certification.title,
     description: certification.description,
-    provider: {
-      "@type": "Organization",
-      name: "Abir-AI",
-      sameAs: "https://abir-ai.com"
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "245"
-    },
+    provider: PROVIDER,
+    aggregateRating: DEFAULT_RATING,
     offers: {
       "@type": "Offer",
-      category: "Paid",
+      category: "Free learning, optional paid certification",
       priceCurrency: "EUR",
-      price: "299"
+      price: certification.price.toString()
     },
     hasCourseInstance: {
       "@type": "CourseInstance",
@@ -82,11 +86,8 @@ export function generateCertificationsListSchema(certifications: Certification[]
         "@type": "Course",
         name: cert.title,
         description: cert.tagline,
-        url: `https://abir-ai.com/certifications/${cert.slug}`,
-        provider: {
-          "@type": "Organization",
-          name: "Abir-AI"
-        }
+        url: getCertificationUrl(cert.slug),
+        provider: PROVIDER
       }
     }))
   };
@@ -104,56 +105,53 @@ export function generateBreadcrumbSchema(certification: Certification) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://abir-ai.com"
+        item: SITE_CONFIG.url
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Certifications",
-        item: "https://abir-ai.com/certifications"
+        item: `${SITE_CONFIG.url}${SITE_CONFIG.paths.certifications}`
       },
       {
         "@type": "ListItem",
         position: 3,
         name: certification.title,
-        item: `https://abir-ai.com/certifications/${certification.slug}`
+        item: getCertificationUrl(certification.slug)
       }
     ]
   };
 }
 
 /**
- * Generate FAQ schema (can be added to certification pages)
+ * Generate FAQ schema
  */
 export function generateFAQSchema() {
+  const faqs = [
+    {
+      question: "Is the learning content really free?",
+      answer: "Yes! All course materials, videos, exercises, and projects are 100% free. You only pay if you want to take the optional certification exam (49€–79€)."
+    },
+    {
+      question: "Do I need to get certified?",
+      answer: "No, certification is optional. You can learn everything for free and use the knowledge immediately. Get certified only when you want to validate your skills professionally."
+    },
+    {
+      question: "How long does it take to complete?",
+      answer: "It's self-paced! Complete a course in 1–8 weeks depending on your schedule. Study full-time or a few hours per week—there are no deadlines."
+    }
+  ];
+
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Are these certifications recognized by employers?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes! Our certifications are designed in collaboration with industry experts and follow best practices recognized by leading tech companies. Many of our graduates have successfully used these certifications to advance their careers."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "Do I need prior AI experience?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "It depends on the certification. The Generative AI Practitioner is beginner-friendly, while others require some familiarity with AI concepts. Check the level indicator on each certification for details."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "Can I access the course materials after completion?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Absolutely! Once enrolled, you get lifetime access to all course materials, including future updates and additions."
-        }
+    mainEntity: faqs.map(faq => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
       }
-    ]
+    }))
   };
 }
