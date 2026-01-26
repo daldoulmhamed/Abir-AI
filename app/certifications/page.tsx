@@ -40,65 +40,101 @@ export default function CertificationsPage() {
         }}
       />
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600">
+      <section className="relative py-12 md:py-16 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600">
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Learn AI for Free — Get Certified When Ready
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Access comprehensive AI training at no cost. Study at your own pace, build real projects, 
-            and validate your expertise with affordable optional certifications (49€–79€).
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="#certifications"
-              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 transition-colors"
-            >
-              Start Learning Free
-            </Link>
-            <Link
-              href="/learn"
-              className="inline-flex items-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white/10 transition-colors"
-            >
-              Explore Free Courses
-            </Link>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Learn AI for Free — Get Certified When Ready
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+              Access comprehensive AI training at no cost. Study at your own pace, build real projects, 
+              and validate your expertise with affordable optional certifications (49€–79€).
+            </p>
+          </div>
+          
+          {/* Why Learn with Abir-AI - Inside Hero */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <div className="text-5xl mb-4">🆓</div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                100% Free Learning
+              </h3>
+              <p className="text-white/80">
+                Access all course materials, videos, and exercises at no cost. Learn at your own pace.
+              </p>
+            </div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <div className="text-5xl mb-4">⚡</div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Self-Paced & Flexible
+              </h3>
+              <p className="text-white/80">
+                Study when it fits your schedule. No deadlines, no pressure. Complete in 1 week or 6 months.
+              </p>
+            </div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <div className="text-5xl mb-4">🎓</div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Optional Certification
+              </h3>
+              <p className="text-white/80">
+                Validate your skills with an affordable exam (49€–79€) and earn an industry-recognized certificate.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Get Certified Section */}
+      {/* How It Works Section */}
       <section className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            Why Learn with Abir-AI?
+            How It Works
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-5xl mb-4">🆓</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                100% Free Learning
+              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                1
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Start Learning Free
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Access all course materials, videos, and exercises at no cost. Learn at your own pace.
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                Access all course materials, videos, and exercises at no cost
               </p>
             </div>
             <div className="text-center">
-              <div className="text-5xl mb-4">⚡</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Self-Paced & Flexible
+              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                2
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Learn at Your Pace
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Study when it fits your schedule. No deadlines, no pressure. Complete in 1 week or 6 months.
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                Study when convenient. Complete in weeks or months—your choice
               </p>
             </div>
             <div className="text-center">
-              <div className="text-5xl mb-4">🎓</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Optional Certification
+              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                3
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Get Certified (Optional)
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Validate your skills with an affordable exam (49€–79€) and earn an industry-recognized certificate.
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                When ready, take the certification exam (49€–79€) to validate your skills
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                4
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Share Your Achievement
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                Display your certificate on LinkedIn and advance your career
               </p>
             </div>
           </div>
@@ -174,61 +210,6 @@ export default function CertificationsPage() {
                 </div>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certification Process */}
-      <section className="py-16 bg-white dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            How It Works
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                1
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Start Learning Free
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Access all course materials, videos, and exercises at no cost
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                2
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Learn at Your Pace
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Study when convenient. Complete in weeks or months—your choice
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                3
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Get Certified (Optional)
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                When ready, take the certification exam (49€–79€) to validate your skills
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                4
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Share Your Achievement
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Display your certificate on LinkedIn and advance your career
-              </p>
-            </div>
           </div>
         </div>
       </section>
