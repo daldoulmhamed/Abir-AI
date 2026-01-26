@@ -31,33 +31,34 @@ export const certifications: Certification[] = [
     title: 'Generative AI Practitioner',
     slug: 'generative-ai-practitioner',
     shortTitle: 'Gen AI Practitioner',
-    tagline: 'Learn Generative AI Free — Get Certified for Just 49€',
-    description: 'Master the fundamentals of generative AI with our comprehensive, self-paced course. Learn practical prompting techniques, explore real-world applications, and get hands-on experience with leading tools like ChatGPT and Claude. Perfect for beginners—no prior AI experience required. Validate your expertise with our optional certification exam for just 49€.',
-    audience: ['Students', 'Junior Professionals', 'Freelancers', 'Employees'],
+    tagline: 'Master Generative AI & Transform Your Career',
+    description: 'Become a Certified Generative AI Practitioner with our comprehensive, self-paced course. Master ChatGPT, prompt engineering, and AI tools used by industry professionals. Designed for students, professionals, and career switchers—no prior AI experience required. Learn for free, get certified for 49€. Join 5,000+ certified practitioners advancing their careers with practical AI skills.',
+    audience: ['Students', 'Professionals', 'Career Switchers', 'Freelancers'],
     level: 'beginner',
     duration: '1–4 weeks, self-paced',
     price: 49,
     topics: [
       'Generative AI Fundamentals',
       'Advanced Prompting Techniques',
-      'Business Use Cases',
+      'Business Use Cases & ROI',
       'Real-World AI Tools (ChatGPT, Claude, etc.)',
-      'AI Ethics & Limitations',
+      'AI Ethics & Responsible AI',
       'Practical Project Implementation'
     ],
     benefits: [
       COMMON_BENEFITS.free,
       COMMON_BENEFITS.selfPaced,
       COMMON_BENEFITS.handson,
-      'Optional certification exam for 49€',
-      COMMON_BENEFITS.recognized
+      'Dual certification path: Exam or Project-based',
+      COMMON_BENEFITS.recognized,
+      'Lifetime access to course materials'
     ],
     icon: '🥇',
     color: 'from-blue-500 to-cyan-500',
     featured: true,
     order: 1,
-    metaTitle: 'Free Generative AI Course + Optional Certification (49€) | Abir-AI',
-    metaDescription: 'Learn Generative AI for free with self-paced courses covering ChatGPT, prompting, and AI tools. Get certified for just 49€. Perfect for beginners and career switchers.'
+    metaTitle: 'Generative AI Practitioner Certification | Learn AI Free, Certify for 49€',
+    metaDescription: 'Become a Certified Generative AI Practitioner. Free self-paced course for students & professionals. Master ChatGPT, prompt engineering & AI tools. Optional certification: 49€. Start today!'
   },
   {
     id: '2',
