@@ -1,275 +1,330 @@
-import Link from 'next/link';
-import { Metadata } from 'next';
-import { ArrowLeft, Clock, BookOpen, CheckCircle, Target, Users } from 'lucide-react';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'AI Productivity & GitHub Copilot Certification | Abir-AI',
-  description: 'Master GitHub Copilot and AI-assisted development. Learn to code faster, automate workflows, and become a 10x more productive developer.',
-  keywords: ['GitHub Copilot', 'AI Productivity', 'AI-Assisted Development', 'Coding Automation', 'Developer Productivity', 'AI Tools'],
-};
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { 
+  BookOpen, Code, Zap, Users, Shield, TrendingUp, 
+  CheckCircle, Clock, ArrowRight, Target, Award, GitBranch 
+} from 'lucide-react';
 
-const modules = [
-  {
-    id: 'module-1',
-    title: 'Introduction to GitHub Copilot',
-    description: 'Master the fundamentals of GitHub Copilot, from installation to writing effective prompts.',
-    duration: '3-6 hours',
-    lessons: 3,
-    topics: [
-      'Understanding Copilot\'s AI architecture',
-      'Installation and IDE configuration',
-      'Prompt engineering basics',
-      'Context management strategies'
-    ],
-    slug: 'introduction-to-github-copilot'
-  },
-  {
-    id: 'module-2',
-    title: 'Advanced Copilot Techniques',
-    description: 'Explore advanced features including Chat, test generation, refactoring, and documentation.',
-    duration: '4-7 hours',
-    lessons: 4,
-    topics: [
-      'GitHub Copilot Chat mastery',
-      'Automated test generation (TDD)',
-      'AI-assisted code refactoring',
-      'Documentation generation'
-    ],
-    slug: 'advanced-copilot-techniques'
-  },
-  {
-    id: 'module-3',
-    title: 'AI-Assisted Development Workflows',
-    description: 'Integrate Copilot into real-world development workflows from feature building to CI/CD.',
-    duration: '4-6 hours',
-    lessons: 4,
-    topics: [
-      'Full-stack development with Copilot',
-      'AI-powered debugging strategies',
-      'Code review with AI assistance',
-      'CI/CD pipeline integration'
-    ],
-    slug: 'ai-assisted-development-workflows'
-  },
-  {
-    id: 'module-4',
-    title: 'Team Collaboration & Code Quality',
-    description: 'Establish team standards, maintain quality, and implement security best practices.',
-    duration: '3-5 hours',
-    lessons: 4,
-    topics: [
-      'Team AI usage policies',
-      'Code quality standards',
-      'Knowledge sharing practices',
-      'Security and compliance'
-    ],
-    slug: 'team-collaboration-code-quality'
-  },
-  {
-    id: 'module-5',
-    title: 'No-Code & Automation with AI',
-    description: 'Build automations and productivity tools without extensive coding knowledge.',
-    duration: '3-5 hours',
-    lessons: 4,
-    topics: [
-      'GitHub Actions automation',
-      'Data processing scripts',
-      'Custom productivity utilities',
-      'Workflow integration'
-    ],
-    slug: 'no-code-automation'
-  },
-  {
-    id: 'module-6',
-    title: 'Advanced Integration & Best Practices',
-    description: 'Deploy Copilot at scale, measure ROI, and stay ahead of AI development trends.',
-    duration: '3-5 hours',
-    lessons: 4,
-    topics: [
-      'Enterprise integration patterns',
-      'Performance optimization',
-      'ROI measurement and tracking',
-      'Future of AI-assisted development'
-    ],
-    slug: 'advanced-integration-best-practices'
-  }
-];
 
-export default function AIProductivityCertificationPage() {
-  const totalDuration = '20-34 hours';
-  const totalLessons = modules.reduce((sum, mod) => sum + mod.lessons, 0);
+export default function AIProductivityGitHubCopilotPage() {
+  const router = useRouter();
+
+  const modules = [
+    {
+      id: 'module-1',
+      number: 1,
+      title: 'Introduction to GitHub Copilot',
+      description: 'Master the fundamentals of GitHub Copilot, from installation to writing effective prompts and managing context.',
+      icon: Code,
+      duration: '3-6 hours',
+      lessons: 3,
+      topics: ['Copilot AI Architecture', 'IDE Configuration', 'Prompt Engineering', 'Context Management'],
+      color: 'from-blue-500 to-cyan-500',
+      slug: 'introduction-to-github-copilot'
+    },
+    {
+      id: 'module-2',
+      number: 2,
+      title: 'Advanced Copilot Techniques',
+      description: 'Explore advanced features including Chat, test generation, refactoring, and automated documentation.',
+      icon: Zap,
+      duration: '4-7 hours',
+      lessons: 4,
+      topics: ['Copilot Chat Mastery', 'TDD Test Generation', 'AI-Assisted Refactoring', 'Auto Documentation'],
+      color: 'from-cyan-500 to-teal-500',
+      slug: 'advanced-copilot-techniques'
+    },
+    {
+      id: 'module-3',
+      number: 3,
+      title: 'AI-Assisted Development Workflows',
+      description: 'Integrate Copilot into real-world development workflows from feature building to CI/CD automation.',
+      icon: GitBranch,
+      duration: '4-6 hours',
+      lessons: 4,
+      topics: ['Full-Stack Development', 'AI Debugging', 'Code Review', 'CI/CD Integration'],
+      color: 'from-teal-500 to-green-500',
+      slug: 'ai-assisted-development-workflows'
+    },
+    {
+      id: 'module-4',
+      number: 4,
+      title: 'Team Collaboration & Code Quality',
+      description: 'Establish team standards, maintain quality, and implement security best practices for AI-assisted development.',
+      icon: Users,
+      duration: '3-5 hours',
+      lessons: 4,
+      topics: ['Team AI Policies', 'Code Quality Standards', 'Knowledge Sharing', 'Security & Compliance'],
+      color: 'from-green-500 to-emerald-500',
+      slug: 'team-collaboration-code-quality'
+    },
+    {
+      id: 'module-5',
+      number: 5,
+      title: 'No-Code & Automation with AI',
+      description: 'Build automations and productivity tools without extensive coding knowledge using AI assistance.',
+      icon: Target,
+      duration: '3-5 hours',
+      lessons: 4,
+      topics: ['GitHub Actions', 'Data Processing', 'Productivity Utilities', 'Workflow Integration'],
+      color: 'from-emerald-500 to-lime-500',
+      slug: 'no-code-automation'
+    },
+    {
+      id: 'module-6',
+      number: 6,
+      title: 'Advanced Integration & Best Practices',
+      description: 'Deploy Copilot at scale, measure ROI, and stay ahead of AI development trends for enterprise success.',
+      icon: TrendingUp,
+      duration: '3-5 hours',
+      lessons: 4,
+      topics: ['Enterprise Integration', 'Performance Optimization', 'ROI Tracking', 'Future AI Trends'],
+      color: 'from-lime-500 to-yellow-500',
+      slug: 'advanced-integration-best-practices'
+    }
+  ];
+
+  const handleModuleClick = (slug: string) => {
+    router.push(`/learn/ai-productivity-github-copilot/${slug}`);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        {/* Header */}
-        <div className="mb-8">
-          <Link 
-            href="/certifications/ai-productivity-github-copilot"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Certification Overview
-          </Link>
-          
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            AI Productivity & GitHub Copilot
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-            Master AI-assisted development and supercharge your productivity
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Award className="w-4 h-4" />
+              Intermediate Certification
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 dark:from-blue-400 dark:via-cyan-400 dark:to-teal-400 bg-clip-text text-transparent">
+              AI Productivity & GitHub Copilot
+            </h1>
+            <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto">
+              Master AI-assisted development and become a 10x more productive developer. Code faster, smarter, and better with GitHub Copilot.
+            </p>
+            
+            {/* Key Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                <Clock className="w-8 h-8 text-blue-600 dark:text-blue-400 mb-2 mx-auto" />
+                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">20-34</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Hours of Content</div>
+              </div>
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                <BookOpen className="w-8 h-8 text-cyan-600 dark:text-cyan-400 mb-2 mx-auto" />
+                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">6</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Comprehensive Modules</div>
+              </div>
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                <Code className="w-8 h-8 text-teal-600 dark:text-teal-400 mb-2 mx-auto" />
+                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">50+</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Code Examples</div>
+              </div>
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                <Award className="w-8 h-8 text-green-600 dark:text-green-400 mb-2 mx-auto" />
+                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">79€</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Certification Fee</div>
+              </div>
+            </div>
+          </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center gap-3">
-                <Clock className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                <div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Total Duration</p>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">{totalDuration}</p>
+          {/* Target Audience */}
+          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl mb-12">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
+              Who This Is For
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Code className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Developers & Engineers</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  Write code faster and smarter with AI assistance
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-cyan-100 dark:bg-cyan-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-cyan-600 dark:text-cyan-400" />
+                </div>
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Tech Leads & Managers</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  Scale AI adoption across development teams
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-8 h-8 text-teal-600 dark:text-teal-400" />
+                </div>
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Non-Technical Builders</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  Build automations without extensive coding
+                </p>
               </div>
             </div>
-            
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center gap-3">
-                <BookOpen className="w-8 h-8 text-green-600 dark:text-green-400" />
-                <div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Total Lessons</p>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">{totalLessons} lessons</p>
+            <p className="text-center text-slate-600 dark:text-slate-400 mt-6">
+              <strong>Prerequisites:</strong> Basic programming knowledge recommended (any language). No prior AI experience required.
+            </p>
+          </div>
+
+          {/* Learning Outcomes */}
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-slate-800/50 dark:to-slate-800/50 rounded-2xl p-8 shadow-xl mb-12">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
+              What You'll Master
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                'Generate code 40% faster with GitHub Copilot',
+                'Write effective prompts for AI-assisted coding',
+                'Automate testing, refactoring, and documentation',
+                'Debug efficiently with AI-powered suggestions',
+                'Build CI/CD pipelines with AI automation',
+                'Implement team-wide AI adoption strategies',
+                'Create no-code automations with GitHub Actions',
+                'Measure ROI and productivity gains',
+                'Maintain code quality and security standards',
+                'Stay ahead with emerging AI development trends'
+              ].map((outcome, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700 dark:text-slate-300">{outcome}</span>
                 </div>
-              </div>
-            </div>
-            
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center gap-3">
-                <Target className="w-8 h-8 text-purple-600 dark:text-purple-400" />
-                <div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Skill Level</p>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">Intermediate</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Learning Paths */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6 mb-8 border border-blue-200 dark:border-blue-800">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              <Users className="w-6 h-6" />
+          <div className="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 rounded-2xl p-8 shadow-xl mb-12">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
               Choose Your Learning Path
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🚀 Beginner Track</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Modules 1, 5</p>
-                <p className="text-xs text-gray-500 dark:text-gray-500">For product managers, designers, no-code builders</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <div className="text-4xl mb-3">🚀</div>
+                <h3 className="font-bold text-xl mb-2">Beginner Track</h3>
+                <p className="text-blue-100 text-sm mb-3">
+                  Modules 1, 5 (6-11 hours)
+                </p>
+                <p className="text-sm text-blue-50">
+                  For product managers, designers, and no-code builders
+                </p>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">💻 Developer Track</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Modules 1-4, 6</p>
-                <p className="text-xs text-gray-500 dark:text-gray-500">For software developers and engineers</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <div className="text-4xl mb-3">💻</div>
+                <h3 className="font-bold text-xl mb-2">Developer Track</h3>
+                <p className="text-cyan-100 text-sm mb-3">
+                  Modules 1-4, 6 (17-29 hours)
+                </p>
+                <p className="text-sm text-cyan-50">
+                  For software developers and engineers
+                </p>
               </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">👔 Team Lead Track</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">All Modules</p>
-                <p className="text-xs text-gray-500 dark:text-gray-500">For tech leads and engineering managers</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <div className="text-4xl mb-3">👔</div>
+                <h3 className="font-bold text-xl mb-2">Team Lead Track</h3>
+                <p className="text-teal-100 text-sm mb-3">
+                  All Modules (20-34 hours)
+                </p>
+                <p className="text-sm text-teal-50">
+                  For tech leads and engineering managers
+                </p>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Modules Grid */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Course Modules</h2>
-          
-          {modules.map((module, index) => (
-            <div
-              key={module.id}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow"
-            >
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-bold">
-                        {index + 1}
-                      </span>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                        {module.title}
-                      </h3>
+      {/* Modules Section */}
+      <section className="pb-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-12 text-center">
+            Course Modules
+          </h2>
+          <div className="space-y-6">
+            {modules.map((module) => {
+              const IconComponent = module.icon;
+              return (
+                <div
+                  key={module.id}
+                  onClick={() => handleModuleClick(module.slug)}
+                  className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-slate-200/50 dark:border-slate-700/50 hover:scale-[1.02]"
+                >
+                  <div className="flex items-start gap-6">
+                    {/* Module Number & Icon */}
+                    <div className={`flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br ${module.color} flex items-center justify-center shadow-lg`}>
+                      <IconComponent className="w-10 h-10 text-white" />
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 ml-13">
-                      {module.description}
-                    </p>
+
+                    {/* Module Content */}
+                    <div className="flex-grow">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <div className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">
+                            Module {module.number}
+                          </div>
+                          <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            {module.title}
+                          </h3>
+                        </div>
+                        <ArrowRight className="w-6 h-6 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-2 transition-all" />
+                      </div>
+
+                      <p className="text-slate-600 dark:text-slate-300 mb-4">
+                        {module.description}
+                      </p>
+
+                      {/* Topics */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {module.topics.map((topic, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-full"
+                          >
+                            {topic}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Meta Info */}
+                      <div className="flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          <span>{module.duration}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <BookOpen className="w-4 h-4" />
+                          <span>{module.lessons} lessons</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              );
+            })}
+          </div>
 
-                <div className="ml-13 space-y-4">
-                  {/* Meta Info */}
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      <span>{module.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <BookOpen className="w-4 h-4" />
-                      <span>{module.lessons} lessons</span>
-                    </div>
-                  </div>
-
-                  {/* Topics */}
-                  <div>
-                    <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                      What you'll learn:
-                    </p>
-                    <ul className="space-y-1">
-                      {module.topics.map((topic, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-                          <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
-                          <span>{topic}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Action Button */}
-                  <div className="pt-4">
-                    <Link
-                      href={`/learn/ai-productivity-github-copilot/${module.slug}`}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
-                    >
-                      Start Module {index + 1}
-                      <ArrowLeft className="w-4 h-4 rotate-180" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer CTA */}
-        <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 rounded-xl p-8 text-center text-white">
-          <h2 className="text-2xl font-bold mb-2">Ready to Get Started?</h2>
-          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            Begin your journey to AI-powered productivity. Complete all modules and earn your certification.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/learn/ai-productivity-github-copilot/introduction-to-github-copilot"
-              className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+          {/* CTA Section */}
+          <div className="mt-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-8 text-center shadow-2xl">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Ready to 10x Your Productivity?
+            </h3>
+            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+              Start with Module 1 and master GitHub Copilot to code faster and smarter than ever before.
+            </p>
+            <button
+              onClick={() => handleModuleClick('introduction-to-github-copilot')}
+              className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors inline-flex items-center gap-2"
             >
-              Start Module 1
-            </Link>
-            <Link
-              href="/certifications/ai-productivity-github-copilot"
-              className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
-            >
-              View Certification Details
-            </Link>
+              Start Learning
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
