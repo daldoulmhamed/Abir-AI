@@ -349,6 +349,13 @@ export default async function CertificationPage({ params }: CertificationPagePro
                   >
                     Start Learning Free
                   </Link>
+                ) : certification.slug === 'generative-ai-business-operations' ? (
+                  <Link 
+                    href="/learn/generative-ai-business-operations"
+                    className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors text-center"
+                  >
+                    Start Learning Free
+                  </Link>
                 ) : (
                   <button className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors">
                     Coming Soon
@@ -927,14 +934,23 @@ export default async function CertificationPage({ params }: CertificationPagePro
                 >
                   Start Learning Free →
                 </Link>
+              ) : certification.slug === 'generative-ai-business-operations' ? (
+                <Link 
+                  href="/learn/generative-ai-business-operations"
+                  className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 text-center"
+                >
+                  Start Learning Free →
+                </Link>
               ) : (
-                <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
-                  Coming Soon
-                </button>
+                <>
+                  <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
+                    Coming Soon
+                  </button>
+                  <button className="px-10 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white font-semibold text-lg rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                    Notify Me When Available
+                  </button>
+                </>
               )}
-              <button className="px-10 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white font-semibold text-lg rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                Notify Me When Available
-              </button>
             </div>
             
             <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">
