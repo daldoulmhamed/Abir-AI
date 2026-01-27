@@ -356,6 +356,13 @@ export default async function CertificationPage({ params }: CertificationPagePro
                   >
                     Start Learning Free
                   </Link>
+                ) : certification.slug === 'ai-governance-responsible-ai-foundations' ? (
+                  <Link 
+                    href="/learn/ai-governance-responsible-ai-foundations"
+                    className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors text-center"
+                  >
+                    Start Learning Free
+                  </Link>
                 ) : (
                   <button className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors">
                     Coming Soon
@@ -937,6 +944,13 @@ export default async function CertificationPage({ params }: CertificationPagePro
               ) : certification.slug === 'generative-ai-business-operations' ? (
                 <Link 
                   href="/learn/generative-ai-business-operations"
+                  className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 text-center"
+                >
+                  Start Learning Free →
+                </Link>
+              ) : certification.slug === 'ai-governance-responsible-ai-foundations' ? (
+                <Link 
+                  href="/learn/ai-governance-responsible-ai-foundations"
                   className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 text-center"
                 >
                   Start Learning Free →
