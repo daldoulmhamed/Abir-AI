@@ -335,9 +335,18 @@ export default async function CertificationPage({ params }: CertificationPagePro
                 {certification.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors">
-                  Start Learning Free
-                </button>
+                {certification.slug === 'generative-ai-practitioner' ? (
+                  <Link 
+                    href="/learn/generative-ai-practitioner"
+                    className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors text-center"
+                  >
+                    Start Learning Free
+                  </Link>
+                ) : (
+                  <button className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors">
+                    Start Learning Free
+                  </button>
+                )}
                 <button className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors">
                   View Certification Exam
                 </button>
