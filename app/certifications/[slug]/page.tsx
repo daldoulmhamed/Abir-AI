@@ -342,9 +342,16 @@ export default async function CertificationPage({ params }: CertificationPagePro
                   >
                     Start Learning Free
                   </Link>
+                ) : certification.slug === 'ai-productivity-github-copilot' ? (
+                  <Link 
+                    href="/learn/ai-productivity-github-copilot"
+                    className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors text-center"
+                  >
+                    Start Learning Free
+                  </Link>
                 ) : (
                   <button className="px-8 py-3 bg-white text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors">
-                    Start Learning Free
+                    Coming Soon
                   </button>
                 )}
                 <button className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors">
@@ -906,9 +913,25 @@ export default async function CertificationPage({ params }: CertificationPagePro
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
-                Start Learning Free →
-              </button>
+              {certification.slug === 'generative-ai-practitioner' ? (
+                <Link 
+                  href="/learn/generative-ai-practitioner"
+                  className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 text-center"
+                >
+                  Start Learning Free →
+                </Link>
+              ) : certification.slug === 'ai-productivity-github-copilot' ? (
+                <Link 
+                  href="/learn/ai-productivity-github-copilot"
+                  className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 text-center"
+                >
+                  Start Learning Free →
+                </Link>
+              ) : (
+                <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
+                  Coming Soon
+                </button>
+              )}
               <button className="px-10 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white font-semibold text-lg rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                 Notify Me When Available
               </button>
