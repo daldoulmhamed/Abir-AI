@@ -1,4 +1,4 @@
-# 💬 Module 3: AI for Communication & Collaboration
+# Module 3: AI for Communication & Collaboration
 
 **Duration:** Self-paced (3-5 hours)  
 **Level:** Intermediate  
@@ -6,11 +6,11 @@
 
 ---
 
-## 📋 Module Overview
+## Module Overview
 
 Effective communication and collaboration are critical to professional success. In this module, you'll learn how AI can enhance meetings, presentations, team coordination, and multilingual communication. You'll master techniques for using AI to prepare, facilitate, and follow up on collaborative work while maintaining human connection and authentic engagement.
 
-### 🎯 Learning Objectives:**
+**Learning Objectives:**
 - Use AI for meeting preparation, facilitation, and follow-up
 - Create compelling presentations with AI assistance
 - Coordinate team projects using AI tools
@@ -20,83 +20,76 @@ Effective communication and collaboration are critical to professional success. 
 
 ---
 
-## 📖 Lesson 3.1: AI-Enhanced Meetings
+## Lesson 3.1: AI-Enhanced Meetings
 
-### 📅 Before the Meeting: Preparation
+### Before the Meeting: Preparation
 
 #### Creating Effective Agendas
 
 **Agenda Generation Prompt:**
+```
+Create a meeting agenda for [meeting type] with the following details:
 
-"Create a meeting agenda for [meeting type] with the following details:"
+MEETING PURPOSE: [State the main objective]
+PARTICIPANTS: [List roles/departments]
+DURATION: [Time available]
+KEY TOPICS: [List 3-5 main topics to cover]
 
-**MEETING PURPOSE:** [State the main objective]
-
-**PARTICIPANTS:** [List roles/departments]
-
-**DURATION:** [Time available]
-
-**KEY TOPICS:** [List 3-5 main topics to cover]
-
-**REQUIREMENTS:**
+REQUIREMENTS:
 - Include time allocation for each topic
 - Add specific discussion questions for each item
 - Include designated facilitator or speaker for each section
 - Add breaks if meeting is over 60 minutes
 - Include clear decision points or deliverables
 
-**FORMAT:** Professional table with columns for Time, Topic, Owner, and Objective
+FORMAT: Professional table with columns for Time, Topic, Owner, and Objective
+```
 
 **Example:**
+```
+Create a meeting agenda for a quarterly planning meeting with the following details:
 
-"Create a meeting agenda for a quarterly planning meeting with the following details:"
-
-**MEETING PURPOSE:** Review Q4 performance and plan Q1 priorities
-
-**PARTICIPANTS:** Department heads (Marketing, Sales, Product, Operations)
-
-**DURATION:** 90 minutes
-
-**KEY TOPICS:**
+MEETING PURPOSE: Review Q4 performance and plan Q1 priorities
+PARTICIPANTS: Department heads (Marketing, Sales, Product, Operations)
+DURATION: 90 minutes
+KEY TOPICS:
 - Q4 results review
 - Lessons learned and challenges
 - Q1 goal setting
 - Resource allocation
 - Action items and ownership
 
-**REQUIREMENTS:**
+REQUIREMENTS:
 - Include time allocation for each topic
 - Add specific discussion questions for each item
 - Include designated facilitator or speaker for each section
 - Add breaks if meeting is over 60 minutes
 - Include clear decision points or deliverables
 
-**FORMAT:** Professional table with columns for Time, Topic, Owner, and Objective
+FORMAT: Professional table with columns for Time, Topic, Owner, and Objective
+```
 
 #### Pre-Meeting Briefs
 
 **Brief Generation Prompt:**
+```
+Create a pre-meeting brief for participants:
 
-"Create a pre-meeting brief for participants:"
+MEETING: [Meeting name and date]
+ATTENDEES: [Who should read this]
+CONTEXT: [Background information participants need to know]
+PREVIOUS DECISIONS: [Relevant past decisions or discussions]
 
-**MEETING:** [Meeting name and date]
+BRIEF STRUCTURE:
+1. Meeting Objective (2-3 sentences)
+2. Background/Context (1 paragraph)
+3. Key Questions to Consider (3-5 bullet points)
+4. Preparation Required (what attendees should review/bring)
+5. Expected Outcomes (what we'll decide or accomplish)
 
-**ATTENDEES:** [Who should read this]
-
-**CONTEXT:** [Background information participants need to know]
-
-**PREVIOUS DECISIONS:** [Relevant past decisions or discussions]
-
-**BRIEF STRUCTURE:**
-1. **Meeting Objective** (2-3 sentences)
-2. **Background/Context** (1 paragraph)
-3. **Key Questions to Consider** (3-5 bullet points)
-4. **Preparation Required** (what attendees should review/bring)
-5. **Expected Outcomes** (what we'll decide or accomplish)
-
-**LENGTH:** 300-400 words
-
-**TONE:** Clear, informative, action-oriented
+LENGTH: 300-400 words
+TONE: Clear, informative, action-oriented
+```
 
 ### During the Meeting: Facilitation
 
@@ -108,92 +101,83 @@ Effective communication and collaboration are critical to professional success. 
 4. **Creative Solutions**: Brainstorm when discussions stall
 
 **Live Brainstorming Prompt:**
+```
+We're in a meeting discussing [problem/challenge]. 
 
-"We're in a meeting discussing [problem/challenge]."
+CONTEXT: [Brief situation description]
+CONSTRAINT: [Any limitations—budget, time, resources]
+WHAT WE'VE TRIED: [Previous attempts]
 
-**CONTEXT:** [Brief situation description]
+Generate 10 creative solutions or approaches we haven't considered yet.
+Format: Numbered list with brief explanation (1 sentence each)
+Focus on: Actionable, practical ideas we could implement within [timeframe]
+```
 
-**CONSTRAINT:** [Any limitations—budget, time, resources]
-
-**WHAT WE'VE TRIED:** [Previous attempts]
-
-"Generate 10 creative solutions or approaches we haven't considered yet."
-
-**Format:** Numbered list with brief explanation (1 sentence each)
-
-**Focus on:** Actionable, practical ideas we could implement within [timeframe]
-
-### ✅ After the Meeting: Follow-Up
+### After the Meeting: Follow-Up
 
 #### Meeting Summary & Action Items
 
 **Summary Prompt (Basic):**
-
-"Summarize these meeting notes:"
+```
+Summarize these meeting notes:
 
 [Paste notes or transcript]
 
-"CREATE:
-
-1. **Executive Summary** (3-4 sentences: what was discussed and decided)
-2. **Key Decisions Made** (bullet list)
-3. **Action Items** (table format):
+CREATE:
+1. Executive Summary (3-4 sentences: what was discussed and decided)
+2. Key Decisions Made (bullet list)
+3. Action Items (table format):
    - Action | Owner | Deadline | Status
-4. **Open Questions / Next Steps**
+4. Open Questions / Next Steps
 
-**FORMAT:** Professional, easy to scan
-
-**TONE:** Objective and clear"
+FORMAT: Professional, easy to scan
+TONE: Objective and clear
+```
 
 **Advanced Summary Prompt:**
-
-"Analyze these meeting notes and create a comprehensive summary:"
+```
+Analyze these meeting notes and create a comprehensive summary:
 
 [Paste notes or transcript]
 
-**ATTENDEES:** [List participants]
+ATTENDEES: [List participants]
+MEETING PURPOSE: [Original objective]
 
-**MEETING PURPOSE:** [Original objective]
-
-**PROVIDE:**
-
-**1. Meeting Effectiveness Assessment**
+PROVIDE:
+1. Meeting Effectiveness Assessment
    - Did we achieve the stated purpose? (Yes/No with brief reason)
    - Time management (Were we efficient?)
 
-**2. Executive Summary** (4-5 sentences)
+2. Executive Summary (4-5 sentences)
 
-**3. Detailed Outcomes:**
+3. Detailed Outcomes:
    - Decisions Made (with context)
    - Action Items (owner, deadline, dependencies)
    - Deferred Topics (what we didn't cover)
    - Open Questions (what needs follow-up)
 
-**4. Key Quotes or Insights** (3-4 notable statements)
+4. Key Quotes or Insights (3-4 notable statements)
 
-**5. Recommended Next Steps**
+5. Recommended Next Steps
 
-**6. Distribution List** (who needs this summary)
+6. Distribution List (who needs this summary)
 
-**LENGTH:** 500-700 words
-
-**FORMAT:** Use headers and tables for clarity
+LENGTH: 500-700 words
+FORMAT: Use headers and tables for clarity
+```
 
 #### Follow-Up Email Template
 
 **Prompt:**
+```
+Write a professional meeting follow-up email:
 
-"Write a professional meeting follow-up email:"
+MEETING: [Meeting name and date]
+ATTENDEES: [List participants]
+KEY DECISIONS: [List main decisions]
+ACTION ITEMS: [List with owners and deadlines]
 
-**MEETING:** [Meeting name and date]
-
-**ATTENDEES:** [List participants]
-
-**KEY DECISIONS:** [List main decisions]
-
-**ACTION ITEMS:** [List with owners and deadlines]
-
-**EMAIL STRUCTURE:**
+EMAIL STRUCTURE:
 1. Greeting and thank you for participation
 2. Brief meeting recap (2-3 sentences)
 3. Decisions Made (bullet points)
@@ -201,13 +185,12 @@ Effective communication and collaboration are critical to professional success. 
 5. Next Meeting / Follow-up timing
 6. Clear invitation to ask questions or clarify
 
-**TONE:** Professional, appreciative, clear
+TONE: Professional, appreciative, clear
+LENGTH: 200-300 words
+INCLUDE: Subject line suggestion
+```
 
-**LENGTH:** 200-300 words
-
-**INCLUDE:** Subject line suggestion
-
-### 💬 Exercise 3.1: Complete Meeting Cycle
+### Exercise 3.1: Complete Meeting Cycle
 
 **Task:** Use AI to manage an entire meeting workflow—before, during, and after.
 
@@ -233,30 +216,30 @@ Effective communication and collaboration are critical to professional success. 
 
 ---
 
-## 📖 Lesson 3.2: AI-Powered Presentations
+## Lesson 3.2: AI-Powered Presentations
 
 ### Presentation Creation Process
 
 #### Phase 1: Structure & Outline
 
 **Outline Generation Prompt:**
+```
+Create a presentation outline for [topic]:
 
-"Create a presentation outline for [topic]:"
+PRESENTATION DETAILS:
+- Audience: [Who they are, their knowledge level]
+- Duration: [Total time including Q&A]
+- Objective: [What you want audience to know/do]
+- Context: [Where/when this will be presented]
 
-**PRESENTATION DETAILS:**
-- **Audience:** [Who they are, their knowledge level]
-- **Duration:** [Total time including Q&A]
-- **Objective:** [What you want audience to know/do]
-- **Context:** [Where/when this will be presented]
-
-**REQUIREMENTS:**
+REQUIREMENTS:
 - Create 8-12 slide outline
 - Include slide title and 2-3 key points per slide
 - Suggest visual elements (charts, images, diagrams)
 - Include timing estimate for each section
 - Add presenter notes guidance
 
-**STRUCTURE SHOULD INCLUDE:**
+STRUCTURE SHOULD INCLUDE:
 - Title slide
 - Problem/opportunity statement
 - Main content (3-5 key sections)
@@ -264,46 +247,45 @@ Effective communication and collaboration are critical to professional success. 
 - Call-to-action or next steps
 - Q&A slide
 
-**TONE:** [Informative/Persuasive/Inspirational]
+TONE: [Informative/Persuasive/Inspirational]
+```
 
 #### Phase 2: Content Development
 
 **Slide Content Prompt:**
+```
+Create content for Slide [X] of my presentation:
 
-"Create content for Slide [X] of my presentation:"
+SLIDE TITLE: [Title]
+MAIN MESSAGE: [The one key takeaway]
+AUDIENCE: [Description]
 
-**SLIDE TITLE:** [Title]
-
-**MAIN MESSAGE:** [The one key takeaway]
-
-**AUDIENCE:** [Description]
-
-**PROVIDE:**
-
-1. **Headline** (10 words max - compelling, clear)
-2. **3-4 bullet points** (each 10-15 words)
+PROVIDE:
+1. Headline (10 words max - compelling, clear)
+2. 3-4 bullet points (each 10-15 words)
    - Use action verbs
    - Include specific data or examples where possible
-3. **Supporting Details** (2-3 sentences for presenter notes)
-4. **Visual Recommendation** (what type of image/chart would strengthen this slide)
-5. **Transition Statement** (how to move to next slide)
+3. Supporting Details (2-3 sentences for presenter notes)
+4. Visual Recommendation (what type of image/chart would strengthen this slide)
+5. Transition Statement (how to move to next slide)
 
-**STYLE:**
+STYLE:
 - Conversational but professional
 - Use numbers and data
 - Avoid jargon
 - Make it memorable
+```
 
 #### Phase 3: Speaker Notes
 
 **Speaker Notes Prompt:**
+```
+Write speaker notes for this slide:
 
-"Write speaker notes for this slide:"
-
-**SLIDE CONTENT:**
+SLIDE CONTENT:
 [Paste slide title and bullets]
 
-**SPEAKER NOTES SHOULD:**
+SPEAKER NOTES SHOULD:
 - Expand on each bullet point (2-3 sentences each)
 - Include transition from previous slide
 - Add relevant statistics or examples
@@ -311,22 +293,23 @@ Effective communication and collaboration are critical to professional success. 
 - Include timing guidance (e.g., "Spend 2 minutes here")
 - Note any potential audience questions and how to address them
 
-**PRESENTATION CONTEXT:**
-- **Audience:** [Description]
-- **Presentation tone:** [Formal/Conversational]
-- **Your speaking style:** [Energetic/Measured/etc.]
+PRESENTATION CONTEXT:
+- Audience: [Description]
+- Presentation tone: [Formal/Conversational]
+- Your speaking style: [Energetic/Measured/etc.]
 
-**LENGTH:** 200-300 words per slide
+LENGTH: 200-300 words per slide
+```
 
 ### Presentation Enhancement Techniques
 
 #### Making Data Compelling
 
 **Data Storytelling Prompt:**
+```
+I have this data/statistic: [Insert your data]
 
-"I have this data/statistic: [Insert your data]
-
-Transform it into a compelling presentation narrative:"
+Transform it into a compelling presentation narrative:
 
 1. Create an attention-grabbing opening statement using this data
 2. Explain why this number matters (so what?)
@@ -334,12 +317,13 @@ Transform it into a compelling presentation narrative:"
 4. Suggest a visual representation (chart type, infographic style)
 5. Write a memorable closing statement
 
-**Make it:**
+Make it:
 - Easy to understand
 - Emotionally resonant
 - Actionable
 
-**Audience:** [Description]
+Audience: [Description]
+```
 
 #### Creating Analogies & Metaphors
 
@@ -367,29 +351,27 @@ For each, explain:
 ### Handling Q&A Sessions
 
 **Q&A Preparation Prompt:**
+```
+I'm presenting on [topic] to [audience]. Help me prepare for Q&A:
 
-"I'm presenting on [topic] to [audience]. Help me prepare for Q&A:"
+PRESENTATION SUMMARY: [Brief overview of your main points]
+CONTROVERSIAL OR COMPLEX AREAS: [Topics that might generate questions]
+AUDIENCE CONCERNS: [What they might worry about or challenge]
 
-**PRESENTATION SUMMARY:** [Brief overview of your main points]
-
-**CONTROVERSIAL OR COMPLEX AREAS:** [Topics that might generate questions]
-
-**AUDIENCE CONCERNS:** [What they might worry about or challenge]
-
-**GENERATE:**
-
-1. **10 Likely Questions** (ranging from easy to challenging)
-2. **Concise Answers** (30-60 seconds each)
+GENERATE:
+1. 10 Likely Questions (ranging from easy to challenging)
+2. Concise Answers (30-60 seconds each)
    - Direct response
    - Supporting evidence or example
    - Transition back to key message
-3. **3 "Difficult Question" Scenarios** with strategies for handling them
-4. **Phrases for buying time** ("That's a great question, let me think...")
-5. **Pivot statements** (to redirect to your key messages)
+3. 3 "Difficult Question" Scenarios with strategies for handling them
+4. Phrases for buying time ("That's a great question, let me think...")
+5. Pivot statements (to redirect to your key messages)
 
-**FORMAT:** Q&A prep document, easy to review before presentation
+FORMAT: Q&A prep document, easy to review before presentation
+```
 
-### 💬 Exercise 3.2: Build a Complete Presentation
+### Exercise 3.2: Build a Complete Presentation
 
 **Task:** Create a full presentation using AI assistance end-to-end.
 
@@ -426,46 +408,38 @@ Choose a topic you're knowledgeable about and create a 10-slide presentation.
 
 ---
 
-## 📖 Lesson 3.3: Team Collaboration & Coordination
+## Lesson 3.3: Team Collaboration & Coordination
 
 ### AI for Project Management
 
 #### Project Kickoff
 
 **Project Charter Prompt:**
+```
+Create a project charter for [project name]:
 
-"Create a project charter for [project name]:"
+PROJECT DETAILS:
+- Objective: [What we're trying to achieve]
+- Sponsor: [Who's championing this]
+- Team: [Key roles involved]
+- Timeline: [Start and end dates]
+- Budget/Resources: [Available resources]
 
-**PROJECT DETAILS:**
-- **Objective:** [What we're trying to achieve]
-- **Sponsor:** [Who's championing this]
-- **Team:** [Key roles involved]
-- **Timeline:** [Start and end dates]
-- **Budget/Resources:** [Available resources]
-
-**CHARTER SHOULD INCLUDE:**
-
-1. **Executive Summary** (3-4 sentences)
-
-2. **Project Scope**
+CHARTER SHOULD INCLUDE:
+1. Executive Summary (3-4 sentences)
+2. Project Scope
    - In scope (what we will do)
    - Out of scope (what we won't do)
+3. Objectives & Success Criteria (SMART goals)
+4. Key Stakeholders & Roles (responsibility matrix)
+5. Major Milestones & Timeline
+6. Risks & Assumptions
+7. Communication Plan
+8. Approval/Sign-off Section
 
-3. **Objectives & Success Criteria** (SMART goals)
-
-4. **Key Stakeholders & Roles** (responsibility matrix)
-
-5. **Major Milestones & Timeline**
-
-6. **Risks & Assumptions**
-
-7. **Communication Plan**
-
-8. **Approval/Sign-off Section**
-
-**FORMAT:** Professional document, 2-3 pages
-
-**TONE:** Clear, comprehensive, aligned
+FORMAT: Professional document, 2-3 pages
+TONE: Clear, comprehensive, aligned
+```
 
 #### Task Breakdown & Delegation
 
@@ -583,7 +557,7 @@ PROVIDE:
 TONE: Neutral, empathetic, solution-oriented
 ```
 
-### 💬 Exercise 3.3: Team Coordination Simulation
+### Exercise 3.3: Team Coordination Simulation
 
 **Task:** Use AI to coordinate a simulated cross-functional project.
 

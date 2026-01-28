@@ -1,4 +1,4 @@
-# 📊 Module 4: AI for Data Analysis & Visualization
+# Module 4: AI for Data Analysis & Visualization
 
 **Duration:** Self-paced (3-6 hours)  
 **Level:** Intermediate  
@@ -6,11 +6,11 @@
 
 ---
 
-## 📋 Module Overview
+## Module Overview
 
 Data-driven decision making is essential in modern work, but analyzing data and extracting insights can be time-consuming and technically challenging. In this module, you'll learn how to leverage AI to analyze datasets, create visualizations, generate insights, and make informed decisions—even without advanced technical skills.
 
-### 🎯 Learning Objectives:**
+**Learning Objectives:**
 - Analyze data and identify trends using AI
 - Generate formulas and automate spreadsheet tasks
 - Create data visualizations and charts with AI guidance
@@ -20,65 +20,65 @@ Data-driven decision making is essential in modern work, but analyzing data and 
 
 ---
 
-## 📖 Lesson 4.1: AI-Powered Data Analysis
+## Lesson 4.1: AI-Powered Data Analysis
 
 ### Understanding Your Data with AI
 
 #### Data Overview & Profiling
 
 **Data Understanding Prompt:**
+```
+I have a dataset with the following structure:
 
-"I have a dataset with the following structure:"
-
-**COLUMNS:**
+COLUMNS:
 [List column names and data types]
 
-**SAMPLE DATA:**
+SAMPLE DATA:
 [Paste 5-10 sample rows]
 
-**CONTEXT:**
+CONTEXT:
 [What this data represents and why you collected it]
 
-**PROVIDE:**
-
-1. **Data Profile Summary**
+PROVIDE:
+1. Data Profile Summary
    - Number of records and columns
    - Data quality assessment (missing values, outliers)
    - Key characteristics of each column
 
-2. **Initial Observations**
+2. Initial Observations
    - Interesting patterns you notice
    - Potential data quality issues
    - Relationships between columns
 
-3. **Analysis Suggestions**
+3. Analysis Suggestions
    - 5-7 specific analyses I should run
    - Which visualizations would be most informative
    - Questions this data could answer
 
-4. **Data Preparation Needs**
+4. Data Preparation Needs
    - Cleaning or transformation required
    - Additional data that might be useful
+```
 
 #### Identifying Trends & Patterns
 
 **Trend Analysis Prompt:**
+```
+Analyze this data for trends and patterns:
 
-"Analyze this data for trends and patterns:"
-
-**DATA DESCRIPTION:**
+DATA DESCRIPTION:
 [Describe what the data represents]
 
-**TIME PERIOD:**
+TIME PERIOD:
 [Date range of data]
 
-**KEY METRICS:**
+KEY METRICS:
 [Main variables you're tracking]
 
-**RAW DATA OR SUMMARY:**
+RAW DATA OR SUMMARY:
 [Paste relevant data - summary statistics or sample]
 
-**ANALYZE FOR:**
+ANALYZE FOR:
 1. Overall trends (increasing, decreasing, stable)
 2. Seasonal or cyclical patterns
 3. Anomalies or outliers (with possible explanations)
@@ -86,10 +86,11 @@ Data-driven decision making is essential in modern work, but analyzing data and 
 5. Segmentation opportunities (meaningful groups)
 6. Actionable insights (what this means for decisions)
 
-**FORMAT:**
+FORMAT: 
 - Executive summary (3-4 sentences)
 - Detailed findings with specific numbers
 - Visual representation suggestions
+```
 
 ### Statistical Analysis with AI
 
@@ -163,7 +164,7 @@ PROVIDE:
 FORMAT: Clear, data-driven, actionable
 ```
 
-### 📊 Exercise 4.1: Analyze Sample Data
+### Exercise 4.1: Analyze Sample Data
 
 **Task:** Use AI to conduct a complete analysis of a dataset.
 
@@ -216,106 +217,112 @@ Feb, West, 43000, 305, 140.98
 
 ---
 
-## 📖 Lesson 4.2: Spreadsheet Automation & Formulas
+## Lesson 4.2: Spreadsheet Automation & Formulas
 
 ### AI as Your Spreadsheet Assistant
 
 #### Formula Generation
 
 **Formula Request Prompt:**
+```
+I need an Excel/Google Sheets formula:
 
-"I need an Excel/Google Sheets formula:"
+GOAL: [What you want to calculate or accomplish]
 
-**GOAL:** [What you want to calculate or accomplish]
-
-**DATA STRUCTURE:**
+DATA STRUCTURE:
 - Column A: [Description]
 - Column B: [Description]
 - Column C: [Description]
 [etc.]
 
-**SPECIFIC REQUIREMENTS:**
+SPECIFIC REQUIREMENTS:
 [Any conditions, filters, or special cases]
 
-**EXAMPLE:**
+EXAMPLE:
 - Input: [Sample values]
 - Desired output: [What result you expect]
 
-**PROVIDE:**
+PROVIDE:
 1. The exact formula
 2. Plain English explanation of how it works
 3. Step-by-step breakdown
 4. Common errors to watch for
 5. Alternative approaches (if any)
 
-**SPREADSHEET TOOL:** [Excel / Google Sheets / Both]
+SPREADSHEET TOOL: [Excel / Google Sheets / Both]
+```
 
 **Common Formula Use Cases:**
 
 **1. Conditional Calculations**
-
-**GOAL:** Calculate commission based on sales tiers
+```
+GOAL: Calculate commission based on sales tiers
 - 5% for sales < $10,000
 - 7% for sales $10,000-$50,000
 - 10% for sales > $50,000
 
-**Column A:** Sales Amount
-**Need formula for Column B:** Commission
+Column A: Sales Amount
+Need formula for Column B: Commission
+```
 
 **2. Data Lookup & Matching**
+```
+GOAL: Look up employee department based on employee ID
 
-**GOAL:** Look up employee department based on employee ID
-
-**Data structure:**
+Data structure:
 - Sheet 1: Employee roster (ID, Name)
 - Sheet 2: Department assignments (ID, Department, Manager)
 
-**Need formula to pull Department into Sheet 1**
+Need formula to pull Department into Sheet 1
+```
 
 **3. Text Manipulation**
+```
+GOAL: Extract email domain from full email address
 
-**GOAL:** Extract email domain from full email address
+Column A: Email (e.g., john@company.com)
+Column B: Domain (want: company.com)
 
-**Column A:** Email (e.g., john@company.com)
-**Column B:** Domain (want: company.com)
-
-**Need formula for Column B**
+Need formula for Column B
+```
 
 **4. Date Calculations**
-
-**GOAL:** Calculate days between today and deadline, categorize as:
+```
+GOAL: Calculate days between today and deadline, categorize as:
 - "Urgent" if < 7 days
 - "Soon" if 7-30 days
 - "Upcoming" if > 30 days
 
-**Column A:** Deadline date
-**Column B:** Status category
+Column A: Deadline date
+Column B: Status category
+```
 
 #### Advanced Spreadsheet Tasks
 
-#### Pivot Table Creation Prompt:
+**Pivot Table Creation Prompt:**
+```
+Help me create a pivot table:
 
-"Help me create a pivot table:"
-
-**RAW DATA:**
+RAW DATA:
 [Describe your data columns]
 
-**ANALYSIS GOAL:**
+ANALYSIS GOAL:
 [What you want to summarize or analyze]
 
-**NEED TO SHOW:**
-- **Rows:** [What should be in rows]
-- **Columns:** [What should be in columns]
-- **Values:** [What to calculate - sum, average, count, etc.]
-- **Filters:** [Any filters to apply]
+NEED TO SHOW:
+- Rows: [What should be in rows]
+- Columns: [What should be in columns]
+- Values: [What to calculate - sum, average, count, etc.]
+- Filters: [Any filters to apply]
 
-**PROVIDE:**
+PROVIDE:
 1. Step-by-step instructions for creating this pivot table
 2. What insights this will reveal
 3. Suggested formatting for readability
 4. Additional pivot tables that might be useful
 
-**TOOL:** [Excel / Google Sheets]
+TOOL: [Excel / Google Sheets]
+```
 
 **Data Cleaning Prompt:**
 ```
@@ -372,7 +379,7 @@ SKILL LEVEL: [Beginner / Intermediate / Advanced]
 TOOL: [Excel / Google Sheets]
 ```
 
-### 📊 Exercise 4.2: Build Spreadsheet Solutions
+### Exercise 4.2: Build Spreadsheet Solutions
 
 **Task:** Use AI to solve 3 real spreadsheet challenges from your work.
 
@@ -408,139 +415,135 @@ Find a repetitive task in your spreadsheet workflow.
 
 ---
 
-## 📖 Lesson 4.3: Data Visualization & Reporting
+## Lesson 4.3: Data Visualization & Reporting
 
 ### Choosing the Right Visualization
 
 **Visualization Selection Prompt:**
+```
+Help me choose the right chart/visualization:
 
-"Help me choose the right chart/visualization:"
-
-**DATA:**
+DATA:
 [Describe what you're visualizing]
 
-**KEY METRICS:**
+KEY METRICS:
 [What you're measuring]
 
-**AUDIENCE:**
+AUDIENCE:
 [Who will see this - executives, team, clients]
 
-**PURPOSE:**
+PURPOSE:
 [What you want viewers to understand]
 
-**PROVIDE:**
-
-1. **Top 3 visualization types for this data** (with rationale)
-
-2. **For each option:**
+PROVIDE:
+1. Top 3 visualization types for this data (with rationale)
+2. For each option:
    - What it emphasizes
    - Best use cases
    - Pros and cons
+3. Recommendation with explanation
+4. Design tips (colors, labels, annotations)
+5. What to avoid (common mistakes)
 
-3. **Recommendation** with explanation
-
-4. **Design tips** (colors, labels, annotations)
-
-5. **What to avoid** (common mistakes)
-
-**EXAMPLES of visualization types to consider:**
+EXAMPLES of visualization types to consider:
 - Line chart, bar chart, pie chart, scatter plot, heatmap, table, etc.
+```
 
 ### Creating Effective Charts
 
 **Chart Design Prompt:**
+```
+Design a chart for me:
 
-"Design a chart for me:"
-
-**DATA TO VISUALIZE:**
+DATA TO VISUALIZE:
 [Paste or describe your data]
 
-**CHART TYPE:**
+CHART TYPE:
 [Chosen visualization type]
 
-**KEY MESSAGE:**
+KEY MESSAGE:
 [The one insight viewers should immediately grasp]
 
-**AUDIENCE:**
+AUDIENCE:
 [Who will see this]
 
-**PROVIDE:**
-
-1. **Chart Structure**
+PROVIDE:
+1. Chart Structure
    - Title (clear, informative)
    - Axis labels and units
    - Data series to include
    - Legend requirements
 
-2. **Design Recommendations**
+2. Design Recommendations
    - Color scheme (accessible, meaningful)
    - Font sizes and styles
    - Gridlines (yes/no, how many)
    - Data labels (what to show directly on chart)
 
-3. **Annotations & Highlights**
+3. Annotations & Highlights
    - What to emphasize (arrows, callouts, different colors)
    - Context to provide (benchmarks, targets, historical comparison)
 
-4. **Creation Instructions**
+4. Creation Instructions
    - Step-by-step for [Excel / Google Sheets / PowerBI / Tableau]
    - Specific settings and configurations
 
-5. **Accessibility Check**
+5. Accessibility Check
    - Color-blind friendly?
    - Clear for black & white printing?
    - Text readable at small sizes?
+```
 
 ### Dashboard Creation
 
 **Dashboard Design Prompt:**
+```
+Help me design a dashboard:
 
-"Help me design a dashboard:"
-
-**PURPOSE:**
+PURPOSE:
 [What this dashboard is for - daily monitoring, executive overview, etc.]
 
-**AUDIENCE:**
+AUDIENCE:
 [Who uses it and their technical level]
 
-**KEY METRICS:**
+KEY METRICS:
 [List 5-10 most important metrics to track]
 
-**DECISIONS THIS SUPPORTS:**
+DECISIONS THIS SUPPORTS:
 [What actions or decisions the dashboard should enable]
 
-**UPDATE FREQUENCY:**
+UPDATE FREQUENCY:
 [Real-time, daily, weekly, monthly]
 
-**PROVIDE:**
-
-1. **Dashboard Layout**
+PROVIDE:
+1. Dashboard Layout
    - Which metrics go where (prioritize by importance)
    - How many sections/panels
    - Information hierarchy
 
-2. **Visualization for Each Metric**
+2. Visualization for Each Metric
    - Recommended chart type
    - Why this works best
    - Key data points to highlight
 
-3. **Interactivity** (if applicable)
+3. Interactivity (if applicable)
    - Filters to include
    - Drill-down options
    - Date range selectors
 
-4. **Design Specifications**
+4. Design Specifications
    - Color coding scheme (red/yellow/green for status, etc.)
    - Font and style guide
    - White space and readability
 
-5. **Implementation Plan**
+5. Implementation Plan
    - Tool recommendation (Excel, Google Data Studio, PowerBI, Tableau)
    - Data connections needed
    - Refresh schedule
    - Maintenance considerations
 
-**FORMAT:** Visual mockup description + technical specifications
+FORMAT: Visual mockup description + technical specifications
+```
 
 ### Insight Generation
 
@@ -585,7 +588,7 @@ PROVIDE:
    - Focus on business impact
 ```
 
-### 📊 Exercise 4.3: Create a Complete Data Story
+### Exercise 4.3: Create a Complete Data Story
 
 **Task:** Build a data visualization project from raw data to insights.
 

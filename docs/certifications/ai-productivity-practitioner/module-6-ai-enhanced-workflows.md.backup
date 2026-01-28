@@ -1,4 +1,4 @@
-# ⚙️ Module 6: Building AI-Enhanced Workflows
+# Module 6: Building AI-Enhanced Workflows
 
 **Duration:** Self-paced (3-6 hours)  
 **Level:** Intermediate to Advanced  
@@ -6,11 +6,11 @@
 
 ---
 
-## 📋 Module Overview
+## Module Overview
 
 Now that you've mastered individual AI skills, it's time to integrate them into comprehensive workflows. This module teaches you to design, implement, and optimize end-to-end AI-powered processes that multiply your productivity. You'll learn to chain multiple AI tools, automate complex workflows, and create systems that work for you 24/7.
 
-### 🎯 Learning Objectives:**
+**Learning Objectives:**
 - Design efficient AI-powered workflows for complex tasks
 - Integrate multiple AI tools into cohesive processes
 - Automate repetitive workflows using AI and automation tools
@@ -21,7 +21,7 @@ Now that you've mastered individual AI skills, it's time to integrate them into 
 
 ---
 
-## 📖 Lesson 6.1: Workflow Design & Architecture
+## Lesson 6.1: Workflow Design & Architecture
 
 ### Understanding Workflow Components
 
@@ -52,22 +52,21 @@ Every workflow has three core components:
 #### Phase 1: Workflow Mapping
 
 **Workflow Mapping Prompt:**
+```
+Help me design a workflow for [task/process]:
 
-"Help me design a workflow for [task/process]:"
+CURRENT STATE:
+- What I do manually: [Step-by-step current process]
+- Time it takes: [Current duration]
+- Frequency: [How often I do this]
+- Pain points: [What's frustrating or time-consuming]
 
-**CURRENT STATE:**
-- **What I do manually:** [Step-by-step current process]
-- **Time it takes:** [Current duration]
-- **Frequency:** [How often I do this]
-- **Pain points:** [What's frustrating or time-consuming]
+DESIRED STATE:
+- What I want to achieve: [End goal]
+- Quality requirements: [Standards that must be met]
+- Constraints: [Budget, tools, time, etc.]
 
-**DESIRED STATE:**
-- **What I want to achieve:** [End goal]
-- **Quality requirements:** [Standards that must be met]
-- **Constraints:** [Budget, tools, time, etc.]
-
-**MAP THIS WORKFLOW:**
-
+MAP THIS WORKFLOW:
 1. Break down into discrete steps
 2. Identify which steps can be:
    - Fully automated with AI
@@ -78,12 +77,13 @@ Every workflow has three core components:
 5. Propose workflow architecture (visual description)
 6. Estimate time savings
 
-**PROVIDE:**
+PROVIDE:
 - Current workflow diagram (text-based)
 - Proposed AI-enhanced workflow
 - Tool recommendations for each step
 - Implementation difficulty (easy/medium/hard)
 - Expected ROI (time saved, quality improvement)
+```
 
 #### Phase 2: Tool Selection
 
@@ -137,19 +137,19 @@ ALSO PROVIDE:
 #### Phase 3: Implementation Planning
 
 **Implementation Roadmap Prompt:**
+```
+Create an implementation plan for this AI workflow:
 
-"Create an implementation plan for this AI workflow:"
-
-**WORKFLOW DESCRIPTION:**
+WORKFLOW DESCRIPTION:
 [What you're building]
 
-**COMPONENTS:**
+COMPONENTS:
 [List all tools and steps]
 
-**TIMELINE:**
+TIMELINE:
 Available time: [Hours per week for X weeks]
 
-**CREATE A ROADMAP:**
+CREATE A ROADMAP:
 
 **Week 1: Foundation**
 - Setup and configuration tasks
@@ -175,20 +175,21 @@ Available time: [Hours per week for X weeks]
 - User documentation
 - Training plan (if for team)
 
-**FOR EACH WEEK:**
+FOR EACH WEEK:
 - Specific tasks (checklist format)
 - Time estimates
 - Dependencies
 - Potential blockers
 - Mitigation strategies
 
-**PROVIDE:**
+PROVIDE:
 - Complete project plan
 - Risk assessment
 - Rollback strategy
 - Success metrics
+```
 
-### ⚙️ Exercise 6.1: Design Your First AI Workflow
+### Exercise 6.1: Design Your First AI Workflow
 
 **Task:** Map and design a complete AI-enhanced workflow for a real task from your work.
 
@@ -264,30 +265,29 @@ Select a process you perform regularly that:
 #### AI-Native Automation
 
 **Workflow AI Integration Prompt:**
+```
+Design an automated workflow using [automation platform]:
 
-"Design an automated workflow using [automation platform]:"
-
-**WORKFLOW GOAL:**
+WORKFLOW GOAL:
 [What this workflow accomplishes]
 
-**TRIGGER:**
+TRIGGER:
 [What starts the workflow]
 
-**STEPS:**
+STEPS:
 1. [Action 1]
 2. [Action 2]
 3. [AI processing step - describe what AI should do]
 4. [Action 4]
 [etc.]
 
-**AI INTEGRATION POINTS:**
+AI INTEGRATION POINTS:
 [Where AI is needed and what it does]
 
-**TOOLS INVOLVED:**
+TOOLS INVOLVED:
 [List all apps/services]
 
-**CREATE:**
-
+CREATE:
 1. **Workflow Architecture**
    - Trigger configuration
    - Step-by-step actions
@@ -309,9 +309,9 @@ Select a process you perform regularly that:
    - Expected outcomes
    - Edge cases to check
 
-**PLATFORM:** [Zapier / Make / n8n / Other]
-
-**TECHNICAL LEVEL:** [Your comfort level]
+PLATFORM: [Zapier / Make / n8n / Other]
+TECHNICAL LEVEL: [Your comfort level]
+```
 
 ### Common Workflow Patterns
 
@@ -320,84 +320,88 @@ Select a process you perform regularly that:
 **Use Case:** Automate blog post creation from research to publication
 
 **Workflow:**
-
-1. **TRIGGER:** New topic added to Notion database
+```
+1. TRIGGER: New topic added to Notion database
    ↓
-2. **AI RESEARCH:** ChatGPT generates outline and key points
+2. AI RESEARCH: ChatGPT generates outline and key points
    ↓
-3. **AI DRAFT:** Claude writes first draft (long-form capability)
+3. AI DRAFT: Claude writes first draft (long-form capability)
    ↓
-4. **HUMAN REVIEW:** Notification sent, draft awaits approval
+4. HUMAN REVIEW: Notification sent, draft awaits approval
    ↓
-5. **AI OPTIMIZATION:** If approved, AI generates SEO meta description
+5. AI OPTIMIZATION: If approved, AI generates SEO meta description
    ↓
-6. **AI IMAGES:** DALL-E creates featured image
+6. AI IMAGES: DALL-E creates featured image
    ↓
-7. **PUBLICATION:** Post to WordPress, schedule social media
+7. PUBLICATION: Post to WordPress, schedule social media
    ↓
-8. **DISTRIBUTION:** Send to email list, post to LinkedIn/Twitter
+8. DISTRIBUTION: Send to email list, post to LinkedIn/Twitter
+```
 
 **Implementation Prompt:**
-
-"Build this content creation workflow in [platform]:"
+```
+Build this content creation workflow in [platform]:
 
 [Paste the workflow steps above]
 
-**For each step, provide:**
+For each step, provide:
 - Specific tool/integration to use
 - Configuration details
 - AI prompts (if applicable)
 - Data mapping between steps
 - Error handling
 
-**Make it production-ready with:**
+Make it production-ready with:
 - Retry logic for failures
 - Notifications at key checkpoints
 - Logging for debugging
 - Quality controls
+```
 
 #### Pattern 2: Data Processing Pipeline
 
 **Use Case:** Automated weekly sales report
 
 **Workflow:**
-
-1. **TRIGGER:** Every Monday at 9 AM
+```
+1. TRIGGER: Every Monday at 9 AM
    ↓
-2. **DATA COLLECTION:** Pull sales data from CRM API
+2. DATA COLLECTION: Pull sales data from CRM API
    ↓
-3. **DATA CLEANING:** Remove duplicates, format dates
+3. DATA CLEANING: Remove duplicates, format dates
    ↓
-4. **AI ANALYSIS:** ChatGPT analyzes trends and anomalies
+4. AI ANALYSIS: ChatGPT analyzes trends and anomalies
    ↓
-5. **AI INSIGHTS:** Generate key insights and recommendations
+5. AI INSIGHTS: Generate key insights and recommendations
    ↓
-6. **VISUALIZATION:** Create charts (Google Sheets/Excel)
+6. VISUALIZATION: Create charts (Google Sheets/Excel)
    ↓
-7. **REPORT GENERATION:** AI writes executive summary
+7. REPORT GENERATION: AI writes executive summary
    ↓
-8. **DISTRIBUTION:** Email to stakeholders, post in Slack
+8. DISTRIBUTION: Email to stakeholders, post in Slack
+```
 
 #### Pattern 3: Communication Automation
 
 **Use Case:** Intelligent email triage and response
 
 **Workflow:**
-
-1. **TRIGGER:** New email arrives in specific inbox
+```
+1. TRIGGER: New email arrives in specific inbox
    ↓
-2. **AI CLASSIFICATION:** Categorize email (urgent/normal/low priority)
+2. AI CLASSIFICATION: Categorize email (urgent/normal/low priority)
    ↓
-3. **AI INTENT DETECTION:** Identify what sender needs
+3. AI INTENT DETECTION: Identify what sender needs
    ↓
-4. **CONDITIONAL LOGIC:**
+4. CONDITIONAL LOGIC:
    - If FAQ: AI generates response, sends automatically
    - If requires data: AI pulls info from systems, drafts response
    - If complex: Flag for human review with AI summary
    ↓
-5. **RESPONSE HANDLING:** Send, queue, or escalate
+5. RESPONSE HANDLING: Send, queue, or escalate
    ↓
-6. **LOGGING:** Record interaction in CRM
+6. LOGGING: Record interaction in CRM
+```
 
 ### API Integration for AI Workflows
 
@@ -412,22 +416,21 @@ Most AI tools offer APIs for programmatic access:
 - **Custom endpoints**: Many automation platforms support custom API calls
 
 **API Call Prompt (for automation platform):**
+```
+Configure an API call to OpenAI ChatGPT:
 
-"Configure an API call to OpenAI ChatGPT:"
-
-**PURPOSE:**
+PURPOSE:
 [What you want AI to do]
 
-**INPUT DATA:**
+INPUT DATA:
 [Variables from previous workflow steps]
 
-**API DETAILS:**
-- **Endpoint:** https://api.openai.com/v1/chat/completions
-- **Method:** POST
-- **Authentication:** Bearer token (API key)
+API DETAILS:
+- Endpoint: https://api.openai.com/v1/chat/completions
+- Method: POST
+- Authentication: Bearer token (API key)
 
-**REQUEST BODY:**
-```json
+REQUEST BODY:
 {
   "model": "gpt-4",
   "messages": [
@@ -442,9 +445,8 @@ Most AI tools offer APIs for programmatic access:
   ],
   "temperature": 0.7
 }
-```
 
-**HELP ME:**
+HELP ME:
 1. Set up authentication properly
 2. Map workflow variables to API request
 3. Parse the API response
@@ -452,9 +454,10 @@ Most AI tools offer APIs for programmatic access:
 5. Handle errors (rate limits, API failures)
 6. Configure retry logic
 
-**PLATFORM:** [Zapier / Make / n8n / Custom]
+PLATFORM: [Zapier / Make / n8n / Custom]
+```
 
-### ⚙️ Exercise 6.2: Build an Automated Workflow
+### Exercise 6.2: Build an Automated Workflow
 
 **Task:** Implement one of the workflow patterns above or create your own.
 
@@ -502,7 +505,7 @@ Design and build your own based on your specific requirements.
 
 ---
 
-## 📖 Lesson 6.3: Measuring & Optimizing AI Workflows
+## Lesson 6.3: Measuring & Optimizing AI Workflows
 
 ### Workflow Performance Metrics
 
@@ -533,21 +536,21 @@ Design and build your own based on your specific requirements.
 
 ### Workflow Analytics Prompt
 
-"Help me set up analytics for this AI workflow:"
+```
+Help me set up analytics for this AI workflow:
 
-**WORKFLOW DESCRIPTION:**
+WORKFLOW DESCRIPTION:
 [What this workflow does]
 
-**CURRENT METRICS:**
+CURRENT METRICS:
 [Any data you're already tracking]
 
-**I WANT TO TRACK:**
+I WANT TO TRACK:
 1. [Metric 1 you want to measure]
 2. [Metric 2]
 3. [Metric 3]
 
-**PROVIDE:**
-
+PROVIDE:
 1. **Metrics Framework**
    - Define each metric precisely
    - How to calculate it
@@ -574,32 +577,33 @@ Design and build your own based on your specific requirements.
    - Column headers
    - Example data rows
    - Formula for calculations
+```
 
 ### Optimization Strategies
 
 #### Continuous Improvement Process
 
 **Workflow Optimization Prompt:**
+```
+Analyze and optimize this AI workflow:
 
-"Analyze and optimize this AI workflow:"
-
-**WORKFLOW:**
+WORKFLOW:
 [Describe your workflow]
 
-**CURRENT PERFORMANCE:**
-- **Average runtime:** [time]
-- **Success rate:** [%]
-- **Manual intervention:** [% of runs]
-- **Time savings:** [hours per week]
-- **User satisfaction:** [rating or feedback]
+CURRENT PERFORMANCE:
+- Average runtime: [time]
+- Success rate: [%]
+- Manual intervention: [% of runs]
+- Time savings: [hours per week]
+- User satisfaction: [rating or feedback]
 
-**ISSUES OBSERVED:**
+ISSUES OBSERVED:
 [List any problems or inefficiencies]
 
-**DATA:**
+DATA:
 [Paste any metrics or logs you have]
 
-**PROVIDE OPTIMIZATION RECOMMENDATIONS:**
+PROVIDE OPTIMIZATION RECOMMENDATIONS:
 
 1. **Quick Wins** (easy, high-impact improvements)
    - What to change
@@ -631,10 +635,11 @@ Design and build your own based on your specific requirements.
    - Add parallel processing
    - Improve reliability
 
-**PRIORITIZE recommendations by:**
+PRIORITIZE recommendations by:
 - Impact (High/Medium/Low)
 - Effort (Hours to implement)
 - Dependencies
+```
 
 #### A/B Testing AI Components
 
@@ -649,46 +654,46 @@ When optimizing AI parts of workflows, test variations:
 - Processing order (which AI step comes first)
 
 **Testing Prompt:**
+```
+Design an A/B test for this AI workflow component:
 
-"Design an A/B test for this AI workflow component:"
-
-**CURRENT VERSION (A):**
+CURRENT VERSION (A):
 [Describe current AI prompt/configuration]
 
-**ALTERNATIVE VERSION (B):**
+ALTERNATIVE VERSION (B):
 [Describe variation to test]
 
-**WHAT I'M TESTING:**
+WHAT I'M TESTING:
 [What you want to improve - accuracy, speed, quality, cost]
 
-**TEST DESIGN:**
-
-1. **Success Criteria**
+TEST DESIGN:
+1. Success Criteria
    - What "better" means (specific metrics)
    - Minimum improvement threshold
 
-2. **Test Setup**
+2. Test Setup
    - Number of test runs needed
    - Data sources for testing
    - How to ensure fair comparison
 
-3. **Measurement**
+3. Measurement
    - Metrics to compare
    - How to collect data
    - Analysis method
 
-4. **Decision Framework**
+4. Decision Framework
    - When to declare a winner
    - What if results are inconclusive
    - Rollback plan if B performs worse
 
-**PROVIDE:**
+PROVIDE:
 - Complete test plan
 - Sample data tracking sheet
 - Analysis template
 - Implementation recommendation
+```
 
-### ⚙️ Exercise 6.3: Optimize an Existing Workflow
+### Exercise 6.3: Optimize an Existing Workflow
 
 **Task:** Analyze and improve a workflow you've built (from Exercise 6.2) or an existing process.
 

@@ -1,4 +1,4 @@
-# ⚖️ Module 7: Ethics, Best Practices & Future Trends
+# Module 7: Ethics, Best Practices & Future Trends
 
 **Duration:** Self-paced (2-4 hours)  
 **Level:** All levels  
@@ -6,11 +6,11 @@
 
 ---
 
-## 📋 Module Overview
+## Module Overview
 
 As AI becomes central to how we work, understanding the ethical implications, best practices, and future direction of this technology is crucial. This final module equips you with the knowledge to use AI responsibly, avoid common pitfalls, stay ahead of trends, and position yourself for success in the AI-driven future.
 
-### 🎯 Learning Objectives:**
+**Learning Objectives:**
 - Understand AI ethics and responsible use principles
 - Protect privacy and security when using AI tools
 - Recognize and mitigate AI biases and limitations
@@ -21,7 +21,7 @@ As AI becomes central to how we work, understanding the ethical implications, be
 
 ---
 
-## 📖 Lesson 7.1: AI Ethics & Responsible Use
+## Lesson 7.1: AI Ethics & Responsible Use
 
 ### Core Ethical Principles
 
@@ -38,13 +38,17 @@ As AI becomes central to how we work, understanding the ethical implications, be
 **Examples:**
 
 ✅ **Appropriate:**
-- "This report was drafted with AI assistance and reviewed for accuracy."
-- "Content created with ChatGPT and edited by [Your Name]"
+```
+"This report was drafted with AI assistance and reviewed for accuracy."
+"Content created with ChatGPT and edited by [Your Name]"
+```
 
 ❌ **Inappropriate:**
-- Submitting AI-generated academic paper without disclosure
-- Taking full credit for AI-written code in team projects
-- Claiming AI analysis as your personal expertise
+```
+Submitting AI-generated academic paper without disclosure
+Taking full credit for AI-written code in team projects
+Claiming AI analysis as your personal expertise
+```
 
 **Workplace Transparency:**
 - Inform clients/stakeholders about AI use in deliverables
@@ -88,10 +92,11 @@ AI models learn from training data, which can contain biases:
 **Bias Mitigation Strategies:**
 
 1. **Diverse Inputs**: Prompt AI to consider multiple perspectives
-   
+   ```
    Instead of: "Write marketing copy for our product"
-   
-   Try: "Write inclusive marketing copy that appeals to diverse audiences, considering different ages, backgrounds, and abilities"
+   Try: "Write inclusive marketing copy that appeals to diverse audiences, 
+   considering different ages, backgrounds, and abilities"
+   ```
 
 2. **Critical Review**: Examine outputs for stereotypes or exclusions
    - Does language assume certain demographics?
@@ -99,12 +104,16 @@ AI models learn from training data, which can contain biases:
    - Could any phrasing be offensive to some groups?
 
 3. **Test for Bias**: Use AI to check for bias
-   
-   "Review this content for potential bias regarding [gender/race/age/disability/etc.]. Identify any problematic language or assumptions."
+   ```
+   "Review this content for potential bias regarding [gender/race/age/disability/etc.]. 
+   Identify any problematic language or assumptions."
+   ```
 
 4. **Multiple Perspectives**: Generate multiple versions and compare
-   
-   "Generate 3 different versions of this content, each considering different cultural contexts"
+   ```
+   "Generate 3 different versions of this content, 
+   each considering different cultural contexts"
+   ```
 
 #### 4. Privacy & Confidentiality
 
@@ -138,12 +147,16 @@ AI models learn from training data, which can contain biases:
 **Example - Anonymization:**
 
 ❌ **Wrong:**
-
-"Review this sales report for ABC Corp. John Smith bought $50,000 of products, while Jane Doe only spent $5,000..."
+```
+"Review this sales report for ABC Corp. John Smith bought $50,000 
+of products, while Jane Doe only spent $5,000..."
+```
 
 ✅ **Right:**
-
-"Review this sales report structure. Client A purchased $50,000 worth of products, while Client B purchased $5,000. What insights can you provide?"
+```
+"Review this sales report structure. Client A purchased $50,000 worth of products, 
+while Client B purchased $5,000. What insights can you provide?"
+```
 
 ### Ethical Use Cases & Gray Areas
 
@@ -158,8 +171,10 @@ AI models learn from training data, which can contain biases:
 - **Always**: Follow your institution's specific AI policies
 
 **Best Practice:**
-
-Think of AI as a tutor, not a substitute for learning. Use AI to understand concepts, then demonstrate understanding yourself.
+```
+Think of AI as a tutor, not a substitute for learning.
+Use AI to understand concepts, then demonstrate understanding yourself.
+```
 
 #### Scenario 2: Professional Work
 
@@ -172,8 +187,10 @@ Think of AI as a tutor, not a substitute for learning. Use AI to understand conc
 - **Liability**: Ensure you can stand behind the work as your own
 
 **Best Practice:**
-
-AI should amplify your expertise, not replace it. The final work should reflect your professional judgment.
+```
+AI should amplify your expertise, not replace it.
+The final work should reflect your professional judgment.
+```
 
 #### Scenario 3: Creative Work
 
@@ -191,7 +208,7 @@ Use AI as a collaborator, not a creator.
 Add your unique perspective, style, and expertise.
 ```
 
-### ⚖️ Exercise 7.1: Ethical Decision-Making
+### Exercise 7.1: Ethical Decision-Making
 
 **Task:** Analyze ethical dilemmas and develop your ethical AI framework.
 
@@ -230,7 +247,7 @@ AI generates marketing content that, upon review, contains subtle gender stereot
 
 ---
 
-## 📖 Lesson 7.2: Privacy, Security & Best Practices
+## Lesson 7.2: Privacy, Security & Best Practices
 
 ### Data Security in AI Usage
 
@@ -261,29 +278,32 @@ AI generates marketing content that, upon review, contains subtle gender stereot
 #### For Individual Use
 
 **Account Security:**
-
-✅ Enable two-factor authentication (2FA) on all AI tool accounts  
-✅ Use unique, strong passwords (password manager)  
-✅ Review connected apps and integrations quarterly  
-✅ Log out of shared devices  
-✅ Enable privacy modes when available  
+```
+✅ Enable two-factor authentication (2FA) on all AI tool accounts
+✅ Use unique, strong passwords (password manager)
+✅ Review connected apps and integrations quarterly
+✅ Log out of shared devices
+✅ Enable privacy modes when available
 ✅ Regularly clear conversation history (if it contains any sensitive info)
+```
 
 **Data Protection:**
-
-✅ Anonymize all data before inputting  
-✅ Use placeholders for identifying information  
-✅ Never paste passwords, API keys, or credentials  
-✅ Screen captures: blur sensitive information  
+```
+✅ Anonymize all data before inputting
+✅ Use placeholders for identifying information
+✅ Never paste passwords, API keys, or credentials
+✅ Screen captures: blur sensitive information
 ✅ Keep regulated data (GDPR, HIPAA) out of public AI tools
+```
 
 **Code Security:**
-
-✅ Review AI-generated code for security vulnerabilities  
-✅ Don't include API keys or secrets in prompts  
-✅ Scan code for common security issues (SQL injection, XSS, etc.)  
-✅ Test authentication and authorization logic carefully  
+```
+✅ Review AI-generated code for security vulnerabilities
+✅ Don't include API keys or secrets in prompts
+✅ Scan code for common security issues (SQL injection, XSS, etc.)
+✅ Test authentication and authorization logic carefully
 ✅ Use environment variables for sensitive configuration
+```
 
 #### For Team/Enterprise Use
 
@@ -371,22 +391,23 @@ When choosing an AI tool, evaluate:
 - Document verification process
 
 **Verification Prompt:**
-
-\"Review this AI-generated content for factual accuracy:\"
+```
+Review this AI-generated content for factual accuracy:
 
 [Paste content]
 
-**For each factual claim:**
+For each factual claim:
 1. Identify the claim
 2. Assess confidence level (high/medium/low)
 3. Suggest verification method
 4. Flag any claims that seem questionable
 
-**Prioritize claims that are:**
+Prioritize claims that are:
 - Statistical or numerical
 - Historical events or dates
 - Scientific or technical facts
 - Legal or regulatory information
+```
 
 #### Handling AI Hallucinations
 
@@ -406,7 +427,7 @@ When choosing an AI tool, evaluate:
 4. **Expert Review**: Have knowledgeable person review technical content
 5. **Test Outputs**: For code or technical instructions, actually test them
 
-### 🔒 Exercise 7.2: Security Audit
+### Exercise 7.2: Security Audit
 
 **Task:** Audit your current AI usage for security and privacy.
 
@@ -439,7 +460,7 @@ When choosing an AI tool, evaluate:
 
 ---
 
-## 📖 Lesson 7.3: Future of AI & Career Navigation
+## Lesson 7.3: Future of AI & Career Navigation
 
 ### AI Trends & Future Directions
 
@@ -521,18 +542,17 @@ When choosing an AI tool, evaluate:
 - Share learnings and get feedback
 
 **Staying Current Prompt:**
+```
+Create a personalized AI learning plan for me:
 
-"Create a personalized AI learning plan for me:"
+MY PROFILE:
+- Current role: [Your job/field]
+- AI skill level: [Where you are after this certification]
+- Time available: [Hours per week]
+- Learning style: [Hands-on / Reading / Video / Mix]
+- Career goals: [Where you want to go]
 
-**MY PROFILE:**
-- **Current role:** [Your job/field]
-- **AI skill level:** [Where you are after this certification]
-- **Time available:** [Hours per week]
-- **Learning style:** [Hands-on / Reading / Video / Mix]
-- **Career goals:** [Where you want to go]
-
-**CREATE A PLAN:**
-
+CREATE A PLAN:
 1. **Daily Habits** (15-30 min)
    - What to read/follow
    - How to stay informed
@@ -561,6 +581,7 @@ When choosing an AI tool, evaluate:
    - Next skills to develop
    - Milestones to achieve
    - How to measure progress
+```
 
 ### Career Implications
 
@@ -620,27 +641,26 @@ When choosing an AI tool, evaluate:
 - Network with other AI practitioners
 
 **Career Positioning Prompt:**
+```
+Help me position my career in the AI era:
 
-"Help me position my career in the AI era:"
+MY BACKGROUND:
+- Current role: [Title and responsibilities]
+- Industry: [Sector]
+- Years of experience: [Number]
+- Key skills: [Your top skills]
 
-**MY BACKGROUND:**
-- **Current role:** [Title and responsibilities]
-- **Industry:** [Sector]
-- **Years of experience:** [Number]
-- **Key skills:** [Your top skills]
+MY AI EXPERIENCE:
+- AI tools I use regularly: [List]
+- Workflows I've built: [Brief description]
+- Results achieved: [Quantified impact]
 
-**MY AI EXPERIENCE:**
-- **AI tools I use regularly:** [List]
-- **Workflows I've built:** [Brief description]
-- **Results achieved:** [Quantified impact]
+CAREER GOALS:
+- Next role target: [What you want]
+- Timeline: [When]
+- Why: [Motivation]
 
-**CAREER GOALS:**
-- **Next role target:** [What you want]
-- **Timeline:** [When]
-- **Why:** [Motivation]
-
-**HELP ME:**
-
+HELP ME:
 1. **Value Proposition**
    - How to articulate my AI skills
    - Unique positioning vs. competitors
@@ -670,8 +690,9 @@ When choosing an AI tool, evaluate:
    - Where this field is going
    - How to stay relevant
    - Career trajectory options
+```
 
-### 🚀 Exercise 7.3: Future-Proof Your Career
+### Exercise 7.3: Future-Proof Your Career
 
 **Task:** Create your personal AI career strategy.
 

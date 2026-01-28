@@ -1,4 +1,4 @@
-# 💻 Module 5: AI for Coding & Development
+# Module 5: AI for Coding & Development
 
 **Duration:** Self-paced (4-7 hours)  
 **Level:** Intermediate to Advanced  
@@ -6,11 +6,11 @@
 
 ---
 
-## 📋 Module Overview
+## Module Overview
 
 Whether you're a developer, aspiring coder, or non-technical professional who needs to work with code, AI has revolutionized how we write, debug, and learn programming. This module covers using AI coding assistants, generating code for various tasks, debugging efficiently, and learning new languages faster—regardless of your current technical level.
 
-### 🎯 Learning Objectives:**
+**Learning Objectives:**
 - Use AI coding assistants effectively (ChatGPT, GitHub Copilot, etc.)
 - Generate functional code for common tasks
 - Debug and troubleshoot code with AI assistance
@@ -21,7 +21,7 @@ Whether you're a developer, aspiring coder, or non-technical professional who ne
 
 ---
 
-## 📖 Lesson 5.1: AI Coding Assistants & Best Practices
+## Lesson 5.1: AI Coding Assistants & Best Practices
 
 ### Overview of AI Coding Tools
 
@@ -107,68 +107,69 @@ Rarely is the first AI-generated code perfect. Use an iterative approach:
 ### Effective Code Generation Prompts
 
 **Basic Code Generation Template:**
+```
+Write [language] code to [task description].
 
-"Write [language] code to [task description]."
-
-**Requirements:**
+Requirements:
 - [Specific requirement 1]
 - [Specific requirement 2]
 - [Specific requirement 3]
 
-**Input:** [Describe input data/parameters]
+Input: [Describe input data/parameters]
+Output: [Describe expected output]
 
-**Output:** [Describe expected output]
-
-**Constraints:**
+Constraints:
 - [Libraries allowed/forbidden]
 - [Performance considerations]
 - [Coding style preferences]
 
-**Include:**
+Include:
 - Inline comments explaining logic
 - Error handling
 - Example usage
+```
 
 **Advanced Code Generation Template:**
+```
+I need a [component/function/class] in [language/framework]:
 
-"I need a [component/function/class] in [language/framework]:"
-
-**PURPOSE:**
+PURPOSE:
 [Detailed description of what it should do]
 
-**ARCHITECTURE:**
-- **Type:** [Function / Class / Module]
-- **Inputs:** [List parameters with types]
-- **Outputs:** [Return type and structure]
-- **Side effects:** [Any state changes or external calls]
+ARCHITECTURE:
+- Type: [Function / Class / Module]
+- Inputs: [List parameters with types]
+- Outputs: [Return type and structure]
+- Side effects: [Any state changes or external calls]
 
-**TECHNICAL REQUIREMENTS:**
-- **Language version:** [e.g., Python 3.11]
-- **Dependencies:** [Libraries I can use]
-- **Design patterns:** [If applicable - e.g., singleton, factory]
-- **Performance:** [Any speed/memory requirements]
+TECHNICAL REQUIREMENTS:
+- Language version: [e.g., Python 3.11]
+- Dependencies: [Libraries I can use]
+- Design patterns: [If applicable - e.g., singleton, factory]
+- Performance: [Any speed/memory requirements]
 
-**BUSINESS LOGIC:**
+BUSINESS LOGIC:
 [Detailed step-by-step logic]
 
-**ERROR HANDLING:**
+ERROR HANDLING:
 - Handle [specific error case 1]
 - Handle [specific error case 2]
 - Validation requirements
 
-**CODE QUALITY:**
+CODE QUALITY:
 - Follow [style guide - e.g., PEP 8, ESLint]
 - Include docstrings/JSDoc
 - Add type hints/annotations
 - Write defensive code
 
-**PROVIDE:**
+PROVIDE:
 1. Complete code implementation
 2. Explanation of approach
 3. Example usage with 2-3 test cases
 4. Potential edge cases to consider
+```
 
-### 💻 Exercise 5.1: Master Code Generation
+### Exercise 5.1: Master Code Generation
 
 **Task:** Generate code for 3 different complexity levels.
 
@@ -206,83 +207,84 @@ Generate a more sophisticated piece of code (e.g., API endpoint, database query 
 
 ---
 
-## 📖 Lesson 5.2: Debugging & Troubleshooting with AI
+## Lesson 5.2: Debugging & Troubleshooting with AI
 
 ### AI-Powered Debugging Process
 
 #### Step 1: Error Understanding
 
 **Error Explanation Prompt:**
+```
+I'm getting this error in [language]:
 
-"I'm getting this error in [language]:"
-
-**ERROR MESSAGE:**
+ERROR MESSAGE:
 [Paste complete error message]
 
-**CODE:**
+CODE:
 [Paste relevant code section]
 
-**CONTEXT:**
-- **What I'm trying to do:** [Description]
-- **When this error occurs:** [Trigger condition]
-- **Environment:** [OS, language version, framework versions]
+CONTEXT:
+- What I'm trying to do: [Description]
+- When this error occurs: [Trigger condition]
+- Environment: [OS, language version, framework versions]
 
-**EXPLAIN:**
+EXPLAIN:
 1. What this error means in plain English
 2. What's causing it (root cause)
 3. Where exactly the problem is in my code
 4. How to fix it (detailed steps)
 5. How to prevent similar errors in the future
 
-**SKILL LEVEL:** [Beginner / Intermediate / Advanced]
+SKILL LEVEL: [Beginner / Intermediate / Advanced]
+```
 
 #### Step 2: Systematic Debugging
 
 **Debugging Assistance Prompt:**
+```
+My code isn't working as expected:
 
-"My code isn't working as expected:"
-
-**EXPECTED BEHAVIOR:**
+EXPECTED BEHAVIOR:
 [What should happen]
 
-**ACTUAL BEHAVIOR:**
+ACTUAL BEHAVIOR:
 [What actually happens]
 
-**CODE:**
+CODE:
 [Paste your code]
 
-**INPUTS I'M TESTING:**
+INPUTS I'M TESTING:
 [Sample inputs]
 
-**OUTPUTS I'M GETTING:**
+OUTPUTS I'M GETTING:
 [Actual outputs]
 
-**HELP ME:**
+HELP ME:
 1. Identify where the logic breaks
 2. Explain why it's not working
 3. Suggest fixes
 4. Provide corrected code with explanations
 5. Suggest additional test cases
 
-**DEBUG STEP-BY-STEP:**
+DEBUG STEP-BY-STEP:
 - Add print/log statements to trace execution
 - Explain what each part should do
 - Identify the exact line/section with the issue
+```
 
 #### Step 3: Code Review & Optimization
 
 **Code Review Prompt:**
+```
+Review this code for issues and improvements:
 
-"Review this code for issues and improvements:"
-
-**CODE:**
+CODE:
 [Paste your code]
 
-**PURPOSE:**
+PURPOSE:
 [What this code does]
 
-**REVIEW FOR:**
-
+REVIEW FOR:
 1. **Correctness**: Are there bugs or logical errors?
 2. **Performance**: Any inefficiencies or bottlenecks?
 3. **Security**: Vulnerabilities or unsafe practices?
@@ -290,16 +292,17 @@ Generate a more sophisticated piece of code (e.g., API endpoint, database query 
 5. **Best Practices**: Does it follow [language] conventions?
 6. **Edge Cases**: What scenarios might break this?
 
-**PROVIDE:**
+PROVIDE:
 - Issues found (severity: critical/major/minor)
 - Specific suggestions for each issue
 - Refactored code with improvements
 - Explanation of changes
 
-**CODE CONTEXT:**
+CODE CONTEXT:
 - This will run [frequency/scale]
 - It's used by [user type]
 - [Any other relevant context]
+```
 
 ### Common Debugging Scenarios
 
@@ -375,7 +378,7 @@ VERSIONS:
 - External dependency: [version]
 ```
 
-### 💻 Exercise 5.2: Debug Real Code
+### Exercise 5.2: Debug Real Code
 
 **Task:** Practice debugging with AI across different error types.
 
@@ -433,23 +436,22 @@ console.log(getTopThree(gameScores));
 
 ---
 
-## 📖 Lesson 5.3: Learning New Languages & Technologies
+## Lesson 5.3: Learning New Languages & Technologies
 
 ### Accelerated Learning with AI
 
 #### Learning a New Programming Language
 
 **Language Learning Prompt:**
+```
+I want to learn [language] and I already know [your current language].
 
-"I want to learn [language] and I already know [your current language]."
+BACKGROUND:
+- My programming experience: [level and languages]
+- Goal: [What I want to build]
+- Timeframe: [How quickly I need to learn]
 
-**BACKGROUND:**
-- **My programming experience:** [level and languages]
-- **Goal:** [What I want to build]
-- **Timeframe:** [How quickly I need to learn]
-
-**PROVIDE A LEARNING PATH:**
-
+PROVIDE A LEARNING PATH:
 1. **Core Concepts** I need to master
    - Map to equivalent concepts in [my known language]
    - Highlight major differences
@@ -476,20 +478,20 @@ console.log(getTopThree(gameScores));
 6. **Resource Recommendations**
    - Official documentation sections to read
    - Best practices guides
+```
 
 #### Learning Frameworks & Libraries
 
 **Framework Learning Prompt:**
+```
+Teach me [framework/library] for [purpose]:
 
-"Teach me [framework/library] for [purpose]:"
+MY CONTEXT:
+- Base language proficiency: [level]
+- What I'm building: [project description]
+- My learning style: [hands-on / conceptual / both]
 
-**MY CONTEXT:**
-- **Base language proficiency:** [level]
-- **What I'm building:** [project description]
-- **My learning style:** [hands-on / conceptual / both]
-
-**START WITH:**
-
+START WITH:
 1. **What is [framework]?**
    - Purpose and use cases
    - When to use it vs. alternatives
@@ -524,26 +526,27 @@ console.log(getTopThree(gameScores));
    - Intermediate topics to explore
    - Advanced features
    - Community resources
+```
 
 ### Code Explanation & Learning
 
 **Code Explanation Prompt:**
+```
+Explain this code to me:
 
-"Explain this code to me:"
-
-**CODE:**
+CODE:
 [Paste code you want to understand]
 
-**I WANT TO UNDERSTAND:**
+I WANT TO UNDERSTAND:
 - Overall purpose (what does it do?)
 - How it works (step-by-step logic)
 - Each function/method
 - Design patterns used
 - Why certain approaches were chosen
 
-**MY LEVEL:** [Beginner / Intermediate / Advanced]
+MY LEVEL: [Beginner / Intermediate / Advanced]
 
-**PROVIDE:**
+PROVIDE:
 1. Plain English summary (2-3 sentences)
 2. Annotated code (add inline comments)
 3. Step-by-step walkthrough
@@ -552,6 +555,7 @@ console.log(getTopThree(gameScores));
 6. Suggest alternative approaches (if applicable)
 
 Use analogies and examples to clarify complex parts.
+```
 
 ### Project-Based Learning
 
@@ -602,7 +606,7 @@ FOR THE SUGGESTED PROJECT:
    - More advanced features to add
 ```
 
-### 💻 Exercise 5.3: Learn Something New
+### Exercise 5.3: Learn Something New
 
 **Task:** Use AI to learn a new programming concept, language, or framework.
 
