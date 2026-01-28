@@ -6,17 +6,20 @@
 
 ---
 
-## Module Overview
+## 📋 Module Overview
 
-Now that you've mastered the basics, it's time to unlock Copilot's full potential. In this module, you'll learn advanced techniques including GitHub Copilot Chat, code refactoring, test generation, and custom prompt engineering strategies. You'll discover how to use Copilot for code explanation, debugging, and even documentation generation.
+Now that you've mastered the basics of GitHub Copilot, it's time to unlock its full potential. This module dives deep into advanced techniques including GitHub Copilot Chat, automated test generation, code refactoring, and custom prompt engineering strategies. You'll discover how to use Copilot for code explanation, debugging, documentation generation, and leveraging experimental features.
 
-**Learning Objectives:**
+### 🎯 Learning Objectives
+
+By the end of this module, you will be able to:
 - Master GitHub Copilot Chat for conversational code assistance
 - Generate comprehensive test suites automatically
-- Refactor legacy code with AI assistance
-- Create documentation and comments efficiently
+- Refactor legacy code efficiently with AI assistance
+- Create documentation and comments systematically
 - Use Copilot Labs experimental features
-- Build custom prompt templates for your workflow
+- Build custom prompt templates for your specific workflow
+- Debug code more effectively using AI-powered suggestions
 
 ---
 
@@ -35,112 +38,66 @@ Copilot Chat transforms your coding experience from autocomplete to conversation
 
 **Essential Slash Commands:**
 
-```
-/explain - Explain selected code
-/fix - Suggest fixes for problems
-/tests - Generate test cases
-/help - Show available commands
-/clear - Clear chat history
-/doc - Generate documentation
-```
+Copilot Chat offers several essential slash commands:
+- **/explain** - Provides detailed explanations of selected code
+- **/fix** - Suggests fixes for identified problems
+- **/tests** - Generates test cases for your code
+- **/help** - Shows all available commands
+- **/clear** - Clears the chat history
+- **/doc** - Generates documentation for your code
 
 **Example Usage:**
 
-```javascript
-// Select this function and use /explain
-function calculateCompoundInterest(principal, rate, time, frequency) {
-  return principal * Math.pow((1 + rate / frequency), frequency * time);
-}
-
-// Chat will explain:
-// "This function calculates compound interest using the formula A = P(1 + r/n)^(nt)
-// where P is principal, r is rate, n is frequency, and t is time..."
-```
+When you select a function that calculates compound interest (taking parameters principal, rate, time, and frequency, returning the result of the compound interest formula using Math.pow), and use the **/explain** command, Copilot Chat will provide a detailed explanation such as: "This function calculates compound interest using the formula A = P(1 + r/n)^(nt) where P is principal, r is rate, n is frequency, and t is time..."
 
 ### Conversational Code Generation
 
 **Pattern 1: Multi-Step Development**
 
-```
-You: Create a REST API endpoint for user registration
-Copilot: [Generates basic endpoint]
+You can iteratively build features through conversation:
+1. First, ask Copilot to "Create a REST API endpoint for user registration" and it generates a basic endpoint
+2. Then request "Add email validation" and Copilot adds email validation logic
+3. Continue with "Now add password hashing with bcrypt" and Copilot implements bcrypt hashing
+4. Finally, ask to "Add error handling for duplicate emails" and Copilot adds try-catch blocks with duplicate checking
 
-You: Add email validation
-Copilot: [Adds email validation]
-
-You: Now add password hashing with bcrypt
-Copilot: [Implements bcrypt hashing]
-
-You: Add error handling for duplicate emails
-Copilot: [Adds try-catch and duplicate check]
-```
+This conversational approach allows you to build complex features incrementally, refining each step based on Copilot's suggestions.
 
 **Pattern 2: Code Explanation**
 
-```python
-# Select complex code and ask in chat:
-"Explain this function and its time complexity"
-
-# Copilot provides:
-# - Line-by-line breakdown
-# - Algorithm analysis
-# - Performance characteristics
-# - Potential improvements
-```
+When you select complex code and ask in chat "Explain this function and its time complexity", Copilot provides comprehensive analysis including:
+- A detailed line-by-line breakdown of what each part does
+- Algorithm analysis explaining the approach used
+- Performance characteristics and complexity analysis
+- Suggestions for potential improvements and optimizations
 
 **Pattern 3: Alternative Implementations**
 
-```
-You: "Show me 3 different ways to implement this sorting algorithm"
-Copilot: 
-1. Bubble Sort (simple, O(n²))
-2. Quick Sort (efficient, O(n log n))
-3. Built-in sort() method (optimized, language-specific)
-```
+You can ask "Show me 3 different ways to implement this sorting algorithm" and Copilot will present multiple approaches with their characteristics:
+1. **Bubble Sort** - Simple implementation with O(n²) time complexity
+2. **Quick Sort** - Efficient recursive approach with O(n log n) average complexity
+3. **Built-in sort() method** - Language-optimized native implementation
+
+This comparison helps you choose the best approach for your specific needs.
 
 ### Advanced Chat Techniques
 
 **1. Contextual Questions**
 
-```typescript
-// With this code open:
-interface User {
-  id: string;
-  email: string;
-  roles: string[];
-}
-
-// Ask in chat:
-"How do I check if a user has admin role using TypeScript type guards?"
-
-// Copilot will generate code using your existing interface
-```
+When you have a TypeScript interface open in your editor (for example, a User interface with properties id: string, email: string, and roles: string[]), you can ask Copilot "How do I check if a user has admin role using TypeScript type guards?" and Copilot will generate code that leverages your existing interface definition, providing type-safe solutions that integrate seamlessly with your codebase.
 
 **2. Debugging Assistance**
 
-```python
-# Problematic code:
-def process_data(items):
-    result = []
-    for item in items:
-        result.append(item * 2)
-    return result
-
-# Chat: "This function is slow for large lists. How can I optimize it?"
-# Copilot suggests list comprehension or numpy for performance
-```
+If you have problematic code (for example, a process_data function that iterates through items and appends each item multiplied by 2 to a result list), you can ask in Chat "This function is slow for large lists. How can I optimize it?" Copilot will analyze the performance bottleneck and suggest optimizations such as using list comprehension for better Python idioms or numpy for significantly improved performance with large datasets.
 
 **3. Architectural Guidance**
 
-```
-You: "I need to build a real-time chat application. What's the best architecture?"
+When you ask high-level questions like "I need to build a real-time chat application. What's the best architecture?", Copilot provides comprehensive guidance including:
+- **Technology comparison** - WebSocket vs Server-Sent Events with pros and cons
+- **State management options** - Redux, MobX, Zustand, or Context API approaches
+- **Scalability considerations** - Horizontal scaling, message queues, caching strategies
+- **Code examples** - Practical implementations for each architectural approach
 
-Copilot provides:
-- WebSocket vs Server-Sent Events comparison
-- State management options
-- Scalability considerations
-- Code examples for each approach
-```
+This helps you make informed decisions before writing code.
 
 ### Inline Chat vs Panel Chat
 
@@ -168,165 +125,71 @@ GitHub Copilot excels at generating comprehensive test suites. Let's explore str
 
 **Example 1: Function Testing**
 
-```javascript
-// Source code
-function validateEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
-}
+Consider a validateEmail function that uses regex to check if an email format is valid. When you select this function and use the **/tests** command in chat, Copilot generates a comprehensive test suite with multiple scenarios:
 
-// Select function, then use /tests in chat
-// Copilot generates:
+1. **Valid email test** - Verifies that properly formatted emails (like test@example.com) return true
+2. **Missing @ symbol test** - Checks that emails without @ (like testexample.com) return false
+3. **Incomplete domain test** - Ensures emails without domain (like test@) return false
+4. **Empty string test** - Validates that empty strings return false
+5. **Email with spaces test** - Confirms that emails containing spaces (like "test @example.com") return false
 
-describe('validateEmail', () => {
-  test('valid email returns true', () => {
-    expect(validateEmail('test@example.com')).toBe(true);
-  });
-
-  test('email without @ returns false', () => {
-    expect(validateEmail('testexample.com')).toBe(false);
-  });
-
-  test('email without domain returns false', () => {
-    expect(validateEmail('test@')).toBe(false);
-  });
-
-  test('empty string returns false', () => {
-    expect(validateEmail('')).toBe(false);
-  });
-
-  test('email with spaces returns false', () => {
-    expect(validateEmail('test @example.com')).toBe(false);
-  });
-});
-```
+Each test uses the describe/test structure with clear assertions, following best practices for the testing framework (such as Jest).
 
 **Example 2: Class Testing**
 
-```python
-# Source code
-class ShoppingCart:
-    def __init__(self):
-        self.items = []
-    
-    def add_item(self, item, price, quantity=1):
-        self.items.append({
-            'item': item,
-            'price': price,
-            'quantity': quantity
-        })
-    
-    def get_total(self):
-        return sum(item['price'] * item['quantity'] for item in self.items)
-    
-    def apply_discount(self, percentage):
-        if 0 <= percentage <= 100:
-            return self.get_total() * (1 - percentage / 100)
-        raise ValueError("Discount must be between 0 and 100")
+For a more complex example, consider a ShoppingCart class with methods:
+- **__init__** - Initializes an empty items list
+- **add_item(item, price, quantity=1)** - Adds an item dictionary with item name, price, and quantity
+- **get_total()** - Calculates total by summing price × quantity for all items
+- **apply_discount(percentage)** - Applies a percentage discount, raising ValueError if percentage is not between 0-100
 
-# Use /tests command, Copilot generates:
+When you use the **/tests** command on this class, Copilot generates comprehensive pytest test cases:
 
-import pytest
+1. **test_empty_cart_total_is_zero** - Verifies a new cart has zero total
+2. **test_add_single_item** - Tests adding one item (Apple at $1.50) and verifying total is $1.50
+3. **test_add_multiple_quantities** - Tests adding 3 Apples at $1.50 each, expecting total of $4.50
+4. **test_add_multiple_items** - Tests mixed items (2 Apples + 3 Bananas) with correct total calculation
+5. **test_apply_valid_discount** - Verifies that a 20% discount on $100 cart results in $80
+6. **test_apply_discount_raises_error_for_invalid_percentage** - Uses pytest.raises to confirm ValueError for invalid discounts (like 150%)
 
-class TestShoppingCart:
-    def test_empty_cart_total_is_zero(self):
-        cart = ShoppingCart()
-        assert cart.get_total() == 0
-    
-    def test_add_single_item(self):
-        cart = ShoppingCart()
-        cart.add_item("Apple", 1.50)
-        assert cart.get_total() == 1.50
-    
-    def test_add_multiple_quantities(self):
-        cart = ShoppingCart()
-        cart.add_item("Apple", 1.50, 3)
-        assert cart.get_total() == 4.50
-    
-    def test_add_multiple_items(self):
-        cart = ShoppingCart()
-        cart.add_item("Apple", 1.50, 2)
-        cart.add_item("Banana", 0.75, 3)
-        assert cart.get_total() == 5.25
-    
-    def test_apply_valid_discount(self):
-        cart = ShoppingCart()
-        cart.add_item("Apple", 100, 1)
-        assert cart.apply_discount(20) == 80
-    
-    def test_apply_discount_raises_error_for_invalid_percentage(self):
-        cart = ShoppingCart()
-        cart.add_item("Apple", 100, 1)
-        with pytest.raises(ValueError):
-            cart.apply_discount(150)
-```
+This comprehensive test suite ensures all class functionality is properly validated.
 
 ### Test-Driven Development (TDD) with Copilot
 
 **TDD Workflow:**
 
-1. **Write test first** (Red phase)
-2. **Generate implementation** with Copilot (Green phase)
-3. **Refactor** with Copilot Chat (Refactor phase)
+1. **Write test first** (Red phase) - Tests fail because implementation doesn't exist
+2. **Generate implementation** with Copilot (Green phase) - Make tests pass
+3. **Refactor** with Copilot Chat (Refactor phase) - Improve code quality
 
 **Example: Building a Password Validator**
 
-```python
-# Step 1: Write tests FIRST
-import pytest
+Following TDD principles, you first write comprehensive test cases using pytest:
 
-def test_password_minimum_length():
-    assert validate_password("abc123") == False  # Too short
-    assert validate_password("abc12345") == True
+1. **test_password_minimum_length** - Assert that passwords under 8 characters (like "abc123") return False, while 8+ character passwords (like "abc12345") return True
+2. **test_password_requires_uppercase** - Assert that passwords without uppercase (like "abc12345") return False, while those with uppercase (like "Abc12345") return True
+3. **test_password_requires_number** - Assert that passwords without numbers (like "Abcdefgh") return False, while those with numbers (like "Abcdefg1") return True
+4. **test_password_requires_special_char** - Assert that passwords without special characters (like "Abcdefg1") return False, while those with special chars (like "Abcdefg1!") return True
 
-def test_password_requires_uppercase():
-    assert validate_password("abc12345") == False
-    assert validate_password("Abc12345") == True
-
-def test_password_requires_number():
-    assert validate_password("Abcdefgh") == False
-    assert validate_password("Abcdefg1") == True
-
-def test_password_requires_special_char():
-    assert validate_password("Abcdefg1") == False
-    assert validate_password("Abcdefg1!") == True
-
-# Step 2: Now write function comment and let Copilot implement
-# Implement password validator that passes all tests above
-# Requirements: 8+ chars, uppercase, lowercase, number, special char
-def validate_password(password):
-    # Copilot will generate implementation to satisfy tests
-```
+Once tests are written, create a comment above your validate_password function describing requirements: "Implement password validator that passes all tests above. Requirements: 8+ chars, uppercase, lowercase, number, special char". Copilot will then generate the implementation that satisfies all test cases.
 
 ### Integration & End-to-End Test Generation
 
 **API Testing Example:**
 
-```javascript
-// Tell Copilot your testing framework and requirements
-// Generate integration tests for Express.js API using supertest
+When you provide Copilot with context about your testing framework and requirements (for example, "Generate integration tests for Express.js API using supertest"), Copilot creates comprehensive API test suites.
 
-const request = require('supertest');
-const app = require('./app');
+For a user creation API endpoint, Copilot generates tests that:
+1. Import the necessary testing libraries (supertest) and your Express app
+2. Create a describe block for "User API Integration Tests"
+3. Write a test for "POST /users creates new user" that:
+   - Sends a POST request to /users with test data (email: test@example.com, password: SecurePass123!, name: Test User)
+   - Expects a 201 status code response
+   - Verifies the response body has an 'id' property
+   - Confirms the returned email matches the sent email
+4. Continue generating additional edge case tests for error scenarios, validation failures, and duplicate handling
 
-describe('User API Integration Tests', () => {
-  test('POST /users creates new user', async () => {
-    const response = await request(app)
-      .post('/users')
-      .send({
-        email: 'test@example.com',
-        password: 'SecurePass123!',
-        name: 'Test User'
-      });
-    
-    expect(response.status).toBe(201);
-    expect(response.body).toHaveProperty('id');
-    expect(response.body.email).toBe('test@example.com');
-  });
-
-  // Copilot continues generating edge cases...
-});
-```
+This automated test generation ensures comprehensive API coverage without manual test writing.
 
 ---
 
@@ -340,157 +203,81 @@ Refactoring legacy code or improving existing code is one of Copilot's superpowe
 
 **Pattern 1: Simplification**
 
-```python
-# Original messy code
-def calculate_price(item_type, quantity, is_member, day_of_week):
-    base_price = 0
-    if item_type == "book":
-        base_price = 10
-    elif item_type == "dvd":
-        base_price = 15
-    elif item_type == "game":
-        base_price = 25
-    
-    total = base_price * quantity
-    
-    if is_member:
-        if day_of_week == "Monday" or day_of_week == "Tuesday":
-            total = total * 0.8
-        else:
-            total = total * 0.9
-    else:
-        if day_of_week == "Monday" or day_of_week == "Tuesday":
-            total = total * 0.95
-    
-    return total
+**Original messy code scenario:** A calculate_price function with nested if-elif statements for item types (book=$10, dvd=$15, game=$25), followed by complex nested discount logic based on membership status and day of week (members get 20% off Mon-Tue, 10% otherwise; non-members get 5% off Mon-Tue).
 
-# Select code, open Chat: "Refactor this to be more maintainable"
-# Copilot suggests:
+**Refactoring process:** When you select this code and ask in Chat "Refactor this to be more maintainable", Copilot suggests a comprehensive refactoring:
 
-from enum import Enum
-from dataclasses import dataclass
+1. **Use Enum for item types** - Create an ItemType enum with BOOK=10, DVD=15, GAME=25 values
+2. **Create configuration dataclass** - Define PricingConfig with member_weekday_discount (0.20), member_weekend_discount (0.10), non_member_weekday_discount (0.05), and non_member_weekend_discount (0.00)
+3. **Extract helper function** - Create is_weekday(day) function that returns true for Monday/Tuesday
+4. **Simplify main function** - Refactor calculate_price to:
+   - Accept typed parameters (item_type: ItemType, quantity: int, is_member: bool, day_of_week: str, config: PricingConfig)
+   - Calculate base_price as item_type.value × quantity
+   - Use ternary operator to select discount based on membership and weekday status
+   - Return base_price × (1 - discount)
 
-class ItemType(Enum):
-    BOOK = 10
-    DVD = 15
-    GAME = 25
-
-@dataclass
-class PricingConfig:
-    member_weekday_discount: float = 0.20
-    member_weekend_discount: float = 0.10
-    non_member_weekday_discount: float = 0.05
-    non_member_weekend_discount: float = 0.00
-
-def is_weekday(day: str) -> bool:
-    return day in ["Monday", "Tuesday"]
-
-def calculate_price(
-    item_type: ItemType,
-    quantity: int,
-    is_member: bool,
-    day_of_week: str,
-    config: PricingConfig = PricingConfig()
-) -> float:
-    base_price = item_type.value * quantity
-    
-    if is_member:
-        discount = config.member_weekday_discount if is_weekday(day_of_week) else config.member_weekend_discount
-    else:
-        discount = config.non_member_weekday_discount if is_weekday(day_of_week) else config.non_member_weekend_discount
-    
-    return base_price * (1 - discount)
-```
+This refactoring improves maintainability, testability, and makes pricing logic configurable.
 
 **Pattern 2: Performance Optimization**
 
-```javascript
-// Original: Inefficient nested loops
-function findDuplicates(arr1, arr2) {
-  const duplicates = [];
-  for (let i = 0; i < arr1.length; i++) {
-    for (let j = 0; j < arr2.length; j++) {
-      if (arr1[i] === arr2[j]) {
-        duplicates.push(arr1[i]);
-      }
-    }
-  }
-  return duplicates;
-}
+**Original inefficient code:** A findDuplicates function using nested loops - outer loop iterating through arr1, inner loop checking each element against all elements in arr2, pushing matches to duplicates array. This results in O(n × m) time complexity.
 
-// Chat: "Optimize this function for better performance"
-// Copilot suggests using Set:
+**Optimization process:** When you ask in Chat "Optimize this function for better performance", Copilot suggests using a Set data structure:
 
-function findDuplicates(arr1, arr2) {
-  const set2 = new Set(arr2);
-  return arr1.filter(item => set2.has(item));
-}
-// Time complexity: O(n + m) instead of O(n * m)
-```
+**Optimized approach:**
+1. Convert arr2 to a Set for O(1) lookup time
+2. Use filter() method on arr1 to check if each item exists in set2 using has()
+3. Return the filtered array
+
+This optimization dramatically improves time complexity from O(n × m) to O(n + m), where n and m are the lengths of the arrays. The Set creation takes O(m) time, and filtering takes O(n) time with O(1) lookups.
 
 **Pattern 3: Modern Syntax Migration**
 
-```javascript
-// Legacy callback-based code
-function fetchUserData(userId, callback) {
-  db.query('SELECT * FROM users WHERE id = ?', [userId], function(err, results) {
-    if (err) {
-      callback(err, null);
-      return;
-    }
-    
-    db.query('SELECT * FROM posts WHERE user_id = ?', [userId], function(err, posts) {
-      if (err) {
-        callback(err, null);
-        return;
-      }
-      
-      callback(null, { user: results[0], posts: posts });
-    });
-  });
-}
+**Legacy callback-based code scenario:** A fetchUserData function that uses nested callbacks (callback hell) with two sequential database queries:
+1. First query fetches user by ID, checking for errors before proceeding
+2. Second query fetches posts for that user, again with error handling
+3. Final callback returns combined user and posts data
 
-// Chat: "Convert this to async/await"
-// Copilot modernizes:
+This pattern suffers from deep nesting, error handling duplication, and poor readability.
 
-async function fetchUserData(userId) {
-  try {
-    const users = await db.query('SELECT * FROM users WHERE id = ?', [userId]);
-    const posts = await db.query('SELECT * FROM posts WHERE user_id = ?', [userId]);
-    
-    return {
-      user: users[0],
-      posts: posts
-    };
-  } catch (error) {
-    throw new Error(`Failed to fetch user data: ${error.message}`);
-  }
-}
-```
+**Modernization process:** When you ask in Chat "Convert this to async/await", Copilot modernizes the code to:
+
+**Modern async/await version:**
+1. Declare function as async, removing callback parameter
+2. Wrap logic in try-catch block for unified error handling
+3. Use await with db.query for user fetch, storing result
+4. Use await with db.query for posts fetch, storing result
+5. Return object with user (first result) and posts directly
+6. In catch block, throw descriptive error with original error message
+
+This transformation eliminates callback hell, provides cleaner error handling, improves readability, and makes the code more maintainable. The async/await syntax makes asynchronous code read like synchronous code.
 
 ### Step-by-Step Refactoring Process
 
 **1. Analyze Current Code**
-```
-Chat: "Analyze this function and suggest improvements"
-Copilot identifies:
-- Code smells
-- Performance issues
-- Maintainability concerns
-- Best practice violations
-```
+
+Ask in Chat: "Analyze this function and suggest improvements". Copilot will identify:
+- Code smells (duplicated logic, overly complex conditions, magic numbers)
+- Performance issues (inefficient algorithms, unnecessary computations)
+- Maintainability concerns (poor naming, lack of modularity, tight coupling)
+- Best practice violations (missing error handling, no type safety, hardcoded values)
 
 **2. Apply Refactorings Incrementally**
-```
-Chat: "Extract this logic into a separate function"
-Chat: "Replace this loop with a more functional approach"
-Chat: "Add type safety to this function"
-```
+
+Make targeted improvements one at a time:
+- "Extract this logic into a separate function" - Improves modularity
+- "Replace this loop with a more functional approach" - Enhances readability
+- "Add type safety to this function" - Prevents runtime errors
+
+This incremental approach ensures each refactoring can be tested before proceeding.
 
 **3. Ensure Tests Pass**
-```
-Chat: "Generate tests to verify refactored code behaves identically"
-```
+
+After refactoring, ask: "Generate tests to verify refactored code behaves identically". Copilot creates tests that confirm:
+- Same outputs for same inputs
+- Edge cases handled consistently
+- Error conditions behave identically
+- Performance improvements are measurable
 
 ---
 
@@ -504,148 +291,76 @@ Writing documentation is time-consuming but essential. Copilot can generate comp
 
 **Example: JSDoc Generation**
 
-```javascript
-// Original function without docs
-function calculateShippingCost(weight, distance, isPriority, country) {
-  const baseRate = 5.00;
-  const weightRate = 0.50;
-  const distanceRate = 0.01;
-  const priorityMultiplier = isPriority ? 2 : 1;
-  const internationalFee = country !== 'US' ? 15 : 0;
-  
-  return (baseRate + (weight * weightRate) + (distance * distanceRate)) * priorityMultiplier + internationalFee;
-}
+**Original function without documentation:** A calculateShippingCost function accepting weight, distance, isPriority, and country parameters, calculating costs using baseRate ($5.00), weightRate ($0.50 per pound), distanceRate ($0.01 per mile), priorityMultiplier (2x if priority), and internationalFee ($15 if not US).
 
-// Type /** above the function, Copilot generates:
+**Documentation generation:** When you type /** above this function and press Enter, Copilot automatically generates comprehensive JSDoc documentation:
 
-/**
- * Calculates the shipping cost based on package weight, distance, priority, and destination
- * 
- * @param {number} weight - Package weight in pounds
- * @param {number} distance - Shipping distance in miles
- * @param {boolean} isPriority - Whether priority shipping is selected
- * @param {string} country - Destination country code (e.g., 'US', 'CA')
- * @returns {number} Total shipping cost in USD
- * 
- * @example
- * // Standard domestic shipping
- * calculateShippingCost(5, 100, false, 'US'); // Returns 12.50
- * 
- * @example
- * // Priority international shipping
- * calculateShippingCost(10, 500, true, 'CA'); // Returns 55.00
- */
-```
+**Generated documentation structure:**
+1. **Summary** - Brief description: "Calculates the shipping cost based on package weight, distance, priority, and destination"
+2. **@param tags** - Each parameter documented:
+   - weight (number) - Package weight in pounds
+   - distance (number) - Shipping distance in miles  
+   - isPriority (boolean) - Whether priority shipping is selected
+   - country (string) - Destination country code (e.g., 'US', 'CA')
+3. **@returns tag** - Return type and description: Total shipping cost in USD
+4. **@example tags** - Multiple usage examples:
+   - Standard domestic shipping: calculateShippingCost(5, 100, false, 'US') returns 12.50
+   - Priority international shipping: calculateShippingCost(10, 500, true, 'CA') returns 55.00
+
+This automation saves significant time and ensures consistent documentation format.
 
 **Example: Python Docstrings**
 
-```python
-def merge_sorted_arrays(arr1, arr2):
-    result = []
-    i, j = 0, 0
-    
-    while i < len(arr1) and j < len(arr2):
-        if arr1[i] <= arr2[j]:
-            result.append(arr1[i])
-            i += 1
-        else:
-            result.append(arr2[j])
-            j += 1
-    
-    result.extend(arr1[i:])
-    result.extend(arr2[j:])
-    
-    return result
+**Function without documentation:** A merge_sorted_arrays function that merges two sorted arrays using two pointers (i and j), comparing elements and adding the smaller one to result, then extending result with remaining elements from both arrays.
 
-# Type """ below function, Copilot generates:
+**Docstring generation:** Type """ (triple quotes) on the line below the function definition and press Enter. Copilot generates comprehensive NumPy/Google-style docstrings:
 
-def merge_sorted_arrays(arr1, arr2):
-    """
-    Merges two sorted arrays into a single sorted array.
-    
-    Args:
-        arr1 (list): First sorted array
-        arr2 (list): Second sorted array
-    
-    Returns:
-        list: Merged sorted array containing all elements from both input arrays
-    
-    Time Complexity:
-        O(n + m) where n and m are lengths of arr1 and arr2
-    
-    Space Complexity:
-        O(n + m) for the result array
-    
-    Example:
-        >>> merge_sorted_arrays([1, 3, 5], [2, 4, 6])
-        [1, 2, 3, 4, 5, 6]
-        
-        >>> merge_sorted_arrays([1, 2, 3], [])
-        [1, 2, 3]
-    """
-```
+**Generated docstring components:**
+1. **Summary line** - "Merges two sorted arrays into a single sorted array."
+2. **Args section** - Documents parameters:
+   - arr1 (list): First sorted array
+   - arr2 (list): Second sorted array
+3. **Returns section** - Documents return value:
+   - list: Merged sorted array containing all elements from both input arrays
+4. **Complexity analysis**:
+   - Time Complexity: O(n + m) where n and m are lengths of arr1 and arr2
+   - Space Complexity: O(n + m) for the result array
+5. **Example section** - Practical usage examples with expected outputs:
+   - merge_sorted_arrays([1, 3, 5], [2, 4, 6]) returns [1, 2, 3, 4, 5, 6]
+   - merge_sorted_arrays([1, 2, 3], []) returns [1, 2, 3]
+
+This provides complete documentation including algorithmic complexity, which is especially valuable for technical functions.
 
 ### README Generation
 
-```markdown
-# Ask in Chat:
-"Generate a README for this project including installation, usage, and examples"
+**Automated README creation:** Ask in Chat: "Generate a README for this project including installation, usage, and examples"
 
-# Copilot creates comprehensive README with:
-- Project description
-- Installation instructions
-- Usage examples
-- API documentation
-- Configuration options
-- Contributing guidelines
-- License information
-```
+Copilot creates a comprehensive README.md with standard sections:
+- **Project description** - Clear overview of what the project does and its purpose
+- **Installation instructions** - Step-by-step setup commands for different environments
+- **Usage examples** - Code snippets showing common use cases
+- **API documentation** - Function/class reference with parameters and return values
+- **Configuration options** - Environment variables and config file explanations
+- **Contributing guidelines** - How to submit issues and pull requests
+- **License information** - License type and copyright details
+
+This saves hours of documentation work and ensures all essential sections are included.
 
 ### API Documentation
 
-```typescript
-// Use /doc command on this API route
-export async function POST(request: Request) {
-  const { email, password } = await request.json();
-  
-  const user = await db.user.create({
-    data: { email, passwordHash: await hash(password) }
-  });
-  
-  return Response.json({ id: user.id });
-}
+**OpenAPI/Swagger generation:** When you use the **/doc** command on an API route (for example, a POST endpoint that creates a user by accepting email and password in JSON, hashing the password, creating a database record, and returning the user ID), Copilot generates OpenAPI/Swagger specification:
 
-// Copilot generates OpenAPI/Swagger spec:
-```
+**Generated API specification includes:**
+- **Endpoint path** - /api/users with POST method
+- **Summary** - "Create a new user account"
+- **Request body schema** - Required JSON with:
+  - email (string, format: email)
+  - password (string, minLength: 8)
+- **Response schema** - 200 OK response with:
+  - id (string) - The created user's unique identifier
+- **Error responses** - 400 Bad Request, 409 Conflict for duplicates, etc.
 
-```yaml
-/api/users:
-  post:
-    summary: Create a new user account
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              email:
-                type: string
-                format: email
-              password:
-                type: string
-                minLength: 8
-    responses:
-      200:
-        description: User created successfully
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: string
-```
+This automatic API documentation ensures your endpoints are well-documented and can be imported into tools like Postman or Swagger UI.
 
 ---
 
@@ -693,18 +408,20 @@ export async function POST(request: Request) {
 
 ### Custom Prompt Templates
 
-Create reusable prompts for common tasks:
+**Create reusable prompts for common tasks:**
 
-```javascript
-// Template: API Endpoint
-// Generate a REST API endpoint that:
-// - Uses Express.js
-// - Has input validation with Joi
-// - Has error handling middleware
-// - Returns standardized JSON responses
-// - Includes JSDoc comments
-// Purpose: [DESCRIBE YOUR ENDPOINT]
-```
+For API endpoint generation, create a template comment structure with placeholders:
+
+**Template structure:** Write a comment block that specifies:
+- "Generate a REST API endpoint that:"
+- Technology requirement: "Uses Express.js"
+- Validation requirement: "Has input validation with Joi"
+- Error handling requirement: "Has error handling middleware"
+- Response requirement: "Returns standardized JSON responses"
+- Documentation requirement: "Includes JSDoc comments"
+- Purpose placeholder: "[DESCRIBE YOUR ENDPOINT]"
+
+When you need a new endpoint, copy this template, fill in the purpose, and Copilot generates code following all specified requirements. This ensures consistency across your API endpoints and reduces setup time.
 
 ### Copilot Labs Features
 
