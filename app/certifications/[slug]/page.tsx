@@ -368,9 +368,39 @@ export default async function CertificationPage({ params }: CertificationPagePro
                     Coming Soon
                   </button>
                 )}
-                <button className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors">
-                  View Certification Exam
-                </button>
+                {certification.slug === 'generative-ai-practitioner' ? (
+                  <Link
+                    href="/certifications/generative-ai-practitioner/exam"
+                    className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors text-center"
+                  >
+                    View Certification Exam
+                  </Link>
+                ) : certification.slug === 'ai-productivity-github-copilot' ? (
+                  <Link
+                    href="/certifications/ai-productivity-github-copilot/exam"
+                    className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors text-center"
+                  >
+                    View Certification Exam
+                  </Link>
+                ) : certification.slug === 'generative-ai-business-operations' ? (
+                  <Link
+                    href="/certifications/generative-ai-business-operations/exam"
+                    className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors text-center"
+                  >
+                    View Certification Exam
+                  </Link>
+                ) : certification.slug === 'ai-governance-responsible-ai-foundations' ? (
+                  <Link
+                    href="/certifications/ai-governance-responsible-ai-foundations/exam"
+                    className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors text-center"
+                  >
+                    View Certification Exam
+                  </Link>
+                ) : (
+                  <button className="px-8 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white/10 transition-colors">
+                    View Certification Exam
+                  </button>
+                )}
               </div>
             </div>
 
