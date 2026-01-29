@@ -128,7 +128,7 @@ export default function AiProductivityCopilotExamPage() {
 
       if (access) {
         // If access already exists, route directly to the exam start.
-        router.push("/exam/start");
+        router.push("/certifications/ai-productivity-github-copilot/exam/start");
       }
     };
 
@@ -137,7 +137,7 @@ export default function AiProductivityCopilotExamPage() {
 
   const handleStartExam = () => {
     if (hasAccess) {
-      router.push("/exam/start");
+      router.push("/certifications/ai-productivity-github-copilot/exam/start");
       return;
     }
 
@@ -155,7 +155,7 @@ export default function AiProductivityCopilotExamPage() {
     if (result.success) {
       setHasAccess(true);
       setIsVoucherOpen(false);
-      router.push("/exam/start");
+      router.push("/certifications/ai-productivity-github-copilot/exam/start");
     } else {
       setVoucherError(result.message);
     }
@@ -173,7 +173,7 @@ export default function AiProductivityCopilotExamPage() {
     if (isValid) {
       setHasAccess(true);
       setIsRetakeOpen(false);
-      router.push("/exam/start");
+      router.push("/certifications/ai-productivity-github-copilot/exam/start");
     } else {
       setRetakeError("The retake code is invalid or expired.");
     }
