@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { validateRetakeCodeLocal } from "@/utils/retakeCodes";
 
 const EXAM_DETAILS = {
   name: "AI Productivity & GitHub Copilot Exam",
@@ -89,8 +90,9 @@ async function validateVoucherCode(
 }
 
 async function validateRetakeCode(code: string): Promise<boolean> {
-  // TODO: Replace with server-side retake validation.
-  return Boolean(code && code.trim().length >= 6 && code.trim().startsWith("COP-"));
+  // Retake codes are issued after failure via /api/retakes and stored in localStorage.
+  // TODO: Call requestRetakeCode(CERTIFICATION_ID) when the exam result is a fail.
+  return validateRetakeCodeLocal(CERTIFICATION_ID, code);
 }
 
 function redirectToCheckout() {
@@ -513,7 +515,7 @@ export default function AiProductivityCopilotExamPage() {
               <div>
                 <h3 className="text-lg font-semibold">Enter retake code</h3>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                  Retake codes unlock your extra attempt after a paid exam. Example: COP-XXXXXX
+                  Retake codes unlock your extra attempt after a paid exam. Example: ABIR-RETAKE-019
                 </p>
               </div>
               <button
@@ -534,7 +536,7 @@ export default function AiProductivityCopilotExamPage() {
                   value={retakeCode}
                   onChange={(event) => setRetakeCode(event.target.value)}
                   className="mt-2 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm"
-                  placeholder="COP-123456"
+                  placeholder="ABIR-RETAKE-019"
                   required
                 />
               </div>
