@@ -6,7 +6,7 @@ Welcome to the final module of AI Governance & Responsible AI Foundations. This 
 
 While previous modules covered principles, technical methods, regulations, and frameworks, this module focuses on **how leading organizations implement responsible AI at scale**—the processes, tools, standards, and organizational capabilities that enable consistent excellence in ethical and compliant AI.
 
-### What You'll Learn
+### 🎯 What You'll Learn
 
 - Industry best practices for responsible AI development and deployment
 - MLOps for responsible AI (ResponsibleOps)
@@ -19,7 +19,7 @@ While previous modules covered principles, technical methods, regulations, and f
 - Preparing for future regulatory changes
 - Building a sustainable responsible AI program
 
-### Why This Matters
+### 💡 Why This Matters
 
 **Organizations with Mature AI Governance**:
 - **73%** fewer AI-related incidents
@@ -40,7 +40,7 @@ While previous modules covered principles, technical methods, regulations, and f
 
 ---
 
-## Part 1: AI Development Best Practices
+## Part 1: 💻 AI Development Best Practices
 
 ### 1.1 Responsible AI in the ML Lifecycle
 
@@ -64,7 +64,7 @@ While previous modules covered principles, technical methods, regulations, and f
 - **What could go wrong?**: Pre-mortem exercise
 
 **Example Pre-Mortem**:
-```markdown
+
 ## Pre-Mortem: AI Hiring Screening Tool
 
 **Scenario**: Imagine it's 2 years from now, and our AI hiring tool has failed spectacularly. What went wrong?
@@ -86,7 +86,6 @@ While previous modules covered principles, technical methods, regulations, and f
 - Train recruiters to exercise independent judgment
 - Monitor for data drift and retrain regularly
 - Provide explainability for rejected candidates
-```
 
 **2. Feasibility Assessment**:
 - **Data availability**: Do we have sufficient, quality data?
@@ -166,7 +165,7 @@ Document datasets with:
 - Maintenance and versioning
 
 **Data Card Template**:
-```markdown
+
 # Data Card: [Dataset Name]
 
 ## Overview
@@ -232,7 +231,6 @@ Document datasets with:
 |---------|------|---------|
 | 1.0 | [Date] | Initial release |
 | 1.1 | [Date] | [Description of changes] |
-```
 
 #### Phase 3: Model Development & Training
 
@@ -462,7 +460,7 @@ Create comprehensive model cards documenting:
 
 ---
 
-## Part 2: Responsible AI Tools & Technologies
+## Part 2: 🛠️ Responsible AI Tools & Technologies
 
 ### 2.1 Open-Source Fairness Libraries
 
@@ -634,7 +632,7 @@ Create comprehensive model cards documenting:
 
 ---
 
-## Part 3: Standards & Certifications
+## Part 3: 📜 Standards & Certifications
 
 ### 3.1 ISO/IEC Standards for AI
 
@@ -741,7 +739,7 @@ Create comprehensive model cards documenting:
 
 ---
 
-## Part 4: AI Governance Maturity Models
+## Part 4: 📈 AI Governance Maturity Models
 
 ### 4.1 Five Levels of Maturity
 
@@ -797,7 +795,6 @@ Create comprehensive model cards documenting:
 
 ### 4.2 Self-Assessment Tool
 
-```markdown
 # AI Governance Maturity Self-Assessment
 
 Rate your organization on each dimension (1-5 scale):
@@ -918,7 +915,6 @@ Based on your assessment, identify:
 **Target Maturity Level** (in 1 year): ___
 
 **Resources Needed**: [Budget, headcount, tools, training]
-```
 
 ### 4.3 Maturity Advancement Roadmap
 
@@ -958,7 +954,7 @@ Based on your assessment, identify:
 
 ---
 
-## Part 5: Case Studies
+## Part 5: 📚 Case Studies
 
 ### 5.1 Microsoft: Responsible AI Maturity Journey
 
@@ -1111,7 +1107,7 @@ Based on your assessment, identify:
 
 ---
 
-## Part 6: Common Pitfalls & How to Avoid Them
+## Part 6: ⚠️ Common Pitfalls & How to Avoid Them
 
 ### 6.1 Pitfall: Governance as Checkbox Exercise
 
@@ -1206,7 +1202,7 @@ Based on your assessment, identify:
 
 ---
 
-## Part 7: Emerging Trends & Future of AI Governance
+## Part 7: 🚀 Emerging Trends & Future of AI Governance
 
 ### 7.1 Regulatory Convergence
 
@@ -1347,7 +1343,7 @@ Based on your assessment, identify:
 
 ---
 
-## Part 8: Building a Sustainable Responsible AI Program
+## Part 8: 🌱 Building a Sustainable Responsible AI Program
 
 ### 8.1 Long-Term Success Factors
 
@@ -1403,6 +1399,7 @@ Based on your assessment, identify:
 - **Regulatory preparedness**: Lower cost when regulations tighten (already compliant)
 
 **ROI Calculation Example**:
+
 ```
 Costs (Annual):
 - Governance team: 3 FTE × $150K = $450K
