@@ -15,7 +15,10 @@ export const VOUCHERS: VoucherEntry[] = [
   { code: "ABIR-BETA-2026", certificationId: "ai-productivity-github-copilot" },
   { code: "GENAI-STUDENT", certificationId: "generative-ai-practitioner" },
   { code: "PARTNER-FREE", certificationId: "generative-ai-business-operations" },
+  { code: "TEST-CHECK", certificationId: "generative-ai-business-operations" },
+  { code: "PARTNER-FREE", certificationId: "ai-productivity-github-copilot" },
   { code: "TEST-CHECK", certificationId: "ai-governance-responsible-ai-foundations" },
+  { code: "ABIR-BETA-29", certificationId: "ai-governance-responsible-ai-foundations" },
   { code: "DALDOUL-HERE", certificationId: "*" }
 ];
 
