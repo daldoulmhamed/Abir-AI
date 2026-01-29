@@ -416,7 +416,7 @@ export default async function CertificationPage({ params }: CertificationPagePro
                   <div>
                     <div className="font-semibold text-gray-900 dark:text-white">Optional Certification</div>
                     <div className="text-gray-600 dark:text-gray-300">
-                      {certification.slug === 'generative-ai-practitioner' ? '49€' : '79€'} exam fee
+                      {`${certification.price}€`} exam fee
                     </div>
                   </div>
                 </div>

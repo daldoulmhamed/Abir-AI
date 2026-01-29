@@ -119,7 +119,7 @@ export default function AIGovernanceResponsibleAIPage() {
               </div>
               <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 shadow-lg">
                 <Award className="w-8 h-8 text-teal-600 dark:text-teal-400 mb-2 mx-auto" />
-                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">79€</div>
+                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">99€</div>
                 <div className="text-sm text-slate-600 dark:text-slate-400">Certification Fee</div>
               </div>
             </div>

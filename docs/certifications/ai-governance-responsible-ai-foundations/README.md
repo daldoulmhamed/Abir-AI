@@ -23,7 +23,7 @@ The AI Governance & Responsible AI Foundations certification is a comprehensive 
 - **Format**: 6 comprehensive modules + capstone project
 - **Assessment**: Capstone project (Responsible AI Action Plan)
 - **Certificate**: Upon successful completion of capstone
-- **Price**: €79 (includes all materials, capstone review, and certificate)
+- **Price**: €99 (includes all materials, capstone review, and certificate)
 
 ---
 
@@ -674,7 +674,7 @@ Upon successful completion of the capstone project, you will receive:
 
 ## 🚀 Ready to Start?
 
-**Enroll Now** for €79 and gain lifetime access to:
+**Enroll Now** for €99 and gain lifetime access to:
 - 6 comprehensive modules (~120,000 words, ~50 hours of content)
 - Capstone project with expert review
 - Templates, code examples, and tools
@@ -696,7 +696,7 @@ This certification is part of Abir AI's comprehensive AI education program:
 - ✅ **AI Fundamentals** (free) - Introduction to AI/ML concepts
 
 **This Certification**:
-- 🎯 **AI Governance & Responsible AI Foundations** (€79)
+- 🎯 **AI Governance & Responsible AI Foundations** (€99)
 
 **Advanced Certifications** (coming soon):
 - 🔜 **Advanced AI Ethics & Policy** - Deep dive into AI policy, regulation, advocacy

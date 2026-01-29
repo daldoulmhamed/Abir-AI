@@ -130,7 +130,7 @@ export function generateFAQSchema() {
   const faqs = [
     {
       question: "Is the learning content really free?",
-      answer: "Yes! All course materials, videos, exercises, and projects are 100% free. You only pay if you want to take the optional certification exam (49€–79€)."
+      answer: "Yes! All course materials, videos, exercises, and projects are 100% free. You only pay if you want to take the optional certification exam (49€–99€)."
     },
     {
       question: "Do I need to get certified?",

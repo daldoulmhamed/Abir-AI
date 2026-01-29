@@ -49,7 +49,7 @@ export default function CertificationsPage() {
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
               Access comprehensive AI training at no cost. Study at your own pace, build real projects, 
-              and validate your expertise with affordable optional certifications (49€–79€).
+              and validate your expertise with affordable optional certifications (49€–99€).
             </p>
           </div>
           
@@ -79,7 +79,7 @@ export default function CertificationsPage() {
                 Optional Certification
               </h3>
               <p className="text-white/80">
-                Validate your skills with an affordable exam (49€–79€) and earn an industry-recognized certificate.
+                Validate your skills with an affordable exam (49€–99€) and earn an industry-recognized certificate.
               </p>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function CertificationsPage() {
                 Get Certified (Optional)
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
-                When ready, take the certification exam (49€–79€) to validate your skills
+                When ready, take the certification exam (49€–99€) to validate your skills
               </p>
             </div>
             <div className="text-center">
@@ -148,7 +148,7 @@ export default function CertificationsPage() {
             Choose Your Learning Path
           </h2>
           <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-            All learning content is free. Certification exams are optional and range from 49€ to 79€.
+            All learning content is free. Certification exams are optional and range from 49€ to 99€.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -252,7 +252,7 @@ export default function CertificationsPage() {
                 Is the learning content really free?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Yes! All course materials, videos, exercises, and projects are 100% free. You only pay if you want to take the optional certification exam (49€–79€).
+                Yes! All course materials, videos, exercises, and projects are 100% free. You only pay if you want to take the optional certification exam (49€–99€).
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow">

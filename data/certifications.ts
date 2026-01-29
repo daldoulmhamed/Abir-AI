@@ -131,11 +131,11 @@ export const certifications: Certification[] = [
     title: 'AI Governance & Responsible AI Foundations',
     slug: 'ai-governance-responsible-ai-foundations',
     shortTitle: 'Responsible AI',
-    tagline: 'Learn Responsible AI Free — Get Certified for 79€',
-    description: 'Build a strong foundation in AI ethics, governance, and compliance. This essential course covers bias detection and mitigation, privacy protection, security best practices, and regulatory frameworks including GDPR and the EU AI Act. Learn how to implement responsible AI practices that protect users and build trust. Industry-recognized certification available for 79€.',
+    tagline: 'Learn Responsible AI Free — Get Certified for 99€',
+    description: 'Build a strong foundation in AI ethics, governance, and compliance. This essential course covers bias detection and mitigation, privacy protection, security best practices, and regulatory frameworks including GDPR and the EU AI Act. Learn how to implement responsible AI practices that protect users and build trust. Industry-recognized certification available for 99€.',
     audience: ['All Professional Profiles', 'Compliance Officers', 'Risk Managers', 'AI Practitioners', 'Business Leaders'],
     level: 'intermediate',
-    price: 79,
+    price: 99,
     topics: [
       'AI Ethics & Principles',
       'Bias Detection & Mitigation',
@@ -155,8 +155,8 @@ export const certifications: Certification[] = [
     color: 'from-green-500 to-emerald-500',
     featured: true,
     order: 4,
-    metaTitle: 'Free Responsible AI Course + Governance Certification (79€) | Abir-AI',
-    metaDescription: 'Learn AI ethics, compliance, and governance for free. Self-paced training on bias mitigation and GDPR. Optional certification for 79€. Essential for all AI professionals.'
+    metaTitle: 'Free Responsible AI Course + Governance Certification (99€) | Abir-AI',
+    metaDescription: 'Learn AI ethics, compliance, and governance for free. Self-paced training on bias mitigation and GDPR. Optional certification for 99€. Essential for all AI professionals.'
   }
 ];
 

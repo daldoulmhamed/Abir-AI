@@ -97,7 +97,7 @@
       ],
       "price": {
         "currency": "EUR",
-        "amount": 349,
+        "amount": 99,
         "discount": null
       },
       "prerequisites": [
@@ -209,7 +209,7 @@
       ],
       "price": {
         "currency": "EUR",
-        "amount": 349,
+        "amount": 99,
         "discount": null
       },
       "prerequisites": [
