@@ -20,6 +20,8 @@ const EXAM_DETAILS = {
   ]
 };
 
+const CERTIFICATION_ID = "ai-governance-responsible-ai-foundations";
+
 const VALIDATES = [
   "Understanding of responsible AI principles and ethics",
   "Bias detection, fairness testing, and mitigation approaches",
@@ -47,6 +49,10 @@ const ACCESS_STEPS = [
   {
     title: "Use a voucher",
     description: "Enter a valid voucher code to unlock access without payment."
+  },
+  {
+    title: "Use a retake code",
+    description: "Enter the retake code from your first paid attempt to unlock one extra try."
   }
 ];
 
@@ -57,12 +63,33 @@ const TRUST_POINTS = [
 ];
 
 async function checkExamAccess(): Promise<boolean> {
-  // TODO: Replace with real access check (API/session/user profile lookup).
-  return false;
+  // Server-side cookie validation happens in the API route.
+  const response = await fetch(
+    `/api/vouchers?certificationId=${encodeURIComponent(CERTIFICATION_ID)}`,
+    { cache: "no-store" }
+  );
+  const data = (await response.json()) as { hasAccess?: boolean };
+  return Boolean(data?.hasAccess);
 }
 
-async function validateVoucherCode(code: string): Promise<boolean> {
-  // TODO: Replace with server-side voucher validation.
+async function validateVoucherCode(
+  code: string
+): Promise<{ success: boolean; message: string }>
+{
+  const response = await fetch("/api/vouchers", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code, certificationId: CERTIFICATION_ID })
+  });
+  const data = (await response.json()) as { success?: boolean; message?: string };
+  return {
+    success: Boolean(data?.success),
+    message: data?.message ?? "Unable to validate voucher code."
+  };
+}
+
+async function validateRetakeCode(code: string): Promise<boolean> {
+  // TODO: Replace with server-side retake validation.
   return Boolean(code && code.trim().length >= 6 && code.trim().startsWith("GOV-"));
 }
 
@@ -75,10 +102,15 @@ export default function AiGovernanceResponsibleAiExamPage() {
   const router = useRouter();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [isChecking, setIsChecking] = useState(true);
+  const [isAccessOpen, setIsAccessOpen] = useState(false);
   const [isVoucherOpen, setIsVoucherOpen] = useState(false);
   const [voucherCode, setVoucherCode] = useState("");
   const [voucherError, setVoucherError] = useState<string | null>(null);
   const [isRedeeming, setIsRedeeming] = useState(false);
+  const [isRetakeOpen, setIsRetakeOpen] = useState(false);
+  const [retakeCode, setRetakeCode] = useState("");
+  const [retakeError, setRetakeError] = useState<string | null>(null);
+  const [isRetakeRedeeming, setIsRetakeRedeeming] = useState(false);
 
   const priceLabel = useMemo(
     () => `${EXAM_DETAILS.price}${EXAM_DETAILS.currency}`,
@@ -107,8 +139,8 @@ export default function AiGovernanceResponsibleAiExamPage() {
       return;
     }
 
-    // No access → send to payment flow (placeholder for Stripe).
-    redirectToCheckout();
+    // No access → show access options.
+    setIsAccessOpen(true);
   };
 
   const handleVoucherSubmit = async (event: FormEvent) => {
@@ -116,17 +148,35 @@ export default function AiGovernanceResponsibleAiExamPage() {
     setVoucherError(null);
     setIsRedeeming(true);
 
-    const isValid = await validateVoucherCode(voucherCode);
+    const result = await validateVoucherCode(voucherCode);
 
-    if (isValid) {
+    if (result.success) {
       setHasAccess(true);
       setIsVoucherOpen(false);
       router.push("/exam/start");
     } else {
-      setVoucherError("The voucher code is invalid or expired.");
+      setVoucherError(result.message);
     }
 
     setIsRedeeming(false);
+  };
+
+  const handleRetakeSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    setRetakeError(null);
+    setIsRetakeRedeeming(true);
+
+    const isValid = await validateRetakeCode(retakeCode);
+
+    if (isValid) {
+      setHasAccess(true);
+      setIsRetakeOpen(false);
+      router.push("/exam/start");
+    } else {
+      setRetakeError("The retake code is invalid or expired.");
+    }
+
+    setIsRetakeRedeeming(false);
   };
 
   return (
@@ -187,6 +237,12 @@ export default function AiGovernanceResponsibleAiExamPage() {
                   className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
                 >
                   Enter Voucher Code
+                </button>
+                <button
+                  onClick={() => setIsRetakeOpen(true)}
+                  className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  Use Retake Code
                 </button>
               </div>
               <p className="mt-4 text-sm text-slate-500">
@@ -274,7 +330,7 @@ export default function AiGovernanceResponsibleAiExamPage() {
           <div className="lg:col-span-1">
             <h2 className="text-2xl font-semibold">How access works</h2>
             <p className="mt-3 text-slate-600 dark:text-slate-300">
-              Learning content is free. The exam is a paid credential that unlocks after payment, a valid voucher, or existing access.
+              Learning content is free. The exam is a paid credential that unlocks after payment, a voucher, a retake code, or existing access.
             </p>
           </div>
           <div className="lg:col-span-2 grid sm:grid-cols-3 gap-4">
@@ -335,9 +391,68 @@ export default function AiGovernanceResponsibleAiExamPage() {
             >
               Enter Voucher Code
             </button>
+            <button
+              onClick={() => setIsRetakeOpen(true)}
+              className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+            >
+              Use Retake Code
+            </button>
           </div>
         </div>
       </section>
+
+      {/* Access options modal */}
+      {isAccessOpen ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="w-full max-w-lg rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
+            <div className="flex items-start justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">Get exam access</h3>
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                  Choose payment, use a voucher, or enter a retake code from a previous paid attempt. You receive one extra attempt if you don’t pass the first try.
+                </p>
+              </div>
+              <button
+                onClick={() => setIsAccessOpen(false)}
+                className="text-slate-400 hover:text-slate-600"
+                aria-label="Close access options"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="mt-6 space-y-3">
+              <button
+                onClick={redirectToCheckout}
+                className="w-full rounded-md bg-slate-900 text-white px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+              >
+                Pay {priceLabel}
+              </button>
+              <button
+                onClick={() => {
+                  setIsAccessOpen(false);
+                  setIsVoucherOpen(true);
+                }}
+                className="w-full rounded-md border border-slate-300 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                I have a voucher
+              </button>
+              <button
+                onClick={() => {
+                  setIsAccessOpen(false);
+                  setIsRetakeOpen(true);
+                }}
+                className="w-full rounded-md border border-slate-300 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                I have a retake code
+              </button>
+            </div>
+            <p className="mt-4 text-xs text-slate-500">
+              One paid attempt unlocks one extra attempt if the first try is unsuccessful.
+            </p>
+          </div>
+        </div>
+      ) : null}
 
       {/* Voucher modal placeholder */}
       {isVoucherOpen ? (
@@ -385,6 +500,57 @@ export default function AiGovernanceResponsibleAiExamPage() {
             </form>
             <p className="mt-4 text-xs text-slate-500">
               Voucher validation happens securely on the server in production.
+            </p>
+          </div>
+        </div>
+      ) : null}
+
+      {/* Retake modal placeholder */}
+      {isRetakeOpen ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
+            <div className="flex items-start justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">Enter retake code</h3>
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                  Retake codes unlock your extra attempt after a paid exam. Example: GOV-XXXXXX
+                </p>
+              </div>
+              <button
+                onClick={() => setIsRetakeOpen(false)}
+                className="text-slate-400 hover:text-slate-600"
+                aria-label="Close retake modal"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleRetakeSubmit} className="mt-6 space-y-4">
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
+                  Retake code
+                </label>
+                <input
+                  value={retakeCode}
+                  onChange={(event) => setRetakeCode(event.target.value)}
+                  className="mt-2 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm"
+                  placeholder="GOV-123456"
+                  required
+                />
+              </div>
+              {retakeError ? (
+                <p className="text-sm text-red-600 dark:text-red-400">{retakeError}</p>
+              ) : null}
+              <button
+                type="submit"
+                disabled={isRetakeRedeeming}
+                className="w-full rounded-md bg-slate-900 text-white px-4 py-2 text-sm font-semibold hover:bg-slate-800 disabled:opacity-60 dark:bg-white dark:text-slate-900"
+              >
+                {isRetakeRedeeming ? "Validating..." : "Unlock access"}
+              </button>
+            </form>
+            <p className="mt-4 text-xs text-slate-500">
+              Retake code validation happens securely on the server in production.
             </p>
           </div>
         </div>
