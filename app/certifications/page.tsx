@@ -52,7 +52,6 @@ export default function CertificationsPage() {
               and validate your expertise with affordable optional certifications (49€–99€).
             </p>
           </div>
-          
           {/* Why Learn with Abir-AI - Inside Hero */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-6">
@@ -85,6 +84,16 @@ export default function CertificationsPage() {
           </div>
         </div>
       </section>
+
+      {/* Certificate Verification CTA - just below Hero, above How It Works */}
+      <div className="w-full flex justify-center py-8 bg-gray-50 dark:bg-gray-900">
+        <Link
+          href="/verify"
+          className="inline-flex items-center px-6 py-2 border border-indigo-600 text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 dark:bg-gray-800 dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-gray-700 transition-colors shadow-sm"
+        >
+          Verify Certificate
+        </Link>
+      </div>
 
       {/* How It Works Section */}
       <section className="py-16 bg-white dark:bg-gray-800">
