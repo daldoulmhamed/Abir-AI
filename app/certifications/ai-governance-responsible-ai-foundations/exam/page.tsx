@@ -240,12 +240,6 @@ export default function AiGovernanceResponsibleAiExamPage() {
                 >
                   Enter Voucher Code
                 </button>
-                <button
-                  onClick={() => setIsRetakeOpen(true)}
-                  className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-                >
-                  Use Retake Code
-                </button>
               </div>
               <p className="mt-4 text-sm text-slate-500">
                 {isChecking ? "Checking access status..." : "Access will be verified before you begin."}
@@ -392,12 +386,6 @@ export default function AiGovernanceResponsibleAiExamPage() {
               className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               Enter Voucher Code
-            </button>
-            <button
-              onClick={() => setIsRetakeOpen(true)}
-              className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-            >
-              Use Retake Code
             </button>
           </div>
         </div>

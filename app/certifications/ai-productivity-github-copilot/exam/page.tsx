@@ -130,41 +130,130 @@ export default function AiProductivityCopilotExamPage() {
   };
 
   return (
-    <main>
-      {/* Validates */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-2 gap-10">
-          <div>
-            <h2 className="text-2xl font-semibold">What this exam validates</h2>
-            <p className="mt-3 text-slate-600 dark:text-slate-300">
-              This assessment verifies applied Copilot usage and engineering judgment rather than memorization.
-            </p>
-            <ul className="mt-6 space-y-3">
-              {VALIDATES.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-purple-600" />
-                  <span className="text-slate-700 dark:text-slate-200">{item}</span>
-                </li>
-              ))}
-            </ul>
+    <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
+      {/* Hero section */}
+      <section className="relative overflow-hidden border-b border-slate-200/70 dark:border-slate-800">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-cyan-500/10 to-transparent" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+            <Link href="/certifications" className="hover:text-slate-900 dark:hover:text-white">
+              Certifications
+            </Link>
+            <span>/</span>
+            <Link
+              href="/certifications/ai-productivity-github-copilot"
+              className="hover:text-slate-900 dark:hover:text-white"
+            >
+              AI Productivity & Copilot
+            </Link>
+            <span>/</span>
+            <span className="text-slate-700 dark:text-slate-200">Exam</span>
           </div>
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8">
-            <h3 className="text-lg font-semibold">Fair and transparent by design</h3>
-            <ul className="mt-4 space-y-3">
-              {TRUST_POINTS.map((point) => (
-                <li key={point} className="text-sm text-slate-600 dark:text-slate-300">
-                  • {point}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-sm text-slate-500">
-              We publish clear objectives and scoring rules so you always know what you’re being assessed on.
-            </p>
+          <div className="mt-8 grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
+                Certification Exam
+              </p>
+              <h1 className="mt-3 text-4xl sm:text-5xl font-semibold leading-tight">
+                {EXAM_DETAILS.name}
+              </h1>
+              <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
+                Validate your Copilot skills with a focused, fair assessment built around real-world tasks and responsible usage. Learning content is free; the exam is a paid credential.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Duration</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.duration}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Format</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.format}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Passing Score</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.passingScore}</p>
+                </div>
+              </div>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={handleStartExam}
+                  className="rounded-md bg-slate-900 text-white px-6 py-3 text-sm font-semibold shadow-sm hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+                >
+                  Start Exam
+                </button>
+                <button
+                  onClick={() => setIsVoucherOpen(true)}
+                  className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  Enter Voucher Code
+                </button>
+              </div>
+              {isRetakeOpen && (
+                <div className="mt-8 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-6 text-left">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Validate your retake code</h3>
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                    For security, please enter the same full name used in your retake request.
+                  </p>
+                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                    <div className="sm:col-span-2">
+                      <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Full name</label>
+                      <input
+                        value={retakeFullName}
+                        onChange={(e) => setRetakeFullName(e.target.value)}
+                        className="mt-1 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm"
+                        placeholder="Your full name"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Retake code</label>
+                      <input
+                        value={retakeTokenId}
+                        onChange={(e) => setRetakeTokenId(e.target.value)}
+                        className="mt-1 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm"
+                        placeholder="RETAKE-XXXXXXX"
+                      />
+                    </div>
+                  </div>
+                  {retakeError && (
+                    <div className="mt-4 text-sm text-red-600">
+                      {retakeError}
+                    </div>
+                  )}
+                  <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                    <button
+                      onClick={handleValidateRetake}
+                      disabled={isRetakeRedeeming}
+                      className="rounded-md bg-slate-900 text-white px-6 py-3 text-sm font-semibold shadow-sm hover:bg-slate-800 disabled:opacity-60"
+                    >
+                      {isRetakeRedeeming ? "Validation en cours..." : "Validate & Start Exam"}
+                    </button>
+                    <button
+                      onClick={() => setIsRetakeOpen(false)}
+                      className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8">
+              <h3 className="text-lg font-semibold">Fair and transparent by design</h3>
+              <ul className="mt-4 space-y-3">
+                {TRUST_POINTS.map((point) => (
+                  <li key={point} className="text-sm text-slate-600 dark:text-slate-300">
+                    • {point}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm text-slate-500">
+                We publish clear objectives and scoring rules so you always know what you’re being assessed on.
+              </p>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Audience */}
+      {/* Audience section */}
       <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <h2 className="text-2xl font-semibold">Who this exam is for</h2>
@@ -180,8 +269,7 @@ export default function AiProductivityCopilotExamPage() {
           </div>
         </div>
       </section>
-
-      {/* Access */}
+      {/* Access section */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1">
@@ -203,8 +291,7 @@ export default function AiProductivityCopilotExamPage() {
           </div>
         </div>
       </section>
-
-      {/* Pricing */}
+      {/* Pricing section */}
       <section className="bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -225,84 +312,6 @@ export default function AiProductivityCopilotExamPage() {
               </ul>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center">
-          <h2 className="text-2xl font-semibold">Ready to begin?</h2>
-          <p className="mt-3 text-slate-600 dark:text-slate-300">
-            You’ll see the full exam instructions before the timer starts.
-          </p>
-          <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-            <button
-              onClick={handleStartExam}
-              className="rounded-md bg-slate-900 text-white px-6 py-3 text-sm font-semibold shadow-sm hover:bg-slate-800 dark:bg-white dark:text-slate-900"
-            >
-              Start Exam
-            </button>
-            <button
-              onClick={() => setIsVoucherOpen(true)}
-              className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-            >
-              Enter Voucher Code
-            </button>
-            <button
-              onClick={() => setIsRetakeOpen(true)}
-              className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-            >
-              Use Retake Code
-            </button>
-          </div>
-          {isRetakeOpen && (
-            <div className="mt-8 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-6 text-left">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Validate your retake code</h3>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                For security, please enter the same full name used in your retake request.
-              </p>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <div className="sm:col-span-2">
-                  <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Full name</label>
-                  <input
-                    value={retakeFullName}
-                    onChange={(e) => setRetakeFullName(e.target.value)}
-                    className="mt-1 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm"
-                    placeholder="Your full name"
-                  />
-                </div>
-                <div className="sm:col-span-2">
-                  <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Retake code</label>
-                  <input
-                    value={retakeTokenId}
-                    onChange={(e) => setRetakeTokenId(e.target.value)}
-                    className="mt-1 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm"
-                    placeholder="RETAKE-XXXXXXX"
-                  />
-                </div>
-              </div>
-              {retakeError && (
-                <div className="mt-4 text-sm text-red-600">
-                  {retakeError}
-                </div>
-              )}
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <button
-                  onClick={handleValidateRetake}
-                  disabled={isRetakeRedeeming}
-                  className="rounded-md bg-slate-900 text-white px-6 py-3 text-sm font-semibold shadow-sm hover:bg-slate-800 disabled:opacity-60"
-                >
-                  {isRetakeRedeeming ? "Validation en cours..." : "Validate & Start Exam"}
-                </button>
-                <button
-                  onClick={() => setIsRetakeOpen(false)}
-                  className="rounded-md border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </section>
     </main>

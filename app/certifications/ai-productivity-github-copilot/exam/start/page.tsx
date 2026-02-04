@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const EXAM_OVERVIEW = {
@@ -300,12 +300,38 @@ const PRACTICAL_TASK = {
 type AnswerMap = Record<string, string[]>;
 type SubmittedMap = Record<string, boolean>;
 
-export default function AIProductivityCopilotExamStartPage() {
+
+// Liste des codes valides (voucher et retake)
+const VALID_CODES = ["COPILOT2024", "AIEXAM123", "VCH456", "RETAKE2024"];
+
 
   const router = useRouter();
+  const [code, setCode] = useState("");
+  const [codeValid, setCodeValid] = useState(false);
+  const [codeError, setCodeError] = useState("");
   const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
   const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
   const [submitted, setSubmitted] = useState<SubmittedMap>({});
+
+  // Vérifie le voucher en sessionStorage au montage
+  useEffect(() => {
+    const access = sessionStorage.getItem("copilot_exam_access");
+    if (access === "true") setCodeValid(true);
+    return () => {
+      sessionStorage.removeItem("copilot_exam_access");
+    };
+  }, []);
+
+  const handleCodeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (VALID_CODES.includes(code.trim())) {
+      setCodeValid(true);
+      setCodeError("");
+      sessionStorage.setItem("copilot_exam_access", "true");
+    } else {
+      setCodeError("Code invalide ou expiré.");
+    }
+  };
 
   const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
 
@@ -372,8 +398,96 @@ export default function AIProductivityCopilotExamStartPage() {
 
   const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
 
+  if (!codeValid) {
+    return (
+      <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white min-h-screen flex items-center justify-center">
+        <form onSubmit={handleCodeSubmit} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-8 shadow max-w-md w-full">
+          <h1 className="text-2xl font-bold mb-4">Accès à l'examen</h1>
+          <label className="block mb-2 text-sm font-medium">Entrez votre code voucher ou retake :</label>
+          <input
+            type="text"
+            value={code}
+            onChange={e => setCode(e.target.value)}
+            className="w-full px-4 py-2 border rounded mb-4 dark:bg-slate-800 dark:text-white"
+            placeholder="Code d'accès"
+            required
+          />
+          {codeError && <p className="text-red-600 mb-2 text-sm">{codeError}</p>}
+          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700">Valider</button>
+        </form>
+      </main>
+    );
+  }
+
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-slate-200/70 dark:border-slate-800">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-cyan-500/10 to-transparent" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <div className="mt-8 grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">Certification Exam</p>
+              <h1 className="mt-3 text-4xl sm:text-5xl font-semibold leading-tight">{EXAM_OVERVIEW.title}</h1>
+              <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">Validate your practical AI skills with a focused, fair assessment built around real-world tasks and responsible usage. Learning content is free; the exam is a paid credential.</p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Duration</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.duration}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Total Score</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.totalScore}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Passing Score</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.passingScore}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ...le reste du contenu de la page reste inchangé... */}
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-slate-200/70 dark:border-slate-800">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-cyan-500/10 to-transparent" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <div className="mt-8 grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">Certification Exam</p>
+              <h1 className="mt-3 text-4xl sm:text-5xl font-semibold leading-tight">{EXAM_OVERVIEW.title}</h1>
+              <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">Validate your practical AI skills with a focused, fair assessment built around real-world tasks and responsible usage. Learning content is free; the exam is a paid credential.</p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Duration</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.duration}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Total Score</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.totalScore}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Passing Score</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.passingScore}</p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-xl">
+              <h2 className="text-xl font-semibold">What you’ll receive</h2>
+              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">A single payment unlocks the exam and credential — with a free retake included.</p>
+              <div className="mt-6 space-y-3">
+                <div className="flex items-start gap-3"><span className="text-blue-600">✔</span><p className="text-sm text-slate-700 dark:text-slate-200">One exam attempt + one free retake</p></div>
+                <div className="flex items-start gap-3"><span className="text-blue-600">✔</span><p className="text-sm text-slate-700 dark:text-slate-200">Official digital certificate</p></div>
+                <div className="flex items-start gap-3"><span className="text-blue-600">✔</span><p className="text-sm text-slate-700 dark:text-slate-200">Shareable credential badge</p></div>
+                <div className="flex items-start gap-3"><span className="text-blue-600">✔</span><p className="text-sm text-slate-700 dark:text-slate-200">Detailed score report by domain</p></div>
+                <div className="flex items-start gap-3"><span className="text-blue-600">✔</span><p className="text-sm text-slate-700 dark:text-slate-200">Immediate results and next-step guidance</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ...le reste du contenu de la page reste inchangé... */}
       <section className="border-b border-slate-200/70 dark:border-slate-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <p className="text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
