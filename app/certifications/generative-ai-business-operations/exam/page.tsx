@@ -427,15 +427,6 @@ export default function GenerativeAiBusinessOperationsExamPage() {
               >
                 I have a voucher
               </button>
-              <button
-                onClick={() => {
-                  setIsAccessOpen(false);
-                  setIsRetakeOpen(true);
-                }}
-                className="w-full rounded-md border border-slate-300 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                I have a retake code
-              </button>
             </div>
             <p className="mt-4 text-xs text-slate-500">
               One paid attempt unlocks one extra attempt if the first try is unsuccessful.
