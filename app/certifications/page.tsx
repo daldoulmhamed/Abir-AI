@@ -5,6 +5,7 @@ import {
   generateCertificationsListSchema, 
   generateFAQSchema 
 } from "@/utils/generateCertificationSchema";
+import CertificationsExamResultButton from "@/components/CertificationsExamResultButton";
 
 export const metadata: Metadata = {
   title: "AI Certifications - Get Certified in Artificial Intelligence | Abir-AI",
@@ -86,13 +87,14 @@ export default function CertificationsPage() {
       </section>
 
       {/* Certificate Verification CTA - just below Hero, above How It Works */}
-      <div className="w-full flex justify-center py-8 bg-gray-50 dark:bg-gray-900">
+      <div className="w-full flex flex-col items-center py-8 bg-gray-50 dark:bg-gray-900">
         <Link
           href="/verify"
           className="inline-flex items-center px-6 py-2 border border-indigo-600 text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 dark:bg-gray-800 dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-gray-700 transition-colors shadow-sm"
         >
           Verify Certificate
         </Link>
+        <CertificationsExamResultButton />
       </div>
 
       {/* How It Works Section */}

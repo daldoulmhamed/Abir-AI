@@ -293,7 +293,9 @@ const PRACTICAL_TASK = {
 type AnswerMap = Record<string, string[]>;
 type SubmittedMap = Record<string, boolean>;
 
+
 export default function GenerativeAIBusinessOperationsExamStartPage() {
+  const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
   const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
   const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
   const [submitted, setSubmitted] = useState<SubmittedMap>({});
@@ -304,6 +306,8 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
     const submittedCount = Object.values(submitted).filter(Boolean).length;
     return Math.min(submittedCount, totalQuestions);
   }, [submitted, totalQuestions]);
+
+  const allQuestionsAnswered = answeredCount === totalQuestions;
 
   const score = useMemo(() => {
     const part1Score = PART1_QUESTIONS.reduce((sum, q) => {
@@ -536,32 +540,67 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
         </p>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
-            <h3 className="text-lg font-semibold">{PRACTICAL_TASK.pathA.title}</h3>
-            <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
-              {PRACTICAL_TASK.pathA.instructions.map((line, idx) => (
-                <li key={`${line}-${idx}`}>• {line}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
-            <h3 className="text-lg font-semibold">{PRACTICAL_TASK.pathB.title}</h3>
-            <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
-              {PRACTICAL_TASK.pathB.instructions.map((line, idx) => (
-                <li key={`${line}-${idx}`}>• {line}</li>
-              ))}
-            </ul>
-          </div>
+          <label className={`rounded-2xl border cursor-pointer transition-all border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 ${selectedPracticalPath === "A" ? "ring-2 ring-blue-500 border-blue-500" : "hover:border-blue-400"}`}>
+            <input
+              type="radio"
+              name="practicalPath"
+              value="A"
+              checked={selectedPracticalPath === "A"}
+              onChange={() => setSelectedPracticalPath("A")}
+              className="mr-3 accent-blue-600"
+            />
+            <span className="align-top">
+              <h3 className="text-lg font-semibold inline">{PRACTICAL_TASK.pathA.title}</h3>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                {PRACTICAL_TASK.pathA.instructions.map((line, idx) => (
+                  <li key={`${line}-${idx}`}>• {line}</li>
+                ))}
+              </ul>
+            </span>
+          </label>
+          <label className={`rounded-2xl border cursor-pointer transition-all border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 ${selectedPracticalPath === "B" ? "ring-2 ring-blue-500 border-blue-500" : "hover:border-blue-400"}`}>
+            <input
+              type="radio"
+              name="practicalPath"
+              value="B"
+              checked={selectedPracticalPath === "B"}
+              onChange={() => setSelectedPracticalPath("B")}
+              className="mr-3 accent-blue-600"
+            />
+            <span className="align-top">
+              <h3 className="text-lg font-semibold inline">{PRACTICAL_TASK.pathB.title}</h3>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                {PRACTICAL_TASK.pathB.instructions.map((line, idx) => (
+                  <li key={`${line}-${idx}`}>• {line}</li>
+                ))}
+              </ul>
+            </span>
+          </label>
         </div>
 
-        <div className="mt-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6">
-          <h3 className="text-lg font-semibold">Evaluation criteria (same for both paths)</h3>
-          <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
-            {PRACTICAL_EVALUATION_CRITERIA.map((criterion) => (
-              <li key={criterion}>• {criterion}</li>
-            ))}
-          </ul>
-        </div>
+        {selectedPracticalPath && (
+          <>
+            <div className="mt-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6">
+              <h3 className="text-lg font-semibold">Evaluation criteria (same for both paths)</h3>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                {PRACTICAL_EVALUATION_CRITERIA.map((criterion) => (
+                  <li key={criterion}>• {criterion}</li>
+                ))}
+              </ul>
+            </div>
+            {allQuestionsAnswered && (
+              <div className="mt-8 flex justify-center">
+                <button
+                  className="rounded-md bg-blue-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                  type="button"
+                  onClick={() => {/* TODO: navigation vers la page de résultat */}}
+                >
+                  exam result
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </section>
     </main>
   );

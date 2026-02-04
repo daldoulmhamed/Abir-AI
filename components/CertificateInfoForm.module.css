@@ -1,0 +1,102 @@
+.retakeErrorBox {
+  background: #fff0f0;
+  color: #c62828;
+  border: 1px solid #c62828;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 18px;
+  font-size: 1.05rem;
+  text-align: center;
+}
+.container {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  text-align: left;
+}
+.title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a202c;
+}
+.explanation {
+  color: #374151;
+  font-size: 1.08rem;
+  margin-bottom: 22px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.label {
+  font-weight: 500;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.required {
+  color: #c62828;
+  margin-left: 2px;
+}
+.input {
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  margin-top: 2px;
+  background: #f9fafb;
+  transition: border 0.2s;
+}
+.input:focus {
+  border-color: #6366f1;
+  outline: none;
+}
+.inputError {
+  border-color: #c62828;
+  background: #fff0f0;
+}
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.98rem;
+  color: #333;
+  margin-top: 8px;
+}
+.submitBtn {
+  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: background 0.2s;
+}
+.submitBtn:disabled {
+  background: #cbd5e1;
+  color: #888;
+  cursor: not-allowed;
+}
+.error {
+  color: #c62828;
+  font-size: 0.97rem;
+  margin-top: 2px;
+}
+.lockedMsg {
+  margin-top: 24px;
+  background: #f3f4f6;
+  color: #6366f1;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 1.05rem;
+  text-align: center;
+}

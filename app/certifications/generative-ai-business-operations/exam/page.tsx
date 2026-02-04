@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { validateRetakeCodeLocal } from "@/utils/retakeCodes";
 
 const EXAM_DETAILS = {
   name: "Generative AI for Business Operations Exam",
@@ -90,9 +89,10 @@ async function validateVoucherCode(
 }
 
 async function validateRetakeCode(code: string): Promise<boolean> {
-  // Retake codes are issued after failure via /api/retakes and stored in localStorage.
+  // Retake codes are issued after failure via /api/retakes.
   // TODO: Call requestRetakeCode(CERTIFICATION_ID) when the exam result is a fail.
-  return validateRetakeCodeLocal(CERTIFICATION_ID, code);
+  // ...ancienne logique supprimée : validation côté serveur désormais
+  return false;
 }
 
 function redirectToCheckout() {

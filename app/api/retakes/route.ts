@@ -1,4 +1,4 @@
-import { issueRetakeCode } from "@/config/retakeCodes.server";
+
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as
@@ -12,12 +12,9 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: Validate failed attempt + enforce one retake per paid exam in DB.
-  const code = issueRetakeCode();
-
+  // Cette route n'est plus utilisée, la logique de génération de code est dans /api/retakes/generate
   return Response.json({
-    success: true,
-    code,
-    message: "Retake code issued after failed attempt."
-  });
+    success: false,
+    message: "Use /api/retakes/generate for retake code issuance."
+  }, { status: 400 });
 }
