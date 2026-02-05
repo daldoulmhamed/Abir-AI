@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+  const router = useRouter();
 
 const EXAM_OVERVIEW = {
   title: "Generative AI for Business Operations — Final Certification Exam",
@@ -593,7 +595,9 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
                 <button
                   className="rounded-md bg-blue-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
                   type="button"
-                  onClick={() => {/* TODO: navigation vers la page de résultat */}}
+                  onClick={() => {
+                    router.push(`/certifications/exam-result?page=generative-ai-business-operations&score=${score}`);
+                  }}
                 >
                   exam result
                 </button>
