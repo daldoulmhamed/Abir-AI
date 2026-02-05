@@ -26,6 +26,7 @@ const initialResult = {
 export default function ExamResultPage() {
   const searchParams = useSearchParams();
   const [result, setResult] = useState(initialResult);
+  const [userFullName, setUserFullName] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -49,24 +50,23 @@ export default function ExamResultPage() {
   const [loadingRetake, setLoadingRetake] = useState(false);
 
   const handleRetake = async () => {
+    if (!userFullName.trim()) {
+      setRetakeError("Veuillez saisir votre nom complet.");
+      return;
+    }
     setLoadingRetake(true);
     setRetakeError(null);
-    // Récupération automatique du token lié à examId et fullName
-    // Correction : le slug doit correspondre au chemin réel
-    // Ici, on force le slug pour la démo Copilot
     const examSlug = 'ai-productivity-github-copilot';
     const examId = examSlug;
-    const fullName = 'Utilisateur Démo'; // À remplacer par le vrai nom utilisateur (ex: depuis le profil)
+    const fullName = userFullName.trim();
     let tokenId = null;
     try {
-      // Appel à l'API pour récupérer le token existant
       const res = await fetch('/api/retakes/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullName, examId })
       });
       const data = await res.json();
-      // Si le token existe mais est déjà utilisé, on bloque immédiatement
       if (!data.success && data.tokenId) {
         setRetakeError("No retake attempts remaining");
         setLoadingRetake(false);
@@ -83,7 +83,6 @@ export default function ExamResultPage() {
       setLoadingRetake(false);
       return;
     }
-    // Validation du token
     try {
       const validateRes = await fetch('/api/retakes/validate', {
         method: 'POST',
@@ -92,7 +91,6 @@ export default function ExamResultPage() {
       });
       const validateData = await validateRes.json();
       if (validateData.success) {
-        // Redirection vers la page de démarrage d'examen
         router.push(`/certifications/${examId}/exam/start?retake=1&tokenId=${tokenId}`);
       } else {
         setRetakeError("No retake attempts remaining");
@@ -173,6 +171,18 @@ export default function ExamResultPage() {
           <p className={styles.sweetMsg}>
             Don't be discouraged! Every expert was once a beginner. Review the material and come back stronger. You’re on the right path!
           </p>
+          <div style={{marginBottom: 12}}>
+            <label htmlFor="userFullName" style={{fontWeight:600}}>Full name:</label>
+            <input
+              id="userFullName"
+              type="text"
+              value={userFullName}
+              onChange={e => setUserFullName(e.target.value)}
+              placeholder="Enter your full name"
+              style={{marginLeft:8, padding:4, borderRadius:4, border:'1px solid #ccc'}}
+              disabled={loadingRetake}
+            />
+          </div>
           <button
             className={styles.primaryBtn}
             onClick={handleRetake}
