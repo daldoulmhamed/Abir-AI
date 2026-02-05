@@ -382,58 +382,7 @@ export default function CopilotExamStartPage() {
 
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
-      {/* Hero harmonisé */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-8">
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">Certification Exam</p>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-semibold leading-tight">{EXAM_OVERVIEW.title}</h1>
-          <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
-            Ce test valide l'usage pratique et responsable de GitHub Copilot et des workflows IA. Répondez à toutes les parties. Score total : {EXAM_OVERVIEW.totalScore} ; score de réussite : {EXAM_OVERVIEW.passingScore}.
-          </p>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
-            <p className="text-xs uppercase tracking-wide text-slate-500">Durée</p>
-            <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.duration}</p>
-          </div>
-          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
-            <p className="text-xs uppercase tracking-wide text-slate-500">Score total</p>
-            <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.totalScore}</p>
-          </div>
-          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
-            <p className="text-xs uppercase tracking-wide text-slate-500">Score requis</p>
-            <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_OVERVIEW.passingScore}</p>
-          </div>
-        </div>
-        <ul className="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-          {EXAM_OVERVIEW.parts.map((part) => (
-            <li key={part}>• {part}</li>
-          ))}
-        </ul>
-        <div className="mt-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <p className="text-sm text-slate-500">Progression (Parties 1 & 2)</p>
-              <p className="mt-1 text-lg font-semibold">{answeredCount}/{totalQuestions} répondues</p>
-            </div>
-            <div>
-              <p className="text-sm text-slate-500">Score auto-corrigé (sur 70)</p>
-              <p className="mt-1 text-lg font-semibold">{score}/70</p>
-            </div>
-          </div>
-          <div className="mt-4 h-2 rounded-full bg-slate-100 dark:bg-slate-800">
-            <div
-              className="h-2 rounded-full bg-blue-600"
-              style={{ width: `${progressPercent}%` }}
-              aria-label="Exam progress"
-            />
-          </div>
-          <p className="mt-2 text-xs text-slate-500">
-            La partie 3 est évaluée par grille et n'affecte pas le score auto-corrigé.
-          </p>
-        </div>
-      </section>
-      {/* ...le reste du contenu de la page reste inchangé... */}
+      {/* Hero section (ENGLISH ONLY) */}
       <section className="border-b border-slate-200/70 dark:border-slate-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <p className="text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
