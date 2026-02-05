@@ -113,6 +113,26 @@ export default function ExamResultPage() {
     });
   };
 
+  // Récupérer l'ID de la certification et un userId fictif (à remplacer par l'ID réel utilisateur si disponible)
+  // Ici, on déduit le slug à partir du nom de la certification (pour la démo)
+  const certification = result.certificationName;
+  // On cherche le slug dans la liste des certifications (importée dynamiquement)
+  let certificationId = "";
+  let userId = "USER_DEMO";
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { certifications } = require("@/data/certifications");
+    // Recherche par titre exact, sinon fallback sur le premier certificat
+    let found = certifications.find((c: any) => c.title === certification);
+    if (!found && certifications.length > 0) found = certifications[0];
+    if (found) certificationId = found.id;
+    else certificationId = "1";
+  } catch (e) {
+    certificationId = "1";
+  }
+  // Ajout du paramètre mode=certificate pour éviter l'erreur sur la page de formulaire
+  const certificateInfoUrl = `/certifications/certificate-info?mode=certificate&certificationId=${certificationId}&userId=${userId}`;
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Exam Results</h1>
@@ -135,7 +155,14 @@ export default function ExamResultPage() {
             🎉 Bravo! You have successfully passed the exam.<br />
             Your dedication and hard work paid off. You’re now certified—share your achievement and inspire others!
           </p>
-          <button className={styles.primaryBtn} onClick={() => router.push("/certifications/certificate-info")}>Continue to Certificate Info</button>
+          <button
+            className={styles.primaryBtn}
+            onClick={() => {
+              router.push(certificateInfoUrl);
+            }}
+          >
+            Continue to Certificate Info
+          </button>
           <button className={styles.primaryBtn} style={{marginTop: 10}} onClick={handleRetake}>
             Simulate Fail
           </button>
