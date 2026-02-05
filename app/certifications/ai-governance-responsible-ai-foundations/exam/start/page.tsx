@@ -1,7 +1,9 @@
 "use client";
 
-  import { useMemo, useState } from "react";
-  // ...existing code...
+
+import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+// ...existing code...
 
 const EXAM_OVERVIEW = {
   title: "AI Governance & Responsible AI Foundations — Final Certification Exam",
@@ -361,6 +363,7 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
 
   const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
 
+  const router = useRouter();
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
       <section className="border-b border-slate-200/70 dark:border-slate-800">
@@ -591,7 +594,9 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
                 <button
                   className="rounded-md bg-blue-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
                   type="button"
-                  onClick={() => {/* TODO: navigation vers la page de résultat */}}
+                  onClick={() => {
+                    router.push(`/certifications/exam-result?page=ai-governance-responsible-ai-foundations&score=${score}`);
+                  }}
                 >
                   exam result
                 </button>
