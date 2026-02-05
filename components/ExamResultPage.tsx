@@ -131,6 +131,23 @@ export default function ExamResultPage() {
   // Ajout du paramètre mode=certificate pour éviter l'erreur sur la page de formulaire
   const certificateInfoUrl = `/certifications/certificate-info?mode=certificate&certificationId=${certificationId}&userId=${userId}`;
 
+  // Génération du numéro de série via API route
+  const [certificateSerial, setCertificateSerial] = useState("");
+  useEffect(() => {
+    if (passed && certificationId) {
+      fetch("/api/certificate-serial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ certCode: certificationId.toUpperCase() })
+      })
+        .then(res => res.json())
+        .then(data => setCertificateSerial(data.serial || ""))
+        .catch(() => setCertificateSerial("ERROR-GENERATING-SERIAL"));
+    } else {
+      setCertificateSerial("");
+    }
+  }, [passed, certificationId]);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Exam Results</h1>
@@ -147,6 +164,28 @@ export default function ExamResultPage() {
           <strong>Score:</strong> {percentage}%
         </p>
       </div>
+      {passed && certificateSerial && (
+        <div style={{marginTop: 18, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{fontSize:'1rem',color:'#3b82f6',fontWeight:600,marginBottom:6,letterSpacing:'1px'}}>Certificate Serial Number</div>
+          <span style={{
+            background: 'linear-gradient(90deg,#3b82f6,#06d6a0)',
+            color: '#fff',
+            fontWeight: 700,
+            fontFamily: 'monospace',
+            fontSize: '1.25rem',
+            borderRadius: '8px',
+            padding: '10px 24px',
+            boxShadow: '0 2px 12px rgba(60,180,200,0.15)',
+            letterSpacing: '2px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px'
+          }}>
+            <span role="img" aria-label="serial">🔒</span>
+            {certificateSerial}
+          </span>
+        </div>
+      )}
       {passed ? (
         <div className={styles.messageBlock}>
           <p className={styles.successMsg}>
