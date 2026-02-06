@@ -169,16 +169,66 @@ export default function CertificationsPage() {
                 href={`/certifications/${cert.slug}`}
                 className="group block bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700"
               >
-                {/* Header with gradient */}
+                {/* Logo très grand au-dessus du titre pour Generative AI Practitioner et AI Productivity & GitHub Copilot */}
+                {cert.slug === 'generative-ai-practitioner' && (
+                  <div className="w-full flex justify-center pt-8 pb-2 bg-white dark:bg-gray-800">
+                    <img
+                      src="/images/generative-ai-practitioner.png"
+                      alt="Generative AI Practitioner Logo"
+                      style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
+                      className="shadow-2xl"
+                    />
+                  </div>
+                )}
+                {cert.slug === 'ai-productivity-github-copilot' && (
+                  <div className="w-full flex justify-center pt-8 pb-2 bg-white dark:bg-gray-800">
+                    <img
+                      src="/images/AI Productivity & GitHub Copilot.png"
+                      alt="AI Productivity & GitHub Copilot Logo"
+                      style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
+                      className="shadow-2xl"
+                    />
+                  </div>
+                )}
+                {cert.slug === 'generative-ai-business-operations' && (
+                  <div className="w-full flex justify-center pt-8 pb-2 bg-white dark:bg-gray-800">
+                    <img
+                      src="/images/Generative AI for Business Operations.png"
+                      alt="Generative AI for Business Operations Logo"
+                      style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
+                      className="shadow-2xl"
+                    />
+                  </div>
+                )}
+                {cert.slug === 'ai-governance-responsible-ai-foundations' && (
+                  <div className="w-full flex justify-center pt-8 pb-2 bg-white dark:bg-gray-800">
+                    <img
+                      src="/images/AI Governance & Responsible AI Foundations.png"
+                      alt="AI Governance & Responsible AI Foundations Logo"
+                      style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
+                      className="shadow-2xl"
+                    />
+                  </div>
+                )}
+                {/* Header avec bande bleue et titre */}
                 <div className={`bg-gradient-to-r ${cert.color} p-6 text-white`}>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-4xl">{cert.icon}</span>
-                    <span className="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">
-                      {cert.level.charAt(0).toUpperCase() + cert.level.slice(1)}
-                    </span>
+                    {cert.slug === 'generative-ai-practitioner' ? (
+                      <span className="text-base font-semibold mx-auto block text-center bg-white/20 px-4 py-1 rounded-full">
+                        Beginner
+                      </span>
+                    ) : cert.slug === 'ai-productivity-github-copilot' || cert.slug === 'generative-ai-business-operations' || cert.slug === 'ai-governance-responsible-ai-foundations' ? (
+                      <span className="text-base font-semibold mx-auto block text-center bg-white/20 px-4 py-1 rounded-full">
+                        Intermediate
+                      </span>
+                    ) : (
+                      <span className="text-4xl">{cert.icon}</span>
+                    )}
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">{cert.title}</h3>
-                  <p className="text-white/90 text-sm">{cert.tagline}</p>
+                  <h3 className="text-2xl font-bold mb-2 flex items-center justify-center">
+                    {cert.title}
+                  </h3>
+                  <p className="text-white/90 text-sm text-center">{cert.tagline}</p>
                 </div>
 
                 {/* Content */}
