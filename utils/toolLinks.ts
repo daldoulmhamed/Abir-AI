@@ -1,3 +1,49 @@
+// Générateur de numéro de série pour certificats Abir-IA
+// Format : ABIR-[CERT_CODE]-[YEAR]-[INCREMENTAL_ID]
+// Exemple : ABIR-MAI-2026-000127
+// La persistance est assurée via un fichier JSON.
+// Pour une migration future vers une base de données, remplacer la logique de lecture/écriture du fichier par des requêtes DB.
+
+import fs from 'fs';
+import path from 'path';
+
+const SERIALS_FILE = path.resolve(process.cwd(), 'data/certificateSerials.json');
+
+function padId(id: number): string {
+  return id.toString().padStart(6, '0');
+}
+
+/**
+ * Génère un numéro de série unique pour un certificat Abir-IA.
+ * @param {string} certCode - Code du certificat (ex: MAI, COPILOT)
+ * @returns {string} Numéro de série généré
+ */
+export function generateCertificateSerial(certCode: string): string {
+  const year = new Date().getFullYear();
+  // Typage de l'objet serials
+  let serials: { [key: string]: number } = {};
+  // Lecture du fichier JSON
+  if (fs.existsSync(SERIALS_FILE)) {
+    try {
+      const raw = fs.readFileSync(SERIALS_FILE, 'utf-8');
+      serials = JSON.parse(raw);
+    } catch (e) {
+      // En cas d'erreur, on réinitialise
+      serials = {};
+    }
+  }
+  // Clé unique par certCode et année
+  const key = `${certCode}-${year}`;
+  let lastId = serials[key] || 0;
+  const newId = lastId + 1;
+  serials[key] = newId;
+  // Sauvegarde du nouvel ID
+  fs.writeFileSync(SERIALS_FILE, JSON.stringify(serials, null, 2));
+  // Construction du numéro de série
+  return `ABIR-${certCode}-${year}-${padId(newId)}`;
+}
+
+// ...existing code...
 import React from 'react';
 
 // Map of tool names to their external URLs

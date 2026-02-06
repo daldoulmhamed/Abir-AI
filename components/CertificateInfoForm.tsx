@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { issueCertificate, CertificateIssued } from "@/utils/issueCertificate";
 import styles from "./CertificateInfoForm.module.css";
 
 export interface CertificateInfo {
@@ -24,6 +25,10 @@ export default function CertificateInfoForm({ onConfirm, mode = "certificate", c
   const [retakeCode, setRetakeCode] = useState<string | null>(null);
   const [retakeError, setRetakeError] = useState<string | null>(null);
   const [errors, setErrors] = useState<{ [k: string]: string }>({});
+  // État pour le certificat émis
+  const [issuedCertificate, setIssuedCertificate] = useState<CertificateIssued | null>(null);
+  const [issueError, setIssueError] = useState<string | null>(null);
+  const [issuing, setIssuing] = useState(false);
 
   useEffect(() => {
     // Plus de pré-remplissage depuis localStorage
@@ -51,6 +56,12 @@ export default function CertificateInfoForm({ onConfirm, mode = "certificate", c
     }));
   };
 
+  // ---
+  // Processus en deux étapes :
+  // 1. L'utilisateur réussit l'examen (aucun certificat officiel n'est généré à ce stade)
+  // 2. Après confirmation de l'identité (ce formulaire), issueCertificate() est appelée pour générer le certificat officiel
+  // ---
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = {
@@ -65,14 +76,12 @@ export default function CertificateInfoForm({ onConfirm, mode = "certificate", c
     if (Object.keys(errs).length === 0) {
       setForm(trimmed);
       setSubmitted(true);
-      // Plus de stockage localStorage
       if (onConfirm) onConfirm(trimmed);
 
-      // Génération du code retake si mode retake
       if (mode === "retake") {
         setRetakeError(null);
         setRetakeCode(null);
-        console.log("[Retake] Tentative de génération avec :", { fullName: trimmed.fullName });
+        // ...logique retake inchangée...
         try {
           const res = await fetch("/api/retakes/generate", {
             method: "POST",
@@ -82,7 +91,6 @@ export default function CertificateInfoForm({ onConfirm, mode = "certificate", c
           const data = await res.json();
           if (data.tokenId) {
             setRetakeCode(data.tokenId);
-            // Appel automatique à l'API de validation du retake
             if (certificationId) {
               try {
                 const validateRes = await fetch("/api/retakes/validate", {
@@ -115,6 +123,24 @@ export default function CertificateInfoForm({ onConfirm, mode = "certificate", c
           }
         } catch (err) {
           setRetakeError("Network error. Please try again.");
+        }
+      } else if (mode === "certificate" && certificationId) {
+        // --- Émission du certificat officiel après confirmation d'identité ---
+        // La génération du QR code est déclenchée côté serveur lors de l'appel à issueCertificate.
+        // Le QR code encode l'URL de vérification et sera utilisé pour l'intégration PDF ou l'affichage.
+        setIssuing(true);
+        setIssueError(null);
+        try {
+          const cert = await issueCertificate({
+            fullName: trimmed.fullName,
+            certificationTitle: certificationId, // Peut être remplacé par le vrai titre si disponible
+            certificationId: certificationId,
+          });
+          setIssuedCertificate(cert);
+        } catch (err: any) {
+          setIssueError("Erreur lors de l'émission du certificat. Veuillez réessayer ou contacter le support.");
+        } finally {
+          setIssuing(false);
         }
       }
     }
@@ -207,7 +233,26 @@ export default function CertificateInfoForm({ onConfirm, mode = "certificate", c
       </form>
       {submitted && mode !== "retake" && (
         <div className={styles.lockedMsg}>
-          <strong>Information locked.</strong> Your certificate will be generated with the details above.
+          <strong>Information locked.</strong> Your certificate will be generated with the details above.<br />
+          {issuing && <div style={{marginTop:8}}>⏳ Génération du certificat en cours...</div>}
+          {issueError && <div style={{color:'#c62828',marginTop:8}}>{issueError}</div>}
+          {issuedCertificate && (
+            <div style={{marginTop:16,padding:12,border:'1px solid #3b82f6',borderRadius:8,background:'#f0f7ff'}}>
+              <div style={{fontWeight:600,color:'#2563eb'}}>🎓 Certificat officiel émis !</div>
+              <div><strong>Nom :</strong> {issuedCertificate.fullName}</div>
+              <div><strong>Certification :</strong> {issuedCertificate.certificationTitle}</div>
+              <div><strong>Date d'émission :</strong> {issuedCertificate.issueDate}</div>
+              <div><strong>Numéro de série :</strong> {issuedCertificate.certificateSerial}</div>
+              <div><strong>URL de vérification :</strong> <a href={issuedCertificate.verificationUrl} target="_blank" rel="noopener noreferrer">{issuedCertificate.verificationUrl}</a></div>
+              {/* QR code de vérification : généré UNE FOIS lors de l'émission, prêt à être intégré dans le PDF */}
+              {issuedCertificate.qrCodeDataUrl && (
+                <div style={{marginTop:8}}>
+                  <img src={issuedCertificate.qrCodeDataUrl} alt="QR Code de vérification" style={{width:120,height:120}} />
+                  <div style={{fontSize:'0.9em',color:'#555',marginTop:4}}>Scannez pour vérifier l'authenticité du certificat</div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
       {submitted && mode === "retake" && (

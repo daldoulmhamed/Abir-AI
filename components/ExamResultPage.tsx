@@ -164,28 +164,7 @@ export default function ExamResultPage() {
           <strong>Score:</strong> {percentage}%
         </p>
       </div>
-      {passed && certificateSerial && (
-        <div style={{marginTop: 18, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-          <div style={{fontSize:'1rem',color:'#3b82f6',fontWeight:600,marginBottom:6,letterSpacing:'1px'}}>Certificate Serial Number</div>
-          <span style={{
-            background: 'linear-gradient(90deg,#3b82f6,#06d6a0)',
-            color: '#fff',
-            fontWeight: 700,
-            fontFamily: 'monospace',
-            fontSize: '1.25rem',
-            borderRadius: '8px',
-            padding: '10px 24px',
-            boxShadow: '0 2px 12px rgba(60,180,200,0.15)',
-            letterSpacing: '2px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '10px'
-          }}>
-            <span role="img" aria-label="serial">🔒</span>
-            {certificateSerial}
-          </span>
-        </div>
-      )}
+      {/* Le numéro de série du certificat n'est plus affiché ici */}
       {passed ? (
         <div className={styles.messageBlock}>
           <p className={styles.successMsg}>
