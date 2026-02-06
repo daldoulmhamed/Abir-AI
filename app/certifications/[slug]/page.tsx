@@ -327,6 +327,41 @@ export default async function CertificationPage({ params }: CertificationPagePro
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 {certification.title}
+                {/* Logo grand et centré sous le titre, hors fond coloré */}
+                <div className="w-full flex justify-center py-6">
+                  {certification.slug === 'generative-ai-practitioner' && (
+                    <img
+                      src="/images/generative-ai-practitioner.png"
+                      alt="Generative AI Practitioner Logo"
+                      style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
+                      className="shadow-2xl"
+                    />
+                  )}
+                  {certification.slug === 'ai-productivity-github-copilot' && (
+                    <img
+                      src="/images/AI Productivity & GitHub Copilot.png"
+                      alt="AI Productivity & GitHub Copilot Logo"
+                      style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
+                      className="shadow-2xl"
+                    />
+                  )}
+                  {certification.slug === 'generative-ai-business-operations' && (
+                    <img
+                      src="/images/Generative AI for Business Operations.png"
+                      alt="Generative AI for Business Operations Logo"
+                      style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
+                      className="shadow-2xl"
+                    />
+                  )}
+                  {certification.slug === 'ai-governance-responsible-ai-foundations' && (
+                    <img
+                      src="/images/AI Governance & Responsible AI Foundations.png"
+                      alt="AI Governance & Responsible AI Foundations Logo"
+                      style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
+                      className="shadow-2xl"
+                    />
+                  )}
+                </div>
               </h1>
               <p className="text-xl md:text-2xl text-white/90 mb-6">
                 {certification.tagline}
