@@ -27,6 +27,34 @@ export async function POST(req: NextRequest) {
     }
     // Date d'émission (aujourd'hui si non fournie)
     const date = issueDate || new Date().toISOString().slice(0, 10);
+    // Ajout du certificat dans certificateVerificationData.ts
+    try {
+      const fs = require('fs');
+      const path = require('path');
+      const CERT_DATA_FILE = path.resolve(process.cwd(), 'data/certificateVerificationData.ts');
+      // Lecture du fichier
+      let content = fs.readFileSync(CERT_DATA_FILE, 'utf-8');
+      // Ajout du certificat dans le tableau certificates
+      const newCert = `{
+        status: "Valid",
+        fullName: "${fullName.replace(/"/g, '\"')}",
+        certificationTitle: "${certificationTitle.replace(/"/g, '\"')}",
+        issueDate: "${date}",
+        certificateSerial: "${certificateSerial}",
+        verificationUrl: "${verificationUrl}",
+        qrCodeDataUrl: ${qrCodeDataUrl ? `"${qrCodeDataUrl}"` : 'undefined'},
+      }`;
+      // Trouver la fin du tableau certificates
+      content = content.replace(/(export const certificates: Certificate\[] = \[)([^]*?)(\];)/, (match, p1, p2, p3) => {
+        // Ajoute la virgule si nécessaire
+        const trimmed = p2.trim();
+        const needsComma = trimmed && !trimmed.endsWith(',') ? ',' : '';
+        return `${p1}${p2}${needsComma}\n  ${newCert}\n${p3}`;
+      });
+      fs.writeFileSync(CERT_DATA_FILE, content);
+    } catch (err) {
+      // Ignore en cas d'échec, log possible
+    }
     // Retourne le certificat officiel
     return NextResponse.json({
       status: 'Issued',
