@@ -13,7 +13,7 @@ export interface CertificateInfo {
 
 const STORAGE_KEY = "abir-ia-certificate-info";
 
-export default function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId, userId }: { onConfirm?: (info: CertificateInfo) => void, mode?: "certificate" | "retake", certificationId?: string, userId?: string }) {
+function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId, userId }: { onConfirm?: (info: CertificateInfo) => void, mode?: "certificate" | "retake", certificationId?: string, userId?: string }) {
   const [form, setForm] = useState<CertificateInfo>({
     fullName: "",
     country: "",
@@ -253,26 +253,69 @@ export default function CertificateInfoForm({ onConfirm, mode = "certificate", c
               )}
             </div>
           )}
+          {/* Afficher le bouton seulement si issuedCertificate n'est pas null (typage strict) */}
+          {issuedCertificate && <DownloadCertificateButton issuedCertificate={issuedCertificate} />}
         </div>
       )}
-      {submitted && mode === "retake" && (
-        <div className={styles.lockedMsg}>
-          {retakeCode ? (
-            <>
-              <strong>Your retake code:</strong>
-              <div className={styles.retakeCode}>{retakeCode}</div>
-              <div className={styles.infoMsg}>Use this code to unlock your free retake. It is valid for one use only.</div>
-            </>
-          ) : retakeError ? (
-            <div className={styles.retakeErrorBox}>
-              <strong>Erreur lors de la génération du code :</strong><br />
-              {retakeError}
-            </div>
-          ) : (
-            <span>Generating your retake code...</span>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
+      </div>
+    );
+  }
+
+  export default CertificateInfoForm;
+
+  function DownloadCertificateButton({ issuedCertificate }: { issuedCertificate: CertificateIssued }) {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    // Mapping badge selon le titre de la certification
+    const badgeMap: Record<string, string> = {
+      "Generative AI Practitioner": "/images/Generative-AI-Practitioner.png",
+      "AI Productivity & GitHub Copilot": "/images/AI Productivity & GitHub Copilot.png",
+      "Generative AI for Business Operations": "/images/Generative AI for Business Operations.png",
+      "AI Governance & Responsible AI Foundations": "/images/AI Governance & Responsible AI Foundations.png",
+    };
+
+    const handleDownload = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const badgeUrl = badgeMap[issuedCertificate.certificationTitle] || badgeMap[Object.keys(badgeMap)[0]];
+        const response = await fetch("/api/certificate-serial/generate-pdf", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: issuedCertificate.fullName,
+            certificationTitle: issuedCertificate.certificationTitle,
+            certificateSerial: issuedCertificate.certificateSerial,
+            issuedAt: issuedCertificate.issueDate,
+            qrCodeDataUrl: issuedCertificate.qrCodeDataUrl,
+            examBadgeLogoUrl: badgeUrl,
+          }),
+        });
+        if (!response.ok) throw new Error("Erreur lors de la génération du PDF");
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `certificate-${issuedCertificate.certificateSerial}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+      } catch (err: any) {
+        setError(err.message || "Erreur inconnue");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    return (
+      <div style={{marginTop:16}}>
+        <button onClick={handleDownload} disabled={loading} className={styles.primaryBtn}>
+          {loading ? "Génération du PDF..." : "Télécharger mon certificat PDF"}
+        </button>
+        {error && <div style={{color:'#c62828',marginTop:8}}>{error}</div>}
+      </div>
+    );
+  }
+
