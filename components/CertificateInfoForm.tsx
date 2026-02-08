@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { certifications } from "@/data/certifications";
 import { issueCertificate, CertificateIssued } from "@/utils/issueCertificate";
 import styles from "./CertificateInfoForm.module.css";
 
@@ -131,9 +132,12 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
         setIssuing(true);
         setIssueError(null);
         try {
+          // Trouver le vrai titre à partir de l'ID
+          const certObj = certifications.find(c => c.id === certificationId);
+          const certificationTitle = certObj ? certObj.title : certificationId;
           const cert = await issueCertificate({
             fullName: trimmed.fullName,
-            certificationTitle: certificationId, // Peut être remplacé par le vrai titre si disponible
+            certificationTitle,
             certificationId: certificationId,
           });
           setIssuedCertificate(cert);
@@ -237,13 +241,38 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
           {issuing && <div style={{marginTop:8}}>⏳ Génération du certificat en cours...</div>}
           {issueError && <div style={{color:'#c62828',marginTop:8}}>{issueError}</div>}
           {issuedCertificate && (
-            <div style={{marginTop:16,padding:12,border:'1px solid #3b82f6',borderRadius:8,background:'#f0f7ff'}}>
-              <div style={{fontWeight:600,color:'#2563eb'}}>🎓 Certificat officiel émis !</div>
-              <div><strong>Nom :</strong> {issuedCertificate.fullName}</div>
-              <div><strong>Certification :</strong> {issuedCertificate.certificationTitle}</div>
-              <div><strong>Date d'émission :</strong> {issuedCertificate.issueDate}</div>
-              <div><strong>Numéro de série :</strong> {issuedCertificate.certificateSerial}</div>
-              <div><strong>URL de vérification :</strong> <a href={issuedCertificate.verificationUrl} target="_blank" rel="noopener noreferrer">{issuedCertificate.verificationUrl}</a></div>
+            <div style={{
+              marginTop: '6em',
+              padding: 12,
+              border: '1px solid #3b82f6',
+              borderRadius: 8,
+              background: '#f0f7ff',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minHeight: '400px',
+            }}>
+              <div style={{fontWeight:600,color:'#2563eb', marginBottom: '2em'}}>🎓 Certificat officiel émis !</div>
+              <div style={{fontWeight:700, fontSize:'2em', marginBottom:'1.5em', textAlign:'center'}}>{issuedCertificate.fullName}</div>
+              <div style={{fontWeight:600, fontSize:'1.3em', marginBottom:'1.2em', textAlign:'center'}}>{issuedCertificate.certificationTitle}</div>
+              {(() => {
+                const badgeMap: Record<string, string> = {
+                  "Generative AI Practitioner": "/images/generative-ai-practitioner.png",
+                  "AI Productivity & GitHub Copilot": "/images/ai-productivity-github-copilot.png",
+                  "Generative AI for Business Operations": "/images/generative-ai-for-business-operations.png",
+                  "AI Governance & Responsible AI Foundations": "/images/ai-governance-responsible-ai-foundations.png",
+                };
+                const badgeUrl = badgeMap[issuedCertificate.certificationTitle];
+                return badgeUrl ? (
+                  <div style={{display:'flex',justifyContent:'center',marginBottom:'2.5em'}}>
+                    <img src={badgeUrl} alt={issuedCertificate.certificationTitle+" badge"} style={{maxWidth:140,maxHeight:140,objectFit:'contain',borderRadius:12,boxShadow:'0 2px 8px #0001'}} />
+                  </div>
+                ) : null;
+              })()}
+              <div style={{marginBottom:'0.5em'}}><strong>Date d'émission :</strong> {issuedCertificate.issueDate}</div>
+              <div style={{marginBottom:'0.5em'}}><strong>Numéro de série :</strong> {issuedCertificate.certificateSerial}</div>
+              <div style={{marginBottom:'0.5em'}}><strong>URL de vérification :</strong> <a href={issuedCertificate.verificationUrl} target="_blank" rel="noopener noreferrer">{issuedCertificate.verificationUrl}</a></div>
               {/* QR code de vérification : généré UNE FOIS lors de l'émission, prêt à être intégré dans le PDF */}
               {issuedCertificate.qrCodeDataUrl && (
                 <div style={{marginTop:8}}>
@@ -269,10 +298,10 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
 
     // Mapping badge selon le titre de la certification
     const badgeMap: Record<string, string> = {
-      "Generative AI Practitioner": "/images/Generative-AI-Practitioner.png",
-      "AI Productivity & GitHub Copilot": "/images/AI Productivity & GitHub Copilot.png",
-      "Generative AI for Business Operations": "/images/Generative AI for Business Operations.png",
-      "AI Governance & Responsible AI Foundations": "/images/AI Governance & Responsible AI Foundations.png",
+      "Generative AI Practitioner": "/images/generative-ai-practitioner.png",
+      "AI Productivity & GitHub Copilot": "/images/ai-productivity-github-copilot.png",
+      "Generative AI for Business Operations": "/images/generative-ai-for-business-operations.png",
+      "AI Governance & Responsible AI Foundations": "/images/ai-governance-responsible-ai-foundations.png",
     };
 
     const handleDownload = async () => {

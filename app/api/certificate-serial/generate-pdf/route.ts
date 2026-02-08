@@ -224,48 +224,51 @@ export async function POST(req: Request) {
     // Placement des éléments
     console.log('[DEBUG] Step: PDF element placement - start');
     try {
+      // Centrer le nom d'utilisateur au milieu du certificat
       page.drawText(fullName, {
-        x: 1123 / 2 - fontBold.widthOfTextAtSize(fullName, 32) / 2,
-        y: 520,
-        size: 32,
+        x: 1123 / 2 - fontBold.widthOfTextAtSize(fullName, 80) / 2,
+        y: 408,
+        size: 80,
         font: fontBold,
         color: rgb(0, 0, 0),
       });
+
+      // Placer le titre d'examen et le badge en bas
       page.drawText(`"${certificationTitle}"`, {
         x: 1123 / 2 - fontBold.widthOfTextAtSize(`"${certificationTitle}"`, 24) / 2,
-        y: 410,
+        y: 280,
         size: 24,
         font: fontBold,
         color: rgb(0, 0, 0),
       });
       if (badgeImageBuffer !== undefined && badgeImage) {
         page.drawImage(badgeImage, {
-          x: 1123 / 2 - 60,
-          y: 320,
-          width: 120,
-          height: 120,
+          x: 1123 / 2 - 115,
+          y: 40,
+          width: 230,
+          height: 230,
         });
       }
       if (qrImageBuffer !== undefined && qrImage) {
         page.drawImage(qrImage, {
-          x: 950,
-          y: 80,
-          width: 100,
-          height: 100,
+          x: 865,
+          y: 100,
+          width: 130,
+          height: 130,
         });
       }
       page.drawText(certificateSerial, {
-        x: 950,
+        x: 850,
         y: 60,
-        size: 12,
+        size: 16,
         font: font,
         color: rgb(0, 0, 0),
       });
       const formattedDate = format(new Date(issuedAt), 'MMMM d, yyyy');
       page.drawText(formattedDate, {
-        x: 60,
-        y: 60,
-        size: 14,
+        x: 120,
+        y: 150,
+        size: 20,
         font: font,
         color: rgb(0, 0, 0),
       });

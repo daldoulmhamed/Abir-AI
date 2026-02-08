@@ -211,16 +211,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // Placement des éléments
     console.log('[DEBUG] Step: PDF element placement - start');
     try {
+      // Centrer le nom d'utilisateur au milieu du certificat
       page.drawText(fullName, {
         x: 1123 / 2 - fontBold.widthOfTextAtSize(fullName, 32) / 2,
-        y: 520,
+        y: 397,
         size: 32,
         font: fontBold,
         color: rgb(0, 0, 0),
       });
+
+      // Placer le titre d'examen et le badge en bas
       page.drawText(`"${certificationTitle}"`, {
         x: 1123 / 2 - fontBold.widthOfTextAtSize(`"${certificationTitle}"`, 24) / 2,
-        y: 410,
+        y: 120,
         size: 24,
         font: fontBold,
         color: rgb(0, 0, 0),
@@ -228,7 +231,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       if (badgeImageBuffer !== undefined && badgeImage) {
         page.drawImage(badgeImage, {
           x: 1123 / 2 - 60,
-          y: 320,
+          y: 40,
           width: 120,
           height: 120,
         });
