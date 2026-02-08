@@ -6,6 +6,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
+const BADGE_MAP: Record<string, string> = {
+  "ai-productivity-github-copilot": "/images/ai-productivity-github-copilot.png",
+  "generative-ai-practitioner": "/images/generative-ai-practitioner.png",
+  "generative-ai-business-operations": "/images/generative-ai-for-business-operations.png",
+  "ai-governance-responsible-ai-foundations": "/images/ai-governance-responsible-ai-foundations.png",
+};
+
 const EXAM_DETAILS = {
   name: "AI Productivity & GitHub Copilot Exam",
   duration: "100 minutes",
@@ -65,6 +72,7 @@ const TRUST_POINTS = [
 ];
 
 export default function AiProductivityCopilotExamPage() {
+  const badgeUrl = BADGE_MAP["ai-productivity-github-copilot"];
   const router = useRouter();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [isChecking, setIsChecking] = useState(true);
@@ -238,17 +246,30 @@ export default function AiProductivityCopilotExamPage() {
               )}
             </div>
             <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8">
-              <h3 className="text-lg font-semibold">Fair and transparent by design</h3>
-              <ul className="mt-4 space-y-3">
-                {TRUST_POINTS.map((point) => (
-                  <li key={point} className="text-sm text-slate-600 dark:text-slate-300">
-                    • {point}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 text-sm text-slate-500">
-                We publish clear objectives and scoring rules so you always know what you’re being assessed on.
+              <h2 className="text-xl font-semibold">What you’ll receive</h2>
+              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                A single payment unlocks the exam and credential — with a free retake included.
               </p>
+              <div className="mt-6 space-y-3">
+                {EXAM_DETAILS.includes.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span className="text-blue-600">✔</span>
+                    <p className="text-sm text-slate-700 dark:text-slate-200">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 rounded-xl bg-slate-50 dark:bg-slate-800 px-4 py-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-slate-500">One-time payment</span>
+                  <span className="text-xl font-semibold text-slate-900 dark:text-white">{priceLabel}</span>
+                </div>
+                {/* Logo en bas de la box principale */}
+                {badgeUrl && (
+                  <div style={{display:'flex',justifyContent:'center',marginTop:'2em'}}>
+                    <img src={badgeUrl} alt="Certification badge" style={{maxWidth:140,maxHeight:140,objectFit:'contain',borderRadius:12,boxShadow:'0 2px 8px #0001'}} />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

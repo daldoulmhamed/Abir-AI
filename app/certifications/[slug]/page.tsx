@@ -339,7 +339,7 @@ export default async function CertificationPage({ params }: CertificationPagePro
                   )}
                   {certification.slug === 'ai-productivity-github-copilot' && (
                     <img
-                      src="/images/AI Productivity & GitHub Copilot.png"
+                      src="/images/ai-productivity-github-copilot.png"
                       alt="AI Productivity & GitHub Copilot Logo"
                       style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
                       className="shadow-2xl"
@@ -347,7 +347,7 @@ export default async function CertificationPage({ params }: CertificationPagePro
                   )}
                   {certification.slug === 'generative-ai-business-operations' && (
                     <img
-                      src="/images/Generative AI for Business Operations.png"
+                      src="/images/generative-ai-for-business-operations.png"
                       alt="Generative AI for Business Operations Logo"
                       style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
                       className="shadow-2xl"
@@ -355,11 +355,15 @@ export default async function CertificationPage({ params }: CertificationPagePro
                   )}
                   {certification.slug === 'ai-governance-responsible-ai-foundations' && (
                     <img
-                      src="/images/AI Governance & Responsible AI Foundations.png"
+                      src="/images/ai-governance-responsible-ai-foundations.png"
                       alt="AI Governance & Responsible AI Foundations Logo"
                       style={{ width: 180, height: 180, borderRadius: '50%', background: '#fff', objectFit: 'contain', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', border: '4px solid #fff' }}
                       className="shadow-2xl"
                     />
+                  )}
+                  {/* Emplacement vide pour certifications sans logo */}
+                  {certification.slug !== 'generative-ai-practitioner' && certification.slug !== 'ai-productivity-github-copilot' && certification.slug !== 'generative-ai-business-operations' && certification.slug !== 'ai-governance-responsible-ai-foundations' && (
+                    <div style={{height:180}}></div>
                   )}
                 </div>
               </h1>

@@ -4,6 +4,13 @@ import Link from "next/link";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
+const BADGE_MAP: Record<string, string> = {
+  "ai-productivity-github-copilot": "/images/ai-productivity-github-copilot.png",
+  "generative-ai-practitioner": "/images/generative-ai-practitioner.png",
+  "generative-ai-business-operations": "/images/generative-ai-for-business-operations.png",
+  "ai-governance-responsible-ai-foundations": "/images/ai-governance-responsible-ai-foundations.png",
+};
+
 const EXAM_DETAILS = {
   name: "Generative AI for Business Operations Exam",
   duration: "100 minutes",
@@ -101,6 +108,7 @@ function redirectToCheckout() {
 }
 
 export default function GenerativeAiBusinessOperationsExamPage() {
+  const badgeUrl = BADGE_MAP["generative-ai-business-operations"];
   const router = useRouter();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [isChecking, setIsChecking] = useState(true);
@@ -264,6 +272,12 @@ export default function GenerativeAiBusinessOperationsExamPage() {
                   <span className="text-sm text-slate-500">One-time payment</span>
                   <span className="text-xl font-semibold text-slate-900 dark:text-white">{priceLabel}</span>
                 </div>
+                {/* Logo en bas de la box principale */}
+                {badgeUrl && (
+                  <div style={{display:'flex',justifyContent:'center',marginTop:'2em'}}>
+                    <img src={badgeUrl} alt="Certification badge" style={{maxWidth:140,maxHeight:140,objectFit:'contain',borderRadius:12,boxShadow:'0 2px 8px #0001'}} />
+                  </div>
+                )}
               </div>
             </div>
           </div>

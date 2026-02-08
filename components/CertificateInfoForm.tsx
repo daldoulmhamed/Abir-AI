@@ -132,15 +132,18 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
         setIssuing(true);
         setIssueError(null);
         try {
-          // Trouver le vrai titre à partir de l'ID
+          // Trouver le vrai titre et le slug à partir de l'ID
           const certObj = certifications.find(c => c.id === certificationId);
           const certificationTitle = certObj ? certObj.title : certificationId;
+          const certificationSlug = certObj ? certObj.slug : certificationId;
           const cert = await issueCertificate({
             fullName: trimmed.fullName,
             certificationTitle,
             certificationId: certificationId,
+            certificationSlug,
           });
-          setIssuedCertificate(cert);
+          // On stocke aussi le slug pour l'affichage du badge
+          setIssuedCertificate({ ...cert, certificationSlug });
         } catch (err: any) {
           setIssueError("Erreur lors de l'émission du certificat. Veuillez réessayer ou contacter le support.");
         } finally {
@@ -258,12 +261,13 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
               <div style={{fontWeight:600, fontSize:'1.3em', marginBottom:'1.2em', textAlign:'center'}}>{issuedCertificate.certificationTitle}</div>
               {(() => {
                 const badgeMap: Record<string, string> = {
-                  "Generative AI Practitioner": "/images/generative-ai-practitioner.png",
-                  "AI Productivity & GitHub Copilot": "/images/ai-productivity-github-copilot.png",
-                  "Generative AI for Business Operations": "/images/generative-ai-for-business-operations.png",
-                  "AI Governance & Responsible AI Foundations": "/images/ai-governance-responsible-ai-foundations.png",
+                  "generative-ai-practitioner": "/images/generative-ai-practitioner.png",
+                  "ai-productivity-github-copilot": "/images/ai-productivity-github-copilot.png",
+                  "generative-ai-business-operations": "/images/generative-ai-for-business-operations.png",
+                  "ai-governance-responsible-ai-foundations": "/images/ai-governance-responsible-ai-foundations.png",
                 };
-                const badgeUrl = badgeMap[issuedCertificate.certificationTitle];
+                // slug prioritaire, fallback sur titre si jamais
+                const badgeUrl = badgeMap[issuedCertificate.certificationSlug] || badgeMap[issuedCertificate.certificationTitle];
                 return badgeUrl ? (
                   <div style={{display:'flex',justifyContent:'center',marginBottom:'2.5em'}}>
                     <img src={badgeUrl} alt={issuedCertificate.certificationTitle+" badge"} style={{maxWidth:140,maxHeight:140,objectFit:'contain',borderRadius:12,boxShadow:'0 2px 8px #0001'}} />
@@ -296,19 +300,19 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    // Mapping badge selon le titre de la certification
+    // Mapping badge selon le slug de la certification
     const badgeMap: Record<string, string> = {
-      "Generative AI Practitioner": "/images/generative-ai-practitioner.png",
-      "AI Productivity & GitHub Copilot": "/images/ai-productivity-github-copilot.png",
-      "Generative AI for Business Operations": "/images/generative-ai-for-business-operations.png",
-      "AI Governance & Responsible AI Foundations": "/images/ai-governance-responsible-ai-foundations.png",
+      "generative-ai-practitioner": "/images/generative-ai-practitioner.png",
+      "ai-productivity-github-copilot": "/images/ai-productivity-github-copilot.png",
+      "generative-ai-business-operations": "/images/generative-ai-for-business-operations.png",
+      "ai-governance-responsible-ai-foundations": "/images/ai-governance-responsible-ai-foundations.png",
     };
 
     const handleDownload = async () => {
       setLoading(true);
       setError(null);
       try {
-        const badgeUrl = badgeMap[issuedCertificate.certificationTitle] || badgeMap[Object.keys(badgeMap)[0]];
+        const badgeUrl = badgeMap[issuedCertificate.certificationSlug] || badgeMap[issuedCertificate.certificationTitle] || badgeMap[Object.keys(badgeMap)[0]];
         const response = await fetch("/api/certificate-serial/generate-pdf", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

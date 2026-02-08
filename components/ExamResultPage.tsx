@@ -14,8 +14,11 @@ const PASSING_THRESHOLD = 70; // %
 // Modifiez ces valeurs pour tester !
 
 const DEFAULT_CERTIFICATION = "AI Productivity with GitHub Copilot";
+
+// On ne met plus de titre par défaut, mais un slug par défaut
+const DEFAULT_CERTIFICATION_SLUG = "generative-ai-practitioner";
 const initialResult = {
-  certificationName: DEFAULT_CERTIFICATION,
+  certificationSlug: DEFAULT_CERTIFICATION_SLUG,
   score: 68,
   maxScore: 100,
   retakeAttemptsLeft: 1,
@@ -29,14 +32,14 @@ export default function ExamResultPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Récupère score et certification de l'URL si présents
+    // Récupère score et slug de certification de l'URL si présents
     const scoreParam = searchParams.get("score");
-    const certParam = searchParams.get("page");
+    const certSlugParam = searchParams.get("page") || searchParams.get("certification") || DEFAULT_CERTIFICATION_SLUG;
     if (scoreParam) {
       setResult((prev) => ({
         ...prev,
         score: parseInt(scoreParam, 10),
-        certificationName: certParam ? certParam.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase()) : DEFAULT_CERTIFICATION,
+        certificationSlug: certSlugParam,
       }));
     }
   }, [searchParams]);
@@ -110,22 +113,26 @@ export default function ExamResultPage() {
     });
   };
 
-  // Récupérer l'ID de la certification et un userId fictif (à remplacer par l'ID réel utilisateur si disponible)
-  // Ici, on déduit le slug à partir du nom de la certification (pour la démo)
-  const certification = result.certificationName;
-  // On cherche le slug dans la liste des certifications (importée dynamiquement)
+
+  // On récupère la certification à partir du slug
   let certificationId = "";
+  let certificationTitle = "";
   let userId = "USER_DEMO";
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { certifications } = require("@/data/certifications");
-    // Recherche par titre exact, sinon fallback sur le premier certificat
-    let found = certifications.find((c: any) => c.title === certification);
+    let found = certifications.find((c: any) => c.slug === result.certificationSlug);
     if (!found && certifications.length > 0) found = certifications[0];
-    if (found) certificationId = found.id;
-    else certificationId = "1";
+    if (found) {
+      certificationId = found.id;
+      certificationTitle = found.title;
+    } else {
+      certificationId = "1";
+      certificationTitle = "Unknown Certification";
+    }
   } catch (e) {
     certificationId = "1";
+    certificationTitle = "Unknown Certification";
   }
   // Ajout du paramètre mode=certificate pour éviter l'erreur sur la page de formulaire
   const certificateInfoUrl = `/certifications/certificate-info?mode=certificate&certificationId=${certificationId}&userId=${userId}`;
@@ -157,7 +164,7 @@ export default function ExamResultPage() {
       </div>
       <div className={styles.details}>
         <p>
-          <strong>Certification:</strong> {result.certificationName}
+          <strong>Certification:</strong> {certificationTitle}
         </p>
         <p>
           <strong>Score:</strong> {percentage}%
