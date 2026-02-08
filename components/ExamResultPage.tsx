@@ -170,11 +170,11 @@ export default function ExamResultPage() {
           <strong>Score:</strong> {percentage}%
         </p>
       </div>
-      {/* Le numéro de série du certificat n'est plus affiché ici */}
+      {/* Certificate serial number is no longer displayed here */}
       {passed ? (
         <div className={styles.messageBlock}>
           <p className={styles.successMsg}>
-            🎉 Bravo! You have successfully passed the exam.<br />
+            🎉 Congratulations! You have successfully passed the exam.<br />
             Your dedication and hard work paid off. You’re now certified—share your achievement and inspire others!
           </p>
           <button

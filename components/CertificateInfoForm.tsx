@@ -161,7 +161,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
       <p className={styles.explanation}>
         {mode === "retake"
           ? "This information will be used to issue your retake code. Please review carefully before submitting."
-          : "This information will be used to generate your official Abir-IA certificate. Please review carefully before submitting."}
+          : "This information will be used to generate your official Abir-AI certificate. Please review carefully before submitting."}
       </p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.label}>
@@ -241,7 +241,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
       {submitted && mode !== "retake" && (
         <div className={styles.lockedMsg}>
           <strong>Information locked.</strong> Your certificate will be generated with the details above.<br />
-          {issuing && <div style={{marginTop:8}}>⏳ Génération du certificat en cours...</div>}
+          {issuing && <div style={{marginTop:8}}>⏳ Certificate generation in progress...</div>}
           {issueError && <div style={{color:'#c62828',marginTop:8}}>{issueError}</div>}
           {issuedCertificate && (
             <div style={{
@@ -274,14 +274,14 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
                   </div>
                 ) : null;
               })()}
-              <div style={{marginBottom:'0.5em'}}><strong>Date d'émission :</strong> {issuedCertificate.issueDate}</div>
-              <div style={{marginBottom:'0.5em'}}><strong>Numéro de série :</strong> {issuedCertificate.certificateSerial}</div>
-              <div style={{marginBottom:'0.5em'}}><strong>URL de vérification :</strong> <a href={issuedCertificate.verificationUrl} target="_blank" rel="noopener noreferrer">{issuedCertificate.verificationUrl}</a></div>
-              {/* QR code de vérification : généré UNE FOIS lors de l'émission, prêt à être intégré dans le PDF */}
+              <div style={{marginBottom:'0.5em'}}><strong>Issue Date:</strong> {issuedCertificate.issueDate}</div>
+              <div style={{marginBottom:'0.5em'}}><strong>Serial Number:</strong> {issuedCertificate.certificateSerial}</div>
+              <div style={{marginBottom:'0.5em'}}><strong>Verification URL:</strong> <a href={issuedCertificate.verificationUrl} target="_blank" rel="noopener noreferrer">{issuedCertificate.verificationUrl}</a></div>
+              {/* Verification QR code: generated ONCE at issuance, ready to be integrated in the PDF */}
               {issuedCertificate.qrCodeDataUrl && (
-                <div style={{marginTop:8}}>
-                  <img src={issuedCertificate.qrCodeDataUrl} alt="QR Code de vérification" style={{width:120,height:120}} />
-                  <div style={{fontSize:'0.9em',color:'#555',marginTop:4}}>Scannez pour vérifier l'authenticité du certificat</div>
+                <div style={{marginTop:8, display:'flex', flexDirection:'column', alignItems:'center'}}>
+                  <img src={issuedCertificate.qrCodeDataUrl} alt="Verification QR Code" style={{width:120,height:120}} />
+                  <div style={{fontSize:'0.9em',color:'#555',marginTop:4}}>Scan to verify the authenticity of the certificate</div>
                 </div>
               )}
             </div>
@@ -325,7 +325,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
             examBadgeLogoUrl: badgeUrl,
           }),
         });
-        if (!response.ok) throw new Error("Erreur lors de la génération du PDF");
+        if (!response.ok) throw new Error("Error generating PDF");
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
@@ -336,7 +336,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
         a.remove();
         window.URL.revokeObjectURL(url);
       } catch (err: any) {
-        setError(err.message || "Erreur inconnue");
+        setError(err.message || "Unknown error");
       } finally {
         setLoading(false);
       }
@@ -345,7 +345,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
     return (
       <div style={{marginTop:16}}>
         <button onClick={handleDownload} disabled={loading} className={styles.primaryBtn}>
-          {loading ? "Génération du PDF..." : "Télécharger mon certificat PDF"}
+          {loading ? "Generating PDF..." : "Download my certificate PDF"}
         </button>
         {error && <div style={{color:'#c62828',marginTop:8}}>{error}</div>}
       </div>
