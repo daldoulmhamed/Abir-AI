@@ -1,4 +1,5 @@
 "use client";
+"use client";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import styles from "./ExamResult.module.css";
@@ -7,12 +8,10 @@ import { useRouter } from "next/navigation";
 // Configuration
 const PASSING_THRESHOLD = 70; // %
 
-
 // Pour la démo, simulez les différents cas d'échec :
 // 1er échec : retakeAttemptsLeft = 1, affiche le code de rattrapage
 // 2e échec (après usage du code) : retakeAttemptsLeft = 0, plus de code
 // Modifiez ces valeurs pour tester !
-
 
 const DEFAULT_CERTIFICATION = "AI Productivity with GitHub Copilot";
 const initialResult = {

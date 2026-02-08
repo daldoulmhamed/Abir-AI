@@ -593,7 +593,10 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
                 <button
                   className="rounded-md bg-blue-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
                   type="button"
-                  onClick={() => {/* TODO: navigation vers la page de résultat */}}
+                  onClick={() => {
+                    // Redirige vers la page de résultat avec le score et le slug
+                    window.location.href = `/certifications/exam-result?page=generative-ai-business-operations&score=${score}`;
+                  }}
                 >
                   exam result
                 </button>

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateCertificateSerial } from '@/utils/toolLinks';
+import { generateCertificateSerial } from '@/utils/generateCertificateSerial.server';
 import { buildVerificationUrl } from '@/data/certificateVerificationData';
 import QRCode from 'qrcode'; // Utilisé pour générer le QR code (dépendance installée)
 
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
         qrCodeDataUrl: ${qrCodeDataUrl ? `"${qrCodeDataUrl}"` : 'undefined'},
       }`;
       // Trouver la fin du tableau certificates
-      content = content.replace(/(export const certificates: Certificate\[] = \[)([^]*?)(\];)/, (match, p1, p2, p3) => {
+      content = content.replace(/(export const certificates: Certificate\[] = \[)([^]*?)(\];)/, (match: string, p1: string, p2: string, p3: string) => {
         // Ajoute la virgule si nécessaire
         const trimmed = p2.trim();
         const needsComma = trimmed && !trimmed.endsWith(',') ? ',' : '';
