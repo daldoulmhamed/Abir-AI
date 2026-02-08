@@ -256,7 +256,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
               justifyContent: 'center',
               minHeight: '400px',
             }}>
-              <div style={{fontWeight:600,color:'#2563eb', marginBottom: '2em'}}>🎓 Certificat officiel émis !</div>
+              <div style={{fontWeight:600,color:'#2563eb', marginBottom: '2em'}}>🎓 Official certificate issued!</div>
               <div style={{fontWeight:700, fontSize:'2em', marginBottom:'1.5em', textAlign:'center'}}>{issuedCertificate.fullName}</div>
               <div style={{fontWeight:600, fontSize:'1.3em', marginBottom:'1.2em', textAlign:'center'}}>{issuedCertificate.certificationTitle}</div>
               {(() => {
