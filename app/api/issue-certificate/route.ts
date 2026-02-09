@@ -11,13 +11,10 @@ export async function POST(req: NextRequest) {
     }
     // Génération du numéro de série unique
     const certificateSerial = generateCertificateSerial(certificationId.toUpperCase());
-    // Génération de l'URL de vérification
+    // Génération de l'URL de vérification (URL complète)
     const verificationUrl = buildVerificationUrl(certificateSerial);
     // --- Génération du QR code ---
-    // Le QR code encode l'URL de vérification du certificat.
-    // Il est généré UNE SEULE FOIS lors de l'émission du certificat officiel,
-    // puis stocké dans le champ qrCodeDataUrl du modèle Certificate.
-    // Ce QR code pourra être intégré dans le PDF du certificat ou affiché à l'écran.
+    // Le QR code encode l'URL de vérification du certificat (URL complète)
     let qrCodeDataUrl: string | undefined = undefined;
     try {
       qrCodeDataUrl = await QRCode.toDataURL(verificationUrl);
