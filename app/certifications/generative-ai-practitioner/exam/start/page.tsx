@@ -332,6 +332,7 @@ type AnswerMap = Record<string, string[]>;
 type SubmittedMap = Record<string, boolean>;
 
 export default function GenerativeAIPractitionerExamStartPage() {
+      const [showTimeUp, setShowTimeUp] = useState(false);
     // Timer d'examen (90 minutes)
     const EXAM_DURATION_SECONDS = 90 * 60;
     function formatTime(seconds: number) {
@@ -341,7 +342,10 @@ export default function GenerativeAIPractitionerExamStartPage() {
     }
     const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
     useEffect(() => {
-      if (timeLeft <= 0) return;
+      if (timeLeft <= 0) {
+        setShowTimeUp(true);
+        return;
+      }
       const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
       return () => clearInterval(timer);
     }, [timeLeft]);
@@ -416,9 +420,26 @@ export default function GenerativeAIPractitionerExamStartPage() {
   const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
 
   return (
-    <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
+    <>
+      {showTimeUp && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg p-8 max-w-sm w-full flex flex-col items-center">
+            <h2 className="text-2xl font-extrabold text-red-700 mb-4">You made it to the end ...</h2>
+            <p className="mb-4 text-center text-slate-800 dark:text-slate-100 font-semibold">
+              Time is up, but every minute spent here is a step closer to excellence.<br />
+              Keep learning, keep growing, and always aim higher!
+            </p>
+            <div className="flex gap-4 mb-6">
+              <a href="/certifications" className="px-4 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">Certifications</a>
+              <a href="/learn" className="px-4 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">Learn</a>
+            </div>
+            <a href="/" className="block px-4 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition text-center w-full mt-2">Home</a>
+          </div>
+        </div>
+      )}
+      <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
       <div className="fixed right-2 top-24 z-40 flex flex-col items-center">
-        <span className="text-[10px] text-slate-500 dark:text-slate-300">Temps restant</span>
+        <span className="text-[10px] text-slate-500 dark:text-slate-300">Time remaining</span>
         <span className="text-lg font-bold text-blue-600 dark:text-blue-400 tracking-widest bg-white dark:bg-slate-900 px-2 py-0.5 rounded shadow">
           {formatTime(timeLeft)}
         </span>
@@ -672,5 +693,6 @@ export default function GenerativeAIPractitionerExamStartPage() {
         )}
       </section>
     </main>
+    </>
   );
 }
