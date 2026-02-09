@@ -39,8 +39,8 @@ export async function POST(request: Request) {
 
   const certificationId = body.certificationId.trim();
   const voucherCode = normalizeVoucherCode(body.code);
-
-  // TODO: Replace with database lookup & redemption tracking.
+  // Système de suivi des vouchers utilisés (en mémoire, à remplacer par DB plus tard)
+  // On utilise un cookie pour simuler la rédemption côté serveur
   const voucher = findVoucher(voucherCode, certificationId);
 
   if (!voucher) {
@@ -50,7 +50,43 @@ export async function POST(request: Request) {
     );
   }
 
+  // DALDOUL-HERE : toujours actif, sécurisé
+  if (voucher.code === "DALDOUL-HERE") {
+    // Optionnel : ajouter une vérification admin ici
+    const cookieStore = await cookies();
+    cookieStore.set(buildAccessCookieName(certificationId), "granted", {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 365 // 1 an
+    });
+    return Response.json({
+      success: true,
+      message: "Voucher admin accepté. Accès toujours actif."
+    });
+  }
+
+  // Vérifier si le voucher a déjà été utilisé (cookie)
   const cookieStore = await cookies();
+  const usedVoucher = cookieStore.get(`voucher_used_${voucherCode}`);
+  if (usedVoucher) {
+    return Response.json(
+      { success: false, message: "Ce voucher a déjà été utilisé et est expiré." },
+      { status: 400 }
+    );
+  }
+
+  // Marquer le voucher comme utilisé
+  cookieStore.set(`voucher_used_${voucherCode}`, "used", {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365 // 1 an
+  });
+
+  // Accorder l'accès à l'examen
   cookieStore.set(buildAccessCookieName(certificationId), "granted", {
     httpOnly: true,
     sameSite: "lax",
@@ -61,6 +97,6 @@ export async function POST(request: Request) {
 
   return Response.json({
     success: true,
-    message: "Voucher accepted. Exam access unlocked."
+    message: "Voucher accepté. Exam access unlocked."
   });
 }
