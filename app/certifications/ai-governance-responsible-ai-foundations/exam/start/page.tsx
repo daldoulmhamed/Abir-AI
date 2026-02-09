@@ -1,6 +1,4 @@
 "use client";
-
-
 import { useMemo, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 // ...existing code...
@@ -295,27 +293,94 @@ type AnswerMap = Record<string, string[]>;
 type SubmittedMap = Record<string, boolean>;
 
 export default function AIGovernanceResponsibleFoundationsExamStartPage() {
-      const [showTimeUp, setShowTimeUp] = useState(false);
-    // Timer d'examen (100 minutes)
-    const EXAM_DURATION_SECONDS = 100 * 60;
-    function formatTime(seconds: number) {
-      const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-      const s = (seconds % 60).toString().padStart(2, '0');
-      return `${m}:${s}`;
-    }
-    const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
-    useEffect(() => {
-      if (timeLeft <= 0) {
-        setShowTimeUp(true);
-        return;
+        // Bloquer le retour arrière (back navigation)
+        useEffect(() => {
+          const handlePopState = (e: PopStateEvent) => {
+            e.preventDefault();
+            window.history.pushState(null, '', window.location.href);
+            alert("Le retour arrière est désactivé pendant l'examen.");
+          };
+          window.history.pushState(null, '', window.location.href);
+          window.addEventListener('popstate', handlePopState);
+          return () => {
+            window.removeEventListener('popstate', handlePopState);
+          };
+        }, []);
+      // Clé unique pour localStorage
+      const STORAGE_KEY = 'examState-ai-governance-responsible-ai-foundations';
+      // Timer d'examen (100 minutes)
+      const EXAM_DURATION_SECONDS = 100 * 60;
+      function formatTime(seconds: number) {
+        const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const s = (seconds % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
       }
-      const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
-      return () => clearInterval(timer);
-    }, [timeLeft]);
-  const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
-  const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
-  const [submitted, setSubmitted] = useState<SubmittedMap>({});
-  const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
+      const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
+      const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
+      const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
+      const [submitted, setSubmitted] = useState<SubmittedMap>({});
+      const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
+      const [showTimeUp, setShowTimeUp] = useState(false);
+
+      // Charger l’état sauvegardé au démarrage
+      useEffect(() => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          try {
+            const state = JSON.parse(saved);
+            if (state.timeLeft) setTimeLeft(state.timeLeft);
+            if (state.part1Answers) setPart1Answers(state.part1Answers);
+            if (state.part2Answers) setPart2Answers(state.part2Answers);
+            if (state.submitted) setSubmitted(state.submitted);
+            if (state.selectedPracticalPath) setSelectedPracticalPath(state.selectedPracticalPath);
+          } catch {}
+        }
+      }, []);
+
+      // Sauvegarder l’état à chaque changement
+      useEffect(() => {
+        const state = {
+          timeLeft,
+          part1Answers,
+          part2Answers,
+          submitted,
+          selectedPracticalPath
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }, [timeLeft, part1Answers, part2Answers, submitted, selectedPracticalPath]);
+
+      // Bloque le retour arrière (back navigation)
+      useEffect(() => {
+        const handlePopState = (e: PopStateEvent) => {
+          window.history.pushState(null, '', window.location.href);
+        };
+        window.history.pushState(null, '', window.location.href);
+        window.addEventListener('popstate', handlePopState);
+        return () => {
+          window.removeEventListener('popstate', handlePopState);
+        };
+      }, []);
+
+      // Protection contre le refresh/fermeture pendant l'examen
+      useEffect(() => {
+        const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+          e.preventDefault();
+          e.returnValue = '';
+        };
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+          window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+      }, []);
+
+      useEffect(() => {
+        if (timeLeft <= 0) {
+          setShowTimeUp(true);
+          return;
+        }
+        const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
+        return () => clearInterval(timer);
+      }, [timeLeft]);
 
   const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
 
