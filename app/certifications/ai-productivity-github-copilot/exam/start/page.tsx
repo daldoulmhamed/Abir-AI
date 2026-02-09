@@ -305,6 +305,19 @@ type SubmittedMap = Record<string, boolean>;
 const VALID_CODES = ["COPILOT2024", "AIEXAM123", "VCH456", "RETAKE2024"];
 
 export default function CopilotExamStartPage() {
+    // Timer d'examen (90 minutes)
+    const EXAM_DURATION_SECONDS = 90 * 60;
+    function formatTime(seconds: number) {
+      const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const s = (seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+    const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
+    useEffect(() => {
+      if (timeLeft <= 0) return;
+      const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
+      return () => clearInterval(timer);
+    }, [timeLeft]);
   const router = useRouter();
   // Suppression de la logique de code d'accès
   const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
@@ -382,6 +395,22 @@ export default function CopilotExamStartPage() {
 
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
+      <div className="fixed right-2 top-24 z-40 flex flex-col items-center">
+        <span className="text-[10px] text-slate-500 dark:text-slate-300">Temps restant</span>
+        <span className="text-lg font-bold text-blue-600 dark:text-blue-400 tracking-widest bg-white dark:bg-slate-900 px-2 py-0.5 rounded shadow">
+          {formatTime(timeLeft)}
+        </span>
+      </div>
+      <div className="fixed right-8 top-48 h-[50vh] w-6 flex flex-col items-center z-30">
+        <span className="mb-2 text-xs text-blue-600 dark:text-blue-400 font-semibold">{Math.round((answeredCount / totalQuestions) * 100)}%</span>
+        <div className="relative h-full w-2 bg-slate-200 dark:bg-slate-800 rounded-full">
+          <div
+            className="absolute left-0 top-0 w-2 bg-blue-600 rounded-full transition-all"
+            style={{ height: `${Math.round((answeredCount / totalQuestions) * 100)}%` }}
+            aria-label="Exam progress vertical"
+          />
+        </div>
+      </div>
       {/* Hero section (ENGLISH ONLY) */}
       <section className="border-b border-slate-200/70 dark:border-slate-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -419,10 +448,7 @@ export default function CopilotExamStartPage() {
                 <p className="text-sm text-slate-500">Progress (Part 1 & 2)</p>
                 <p className="mt-1 text-lg font-semibold">{answeredCount}/{totalQuestions} answered</p>
               </div>
-              <div>
-                <p className="text-sm text-slate-500">Auto-graded score (out of 70)</p>
-                <p className="mt-1 text-lg font-semibold">{score}/70</p>
-              </div>
+              {/* Score supprimé, pas de note affichée */}
             </div>
             <div className="mt-4 h-2 rounded-full bg-slate-100 dark:bg-slate-800">
               <div
@@ -481,7 +507,7 @@ export default function CopilotExamStartPage() {
                   onClick={() => handleSubmit(q.id)}
                   className="rounded-md bg-slate-900 text-white px-4 py-2 text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900"
                 >
-                  Check answer
+                  Confirm answer
                 </button>
                 {submitted[q.id] ? (
                   <span className="text-sm text-slate-500">Answer locked and evaluated.</span>
@@ -533,7 +559,7 @@ export default function CopilotExamStartPage() {
                     onClick={() => handleSubmit(s.id)}
                     className="rounded-md bg-slate-900 text-white px-4 py-2 text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900"
                   >
-                    Check answer
+                    Confirm answer
                   </button>
                   {submitted[s.id] ? (
                     <span className="text-sm text-slate-500">Answer locked and evaluated.</span>

@@ -15,7 +15,7 @@ const BADGE_MAP: Record<string, string> = {
 
 const EXAM_DETAILS = {
   name: "AI Productivity & GitHub Copilot Exam",
-  duration: "100 minutes",
+  duration: "90 minutes",
   format: "65 multiple-choice questions",
   passingScore: "72%",
   price: 79,
