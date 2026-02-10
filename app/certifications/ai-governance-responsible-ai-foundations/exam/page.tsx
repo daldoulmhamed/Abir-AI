@@ -133,11 +133,7 @@ export default function AiGovernanceResponsibleAiExamPage() {
       const access = await checkExamAccess();
       setHasAccess(access);
       setIsChecking(false);
-
-      if (access) {
-        // If access already exists, route directly to the exam start.
-        router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
-      }
+      // Ne pas rediriger automatiquement, laisser l'utilisateur choisir paiement/voucher/retake
     };
 
     runAccessCheck();
@@ -157,18 +153,20 @@ export default function AiGovernanceResponsibleAiExamPage() {
     event.preventDefault();
     setVoucherError(null);
     setIsRedeeming(true);
-
-    const result = await validateVoucherCode(voucherCode);
-
-    if (result.success) {
-      setHasAccess(true);
-      setIsVoucherOpen(false);
-      router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
-    } else {
-      setVoucherError(result.message);
+    try {
+      const result = await validateVoucherCode(voucherCode);
+      if (result.success) {
+        setHasAccess(true);
+        setIsVoucherOpen(false);
+        router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
+      } else {
+        setVoucherError(result.message);
+      }
+    } catch {
+      setVoucherError("Network error. Please try again.");
+    } finally {
+      setIsRedeeming(false);
     }
-
-    setIsRedeeming(false);
   };
 
   const handleRetakeSubmit = async (event: FormEvent) => {
