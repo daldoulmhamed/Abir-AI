@@ -385,37 +385,38 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
         return () => clearInterval(timer);
       }, [timeLeft]);
 
-  const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
 
+  // Nouvelle logique : réussite si au moins 10/14 bonnes réponses (Part 1 + Part 2)
+  const totalAutoQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length; // 10 + 4 = 14
   const answeredCount = useMemo(() => {
     const submittedCount = Object.values(submitted).filter(Boolean).length;
-    return Math.min(submittedCount, totalQuestions);
-  }, [submitted, totalQuestions]);
+    return Math.min(submittedCount, totalAutoQuestions);
+  }, [submitted, totalAutoQuestions]);
 
-  const allQuestionsAnswered = answeredCount === totalQuestions;
+  const allQuestionsAnswered = answeredCount === totalAutoQuestions;
 
-  const score = useMemo(() => {
-    const part1Score = PART1_QUESTIONS.reduce((sum, q) => {
-      const isSubmitted = submitted[q.id];
-      if (!isSubmitted) return sum;
+  // Compte le nombre de bonnes réponses (Part 1 + Part 2)
+  const correctAnswersCount = useMemo(() => {
+    let count = 0;
+    PART1_QUESTIONS.forEach((q) => {
+      if (!submitted[q.id]) return;
       const selected = part1Answers[q.id] ?? [];
       const correct = q.correctAnswers;
       const isCorrect =
         selected.length === correct.length &&
         selected.every((answer) => correct.includes(answer));
-      return isCorrect ? sum + 3 : sum;
-    }, 0);
-
-    const part2Score = PART2_SCENARIOS.reduce((sum, s) => {
-      const isSubmitted = submitted[s.id];
-      if (!isSubmitted) return sum;
+      if (isCorrect) count++;
+    });
+    PART2_SCENARIOS.forEach((s) => {
+      if (!submitted[s.id]) return;
       const selected = part2Answers[s.id] ?? [];
-      const isCorrect = selected.includes(s.correctAnswer);
-      return isCorrect ? sum + 10 : sum;
-    }, 0);
-
-    return part1Score + part2Score;
+      if (selected.includes(s.correctAnswer)) count++;
+    });
+    return count;
   }, [part1Answers, part2Answers, submitted]);
+
+  // Score en pourcentage sur 14 questions
+  const score = Math.round((correctAnswersCount / totalAutoQuestions) * 100);
 
   const handleSingleSelect = (
     section: "part1" | "part2",
@@ -446,7 +447,7 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
     setSubmitted((prev) => ({ ...prev, [questionId]: true }));
   };
 
-  const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
+  const progressPercent = Math.round((answeredCount / totalAutoQuestions) * 100);
 
     if (!identityReady) {
       return (
@@ -492,11 +493,11 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
         </span>
       </div>
       <div className="fixed right-8 top-48 h-[50vh] w-6 flex flex-col items-center z-30">
-        <span className="mb-2 text-xs text-blue-600 dark:text-blue-400 font-semibold">{Math.round((answeredCount / totalQuestions) * 100)}%</span>
+        <span className="mb-2 text-xs text-blue-600 dark:text-blue-400 font-semibold">{Math.round((answeredCount / totalAutoQuestions) * 100)}%</span>
         <div className="relative h-full w-2 bg-slate-200 dark:bg-slate-800 rounded-full">
           <div
             className="absolute left-0 top-0 w-2 bg-blue-600 rounded-full transition-all"
-            style={{ height: `${Math.round((answeredCount / totalQuestions) * 100)}%` }}
+            style={{ height: `${Math.round((answeredCount / totalAutoQuestions) * 100)}%` }}
             aria-label="Exam progress vertical"
           />
         </div>
@@ -535,7 +536,7 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <p className="text-sm text-slate-500">Progress (Part 1 & 2)</p>
-                <p className="mt-1 text-lg font-semibold">{answeredCount}/{totalQuestions} answered</p>
+                <p className="mt-1 text-lg font-semibold">{answeredCount}/{totalAutoQuestions} answered</p>
               </div>
             </div>
             <div className="mt-4 h-2 rounded-full bg-slate-100 dark:bg-slate-800">
@@ -726,7 +727,7 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
                   className="rounded-md bg-blue-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
                   type="button"
                   onClick={() => {
-                    router.push(`/certifications/exam-result?page=ai-governance-responsible-ai-foundations&score=${score}`);
+                    router.push(`/certifications/exam-result?page=ai-governance-responsible-ai-foundations&score=${correctAnswersCount}`);
                   }}
                 >
                   exam result

@@ -64,8 +64,19 @@ export default function ExamResultPage() {
 
 
   // --- LOGIQUE ---
-  let percentage = Math.round((result.score / result.maxScore) * 100);
-  let passed = percentage >= 70;
+  let percentage = 0;
+  let passed = false;
+
+  if (result.certificationSlug === "ai-governance-responsible-ai-foundations") {
+    // score = nombre de bonnes réponses, maxScore = 14
+    const max = 14;
+    const correct = Math.max(0, Math.min(result.score, max));
+    percentage = Math.round((correct / max) * 100);
+    passed = correct >= 10;
+  } else {
+    percentage = Math.round((result.score / result.maxScore) * 100);
+    passed = percentage >= 70;
+  }
 
   // --- HOOKS: useEffect ---
   useEffect(() => {
