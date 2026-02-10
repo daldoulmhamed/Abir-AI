@@ -1,5 +1,8 @@
 "use client";
 import { useMemo, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+const UserIdentityForm = dynamic(() => import("../../../../../components/UserIdentityForm"), { ssr: false });
+import { getUserId, getFullName, isFullNameLocked } from "../../../../../utils/userIdentity";
 import { useRouter } from "next/navigation";
 // ...existing code...
 
@@ -294,33 +297,43 @@ type SubmittedMap = Record<string, boolean>;
 
 export default function AIGovernanceResponsibleFoundationsExamStartPage() {
         // Bloquer le retour arrière (back navigation)
-        useEffect(() => {
-          const handlePopState = (e: PopStateEvent) => {
-            e.preventDefault();
-            window.history.pushState(null, '', window.location.href);
-            alert("Le retour arrière est désactivé pendant l'examen.");
-          };
-          window.history.pushState(null, '', window.location.href);
-          window.addEventListener('popstate', handlePopState);
-          return () => {
-            window.removeEventListener('popstate', handlePopState);
-          };
-        }, []);
-      // Clé unique pour localStorage
-      const STORAGE_KEY = 'examState-ai-governance-responsible-ai-foundations';
-      // Timer d'examen (100 minutes)
-      const EXAM_DURATION_SECONDS = 100 * 60;
-      function formatTime(seconds: number) {
-        const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const s = (seconds % 60).toString().padStart(2, '0');
-        return `${m}:${s}`;
-      }
-      const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
-      const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
-      const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
-      const [submitted, setSubmitted] = useState<SubmittedMap>({});
-      const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
-      const [showTimeUp, setShowTimeUp] = useState(false);
+
+  const router = useRouter();
+  // Gestion identité utilisateur minimale (identique à AI Practitioner)
+  const [identityReady, setIdentityReady] = useState(false);
+  useEffect(() => {
+    // Toujours demander l'identité avant l'examen
+    setIdentityReady(false);
+  }, []);
+  const handleIdentityValidated = () => setIdentityReady(true);
+  // Bloquer le retour arrière (back navigation)
+  useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      e.preventDefault();
+      window.history.pushState(null, '', window.location.href);
+      alert("Le retour arrière est désactivé pendant l'examen.");
+    };
+    window.history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+  // Clé unique pour localStorage
+  const STORAGE_KEY = 'examState-ai-governance-responsible-ai-foundations';
+  // Timer d'examen (100 minutes)
+  const EXAM_DURATION_SECONDS = 100 * 60;
+  function formatTime(seconds: number) {
+    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const s = (seconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  }
+  const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
+  const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
+  const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
+  const [submitted, setSubmitted] = useState<SubmittedMap>({});
+  const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
+  const [showTimeUp, setShowTimeUp] = useState(false);
 
       // Charger l’état sauvegardé au démarrage
       useEffect(() => {
@@ -445,7 +458,16 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
 
   const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
 
-  const router = useRouter();
+    if (!identityReady) {
+      return (
+        <main className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+        <div className="max-w-md w-full bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
+        <UserIdentityForm onValidated={handleIdentityValidated} />
+        </div>
+        </main>
+      );
+    }
+
   return (
     <>
       {/* Bouton de test pour afficher la popup */}

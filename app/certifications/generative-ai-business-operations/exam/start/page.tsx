@@ -1,6 +1,9 @@
 "use client";
 
 import { useMemo, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+const UserIdentityForm = dynamic(() => import("../../../../../components/UserIdentityForm"), { ssr: false });
+import { getUserId, getFullName, isFullNameLocked } from "../../../../../utils/userIdentity";
 
 const EXAM_OVERVIEW = {
   title: "Generative AI for Business Operations — Final Certification Exam",
@@ -295,19 +298,27 @@ type SubmittedMap = Record<string, boolean>;
 
 
 export default function GenerativeAIBusinessOperationsExamStartPage() {
-                    // Bloquer le retour arrière (back navigation)
-                    useEffect(() => {
-                      const handlePopState = (e: PopStateEvent) => {
-                        e.preventDefault();
-                        window.history.pushState(null, '', window.location.href);
-                        alert("Le retour arrière est désactivé pendant l'examen.");
-                      };
-                      window.history.pushState(null, '', window.location.href);
-                      window.addEventListener('popstate', handlePopState);
-                      return () => {
-                        window.removeEventListener('popstate', handlePopState);
-                      };
-                    }, []);
+  // Minimal identity system
+  const [identityReady, setIdentityReady] = useState(false);
+  useEffect(() => {
+    // Toujours demander l'identité avant l'examen
+    setIdentityReady(false);
+  }, []);
+  const handleIdentityValidated = () => setIdentityReady(true);
+
+  // Bloquer le retour arrière (back navigation)
+  useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      e.preventDefault();
+      window.history.pushState(null, '', window.location.href);
+      alert("Le retour arrière est désactivé pendant l'examen.");
+    };
+    window.history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
                   // Clé unique pour localStorage
                   const STORAGE_KEY = 'examState-generative-ai-business-operations';
       const EXAM_DURATION_SECONDS = 90 * 60;
@@ -443,6 +454,16 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
   };
 
   const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
+
+  if (!identityReady) {
+    return (
+      <main className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+        <div className="max-w-md w-full bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
+          <UserIdentityForm onValidated={handleIdentityValidated} />
+        </div>
+      </main>
+    );
+  }
 
   return (
     <>

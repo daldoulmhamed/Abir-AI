@@ -1,7 +1,10 @@
 
 "use client";
-import { useMemo, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useMemo, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+const UserIdentityForm = dynamic(() => import("../../../../../components/UserIdentityForm"), { ssr: false });
+import { getUserId, getFullName, isFullNameLocked } from "../../../../../utils/userIdentity";
 
 // Bloquer le retour arrière (back navigation)
 // Ce useEffect doit être placé dans le composant principal, pas au niveau du module
@@ -308,6 +311,13 @@ type SubmittedMap = Record<string, boolean>;
 const VALID_CODES = ["COPILOT2024", "AIEXAM123", "VCH456", "RETAKE2024"];
 
 export default function CopilotExamStartPage() {
+  // Minimal identity system
+  const [identityReady, setIdentityReady] = useState(false);
+  useEffect(() => {
+    // Toujours demander l'identité avant l'examen
+    setIdentityReady(false);
+  }, []);
+  const handleIdentityValidated = () => setIdentityReady(true);
         // Bloquer le retour arrière (back navigation)
         useEffect(() => {
           const handlePopState = (e: PopStateEvent) => {
@@ -321,6 +331,15 @@ export default function CopilotExamStartPage() {
             window.removeEventListener('popstate', handlePopState);
           };
         }, []);
+      if (!identityReady) {
+        return (
+          <main className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+            <div className="max-w-md w-full bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
+              <UserIdentityForm onValidated={handleIdentityValidated} />
+            </div>
+          </main>
+        );
+      }
       // Clé unique pour localStorage
       const STORAGE_KEY = 'examState-ai-productivity-github-copilot';
       const EXAM_DURATION_SECONDS = 90 * 60;

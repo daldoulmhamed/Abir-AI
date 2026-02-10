@@ -71,7 +71,9 @@ const TRUST_POINTS = [
   "No trick questions—focus is on practical, real-world usage"
 ];
 
-export default function AiProductivityCopilotExamPage() {
+import { Suspense } from "react";
+
+function AiProductivityCopilotExamPageInner() {
   const badgeUrl = BADGE_MAP["ai-productivity-github-copilot"];
   const router = useRouter();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
@@ -442,5 +444,14 @@ export default function AiProductivityCopilotExamPage() {
           </div>
         )}
     </main>
+  );
+
+}
+
+export default function AiProductivityCopilotExamPage() {
+  return (
+    <Suspense>
+      <AiProductivityCopilotExamPageInner />
+    </Suspense>
   );
 }

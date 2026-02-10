@@ -140,10 +140,11 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
             fullName: trimmed.fullName,
             certificationTitle,
             certificationId: certificationId,
-            certificationSlug,
           });
           // On stocke aussi le slug pour l'affichage du badge
-          setIssuedCertificate({ ...cert, certificationSlug });
+          setIssuedCertificate({ ...(cert as any) });
+          // Ajout du slug pour l'affichage (hors typage strict)
+          (cert as any).certificationSlug = certificationSlug;
         } catch (err: any) {
           setIssueError("Erreur lors de l'émission du certificat. Veuillez réessayer ou contacter le support.");
         } finally {
@@ -267,7 +268,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
                   "ai-governance-responsible-ai-foundations": "/images/ai-governance-responsible-ai-foundations.png",
                 };
                 // slug prioritaire, fallback sur titre si jamais
-                const badgeUrl = badgeMap[issuedCertificate.certificationSlug] || badgeMap[issuedCertificate.certificationTitle];
+                const badgeUrl = badgeMap[(issuedCertificate as any).certificationSlug] || badgeMap[issuedCertificate.certificationTitle];
                 return badgeUrl ? (
                   <div style={{display:'flex',justifyContent:'center',marginBottom:'2.5em'}}>
                     <img src={badgeUrl} alt={issuedCertificate.certificationTitle+" badge"} style={{maxWidth:140,maxHeight:140,objectFit:'contain',borderRadius:12,boxShadow:'0 2px 8px #0001'}} />
@@ -312,7 +313,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
       setLoading(true);
       setError(null);
       try {
-        const badgeUrl = badgeMap[issuedCertificate.certificationSlug] || badgeMap[issuedCertificate.certificationTitle] || badgeMap[Object.keys(badgeMap)[0]];
+        const badgeUrl = badgeMap[(issuedCertificate as any).certificationSlug] || badgeMap[issuedCertificate.certificationTitle] || badgeMap[Object.keys(badgeMap)[0]];
         const response = await fetch("/api/certificate-serial/generate-pdf", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
