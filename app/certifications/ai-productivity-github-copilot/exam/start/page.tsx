@@ -310,114 +310,109 @@ type SubmittedMap = Record<string, boolean>;
 // Liste des codes valides (voucher et retake)
 const VALID_CODES = ["COPILOT2024", "AIEXAM123", "VCH456", "RETAKE2024"];
 
+
 export default function CopilotExamStartPage() {
   // Minimal identity system
   const [identityReady, setIdentityReady] = useState(false);
-  useEffect(() => {
-    // Toujours demander l'identité avant l'examen
-    setIdentityReady(false);
-  }, []);
+  const [timeLeft, setTimeLeft] = useState(90 * 60);
+  const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
+  const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
+  const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
+  const [submitted, setSubmitted] = useState<SubmittedMap>({});
+  const [showTimeUp, setShowTimeUp] = useState(false);
+  const router = useRouter();
+
+  // Clé unique pour localStorage
+  const STORAGE_KEY = 'examState-ai-productivity-github-copilot';
+  const EXAM_DURATION_SECONDS = 90 * 60;
+  function formatTime(seconds: number) {
+    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const s = (seconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  }
+
+  // On ne réinitialise pas identityReady à false à chaque rendu !
   const handleIdentityValidated = () => setIdentityReady(true);
-        // Bloquer le retour arrière (back navigation)
-        useEffect(() => {
-          const handlePopState = (e: PopStateEvent) => {
-            e.preventDefault();
-            window.history.pushState(null, '', window.location.href);
-            alert("Le retour arrière est désactivé pendant l'examen.");
-          };
-          window.history.pushState(null, '', window.location.href);
-          window.addEventListener('popstate', handlePopState);
-          return () => {
-            window.removeEventListener('popstate', handlePopState);
-          };
-        }, []);
-      if (!identityReady) {
-        return (
-          <main className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
-            <div className="max-w-md w-full bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
-              <UserIdentityForm onValidated={handleIdentityValidated} />
-            </div>
-          </main>
-        );
-      }
-      // Clé unique pour localStorage
-      const STORAGE_KEY = 'examState-ai-productivity-github-copilot';
-      const EXAM_DURATION_SECONDS = 90 * 60;
-      function formatTime(seconds: number) {
-        const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const s = (seconds % 60).toString().padStart(2, '0');
-        return `${m}:${s}`;
-      }
-      const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
-      const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
-      const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
-      const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
-      const [submitted, setSubmitted] = useState<SubmittedMap>({});
-      const [showTimeUp, setShowTimeUp] = useState(false);
-      const router = useRouter();
 
-      // Charger l’état sauvegardé au démarrage
-      useEffect(() => {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          try {
-            const state = JSON.parse(saved);
-            if (state.timeLeft) setTimeLeft(state.timeLeft);
-            if (state.part1Answers) setPart1Answers(state.part1Answers);
-            if (state.part2Answers) setPart2Answers(state.part2Answers);
-            if (state.submitted) setSubmitted(state.submitted);
-            if (state.selectedPracticalPath) setSelectedPracticalPath(state.selectedPracticalPath);
-          } catch {}
-        }
-      }, []);
+  // Bloquer le retour arrière (back navigation)
+  useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      e.preventDefault();
+      window.history.pushState(null, '', window.location.href);
+      alert("Le retour arrière est désactivé pendant l'examen.");
+    };
+    window.history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
-      // Sauvegarder l’état à chaque changement
-      useEffect(() => {
-        const state = {
-          timeLeft,
-          part1Answers,
-          part2Answers,
-          submitted,
-          selectedPracticalPath
-        };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      }, [timeLeft, part1Answers, part2Answers, submitted, selectedPracticalPath]);
+  // Charger l’état sauvegardé au démarrage
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const state = JSON.parse(saved);
+        if (state.timeLeft) setTimeLeft(state.timeLeft);
+        if (state.part1Answers) setPart1Answers(state.part1Answers);
+        if (state.part2Answers) setPart2Answers(state.part2Answers);
+        if (state.submitted) setSubmitted(state.submitted);
+        if (state.selectedPracticalPath) setSelectedPracticalPath(state.selectedPracticalPath);
+      } catch {}
+    }
+  }, []);
 
-      // Bloque le retour arrière (back navigation)
-      useEffect(() => {
-        const handlePopState = (e: PopStateEvent) => {
-          window.history.pushState(null, '', window.location.href);
-        };
-        window.history.pushState(null, '', window.location.href);
-        window.addEventListener('popstate', handlePopState);
-        return () => {
-          window.removeEventListener('popstate', handlePopState);
-        };
-      }, []);
 
-      // Protection contre le refresh/fermeture pendant l'examen
-      useEffect(() => {
-        const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-          e.preventDefault();
-          e.returnValue = '';
-        };
-        window.addEventListener('beforeunload', handleBeforeUnload);
-        return () => {
-          window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-      }, []);
+  // On prépare le rendu de l'écran d'identité, mais on ne fait pas de return avant les hooks !
+  const identityScreen = (
+    <main className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+      <div className="max-w-md w-full bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
+        <UserIdentityForm onValidated={handleIdentityValidated} />
+      </div>
+    </main>
+  );
 
-      // Timer principal
-      useEffect(() => {
-        if (timeLeft <= 0) {
-          setShowTimeUp(true);
-          return;
-        }
-        const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
-        return () => clearInterval(timer);
-      }, [timeLeft]);
 
-      const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
+
+  // Sauvegarder l’état à chaque changement
+  useEffect(() => {
+    const state = {
+      timeLeft,
+      part1Answers,
+      part2Answers,
+      submitted,
+      selectedPracticalPath
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }, [timeLeft, part1Answers, part2Answers, submitted, selectedPracticalPath]);
+
+
+  // Protection contre le refresh/fermeture pendant l'examen
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+
+
+  // Timer principal
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      setShowTimeUp(true);
+      return;
+    }
+    const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
+    return () => clearInterval(timer);
+  }, [timeLeft]);
+
+  const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
 
   const answeredCount = useMemo(() => {
     const submittedCount = Object.values(submitted).filter(Boolean).length;
@@ -426,28 +421,38 @@ export default function CopilotExamStartPage() {
 
   const allQuestionsAnswered = answeredCount === totalQuestions;
 
-  const score = useMemo(() => {
-    const part1Score = PART1_QUESTIONS.reduce((sum, q) => {
+  // Nouvelle logique : réussite si au moins 10/14 bonnes réponses (70%)
+  const correctAnswersCount = useMemo(() => {
+    let count = 0;
+    PART1_QUESTIONS.forEach((q) => {
       const isSubmitted = submitted[q.id];
-      if (!isSubmitted) return sum;
+      if (!isSubmitted) return;
       const selected = part1Answers[q.id] ?? [];
       const correct = q.correctAnswers;
       const isCorrect =
         selected.length === correct.length &&
         selected.every((answer) => correct.includes(answer));
-      return isCorrect ? sum + 3 : sum;
-    }, 0);
-
-    const part2Score = PART2_SCENARIOS.reduce((sum, s) => {
+      if (isCorrect) count++;
+    });
+    PART2_SCENARIOS.forEach((s) => {
       const isSubmitted = submitted[s.id];
-      if (!isSubmitted) return sum;
+      if (!isSubmitted) return;
       const selected = part2Answers[s.id] ?? [];
       const isCorrect = selected.includes(s.correctAnswer);
-      return isCorrect ? sum + 10 : sum;
-    }, 0);
-
-    return part1Score + part2Score;
+      if (isCorrect) count++;
+    });
+    return count;
   }, [part1Answers, part2Answers, submitted]);
+
+  const score = useMemo(() => {
+    // Pour compatibilité avec la page de résultat, score sur 100
+    return Math.round((correctAnswersCount / totalQuestions) * 100);
+  }, [correctAnswersCount, totalQuestions]);
+
+  // Rendu conditionnel après tous les hooks
+  if (!identityReady) {
+    return identityScreen;
+  }
 
   const handleSingleSelect = (
     section: "part1" | "part2",

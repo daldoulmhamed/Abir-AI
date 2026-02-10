@@ -44,10 +44,10 @@ export default function ExamResultPage() {
     }
   }, [searchParams]);
 
-  // Pour l'examen 'generative-ai-practitioner', réussite si score >= 70% (soit 10/14)
+  // Pour les examens 'generative-ai-practitioner' et 'ai-productivity-github-copilot', réussite si score >= 70% (soit 10/14)
   let percentage = Math.round((result.score / result.maxScore) * 100);
   let passed = percentage >= PASSING_THRESHOLD;
-  if (result.certificationSlug === "generative-ai-practitioner") {
+  if (["generative-ai-practitioner", "ai-productivity-github-copilot"].includes(result.certificationSlug)) {
     // 14 questions, il faut au moins 10 bonnes réponses
     // Le score est déjà sur 100, donc 70% = 10/14
     passed = percentage >= 70;
