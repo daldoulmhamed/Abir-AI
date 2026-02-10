@@ -374,17 +374,7 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
         };
       }, []);
 
-      // Protection contre le refresh/fermeture pendant l'examen
-      useEffect(() => {
-        const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-          e.preventDefault();
-          e.returnValue = '';
-        };
-        window.addEventListener('beforeunload', handleBeforeUnload);
-        return () => {
-          window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-      }, []);
+      // ...protection beforeunload supprimée...
 
       useEffect(() => {
         if (timeLeft <= 0) {

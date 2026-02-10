@@ -371,17 +371,7 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
               };
             }, []);
       const [showTimeUp, setShowTimeUp] = useState(false);
-      // Protection contre le refresh/fermeture pendant l'examen
-      useEffect(() => {
-        const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-          e.preventDefault();
-          e.returnValue = '';
-        };
-        window.addEventListener('beforeunload', handleBeforeUnload);
-        return () => {
-          window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-      }, []);
+      // ...protection beforeunload supprimée...
     // Timer d'examen (90 minutes)
     useEffect(() => {
       if (timeLeft <= 0) {
@@ -734,8 +724,30 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
                   className="rounded-md bg-blue-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
                   type="button"
                   onClick={() => {
-                    // Redirige vers la page de résultat avec le score et le slug
-                    window.location.href = `/certifications/exam-result?page=generative-ai-business-operations&score=${score}`;
+                    // S'assure que le score est bien sur 100 et le slug correct
+                    // Calcul du score sur 100 (pourcentage de bonnes réponses)
+                    const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
+                    let correctAnswersCount = 0;
+                    PART1_QUESTIONS.forEach((q) => {
+                      const isSubmitted = submitted[q.id];
+                      if (!isSubmitted) return;
+                      const selected = part1Answers[q.id] ?? [];
+                      const correct = q.correctAnswers;
+                      const isCorrect =
+                        selected.length === correct.length &&
+                        selected.every((answer) => correct.includes(answer));
+                      if (isCorrect) correctAnswersCount++;
+                    });
+                    PART2_SCENARIOS.forEach((s) => {
+                      const isSubmitted = submitted[s.id];
+                      if (!isSubmitted) return;
+                      const selected = part2Answers[s.id] ?? [];
+                      const isCorrect = selected.includes(s.correctAnswer);
+                      if (isCorrect) correctAnswersCount++;
+                    });
+                    const scorePercent = Math.round((correctAnswersCount / totalQuestions) * 100);
+                    const slug = 'generative-ai-business-operations';
+                    window.location.href = `/certifications/exam-result?page=${slug}&score=${scorePercent}`;
                   }}
                 >
                   exam result

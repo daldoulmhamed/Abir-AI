@@ -25,12 +25,49 @@ const initialResult = {
   usedRetakeCode: false,
 };
 
+
 export default function ExamResultPage() {
+  // --- HOOKS: useState ---
   const searchParams = useSearchParams();
   const [result, setResult] = useState(initialResult);
   const [userFullName, setUserFullName] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [certificateSerial, setCertificateSerial] = useState("");
+  const [retakeError, setRetakeError] = useState<string | null>(null);
+  const [loadingRetake, setLoadingRetake] = useState(false);
   const router = useRouter();
 
+  // --- HOOKS: useMemo ---
+  const { certificationId, certificationTitle, userId, certificateInfoUrl } = React.useMemo(() => {
+    let certificationId = "";
+    let certificationTitle = "";
+    let userId = "USER_DEMO";
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { certifications } = require("@/data/certifications");
+      let found = certifications.find((c: any) => c.slug === result.certificationSlug);
+      if (!found && certifications.length > 0) found = certifications[0];
+      if (found) {
+        certificationId = found.id;
+        certificationTitle = found.title;
+      } else {
+        certificationId = "1";
+        certificationTitle = "Unknown Certification";
+      }
+    } catch (e) {
+      certificationId = "1";
+      certificationTitle = "Unknown Certification";
+    }
+    const certificateInfoUrl = `/certifications/certificate-info?mode=certificate&certificationId=${certificationId}&userId=${userId}`;
+    return { certificationId, certificationTitle, userId, certificateInfoUrl };
+  }, [result.certificationSlug]);
+
+
+  // --- LOGIQUE ---
+  let percentage = Math.round((result.score / result.maxScore) * 100);
+  let passed = percentage >= 70;
+
+  // --- HOOKS: useEffect ---
   useEffect(() => {
     // Récupère score et slug de certification de l'URL si présents
     const scoreParam = searchParams.get("score");
@@ -42,20 +79,27 @@ export default function ExamResultPage() {
         certificationSlug: certSlugParam,
       }));
     }
+    setIsLoaded(true);
   }, [searchParams]);
 
-  // Pour les examens 'generative-ai-practitioner' et 'ai-productivity-github-copilot', réussite si score >= 70% (soit 10/14)
-  let percentage = Math.round((result.score / result.maxScore) * 100);
-  let passed = percentage >= PASSING_THRESHOLD;
-  if (["generative-ai-practitioner", "ai-productivity-github-copilot"].includes(result.certificationSlug)) {
-    // 14 questions, il faut au moins 10 bonnes réponses
-    // Le score est déjà sur 100, donc 70% = 10/14
-    passed = percentage >= 70;
-  }
+  useEffect(() => {
+    if (passed && certificationId) {
+      fetch("/api/certificate-serial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ certCode: certificationId.toUpperCase() })
+      })
+        .then(res => res.json())
+        .then(data => setCertificateSerial(data.serial || ""))
+        .catch(() => setCertificateSerial("ERROR-GENERATING-SERIAL"));
+    } else {
+      setCertificateSerial("");
+    }
+  }, [passed, certificationId]);
 
-  // Nouvelle logique : automatisation du flux de reprise
-  const [retakeError, setRetakeError] = useState<string | null>(null);
-  const [loadingRetake, setLoadingRetake] = useState(false);
+  if (!isLoaded) {
+    return null;
+  }
 
   const handleRetake = async () => {
     if (!userFullName.trim()) {
@@ -118,47 +162,6 @@ export default function ExamResultPage() {
       usedRetakeCode: false,
     });
   };
-
-
-  // On récupère la certification à partir du slug
-  let certificationId = "";
-  let certificationTitle = "";
-  let userId = "USER_DEMO";
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { certifications } = require("@/data/certifications");
-    let found = certifications.find((c: any) => c.slug === result.certificationSlug);
-    if (!found && certifications.length > 0) found = certifications[0];
-    if (found) {
-      certificationId = found.id;
-      certificationTitle = found.title;
-    } else {
-      certificationId = "1";
-      certificationTitle = "Unknown Certification";
-    }
-  } catch (e) {
-    certificationId = "1";
-    certificationTitle = "Unknown Certification";
-  }
-  // Ajout du paramètre mode=certificate pour éviter l'erreur sur la page de formulaire
-  const certificateInfoUrl = `/certifications/certificate-info?mode=certificate&certificationId=${certificationId}&userId=${userId}`;
-
-  // Génération du numéro de série via API route
-  const [certificateSerial, setCertificateSerial] = useState("");
-  useEffect(() => {
-    if (passed && certificationId) {
-      fetch("/api/certificate-serial", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ certCode: certificationId.toUpperCase() })
-      })
-        .then(res => res.json())
-        .then(data => setCertificateSerial(data.serial || ""))
-        .catch(() => setCertificateSerial("ERROR-GENERATING-SERIAL"));
-    } else {
-      setCertificateSerial("");
-    }
-  }, [passed, certificationId]);
 
   return (
     <div className={styles.container}>
