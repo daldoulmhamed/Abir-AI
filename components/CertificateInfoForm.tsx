@@ -141,10 +141,8 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
             certificationTitle,
             certificationId: certificationId,
           });
-          // On stocke aussi le slug pour l'affichage du badge
-          setIssuedCertificate({ ...(cert as any) });
-          // Ajout du slug pour l'affichage (hors typage strict)
-          (cert as any).certificationSlug = certificationSlug;
+          // Ajout systématique du slug pour l'affichage du badge (dès la réception)
+          setIssuedCertificate({ ...(cert as any), certificationSlug });
         } catch (err: any) {
           setIssueError("Erreur lors de l'émission du certificat. Veuillez réessayer ou contacter le support.");
         } finally {
@@ -313,7 +311,9 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
       setLoading(true);
       setError(null);
       try {
-        const badgeUrl = badgeMap[(issuedCertificate as any).certificationSlug] || badgeMap[issuedCertificate.certificationTitle] || badgeMap[Object.keys(badgeMap)[0]];
+            // On utilise uniquement le slug pour le mapping, pas de fallback sur le premier badge
+            const slug = (issuedCertificate as any).certificationSlug;
+            const badgeUrl = slug && badgeMap[slug] ? badgeMap[slug] : undefined;
         const response = await fetch("/api/certificate-serial/generate-pdf", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
