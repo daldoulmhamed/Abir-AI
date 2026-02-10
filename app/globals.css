@@ -1,3 +1,10 @@
+/* Empêche la sélection du texte pour les questions/réponses */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 

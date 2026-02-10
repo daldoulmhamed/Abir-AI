@@ -348,6 +348,21 @@ export default function GenerativeAIPractitionerExamStartPage() {
   const [part1Questions, setPart1Questions] = useState<typeof RAW_PART1_QUESTIONS>([]);
   const [part2Scenarios, setPart2Scenarios] = useState<typeof RAW_PART2_SCENARIOS>([]);
   useEffect(() => {
+    // Bloque copier/coller et clic droit
+    const preventCopy = (e) => {
+      e.preventDefault();
+      alert("Warning: Attempting to copy or cheat may result in loss of credit in your final score.");
+    };
+    const warnOnCtrl = (e) => {
+      if (e.ctrlKey || e.metaKey) {
+        alert("Warning: Attempting to copy or cheat may result in loss of credit in your final score.");
+      }
+    };
+    document.addEventListener('copy', preventCopy);
+    document.addEventListener('cut', preventCopy);
+    document.addEventListener('contextmenu', preventCopy);
+    document.addEventListener('keydown', warnOnCtrl);
+
     // Mélange les réponses de chaque question
     const shuffledPart1 = shuffleArray(RAW_PART1_QUESTIONS).map(q => ({
       ...q,
@@ -355,6 +370,13 @@ export default function GenerativeAIPractitionerExamStartPage() {
     }));
     setPart1Questions(shuffledPart1);
     setPart2Scenarios(shuffleArray(RAW_PART2_SCENARIOS));
+
+    return () => {
+      document.removeEventListener('copy', preventCopy);
+      document.removeEventListener('cut', preventCopy);
+      document.removeEventListener('contextmenu', preventCopy);
+      document.removeEventListener('keydown', warnOnCtrl);
+    };
   }, []);
   // Gestion identité utilisateur minimale
   const [identityReady, setIdentityReady] = useState(false);
@@ -615,7 +637,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
           {part1Questions.map((q) => (
             <div key={q.id} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">{q.question}</h3>
+                <h3 className="text-lg font-semibold no-select">{q.question}</h3>
                 <span className="text-xs uppercase tracking-wide text-slate-500">
                   {q.type === "multi" ? "Multi-select" : "Single-select"}
                 </span>
@@ -625,7 +647,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
                   const selected = part1Answers[q.id] ?? [];
                   const isChecked = selected.includes(opt.id);
                   return (
-                    <label key={opt.id} className="flex items-start gap-3 rounded-md border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 px-3 py-2 cursor-pointer">
+                    <label key={opt.id} className="flex items-start gap-3 rounded-md border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 px-3 py-2 cursor-pointer no-select text-lg">
                       <input
                         type={q.type === "multi" ? "checkbox" : "radio"}
                         name={q.id}
@@ -638,8 +660,8 @@ export default function GenerativeAIPractitionerExamStartPage() {
                         className="mt-1"
                         disabled={submitted[q.id]}
                       />
-                      <span>
-                        <span className="font-semibold">{opt.id}.</span> {opt.text}
+                      <span className="no-select">
+                        {opt.text}
                       </span>
                     </label>
                   );
@@ -682,7 +704,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
                     const selected = part2Answers[s.id] ?? [];
                     const isChecked = selected.includes(action.id);
                     return (
-                      <label key={action.id} className="flex items-start gap-3 rounded-md border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/50 px-3 py-2 cursor-pointer">
+                      <label key={action.id} className="flex items-start gap-3 rounded-md border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/50 px-3 py-2 cursor-pointer text-lg">
                         <input
                           type="radio"
                           name={s.id}
@@ -692,7 +714,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
                           disabled={submitted[s.id]}
                         />
                         <span>
-                          <span className="font-semibold">{action.id}.</span> {action.text}
+                          {action.text}
                         </span>
                       </label>
                     );
