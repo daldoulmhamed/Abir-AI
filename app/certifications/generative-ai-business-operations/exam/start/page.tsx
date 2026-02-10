@@ -601,6 +601,7 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
                             : handleSingleSelect("part1", q.id, opt.id)
                         }
                         className="mt-1"
+                        disabled={submitted[q.id]}
                       />
                       <span>
                         <span className="font-semibold">{opt.id}.</span> {opt.text}
@@ -653,6 +654,7 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
                           checked={isChecked}
                           onChange={() => handleSingleSelect("part2", s.id, action.id)}
                           className="mt-1"
+                          disabled={submitted[s.id]}
                         />
                         <span>
                           <span className="font-semibold">{action.id}.</span> {action.text}
