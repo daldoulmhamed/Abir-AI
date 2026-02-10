@@ -17,7 +17,16 @@ const EXAM_OVERVIEW = {
   ]
 };
 
-const PART1_QUESTIONS = [
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+const RAW_PART1_QUESTIONS = [
   {
     id: "KC1",
     type: "single",
@@ -191,7 +200,7 @@ const PART1_QUESTIONS = [
   }
 ];
 
-const PART2_SCENARIOS = [
+const RAW_PART2_SCENARIOS = [
   {
     id: "SC1",
     scenario:
@@ -298,6 +307,18 @@ type SubmittedMap = Record<string, boolean>;
 
 
 export default function GenerativeAIBusinessOperationsExamStartPage() {
+  // Randomisation à chaque accès (montage du composant)
+  const [part1Questions, setPart1Questions] = useState<typeof RAW_PART1_QUESTIONS>([]);
+  const [part2Scenarios, setPart2Scenarios] = useState<typeof RAW_PART2_SCENARIOS>([]);
+  useEffect(() => {
+    // Mélange les réponses de chaque question
+    const shuffledPart1 = shuffleArray(RAW_PART1_QUESTIONS).map(q => ({
+      ...q,
+      options: shuffleArray(q.options)
+    }));
+    setPart1Questions(shuffledPart1);
+    setPart2Scenarios(shuffleArray(RAW_PART2_SCENARIOS));
+  }, []);
   // Minimal identity system
   const [identityReady, setIdentityReady] = useState(false);
   useEffect(() => {
@@ -382,7 +403,7 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
       return () => clearInterval(timer);
     }, [timeLeft]);
 
-  const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
+  const totalQuestions = part1Questions.length + part2Scenarios.length;
 
   const answeredCount = useMemo(() => {
     const submittedCount = Object.values(submitted).filter(Boolean).length;
@@ -392,7 +413,7 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
   const allQuestionsAnswered = answeredCount === totalQuestions;
 
   const score = useMemo(() => {
-    const part1Score = PART1_QUESTIONS.reduce((sum, q) => {
+    const part1Score = part1Questions.reduce((sum, q) => {
       const isSubmitted = submitted[q.id];
       if (!isSubmitted) return sum;
       const selected = part1Answers[q.id] ?? [];
@@ -403,7 +424,7 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
       return isCorrect ? sum + 3 : sum;
     }, 0);
 
-    const part2Score = PART2_SCENARIOS.reduce((sum, s) => {
+    const part2Score = part2Scenarios.reduce((sum, s) => {
       const isSubmitted = submitted[s.id];
       if (!isSubmitted) return sum;
       const selected = part2Answers[s.id] ?? [];
@@ -556,10 +577,10 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
           10 multiple-choice or multi-select questions. Focus on practical operations use.
         </p>
         <div className="mt-6 space-y-6">
-          {PART1_QUESTIONS.map((q) => (
+          {part1Questions.map((q) => (
             <div key={q.id} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">{q.id}. {q.question}</h3>
+                <h3 className="text-lg font-semibold">{q.question}</h3>
                 <span className="text-xs uppercase tracking-wide text-slate-500">
                   {q.type === "multi" ? "Multi-select" : "Single-select"}
                 </span>
@@ -617,9 +638,9 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
             4 scenario-based questions. Choose the best AI-assisted approach.
           </p>
           <div className="mt-6 space-y-6">
-            {PART2_SCENARIOS.map((s) => (
+            {part2Scenarios.map((s) => (
               <div key={s.id} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6">
-                <h3 className="text-lg font-semibold">{s.id}. {s.scenario}</h3>
+                <h3 className="text-lg font-semibold">{s.scenario}</h3>
                 <div className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
                   {s.actions.map((action) => {
                     const selected = part2Answers[s.id] ?? [];

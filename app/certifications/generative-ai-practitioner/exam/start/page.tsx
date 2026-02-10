@@ -18,7 +18,16 @@ const EXAM_OVERVIEW = {
   ]
 };
 
-const PART1_QUESTIONS = [
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+const RAW_PART1_QUESTIONS = [
   {
     id: "KC1",
     type: "single",
@@ -203,7 +212,7 @@ const PART1_QUESTIONS = [
   }
 ];
 
-const PART2_SCENARIOS = [
+const RAW_PART2_SCENARIOS = [
   {
     id: "SC1",
     scenario:
@@ -335,6 +344,18 @@ type AnswerMap = Record<string, string[]>;
 type SubmittedMap = Record<string, boolean>;
 
 export default function GenerativeAIPractitionerExamStartPage() {
+  // Randomisation à chaque accès (montage du composant)
+  const [part1Questions, setPart1Questions] = useState<typeof RAW_PART1_QUESTIONS>([]);
+  const [part2Scenarios, setPart2Scenarios] = useState<typeof RAW_PART2_SCENARIOS>([]);
+  useEffect(() => {
+    // Mélange les réponses de chaque question
+    const shuffledPart1 = shuffleArray(RAW_PART1_QUESTIONS).map(q => ({
+      ...q,
+      options: shuffleArray(q.options)
+    }));
+    setPart1Questions(shuffledPart1);
+    setPart2Scenarios(shuffleArray(RAW_PART2_SCENARIOS));
+  }, []);
   // Gestion identité utilisateur minimale
   const [identityReady, setIdentityReady] = useState(false);
   useEffect(() => {
@@ -420,7 +441,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
                   }, [timeLeft, part1Answers, part2Answers, submitted, selectedPracticalPath]);
 
   // Nouvelle logique : réussite si au moins 10/14 bonnes réponses (70%)
-  const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
+  const totalQuestions = part1Questions.length + part2Scenarios.length;
 
   const answeredCount = useMemo(() => {
     const submittedCount = Object.values(submitted).filter(Boolean).length;
@@ -430,7 +451,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
   const allQuestionsAnswered = answeredCount === totalQuestions;
   const correctAnswersCount = useMemo(() => {
     let count = 0;
-    PART1_QUESTIONS.forEach((q) => {
+    part1Questions.forEach((q) => {
       const isSubmitted = submitted[q.id];
       if (!isSubmitted) return;
       const selected = part1Answers[q.id] ?? [];
@@ -440,7 +461,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
         selected.every((answer) => correct.includes(answer));
       if (isCorrect) count++;
     });
-    PART2_SCENARIOS.forEach((s) => {
+    part2Scenarios.forEach((s) => {
       const isSubmitted = submitted[s.id];
       if (!isSubmitted) return;
       const selected = part2Answers[s.id] ?? [];
@@ -591,10 +612,10 @@ export default function GenerativeAIPractitionerExamStartPage() {
           10 multiple-choice or multi-select questions. Focus on practical understanding.
         </p>
         <div className="mt-6 space-y-6">
-          {PART1_QUESTIONS.map((q) => (
+          {part1Questions.map((q) => (
             <div key={q.id} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">{q.id}. {q.question}</h3>
+                <h3 className="text-lg font-semibold">{q.question}</h3>
                 <span className="text-xs uppercase tracking-wide text-slate-500">
                   {q.type === "multi" ? "Multi-select" : "Single-select"}
                 </span>
@@ -652,9 +673,9 @@ export default function GenerativeAIPractitionerExamStartPage() {
             4 scenario-based questions. Choose the best AI-assisted approach.
           </p>
           <div className="mt-6 space-y-6">
-            {PART2_SCENARIOS.map((s) => (
+            {part2Scenarios.map((s) => (
               <div key={s.id} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6">
-                <h3 className="text-lg font-semibold">{s.id}. {s.scenario}</h3>
+                <h3 className="text-lg font-semibold">{s.scenario}</h3>
                 <div className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
                   {s.actions.map((action) => {
                     const selected = part2Answers[s.id] ?? [];
