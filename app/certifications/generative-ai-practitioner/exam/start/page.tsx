@@ -419,6 +419,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
                   }, [timeLeft, part1Answers, part2Answers, submitted, selectedPracticalPath]);
 
+  // Nouvelle logique : réussite si au moins 10/14 bonnes réponses (70%)
   const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
 
   const answeredCount = useMemo(() => {
@@ -427,29 +428,32 @@ export default function GenerativeAIPractitionerExamStartPage() {
   }, [submitted, totalQuestions]);
 
   const allQuestionsAnswered = answeredCount === totalQuestions;
-
-  const score = useMemo(() => {
-    const part1Score = PART1_QUESTIONS.reduce((sum, q) => {
+  const correctAnswersCount = useMemo(() => {
+    let count = 0;
+    PART1_QUESTIONS.forEach((q) => {
       const isSubmitted = submitted[q.id];
-      if (!isSubmitted) return sum;
+      if (!isSubmitted) return;
       const selected = part1Answers[q.id] ?? [];
       const correct = q.correctAnswers;
       const isCorrect =
         selected.length === correct.length &&
         selected.every((answer) => correct.includes(answer));
-      return isCorrect ? sum + 3 : sum;
-    }, 0);
-
-    const part2Score = PART2_SCENARIOS.reduce((sum, s) => {
+      if (isCorrect) count++;
+    });
+    PART2_SCENARIOS.forEach((s) => {
       const isSubmitted = submitted[s.id];
-      if (!isSubmitted) return sum;
+      if (!isSubmitted) return;
       const selected = part2Answers[s.id] ?? [];
       const isCorrect = selected.includes(s.correctAnswer);
-      return isCorrect ? sum + 10 : sum;
-    }, 0);
-
-    return part1Score + part2Score;
+      if (isCorrect) count++;
+    });
+    return count;
   }, [part1Answers, part2Answers, submitted]);
+
+  const score = useMemo(() => {
+    // Pour compatibilité avec la page de résultat, score sur 100
+    return Math.round((correctAnswersCount / totalQuestions) * 100);
+  }, [correctAnswersCount, totalQuestions]);
 
   const handleSingleSelect = (
     section: "part1" | "part2",

@@ -44,8 +44,14 @@ export default function ExamResultPage() {
     }
   }, [searchParams]);
 
-  const percentage = Math.round((result.score / result.maxScore) * 100);
-  const passed = percentage >= PASSING_THRESHOLD;
+  // Pour l'examen 'generative-ai-practitioner', réussite si score >= 70% (soit 10/14)
+  let percentage = Math.round((result.score / result.maxScore) * 100);
+  let passed = percentage >= PASSING_THRESHOLD;
+  if (result.certificationSlug === "generative-ai-practitioner") {
+    // 14 questions, il faut au moins 10 bonnes réponses
+    // Le score est déjà sur 100, donc 70% = 10/14
+    passed = percentage >= 70;
+  }
 
   // Nouvelle logique : automatisation du flux de reprise
   const [retakeError, setRetakeError] = useState<string | null>(null);
