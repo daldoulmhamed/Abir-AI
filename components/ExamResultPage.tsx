@@ -137,6 +137,9 @@ export default function ExamResultPage() {
   } else if (result.certificationSlug === 'ai-productivity-github-copilot') {
     ATTEMPT_KEY = 'abirai_examAttempts_ai-productivity-github-copilot';
     slug = 'ai-productivity-github-copilot';
+  } else if (result.certificationSlug === 'ai-governance-responsible-ai-foundations') {
+    ATTEMPT_KEY = 'abirai_examAttempts_ai-governance-responsible-ai-foundations';
+    slug = 'ai-governance-responsible-ai-foundations';
   }
 
   const handleRetake = async () => {
@@ -146,6 +149,8 @@ export default function ExamResultPage() {
     // Pour tous les exams : 2 tentatives (0 puis 1), pas plus
     if (attempts === 0) {
       localStorage.setItem(ATTEMPT_KEY, '1');
+      // Reset l'état de l'examen à chaque retake
+      localStorage.removeItem(`examState-${slug}`);
       router.push(`/certifications/${slug}/exam/start?retake=1`);
     } else {
       setRetakeError("No retake attempts remaining");

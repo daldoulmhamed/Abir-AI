@@ -342,17 +342,18 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
         // Bloquer le retour arrière (back navigation)
 
   const router = useRouter();
-    // Gestion identité utilisateur minimale (harmonisée)
-    const [identityReady, setIdentityReady] = useState(false);
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        const locked = localStorage.getItem('abirai_fullNameLocked') === '1';
-        setIdentityReady(locked);
-      } else {
-        setIdentityReady(false);
-      }
-    }, []);
-    const handleIdentityValidated = () => setIdentityReady(true);
+  // Gestion identité utilisateur minimale (identique à AI Practitioner)
+  // Harmonisation : on ne reset pas l'identité, on vérifie juste si elle est présente
+  const [identityReady, setIdentityReady] = useState(false);
+  useEffect(() => {
+    // Si l'identité est déjà présente (clé abirai_fullNameLocked), on passe à true
+    if (localStorage.getItem('abirai_fullNameLocked')) {
+      setIdentityReady(true);
+    } else {
+      setIdentityReady(false);
+    }
+  }, []);
+  const handleIdentityValidated = () => setIdentityReady(true);
   // Bloquer le retour arrière (back navigation)
   useEffect(() => {
     const handlePopState = (e: PopStateEvent) => {
