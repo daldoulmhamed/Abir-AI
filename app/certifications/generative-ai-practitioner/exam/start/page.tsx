@@ -381,8 +381,13 @@ export default function GenerativeAIPractitionerExamStartPage() {
   // Gestion identité utilisateur minimale
   const [identityReady, setIdentityReady] = useState(false);
   useEffect(() => {
-    // Toujours demander l'identité avant l'examen
-    setIdentityReady(false);
+    // Toujours demander l'identité avant l'examen, sauf si déjà verrouillé
+    if (typeof window !== "undefined") {
+      const locked = localStorage.getItem('abirai_fullNameLocked') === '1';
+      setIdentityReady(locked);
+    } else {
+      setIdentityReady(false);
+    }
   }, []);
   const handleIdentityValidated = () => setIdentityReady(true);
     // Bloquer le retour arrière (back navigation)

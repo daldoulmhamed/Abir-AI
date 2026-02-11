@@ -27,6 +27,19 @@ const initialResult = {
 
 
 export default function ExamResultPage() {
+    // Bloquer le retour arrière sur la page résultat
+    useEffect(() => {
+      const handlePopState = (e) => {
+        e.preventDefault();
+        window.history.pushState(null, '', window.location.href);
+        alert("Retour arrière désactivé sur la page de résultat.");
+      };
+      window.history.pushState(null, '', window.location.href);
+      window.addEventListener('popstate', handlePopState);
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, []);
   // --- HOOKS: useState ---
   const searchParams = useSearchParams();
   const [result, setResult] = useState(initialResult);
@@ -113,52 +126,15 @@ export default function ExamResultPage() {
   }
 
   const handleRetake = async () => {
-    if (!userFullName.trim()) {
-      setRetakeError("Veuillez saisir votre nom complet.");
-      return;
-    }
+    // Nouvelle logique : retake direct, sans code ni nom
     setLoadingRetake(true);
     setRetakeError(null);
-    const examSlug = 'ai-productivity-github-copilot';
-    const examId = examSlug;
-    const fullName = userFullName.trim();
-    let tokenId = null;
-    try {
-      const res = await fetch('/api/retakes/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fullName, examId })
-      });
-      const data = await res.json();
-      if (!data.success && data.tokenId) {
-        setRetakeError("No retake attempts remaining");
-        setLoadingRetake(false);
-        return;
-      } else if (data.success && data.tokenId) {
-        tokenId = data.tokenId;
-      } else {
-        setRetakeError("No retake attempts remaining");
-        setLoadingRetake(false);
-        return;
-      }
-    } catch (err) {
-      setRetakeError("No retake attempts remaining");
-      setLoadingRetake(false);
-      return;
-    }
-    try {
-      const validateRes = await fetch('/api/retakes/validate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tokenId, examId, fullName })
-      });
-      const validateData = await validateRes.json();
-      if (validateData.success) {
-        router.push(`/certifications/${examId}/exam/start?retake=1&tokenId=${tokenId}`);
-      } else {
-        setRetakeError("No retake attempts remaining");
-      }
-    } catch (err) {
+    // Gestion stricte des deux tentatives
+    let attempts = parseInt(localStorage.getItem('abirai_examAttempts') || '1', 10);
+    if (attempts < 2) {
+      localStorage.setItem('abirai_examAttempts', String(attempts + 1));
+      router.push(`/certifications/${result.certificationSlug}/exam/start?retake=1`);
+    } else {
       setRetakeError("No retake attempts remaining");
     }
     setLoadingRetake(false);
@@ -215,18 +191,7 @@ export default function ExamResultPage() {
           <p className={styles.sweetMsg}>
             Don't be discouraged! Every expert was once a beginner. Review the material and come back stronger. You’re on the right path!
           </p>
-          <div style={{marginBottom: 12}}>
-            <label htmlFor="userFullName" style={{fontWeight:600}}>Full name:</label>
-            <input
-              id="userFullName"
-              type="text"
-              value={userFullName}
-              onChange={e => setUserFullName(e.target.value)}
-              placeholder="Enter your full name"
-              style={{marginLeft:8, padding:4, borderRadius:4, border:'1px solid #ccc'}}
-              disabled={loadingRetake}
-            />
-          </div>
+          {/* Champ Full name supprimé pour le retake */}
           <button
             className={styles.primaryBtn}
             onClick={handleRetake}

@@ -80,8 +80,17 @@ export async function POST(request: Request) {
     maxAge: 60 * 60 * 24 * 365 // 1 an
   });
 
-  // Accorder l'accès à l'examen
+  // Accorder l'accès à l'examen et réinitialiser les tentatives
   cookieStore.set(buildAccessCookieName(certificationId), "granted", {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 30
+  });
+
+  // Réinitialiser le compteur de tentatives à 2 (stocké en cookie)
+  cookieStore.set(`exam_attempts_${certificationId}`, "2", {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
@@ -91,6 +100,6 @@ export async function POST(request: Request) {
 
   return Response.json({
     success: true,
-    message: "Voucher accepté. Exam access unlocked."
+    message: "Voucher accepté. Exam access unlocked. Tentatives réinitialisées."
   });
 }

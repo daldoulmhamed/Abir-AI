@@ -121,6 +121,8 @@ export default function GenerativeAIPractitionerExamPage() {
   const [retakeCode, setRetakeCode] = useState("");
   const [retakeError, setRetakeError] = useState<string | null>(null);
   const [isRetakeRedeeming, setIsRetakeRedeeming] = useState(false);
+  // Ajout du compteur de tentatives
+  const [attemptsLeft, setAttemptsLeft] = useState(2);
 
   const priceLabel = useMemo(
     () => `${EXAM_DETAILS.price}${EXAM_DETAILS.currency}`,
@@ -129,13 +131,19 @@ export default function GenerativeAIPractitionerExamPage() {
 
   useEffect(() => {
     const runAccessCheck = async () => {
-      // Placeholder access check. Replace with a real API call.
       const access = await checkExamAccess();
       setHasAccess(access);
       setIsChecking(false);
-      // Ne pas rediriger automatiquement, laisser l'utilisateur choisir paiement/voucher/retake
+      // Lecture du cookie attempts
+      if (typeof document !== "undefined") {
+        const match = document.cookie.match(/exam_attempts_generative-ai-practitioner=([0-9]+)/);
+        if (match) {
+          setAttemptsLeft(parseInt(match[1], 10));
+        } else {
+          setAttemptsLeft(2);
+        }
+      }
     };
-
     runAccessCheck();
   }, [router]);
 
@@ -158,6 +166,15 @@ export default function GenerativeAIPractitionerExamPage() {
       if (result.success) {
         setHasAccess(true);
         setIsVoucherOpen(false);
+        // Réinitialise le compteur de tentatives
+        setAttemptsLeft(2);
+        if (typeof window !== "undefined") {
+          localStorage.setItem('abirai_examAttempts', '1');
+          try {
+            const { clearIdentity } = await import("../../../../utils/userIdentity");
+            clearIdentity();
+          } catch {}
+        }
         router.push("/certifications/generative-ai-practitioner/exam/start");
       } else {
         setVoucherError(result.message);
