@@ -127,6 +127,25 @@ export default function GenerativeAiBusinessOperationsExamPage() {
     []
   );
 
+  // Ajout : clé de compteur unique
+  const ATTEMPT_KEY = 'abirai_examAttempts_generative-ai-business-operations';
+  // Pour compatibilité avec les autres examens : lecture du cookie attempts
+  function getAttemptsLeft() {
+    if (typeof document !== 'undefined') {
+      const match = document.cookie.match(/exam_attempts_generative-ai-business-operations=([0-9]+)/);
+      if (match) return parseInt(match[1], 10);
+    }
+    // fallback localStorage (pour compatibilité)
+    return parseInt(localStorage.getItem(ATTEMPT_KEY) || '2', 10);
+  }
+
+  function setAttemptsLeft(n: number) {
+    if (typeof document !== 'undefined') {
+      document.cookie = `exam_attempts_generative-ai-business-operations=${n}; path=/; max-age=2592000`;
+    }
+    localStorage.setItem(ATTEMPT_KEY, String(n));
+  }
+
   useEffect(() => {
     const runAccessCheck = async () => {
       // Placeholder access check. Replace with a real API call.
@@ -158,6 +177,16 @@ export default function GenerativeAiBusinessOperationsExamPage() {
       if (result.success) {
         setHasAccess(true);
         setIsVoucherOpen(false);
+        // Initialisation à 0 (première tentative) comme Practitioner/Copilot
+        if (typeof window !== "undefined") {
+          localStorage.setItem(ATTEMPT_KEY, '0');
+          document.cookie = `exam_attempts_generative-ai-business-operations=0; path=/; max-age=2592000`;
+          localStorage.removeItem('examState-generative-ai-business-operations');
+          try {
+            const { clearIdentity } = await import("../../../../utils/userIdentity");
+            clearIdentity();
+          } catch {}
+        }
         router.push("/certifications/generative-ai-business-operations/exam/start");
       } else {
         setVoucherError(result.message);
@@ -169,22 +198,14 @@ export default function GenerativeAiBusinessOperationsExamPage() {
     }
   };
 
-  const handleRetakeSubmit = async (event: FormEvent) => {
-    event.preventDefault();
-    setRetakeError(null);
-    setIsRetakeRedeeming(true);
-
-    const isValid = await validateRetakeCode(retakeCode);
-
-    if (isValid) {
-      setHasAccess(true);
-      setIsRetakeOpen(false);
-      router.push("/certifications/generative-ai-business-operations/exam/start");
+  const handleRetake = () => {
+    let attempts = getAttemptsLeft();
+    if (attempts > 1) {
+      setAttemptsLeft(attempts - 1);
+      window.location.href = "/certifications/generative-ai-business-operations/exam/start?retake=1";
     } else {
-      setRetakeError("The retake code is invalid or expired.");
+      alert("No retake attempts remaining");
     }
-
-    setIsRetakeRedeeming(false);
   };
 
   return (
@@ -518,7 +539,7 @@ export default function GenerativeAiBusinessOperationsExamPage() {
               </button>
             </div>
 
-            <form onSubmit={handleRetakeSubmit} className="mt-6 space-y-4">
+            <form onSubmit={handleRetake} className="mt-6 space-y-4">
               <div>
                 <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
                   Retake code
@@ -548,6 +569,18 @@ export default function GenerativeAiBusinessOperationsExamPage() {
           </div>
         </div>
       ) : null}
+      {(() => {
+        if (typeof window === 'undefined') return null;
+        const attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
+        // Affiche le bouton retake uniquement si attempts === 0 (premier échec)
+        if (attempts === 0) {
+          return <button onClick={() => {
+            localStorage.setItem(ATTEMPT_KEY, '1');
+            window.location.href = "/certifications/generative-ai-business-operations/exam/start?retake=1";
+          }}>Retake Exam</button>;
+        }
+        return null;
+      })()}
     </main>
   );
 }

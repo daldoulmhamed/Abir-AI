@@ -125,15 +125,25 @@ export default function ExamResultPage() {
     return null;
   }
 
-  // Correction : harmonisation de la clé du compteur
-  const ATTEMPT_KEY = 'abirai_examAttempts_ai-productivity-github-copilot';
+  // Correction : harmonisation de la clé du compteur pour chaque exam
+  let ATTEMPT_KEY = '';
+  let slug = '';
+  if (result.certificationSlug === 'generative-ai-business-operations') {
+    ATTEMPT_KEY = 'abirai_examAttempts_generative-ai-business-operations';
+    slug = 'generative-ai-business-operations';
+  } else if (result.certificationSlug === 'generative-ai-practitioner') {
+    ATTEMPT_KEY = 'abirai_examAttempts_generative-ai-practitioner';
+    slug = 'generative-ai-practitioner';
+  } else if (result.certificationSlug === 'ai-productivity-github-copilot') {
+    ATTEMPT_KEY = 'abirai_examAttempts_ai-productivity-github-copilot';
+    slug = 'ai-productivity-github-copilot';
+  }
 
   const handleRetake = async () => {
     setLoadingRetake(true);
     setRetakeError(null);
-    const slug = 'ai-productivity-github-copilot';
     let attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
-    // Correction : limiter à deux tentatives (0 et 1)
+    // Pour tous les exams : 2 tentatives (0 puis 1), pas plus
     if (attempts === 0) {
       localStorage.setItem(ATTEMPT_KEY, '1');
       router.push(`/certifications/${slug}/exam/start?retake=1`);

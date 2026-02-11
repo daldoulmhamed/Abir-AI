@@ -312,11 +312,11 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
   const [part2Scenarios, setPart2Scenarios] = useState<typeof RAW_PART2_SCENARIOS>([]);
   useEffect(() => {
     // Bloque copier/coller et clic droit
-    const preventCopy = (e) => {
+    const preventCopy = (e: Event) => {
       e.preventDefault();
       alert("Warning: Attempting to copy or cheat may result in loss of credit in your final score.");
     };
-    const warnOnCtrl = (e) => {
+    const warnOnCtrl = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey) {
         alert("Warning: Attempting to copy or cheat may result in loss of credit in your final score.");
       }
@@ -341,11 +341,15 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
       document.removeEventListener('keydown', warnOnCtrl);
     };
   }, []);
-  // Minimal identity system
+  // Gestion identité utilisateur minimale (harmonisée avec Practitioner)
   const [identityReady, setIdentityReady] = useState(false);
   useEffect(() => {
-    // Toujours demander l'identité avant l'examen
-    setIdentityReady(false);
+    if (typeof window !== "undefined") {
+      const locked = localStorage.getItem('abirai_fullNameLocked') === '1';
+      setIdentityReady(locked);
+    } else {
+      setIdentityReady(false);
+    }
   }, []);
   const handleIdentityValidated = () => setIdentityReady(true);
 
@@ -376,7 +380,7 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
       const [part2Answers, setPart2Answers] = useState<AnswerMap>({});
       const [submitted, setSubmitted] = useState<SubmittedMap>({});
 
-                  // Charger l’état sauvegardé au démarrage
+                  // Charger l’état sauvegardé au démarrage (jamais de reset ici)
                   useEffect(() => {
                     const saved = localStorage.getItem(STORAGE_KEY);
                     if (saved) {
@@ -428,9 +432,15 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
   const totalQuestions = part1Questions.length + part2Scenarios.length;
 
   const answeredCount = useMemo(() => {
-    const submittedCount = Object.values(submitted).filter(Boolean).length;
-    return Math.min(submittedCount, totalQuestions);
-  }, [submitted, totalQuestions]);
+    let count = 0;
+    part1Questions.forEach((q: typeof part1Questions[0]) => {
+      if (submitted[q.id]) count++;
+    });
+    part2Scenarios.forEach((s: typeof part2Scenarios[0]) => {
+      if (submitted[s.id]) count++;
+    });
+    return count;
+  }, [submitted, part1Questions, part2Scenarios]);
 
   const allQuestionsAnswered = answeredCount === totalQuestions;
 
@@ -771,9 +781,9 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
                   onClick={() => {
                     // S'assure que le score est bien sur 100 et le slug correct
                     // Calcul du score sur 100 (pourcentage de bonnes réponses)
-                    const totalQuestions = PART1_QUESTIONS.length + PART2_SCENARIOS.length;
+                    const totalQuestions = part1Questions.length + part2Scenarios.length;
                     let correctAnswersCount = 0;
-                    PART1_QUESTIONS.forEach((q) => {
+                    part1Questions.forEach((q: typeof part1Questions[0]) => {
                       const isSubmitted = submitted[q.id];
                       if (!isSubmitted) return;
                       const selected = part1Answers[q.id] ?? [];
@@ -783,7 +793,7 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
                         selected.every((answer) => correct.includes(answer));
                       if (isCorrect) correctAnswersCount++;
                     });
-                    PART2_SCENARIOS.forEach((s) => {
+                    part2Scenarios.forEach((s: typeof part2Scenarios[0]) => {
                       const isSubmitted = submitted[s.id];
                       if (!isSubmitted) return;
                       const selected = part2Answers[s.id] ?? [];
