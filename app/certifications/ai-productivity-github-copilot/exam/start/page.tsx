@@ -1,4 +1,3 @@
-
 "use client";
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useEffect } from "react";
@@ -326,11 +325,11 @@ export default function CopilotExamStartPage() {
   const [part2Scenarios, setPart2Scenarios] = useState<typeof RAW_PART2_SCENARIOS>([]);
   useEffect(() => {
     // Bloque copier/coller et clic droit
-    const preventCopy = (e) => {
+    const preventCopy = (e: Event) => {
       e.preventDefault();
       alert("Warning: Attempting to copy or cheat may result in loss of credit in your final score.");
     };
-    const warnOnCtrl = (e) => {
+    const warnOnCtrl = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey) {
         alert("Warning: Attempting to copy or cheat may result in loss of credit in your final score.");
       }
@@ -357,6 +356,12 @@ export default function CopilotExamStartPage() {
   }, []);
   // Minimal identity system
   const [identityReady, setIdentityReady] = useState(false);
+  useEffect(() => {
+    // Si identité déjà verrouillée, accès direct
+    if (isFullNameLocked()) {
+      setIdentityReady(true);
+    }
+  }, []);
   const [timeLeft, setTimeLeft] = useState(90 * 60);
   const [selectedPracticalPath, setSelectedPracticalPath] = useState<"A" | "B" | null>(null);
   const [part1Answers, setPart1Answers] = useState<AnswerMap>({});
@@ -406,7 +411,6 @@ export default function CopilotExamStartPage() {
     }
   }, []);
 
-
   // On prépare le rendu de l'écran d'identité, mais on ne fait pas de return avant les hooks !
   const identityScreen = (
     <main className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
@@ -442,8 +446,6 @@ export default function CopilotExamStartPage() {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, []);
-
-
 
   // Timer principal
   useEffect(() => {

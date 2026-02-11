@@ -29,7 +29,7 @@ const initialResult = {
 export default function ExamResultPage() {
     // Bloquer le retour arrière sur la page résultat
     useEffect(() => {
-      const handlePopState = (e) => {
+      const handlePopState = (e: PopStateEvent) => {
         e.preventDefault();
         window.history.pushState(null, '', window.location.href);
         alert("Retour arrière désactivé sur la page de résultat.");
@@ -125,15 +125,18 @@ export default function ExamResultPage() {
     return null;
   }
 
+  // Correction : harmonisation de la clé du compteur
+  const ATTEMPT_KEY = 'abirai_examAttempts_ai-productivity-github-copilot';
+
   const handleRetake = async () => {
-    // Nouvelle logique : retake direct, sans code ni nom
     setLoadingRetake(true);
     setRetakeError(null);
-    // Gestion stricte des deux tentatives
-    let attempts = parseInt(localStorage.getItem('abirai_examAttempts') || '1', 10);
-    if (attempts < 2) {
-      localStorage.setItem('abirai_examAttempts', String(attempts + 1));
-      router.push(`/certifications/${result.certificationSlug}/exam/start?retake=1`);
+    const slug = 'ai-productivity-github-copilot';
+    let attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
+    // Correction : limiter à deux tentatives (0 et 1)
+    if (attempts === 0) {
+      localStorage.setItem(ATTEMPT_KEY, '1');
+      router.push(`/certifications/${slug}/exam/start?retake=1`);
     } else {
       setRetakeError("No retake attempts remaining");
     }

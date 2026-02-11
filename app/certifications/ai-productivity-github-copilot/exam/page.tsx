@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -71,6 +70,8 @@ const TRUST_POINTS = [
   "No trick questions—focus is on practical, real-world usage"
 ];
 
+const ATTEMPT_KEY = 'abirai_examAttempts_ai-productivity-github-copilot';
+
 import { Suspense } from "react";
 
 function AiProductivityCopilotExamPageInner() {
@@ -128,6 +129,14 @@ function AiProductivityCopilotExamPageInner() {
       if (data.success) {
         setHasAccess(true);
         setIsRetakeOpen(false);
+        // Correction : réinitialise le compteur à 0 pour permettre deux tentatives
+        localStorage.setItem(ATTEMPT_KEY, '0');
+        if (typeof window !== "undefined") {
+          try {
+            const { clearIdentity } = await import("../../../../utils/userIdentity");
+            clearIdentity();
+          } catch {}
+        }
         router.push("/certifications/ai-productivity-github-copilot/exam/start");
       } else {
         setRetakeError(data.message || "Impossible de valider le code de retake.");
@@ -139,14 +148,24 @@ function AiProductivityCopilotExamPageInner() {
     }
   };
 
+  const handleRetake = () => {
+    let attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
+    if (attempts < 2) {
+      localStorage.setItem(ATTEMPT_KEY, String(attempts + 1));
+      window.location.href = "/certifications/ai-productivity-github-copilot/exam/start?retake=1";
+    } else {
+      alert("No retake attempts remaining");
+    }
+  };
+
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
       {/* Hero section */}
-      <section className="relative overflow-hidden border-b border-slate-200/70 dark:border-slate-800">
+      <section className="relative overflow-hidden border-b border-slate-200/70 dark:border-rte-800">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-cyan-500/10 to-transparent" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-            <Link href="/certifications" className="hover:text-slate-900 dark:hover:text-white">
+            <Link href="/certifications" className="hover:text-slate-900 dark:dark:text-white">
               Certifications
             </Link>
             <span>/</span>
@@ -168,7 +187,7 @@ function AiProductivityCopilotExamPageInner() {
                 {EXAM_DETAILS.name}
               </h1>
               <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
-                Validate your Copilot skills with a focused, fair assessment built around real-world tasks and responsible usage. Learning content is free; the exam is a paid credential.
+                Validate your Copilot skills with a focused, fair assessment built around real-world tasks and responsible usage. Learning content is free; the exam is a a credential.
               </p>
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
@@ -292,7 +311,7 @@ function AiProductivityCopilotExamPageInner() {
           </div>
         </div>
       </section>
-      {/* Access section */}
+      {/* Access access */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1">
@@ -337,112 +356,121 @@ function AiProductivityCopilotExamPageInner() {
           </div>
         </div>
       </section>
-        {/* Access options modal */}
-        {isAccessOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-            <div className="w-full max-w-lg rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold">Get exam access</h3>
-                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                    Choose payment, use a voucher, or enter a retake code from a previous paid attempt. You receive one extra attempt if you don’t pass the first try.
-                  </p>
-                </div>
-                <button
-                  onClick={() => setIsAccessOpen(false)}
-                  className="text-slate-400 hover:text-slate-600"
-                  aria-label="Close access options"
-                >
-                  ✕
-                </button>
+      {/* Access options modal */}
+      {isAccessOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="w-full max-w-lg rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
+            <div className="flex items-start justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">Get exam access</h3>
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                  Choose payment, use a voucher, or enter a retake code from a previous paid attempt. You receive one extra attempt if you don’t pass the first try.
+                </p>
               </div>
-              <div className="mt-6 space-y-3">
-                <button
-                  onClick={() => {/* Stripe checkout à implémenter */}}
-                  className="w-full rounded-md bg-slate-900 text-white px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900"
-                >
-                  Pay {priceLabel}
-                </button>
-                <button
-                  onClick={() => { setIsAccessOpen(false); setIsVoucherOpen(true); }}
-                  className="w-full rounded-md border border-slate-300 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-                >
-                  I have a voucher
-                </button>
-              </div>
-              <p className="mt-4 text-xs text-slate-500">
-                One paid attempt unlocks one extra attempt if the first try is unsuccessful.
-              </p>
+              <button
+                onClick={() => setIsAccessOpen(false)}
+                className="text-slate-400 hover:text-slate-600"
+                aria-label="Close access options"
+              >
+                ✕
+              </button>
             </div>
+            <div className="mt-6 space-y-3">
+              <button
+                onClick={() => {/* Stripe checkout à implémenter */}}
+                className="w-full rounded-md bg-slate-900 text-white px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+              >
+                Pay {priceLabel}
+              </button>
+              <button
+                onClick={() => { setIsAccessOpen(false); setIsVoucherOpen(true); }}
+                className="w-full rounded-md border border-slate-300 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                I have a voucher
+              </button>
+            </div>
+            <p className="mt-4 text-xs text-slate-500">
+              One paid attempt unlocks one extra attempt if the the try is unsuccessful.
+            </p>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Voucher modal */}
-        {isVoucherOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-            <div className="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold">Enter voucher code</h3>
-                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                    Voucher codes unlock paid exam access. Example: COP-XXXXXX
-                  </p>
-                </div>
-                <button
-                  onClick={() => setIsVoucherOpen(false)}
-                  className="text-slate-400 hover:text-slate-600"
-                  aria-label="Close voucher modal"
-                >
-                  ✕
-                </button>
+      {/* Voucher modal */}
+      {isVoucherOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
+            <div className="flex items-start justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">Enter voucher code</h3>
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                  Voucher codes unlock paid exam access. Example: COP-XXXXXX
+                </p>
               </div>
-              <form onSubmit={async (e) => {
-                e.preventDefault();
-                setVoucherError(null);
-                setIsRedeeming(true);
-                try {
-                  const res = await fetch("/api/vouchers", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ code: voucherCode, certificationId: CERTIFICATION_ID })
-                  });
-                  const data = await res.json();
-                  if (data.success) {
-                    setHasAccess(true);
-                    setIsVoucherOpen(false);
-                    router.push("/certifications/ai-productivity-github-copilot/exam/start");
-                  } else {
-                    setVoucherError(data.message);
-                  }
-                } catch {
-                  setVoucherError("Network error. Please try again.");
-                } finally {
-                  setIsRedeeming(false);
-                }
-              }} className="mt-6 space-y-4">
-                <div>
-                  <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Voucher code</label>
-                  <input
-                    value={voucherCode}
-                    onChange={(e) => setVoucherCode(e.target.value)}
-                    className="mt-1 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm"
-                    placeholder="COP-XXXXXX"
-                  />
-                </div>
-                {voucherError && (
-                  <div className="text-sm text-red-600">{voucherError}</div>
-                )}
-                <button
-                  type="submit"
-                  disabled={isRedeeming}
-                  className="w-full rounded-md bg-slate-900 text-white px-4 py-3 text-sm font-semibold hover:bg-slate-800 disabled:opacity-60"
-                >
-                  {isRedeeming ? "Validation en cours..." : "Validate & Start Exam"}
-                </button>
-              </form>
+              <button
+                onClick={() => setIsVoucherOpen(false)}
+                className="text-slate-400 hover:text-slate-600"
+                aria-label="Close voucher modal"
+              >
+                ✕
+              </button>
             </div>
+            <form onSubmit={async (e) => {
+              e.preventDefault();
+              setVoucherError(null);
+              setIsRedeeming(true);
+              try {
+                const res = await fetch("/api/vouchers", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ code: voucherCode, certificationId: CERTIFICATION_ID })
+                });
+                const data = await res.json();
+                if (data.success) {
+                  setHasAccess(true);
+                  setIsVoucherOpen(false);
+                  // Réinitialise le compteur de tentatives
+                  localStorage.setItem(ATTEMPT_KEY, '0');
+                  // Réinitialise le profil utilisateur
+                  if (typeof window !== "undefined") {
+                    try {
+                      const { clearIdentity } = await import("../../../../utils/userIdentity");
+                      clearIdentity();
+                    } catch {}
+                  }
+                  router.push("/certifications/ai-productivity-github-copilot/exam/start");
+                } else {
+                  setVoucherError(data.message);
+                }
+              } catch {
+                setVoucherError("Network error. Please try again.");
+              } finally {
+                setIsRedeeming(false);
+              }
+            }} className="mt-6 space-y-4">
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Voucher code</label>
+                <input
+                  value={voucherCode}
+                  onChange={(e) => setVoucherCode(e.target.value)}
+                  className="mt-1 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm"
+                  placeholder="COP-XXXXXX"
+                />
+              </div>
+              {voucherError && (
+                <div className="text-sm text-red-600">{voucherError}</div>
+              )}
+              <button
+                type="submit"
+                disabled={isRedeeming}
+                className="w-full rounded-md bg-slate-900 text-white px-4 py-3 text-sm font-semibold hover:bg-slate-800 disabled:opacity-60"
+              >
+                {isRedeeming ? "Validation en cours..." : "Validate & Start Exam"}
+              </button>
+            </form>
           </div>
-        )}
+        </div>
+      )}
     </main>
   );
 
