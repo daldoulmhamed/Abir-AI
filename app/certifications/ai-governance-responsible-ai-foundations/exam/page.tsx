@@ -158,6 +158,17 @@ export default function AiGovernanceResponsibleAiExamPage() {
       if (result.success) {
         setHasAccess(true);
         setIsVoucherOpen(false);
+        // Initialisation à 0 (première tentative)
+        const ATTEMPT_KEY = 'abirai_examAttempts_ai-governance-responsible-ai-foundations';
+        if (typeof window !== "undefined") {
+          localStorage.setItem(ATTEMPT_KEY, '0');
+          document.cookie = `exam_attempts_ai-governance-responsible-ai-foundations=0; path=/; max-age=2592000`;
+          localStorage.removeItem('examState-ai-governance-responsible-ai-foundations');
+          try {
+            const { clearIdentity } = await import("../../../../utils/userIdentity");
+            clearIdentity();
+          } catch {}
+        }
         router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
       } else {
         setVoucherError(result.message);
@@ -498,56 +509,19 @@ export default function AiGovernanceResponsibleAiExamPage() {
         </div>
       ) : null}
 
-      {/* Retake modal placeholder */}
-      {isRetakeOpen ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-          <div className="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
-            <div className="flex items-start justify-between">
-              <div>
-                <h3 className="text-lg font-semibold">Enter retake code</h3>
-                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                  Retake codes unlock your extra attempt after a paid exam. Example: ABIR-RETAKE-019
-                </p>
-              </div>
-              <button
-                onClick={() => setIsRetakeOpen(false)}
-                className="text-slate-400 hover:text-slate-600"
-                aria-label="Close retake modal"
-              >
-                ✕
-              </button>
-            </div>
-
-            <form onSubmit={handleRetakeSubmit} className="mt-6 space-y-4">
-              <div>
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
-                  Retake code
-                </label>
-                <input
-                  value={retakeCode}
-                  onChange={(event) => setRetakeCode(event.target.value)}
-                  className="mt-2 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm"
-                  placeholder="ABIR-RETAKE-019"
-                  required
-                />
-              </div>
-              {retakeError ? (
-                <p className="text-sm text-red-600 dark:text-red-400">{retakeError}</p>
-              ) : null}
-              <button
-                type="submit"
-                disabled={isRetakeRedeeming}
-                className="w-full rounded-md bg-slate-900 text-white px-4 py-2 text-sm font-semibold hover:bg-slate-800 disabled:opacity-60 dark:bg-white dark:text-slate-900"
-              >
-                {isRetakeRedeeming ? "Validating..." : "Unlock access"}
-              </button>
-            </form>
-            <p className="mt-4 text-xs text-slate-500">
-              Retake code validation happens securely on the server in production.
-            </p>
-          </div>
-        </div>
-      ) : null}
+      {/* Retake Exam button (identique autres exams) */}
+      {(() => {
+        const ATTEMPT_KEY = 'abirai_examAttempts_ai-governance-responsible-ai-foundations';
+        if (typeof window === 'undefined') return null;
+        const attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
+        if (attempts === 0) {
+          return <button style={{marginTop: 24}} onClick={() => {
+            localStorage.setItem(ATTEMPT_KEY, '1');
+            window.location.href = "/certifications/ai-governance-responsible-ai-foundations/exam/start?retake=1";
+          }}>Retake Exam</button>;
+        }
+        return null;
+      })()}
     </main>
   );
 }

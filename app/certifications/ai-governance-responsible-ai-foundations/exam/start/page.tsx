@@ -342,13 +342,17 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
         // Bloquer le retour arrière (back navigation)
 
   const router = useRouter();
-  // Gestion identité utilisateur minimale (identique à AI Practitioner)
-  const [identityReady, setIdentityReady] = useState(false);
-  useEffect(() => {
-    // Toujours demander l'identité avant l'examen
-    setIdentityReady(false);
-  }, []);
-  const handleIdentityValidated = () => setIdentityReady(true);
+    // Gestion identité utilisateur minimale (harmonisée)
+    const [identityReady, setIdentityReady] = useState(false);
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        const locked = localStorage.getItem('abirai_fullNameLocked') === '1';
+        setIdentityReady(locked);
+      } else {
+        setIdentityReady(false);
+      }
+    }, []);
+    const handleIdentityValidated = () => setIdentityReady(true);
   // Bloquer le retour arrière (back navigation)
   useEffect(() => {
     const handlePopState = (e: PopStateEvent) => {
