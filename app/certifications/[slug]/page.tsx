@@ -609,7 +609,7 @@ export default async function CertificationPage({ params }: CertificationPagePro
                 className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md text-center"
               >
                 <div className="text-4xl mb-4">
-                  {idx === 0 ? '✅' : idx === 1 ? '🚀' : idx === 2 ? '💼' : idx === 3 ? '👥' : '🎯'}
+                  {idx === 0 ? '✅' : idx === 1 ? '🚀' : idx === 2 ? '💼' : idx === 3 ? '👥' : idx === 4 ? '🎯' : '📚'}
                 </div>
                 <p className="text-gray-900 dark:text-white font-medium">
                   {benefit}
@@ -645,7 +645,7 @@ export default async function CertificationPage({ params }: CertificationPagePro
                 <div className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
                   <div className="text-gray-700 dark:text-gray-300">
-                    <strong>50 multiple-choice questions</strong><br/>
+                    <strong>14 multiple-choice questions</strong><br/>
                     <span className="text-sm">Covering AI fundamentals, prompting, ethics, and practical application</span>
                   </div>
                 </div>

@@ -22,7 +22,7 @@ export default function Footer() {
             <p className="text-sm text-gray-600 dark:text-gray-300">
               Help people choose and use the best AI tools for their job in a simple, ethical, and accessible way.
               <br />
-              <strong>Trust statements:</strong> Privacy focused, No tracking, Accessibility friendly.
+              <strong>Privacy focused, No tracking, Accessibility friendly.</strong>
             </p>
           </div>
           <div>

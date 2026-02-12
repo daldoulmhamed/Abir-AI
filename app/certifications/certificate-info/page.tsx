@@ -37,14 +37,7 @@ function CertificateInfoPageInner() {
           Exemple d’URL valide :<br />
           <code>/certifications/certificate-info?mode=retake&certificationId=TEST123&userId=USER456</code>
           <br /><br />
-          <button
-            style={{marginTop:16,padding:'10px 22px',background:'#6366f1',color:'#fff',border:'none',borderRadius:6,fontSize:'1rem',cursor:'pointer'}}
-            onClick={() => {
-              window.location.href = '/certifications/certificate-info?mode=retake&certificationId=TEST123&userId=USER456';
-            }}
-          >
-            Accéder à un exemple de génération de code
-          </button>
+
         </div>
       </div>
     );

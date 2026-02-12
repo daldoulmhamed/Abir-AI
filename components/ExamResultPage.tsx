@@ -199,9 +199,7 @@ export default function ExamResultPage() {
           >
             Continue to Certificate Info
           </button>
-          <button className={styles.primaryBtn} style={{marginTop: 10}} onClick={handleRetake}>
-            Simulate Fail
-          </button>
+
         </div>
       ) : (
         <div className={styles.messageBlock}>
@@ -222,9 +220,7 @@ export default function ExamResultPage() {
               <strong>{retakeError}</strong>
             </div>
           )}
-          <button className={styles.primaryBtn} style={{marginTop: 10}} onClick={handleSuccess}>
-            Simulate Success
-          </button>
+
         </div>
       )}
     </div>

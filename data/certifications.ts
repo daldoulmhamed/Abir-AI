@@ -81,10 +81,11 @@ export const certifications: Certification[] = [
     ],
     benefits: [
       COMMON_BENEFITS.free,
-      'Learn GitHub Copilot best practices',
-      'Flexible self-paced learning',
-      'Optional certification for 79€',
-      'Credential recognized by tech companies'
+      COMMON_BENEFITS.selfPaced,
+      COMMON_BENEFITS.handson,
+      'Dual certification path: Exam or Project-based',
+      COMMON_BENEFITS.recognized,
+      'Lifetime access to course materials'
     ],
     icon: '🥈',
     color: 'from-purple-500 to-pink-500',
@@ -114,10 +115,11 @@ export const certifications: Certification[] = [
     ],
     benefits: [
       COMMON_BENEFITS.free,
-      'Real-world ROI frameworks and templates',
-      'Learn at your own schedule',
-      'Optional certification exam for 79€',
-      'Executive-level professional credential'
+      COMMON_BENEFITS.selfPaced,
+      COMMON_BENEFITS.handson,
+      'Dual certification path: Exam or Project-based',
+      COMMON_BENEFITS.recognized,
+      'Lifetime access to course materials'
     ],
     icon: '🥉',
     color: 'from-orange-500 to-red-500',
@@ -148,7 +150,9 @@ export const certifications: Certification[] = [
       COMMON_BENEFITS.free,
       COMMON_BENEFITS.selfPaced,
       COMMON_BENEFITS.handson,
-      COMMON_BENEFITS.recognized
+      'Dual certification path: Exam or Project-based',
+      COMMON_BENEFITS.recognized,
+      'Lifetime access to course materials'
     ],
     duration: '3 -8 weeks, self-paced',
     icon: '🟠',

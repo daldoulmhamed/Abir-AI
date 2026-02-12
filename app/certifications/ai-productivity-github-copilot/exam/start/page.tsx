@@ -537,13 +537,7 @@ export default function CopilotExamStartPage() {
   return (
     <>
       {/* Bouton de test pour afficher la popup */}
-      <button
-        type="button"
-        className="fixed top-8 right-8 z-50 px-4 py-2 rounded bg-green-600 text-white font-semibold hover:bg-green-700 shadow"
-        onClick={() => setShowTimeUp(true)}
-      >
-        Tester la popup
-      </button>
+
       {showTimeUp && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
           <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg p-8 max-w-sm w-full flex flex-col items-center">
