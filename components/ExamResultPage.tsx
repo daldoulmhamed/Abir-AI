@@ -188,7 +188,7 @@ export default function ExamResultPage() {
       {passed ? (
         <div className={styles.messageBlock}>
           <p className={styles.successMsg}>
-            🎉 Congratulations! You have successfully passed the exam.<br />
+            🎉 BRAVO! You have successfully passed the exam.<br />
             Your dedication and hard work paid off. You’re now certified—share your achievement and inspire others!
           </p>
           <button
