@@ -121,7 +121,8 @@ export default function GenerativeAIPractitionerExamPage() {
   const [retakeCode, setRetakeCode] = useState("");
   const [retakeError, setRetakeError] = useState<string | null>(null);
   const [isRetakeRedeeming, setIsRetakeRedeeming] = useState(false);
-  // Ajout du compteur de tentatives
+  // Gestion stricte des tentatives (2 max, reset avec retake)
+  const ATTEMPT_KEY = 'abirai_examAttempts_generative-ai-practitioner';
   const [attemptsLeft, setAttemptsLeft] = useState(2);
 
   const priceLabel = useMemo(
@@ -134,26 +135,17 @@ export default function GenerativeAIPractitionerExamPage() {
       const access = await checkExamAccess();
       setHasAccess(access);
       setIsChecking(false);
-      // Lecture du cookie attempts
-      if (typeof document !== "undefined") {
-        const match = document.cookie.match(/exam_attempts_generative-ai-practitioner=([0-9]+)/);
-        if (match) {
-          setAttemptsLeft(parseInt(match[1], 10));
-        } else {
-          setAttemptsLeft(2);
-        }
+      // Lecture du compteur de tentatives dans localStorage
+      if (typeof window !== "undefined") {
+        const attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
+        setAttemptsLeft(2 - attempts);
       }
     };
     runAccessCheck();
   }, [router]);
 
+  // Nouveau : Start Exam ouvre la modale d'accès (Pay/Voucher)
   const handleStartExam = () => {
-    if (hasAccess) {
-      router.push("/certifications/generative-ai-practitioner/exam/start");
-      return;
-    }
-
-    // No access → show access options.
     setIsAccessOpen(true);
   };
 
@@ -169,7 +161,7 @@ export default function GenerativeAIPractitionerExamPage() {
         // Réinitialise le compteur de tentatives
         setAttemptsLeft(2);
         if (typeof window !== "undefined") {
-          localStorage.setItem('abirai_examAttempts', '1');
+          localStorage.setItem(ATTEMPT_KEY, '0');
           try {
             const { clearIdentity } = await import("../../../../utils/userIdentity");
             clearIdentity();
@@ -196,6 +188,11 @@ export default function GenerativeAIPractitionerExamPage() {
     if (isValid) {
       setHasAccess(true);
       setIsRetakeOpen(false);
+      // Reset le compteur de tentatives pour permettre 2 nouvelles tentatives
+      if (typeof window !== "undefined") {
+        localStorage.setItem(ATTEMPT_KEY, '0');
+        setAttemptsLeft(2);
+      }
       router.push("/certifications/generative-ai-practitioner/exam/start");
     } else {
       setRetakeError("The retake code is invalid or expired.");
@@ -236,20 +233,6 @@ export default function GenerativeAIPractitionerExamPage() {
               <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
                 Validate your practical AI skills with a focused, fair assessment built around real-world tasks and responsible usage. Learning content is free; the exam is a paid credential.
               </p>
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
-                  <p className="text-xs uppercase tracking-wide text-slate-500">Duration</p>
-                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.duration}</p>
-                </div>
-                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
-                  <p className="text-xs uppercase tracking-wide text-slate-500">Format</p>
-                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.format}</p>
-                </div>
-                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
-                  <p className="text-xs uppercase tracking-wide text-slate-500">Passing Score</p>
-                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.passingScore}</p>
-                </div>
-              </div>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleStartExam}
@@ -426,9 +409,9 @@ export default function GenerativeAIPractitionerExamPage() {
           <div className="w-full max-w-lg rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-lg font-semibold">Get exam access</h3>
+                <h3 className="text-lg font-semibold">Exam access</h3>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                  Choose payment, use a voucher, or enter a retake code from a previous paid attempt. You receive one extra attempt if you don’t pass the first try.
+                  Please choose a method to unlock the exam. You will need to pay or use a voucher before accessing the test and identity form.
                 </p>
               </div>
               <button
@@ -443,7 +426,7 @@ export default function GenerativeAIPractitionerExamPage() {
             <div className="mt-6 space-y-3">
               <button
                 onClick={redirectToCheckout}
-                className="w-full rounded-md bg-slate-900 text-white px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+                className="w-full rounded-md bg-blue-600 text-white px-4 py-3 text-sm font-semibold hover:bg-blue-700 dark:bg-white dark:text-slate-900"
               >
                 Pay {priceLabel}
               </button>
@@ -458,7 +441,7 @@ export default function GenerativeAIPractitionerExamPage() {
               </button>
             </div>
             <p className="mt-4 text-xs text-slate-500">
-              One paid attempt unlocks one extra attempt if the first try is unsuccessful.
+              Payment unlocks two attempts and the identity form. Voucher unlocks the same access.
             </p>
           </div>
         </div>

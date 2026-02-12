@@ -158,13 +158,8 @@ export default function GenerativeAiBusinessOperationsExamPage() {
     runAccessCheck();
   }, [router]);
 
+  // Harmonisé : Start Exam ouvre toujours la modale d'accès (Pay/Voucher)
   const handleStartExam = () => {
-    if (hasAccess) {
-      router.push("/certifications/generative-ai-business-operations/exam/start");
-      return;
-    }
-
-    // No access → show access options.
     setIsAccessOpen(true);
   };
 

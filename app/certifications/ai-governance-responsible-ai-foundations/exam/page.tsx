@@ -142,15 +142,8 @@ export default function AiGovernanceResponsibleAiExamPage() {
   // Harmonisation logique accès/retake/voucher :
   const ATTEMPT_KEY = 'abirai_examAttempts_ai-governance-responsible-ai-foundations';
   const EXAM_STATE_KEY = 'examState-ai-governance-responsible-ai-foundations';
+  // Harmonisé : Start Exam ouvre toujours la modale d'accès (Pay/Voucher)
   const handleStartExam = () => {
-    if (hasAccess) {
-      // Si première tentative, reset le compteur
-      if (!localStorage.getItem(ATTEMPT_KEY)) {
-        localStorage.setItem(ATTEMPT_KEY, '0');
-      }
-      router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
-      return;
-    }
     setIsAccessOpen(true);
   };
 
