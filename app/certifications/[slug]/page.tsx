@@ -674,8 +674,8 @@ export default async function CertificationPage({ params }: CertificationPagePro
               
               <div className="bg-white dark:bg-gray-900 rounded-lg p-4 mb-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 dark:text-white">49€</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">One-time exam fee</div>
+                  <Link href="/certifications" className="text-3xl font-bold text-blue-600 dark:text-blue-400">See all certifications</Link>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Access the full list of certifications</div>
                 </div>
               </div>
               
@@ -727,8 +727,8 @@ export default async function CertificationPage({ params }: CertificationPagePro
               
               <div className="bg-white dark:bg-gray-900 rounded-lg p-4 mb-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 dark:text-white">49€</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">One-time assessment fee</div>
+                  <span className="text-3xl font-bold text-purple-600 dark:text-purple-400">Contact us</span>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">abir.ai.contact@gmail.com</div>
                 </div>
               </div>
               

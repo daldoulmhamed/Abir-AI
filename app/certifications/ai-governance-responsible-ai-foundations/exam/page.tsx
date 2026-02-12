@@ -14,8 +14,8 @@ const BADGE_MAP: Record<string, string> = {
 const EXAM_DETAILS = {
   name: "AI Governance & Responsible AI Foundations Exam",
   duration: "100 minutes",
-  format: "65 multiple-choice questions",
-  passingScore: "72%",
+  format: "14 multiple-choice questions",
+  passingScore: "70%",
   price: 99,
   currency: "€",
   includes: [
@@ -57,10 +57,7 @@ const ACCESS_STEPS = [
     title: "Use a voucher",
     description: "Enter a valid voucher code to unlock access without payment."
   },
-  {
-    title: "Use a retake code",
-    description: "Enter the retake code from your first paid attempt to unlock one extra try."
-  }
+  // Retake code step supprimé
 ];
 
 const TRUST_POINTS = [

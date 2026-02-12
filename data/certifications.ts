@@ -150,7 +150,7 @@ export const certifications: Certification[] = [
       COMMON_BENEFITS.handson,
       COMMON_BENEFITS.recognized
     ],
-    duration: '3 weeks',
+    duration: '3 -8 weeks, self-paced',
     icon: '🟠',
     color: 'from-green-500 to-emerald-500',
     featured: true,

@@ -14,7 +14,7 @@ const BADGE_MAP: Record<string, string> = {
 const EXAM_DETAILS = {
   name: "Generative AI Practitioner Exam",
   duration: "90 minutes",
-  format: "60 multiple-choice questions",
+  format: "14 multiple-choice questions",
   passingScore: "70%",
   price: 49,
   currency: "€",
@@ -57,10 +57,7 @@ const ACCESS_STEPS = [
     title: "Use a voucher",
     description: "Enter a valid voucher code to unlock access without payment."
   },
-  {
-    title: "Use a retake code",
-    description: "Enter the retake code from your first paid attempt to unlock one extra try."
-  }
+  // Retake code step supprimé
 ];
 
 const TRUST_POINTS = [
@@ -233,6 +230,21 @@ export default function GenerativeAIPractitionerExamPage() {
               <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
                 Validate your practical AI skills with a focused, fair assessment built around real-world tasks and responsible usage. Learning content is free; the exam is a paid credential.
               </p>
+              {/* Section Duration, Format, Passing Score */}
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Duration</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.duration}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Format</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.format}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/70 p-4">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Passing Score</p>
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-white">{EXAM_DETAILS.passingScore}</p>
+                </div>
+              </div>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleStartExam}
