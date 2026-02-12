@@ -311,11 +311,11 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
   const [part2Scenarios, setPart2Scenarios] = useState<typeof RAW_PART2_SCENARIOS>([]);
   useEffect(() => {
     // Bloque copier/coller et clic droit
-    const preventCopy = (e) => {
+      const preventCopy = (e: Event) => {
       e.preventDefault();
       alert("Warning: Attempting to copy or cheat may result in loss of credit in your final score.");
     };
-    const warnOnCtrl = (e) => {
+    const warnOnCtrl = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey) {
         alert("Warning: Attempting to copy or cheat may result in loss of credit in your final score.");
       }
