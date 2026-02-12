@@ -154,9 +154,10 @@ export default function AiGovernanceResponsibleAiExamPage() {
     try {
       const result = await validateVoucherCode(voucherCode);
       if (result.success) {
-        // Reset le compteur et l'état d'examen à chaque voucher
+        // Reset le compteur, l'état d'examen et l'identité à chaque voucher
         localStorage.setItem(ATTEMPT_KEY, '0');
         localStorage.removeItem(EXAM_STATE_KEY);
+        localStorage.removeItem('abirai_fullNameLocked'); // Suppression identité
         setHasAccess(true);
         setIsVoucherOpen(false);
         router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");

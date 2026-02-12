@@ -1,9 +1,10 @@
 "use client";
 import { useMemo, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 const UserIdentityForm = dynamic(() => import("../../../../../components/UserIdentityForm"), { ssr: false });
 import { getUserId, getFullName, isFullNameLocked } from "../../../../../utils/userIdentity";
-import { useRouter } from "next/navigation";
+import { AnswerIcon } from "./ExamAnswerIcons";
 // ...existing code...
 
 const EXAM_OVERVIEW = {
@@ -619,6 +620,8 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
                 {q.options.map((opt) => {
                   const selected = part1Answers[q.id] ?? [];
                   const isChecked = selected.includes(opt.id);
+                  const showCorrection = submitted[q.id];
+                  const isCorrect = q.correctAnswers.includes(opt.id);
                   return (
                     <label key={opt.id} className="flex items-start gap-3 rounded-md border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 px-3 py-2 cursor-pointer no-select text-lg">
                       <input
@@ -633,8 +636,9 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
                         className="mt-1"
                         disabled={submitted[q.id]}
                       />
-                      <span className="no-select">
+                      <span className="no-select flex items-center">
                         {opt.text}
+                        <AnswerIcon correct={isCorrect} selected={isChecked} show={showCorrection} />
                       </span>
                     </label>
                   );
@@ -653,8 +657,7 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
               </div>
               {submitted[q.id] ? (
                 <div className="mt-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 p-4 text-sm">
-                  <p className="font-semibold text-slate-700 dark:text-slate-200">Correct answer(s): {q.correctAnswers.join(", ")}</p>
-                  <p className="mt-2 text-slate-600 dark:text-slate-300">{q.explanation}</p>
+                  <p className="mt-2 font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/30 rounded px-3 py-2 border border-blue-200 dark:border-blue-700 shadow-sm">{q.explanation}</p>
                 </div>
               ) : null}
             </div>
@@ -676,6 +679,8 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
                   {s.actions.map((action) => {
                     const selected = part2Answers[s.id] ?? [];
                     const isChecked = selected.includes(action.id);
+                    const showCorrection = submitted[s.id];
+                    const isCorrect = s.correctAnswer === action.id;
                     return (
                       <label key={action.id} className="flex items-start gap-3 rounded-md border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/50 px-3 py-2 cursor-pointer text-lg">
                         <input
@@ -686,8 +691,9 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
                           className="mt-1"
                           disabled={submitted[s.id]}
                         />
-                        <span>
+                        <span className="flex items-center">
                           {action.text}
+                          <AnswerIcon correct={isCorrect} selected={isChecked} show={showCorrection} />
                         </span>
                       </label>
                     );
@@ -706,8 +712,7 @@ export default function AIGovernanceResponsibleFoundationsExamStartPage() {
                 </div>
                 {submitted[s.id] ? (
                   <div className="mt-4 rounded-xl bg-white dark:bg-slate-900 p-4 text-sm">
-                    <p className="font-semibold text-slate-700 dark:text-slate-200">Correct answer: {s.correctAnswer}</p>
-                    <p className="mt-2 text-slate-600 dark:text-slate-300">{s.explanation}</p>
+                    <p className="mt-2 font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/30 rounded px-3 py-2 border border-blue-200 dark:border-blue-700 shadow-sm">{s.explanation}</p>
                   </div>
                 ) : null}
               </div>
