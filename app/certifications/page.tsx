@@ -287,6 +287,29 @@ export default function CertificationsPage() {
                 </div>
               </Link>
             ))}
+          {/* Unique button for credibility page */}
+          <div className="col-span-1 md:col-span-2 flex justify-center mt-8">
+            <Link href="/credibility">
+              <button
+                type="button"
+                style={{
+                  background: "linear-gradient(90deg, #6366f1 0%, #a21caf 100%)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 8,
+                  padding: "14px 32px",
+                  fontWeight: 700,
+                  fontSize: "1.15rem",
+                  cursor: "pointer",
+                  boxShadow: "0 2px 12px rgba(99,102,241,0.18)",
+                  letterSpacing: "0.01em"
+                }}
+                aria-label="Learn about certification credibility"
+              >
+                Why Trust Our Certification? (Transparency & Credibility)
+              </button>
+            </Link>
+          </div>
           </div>
         </div>
       </section>
