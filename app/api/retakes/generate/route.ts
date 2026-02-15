@@ -2,6 +2,7 @@
 import { randomUUID } from "crypto";
 import { promises as fs } from "fs";
 import path from "path";
+import { sendMail } from '@/utils/email';
 
 // MVP persistence: utilise un fichier JSON pour stocker les retake tokens
 const RETAKES_PATH = path.resolve(process.cwd(), "data/retakes.json");
@@ -15,7 +16,7 @@ const normalizeName = (value?: string) =>
 export async function POST(request: Request) {
   // Parse le corps de la requête
   const body = (await request.json().catch(() => null)) as
-    | { examId?: string; fullName?: string }
+    | { examId?: string; fullName?: string; email?: string }
     | null;
 
   // Validation des champs requis
@@ -46,6 +47,16 @@ export async function POST(request: Request) {
       (!body.examId || r.examId === body.examId)
   );
   if (existingAny) {
+    // Email automatique même si le token existe déjà (pour resend)
+    if (body.email) {
+      try {
+        await sendMail({
+          to: body.email,
+          subject: `Abir-AI: Retake code request` ,
+          html: `<p>Hello <b>${body.fullName}</b>,<br>Your retake code: <b>${existingAny.tokenId}</b>.<br>Don't give up! Review the material and try again. You can do it!</p>`,
+        });
+      } catch (err) {}
+    }
     return Response.json({
       success: false,
       message: "A retake token already exists for this name (and exam if specified).",
@@ -68,6 +79,16 @@ export async function POST(request: Request) {
   // Écrit le fichier JSON (MVP, pas de gestion de concurrence)
   await fs.writeFile(RETAKES_PATH, JSON.stringify(retakes, null, 2), "utf-8");
 
+  // Envoi email automatique après échec (retake)
+  if (body.email) {
+    try {
+      await sendMail({
+        to: body.email,
+        subject: `Abir-AI: Retake code request` ,
+        html: `<p>Hello <b>${body.fullName}</b>,<br>Your retake code: <b>${tokenId}</b>.<br>Don't give up! Review the material and try again. You can do it!</p>`,
+      });
+    } catch (err) {}
+  }
   return Response.json({
     success: true,
     tokenId,

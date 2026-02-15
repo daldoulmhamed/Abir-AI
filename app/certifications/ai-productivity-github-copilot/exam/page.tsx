@@ -374,7 +374,25 @@ function AiProductivityCopilotExamPageInner() {
             </div>
             <div className="mt-6 space-y-3">
               <button
-                onClick={() => {/* Stripe checkout à implémenter */}}
+                onClick={async () => {
+                  // Stripe checkout
+                  const userId = localStorage.getItem('abirai_userId');
+                  const res = await fetch('/api/stripe/create-checkout-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      examId: CERTIFICATION_ID,
+                      priceId: 'price_1T0w7kIxX8ZlSW7LMcoh6bBv', // AI Productivity & GitHub Copilot
+                      userId,
+                    }),
+                  });
+                  const data = await res.json();
+                  if (data.url) {
+                    window.location.href = data.url;
+                  } else {
+                    alert('Payment error: ' + (data.error || 'Unknown error'));
+                  }
+                }}
                 className="w-full rounded-md bg-slate-900 text-white px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900"
               >
                 Pay {priceLabel}
