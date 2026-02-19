@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
         await sendMail({
           to: email,
           subject: `Your Abir-AI Certificate: ${certificationTitle}`,
-          html: `<p>Congratulations, <b>${fullName}</b>!<br>Your certificate is attached.<br>Verification link: <a href="${verificationUrl}">${verificationUrl}</a></p>`,
+          html: `<p>Congratulations, <b>${fullName}</b>!<br>Your certificate is attached.<br>You can verify your achievement here: <a href="${verificationUrl}">${verificationUrl}</a>.<br><br>Keep learning and growing with our <a href="https://abir-ai.com/learn">learning paths</a>!</p>`,
           attachments: pdfBuffer ? [{ filename: `certificate-${certificateSerial}.pdf`, content: pdfBuffer }] : [],
         });
       } catch (err) {}

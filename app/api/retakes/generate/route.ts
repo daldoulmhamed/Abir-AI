@@ -47,20 +47,9 @@ export async function POST(request: Request) {
       (!body.examId || r.examId === body.examId)
   );
   if (existingAny) {
-    // Email automatique même si le token existe déjà (pour resend)
-    if (body.email) {
-      try {
-        await sendMail({
-          to: body.email,
-          subject: `Abir-AI: Retake code request` ,
-          html: `<p>Hello <b>${body.fullName}</b>,<br>Your retake code: <b>${existingAny.tokenId}</b>.<br>Don't give up! Review the material and try again. You can do it!</p>`,
-        });
-      } catch (err) {}
-    }
     return Response.json({
       success: false,
       message: "A retake token already exists for this name (and exam if specified).",
-      tokenId: existingAny.tokenId,
       status: existingAny.status
     });
   }
@@ -79,19 +68,19 @@ export async function POST(request: Request) {
   // Écrit le fichier JSON (MVP, pas de gestion de concurrence)
   await fs.writeFile(RETAKES_PATH, JSON.stringify(retakes, null, 2), "utf-8");
 
-  // Envoi email automatique après échec (retake)
+  // Envoi d'un email d'encouragement avec lien vers les learning paths (sans code retake)
   if (body.email) {
     try {
       await sendMail({
         to: body.email,
-        subject: `Abir-AI: Retake code request` ,
-        html: `<p>Hello <b>${body.fullName}</b>,<br>Your retake code: <b>${tokenId}</b>.<br>Don't give up! Review the material and try again. You can do it!</p>`,
+        subject: `Abir-AI: Keep going!`,
+        html: `<p>Bonjour <b>${body.fullName}</b>,<br>Ne baissez pas les bras ! Vous avez une seconde chance pour réussir votre certification.<br>Pour vous aider, découvrez nos <a href="https://abir-ai.com/learn">learning paths</a> et ressources.<br>Bonne chance !</p>`,
       });
     } catch (err) {}
   }
   return Response.json({
     success: true,
     tokenId,
-    message: "Retake token generated."
+    message: "Encouragement email sent."
   });
 }

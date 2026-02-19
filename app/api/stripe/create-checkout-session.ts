@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/certifications/exam-result?examId=${examId}`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/verify-info?examId=${examId}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/certifications/${examId}`,
       metadata: {
         userId,
