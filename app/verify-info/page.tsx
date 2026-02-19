@@ -2,9 +2,11 @@
 import { useEffect } from "react";
 import { setFullName, setEmail } from "../../utils/userIdentity";
 import UserIdentityForm from "../../components/UserIdentityForm";
+import { useRouter, useSearchParams } from "next/navigation";
+
 export default function VerifyInfoPage() {
-  const router = typeof window !== "undefined" ? require("next/router").useRouter() : null;
-  const searchParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+  const router = useRouter();
+  const searchParams = useSearchParams();
   useEffect(() => {
     if (searchParams) {
       const name = searchParams.get("name");
@@ -12,12 +14,12 @@ export default function VerifyInfoPage() {
       if (name) setFullName(name);
       if (email) setEmail(email);
     }
-  }, []);
+  }, [searchParams]);
   // Fonction de validation pour rediriger vers l'exam
   const handleValidated = (_userId: string, _fullName: string, _email?: string) => {
     if (searchParams) {
       const examId = searchParams.get("examId");
-      if (examId && router) {
+      if (examId) {
         router.push(`/certifications/exam-result?examId=${examId}`);
       }
     }
