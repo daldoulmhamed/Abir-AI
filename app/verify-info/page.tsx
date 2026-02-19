@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import UserIdentityForm from "../../components/UserIdentityForm";
-import { useRouter } from "next/router";
-import { useSearchParams } from "next/navigation";
+"use client";
+import { useEffect } from "react";
 import { setFullName, setEmail } from "../../utils/userIdentity";
-
+import UserIdentityForm from "../../components/UserIdentityForm";
+export default function VerifyInfoPage() {
   const router = typeof window !== "undefined" ? require("next/router").useRouter() : null;
   const searchParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
   useEffect(() => {
