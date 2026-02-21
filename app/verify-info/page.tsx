@@ -1,4 +1,5 @@
 "use client";
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
 import { useEffect } from "react";
 import { setFullName, setEmail } from "../../utils/userIdentity";
