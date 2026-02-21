@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 import { useEffect } from "react";
 import { setFullName, setEmail } from "../../utils/userIdentity";
 import UserIdentityForm from "../../components/UserIdentityForm";
