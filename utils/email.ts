@@ -1,12 +1,13 @@
+
 import nodemailer from 'nodemailer';
 
 export const transporter = nodemailer.createTransport({
-  host: 'smtp.mailerlite.com', // à adapter selon MailerLite
-  port: 587,
-  secure: false, // true pour 465, false pour autres ports
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: 'abir.ai.contact@gmail.com',
-    pass: process.env.MAILERLITE_SMTP_PASSWORD,
+    pass: process.env.GMAIL_APP_PASSWORD,
   },
 });
 

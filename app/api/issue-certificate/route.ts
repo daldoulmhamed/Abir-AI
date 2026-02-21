@@ -22,27 +22,21 @@ export async function POST(req: NextRequest) {
       qrCodeDataUrl = undefined;
     }
     const date = issueDate || new Date().toISOString().slice(0, 10);
-    // Ajout du certificat dans certificateVerificationData.ts
+    // Ajout du certificat dans Supabase
     try {
-      const fs = require('fs');
-      const path = require('path');
-      const CERT_DATA_FILE = path.resolve(process.cwd(), 'data/certificateVerificationData.ts');
-      let content = fs.readFileSync(CERT_DATA_FILE, 'utf-8');
-      const newCert = `{
-        status: "Valid",
-        fullName: "${fullName.replace(/"/g, '\"')}",
-        certificationTitle: "${certificationTitle.replace(/"/g, '\"')}",
-        issueDate: "${date}",
-        certificateSerial: "${certificateSerial}",
-        verificationUrl: "${verificationUrl}",
-        qrCodeDataUrl: ${qrCodeDataUrl ? `"${qrCodeDataUrl}"` : 'undefined'},
-      }`;
-      content = content.replace(/(export const certificates: Certificate\[] = \[)([^]*?)(\];)/, (match: string, p1: string, p2: string, p3: string) => {
-        const trimmed = p2.trim();
-        const needsComma = trimmed && !trimmed.endsWith(',') ? ',' : '';
-        return `${p1}${p2}${needsComma}\n  ${newCert}\n${p3}`;
-      });
-      fs.writeFileSync(CERT_DATA_FILE, content);
+      const { createClient } = require('@supabase/supabase-js');
+      const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+      await supabase.from('certificates').insert([
+        {
+          status: 'Valid',
+          fullName,
+          certificationTitle,
+          issueDate: date,
+          certificateSerial,
+          verificationUrl,
+          qrCodeDataUrl,
+        }
+      ]);
     } catch (err) {}
 
     // Génération du PDF (appel API interne)

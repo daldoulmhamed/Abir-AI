@@ -27,46 +27,33 @@ export async function POST(request: Request) {
     );
   }
 
-  // Lecture du fichier JSON (MVP, pas de cache mémoire)
-  let retakes: any[] = [];
-  try {
-    const file = await fs.readFile(RETAKES_PATH, "utf-8");
-    retakes = JSON.parse(file);
-  } catch (e) {
-    // Si le fichier n'existe pas, on part d'un tableau vide
-    retakes = [];
-  }
-
-
+  // Ajout du retake token dans Supabase
+  const { createClient } = require('@supabase/supabase-js');
+  const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
   const normalizedFullName = normalizeName(body.fullName);
-
-  // Vérifie s'il existe déjà un token pour ce nom (et examId si fourni), qu'il soit utilisé ou non
-  const existingAny = retakes.find(
-    (r) =>
-      normalizeName(r.fullName) === normalizedFullName &&
-      (!body.examId || r.examId === body.examId)
-  );
-  if (existingAny) {
+  // Vérifie s'il existe déjà un token pour ce nom (et examId si fourni)
+  const { data: existingAny, error: existingError } = await supabase
+    .from('retake_tokens')
+    .select('*')
+    .eq('fullName', normalizedFullName)
+    .eq('examId', body.examId || null);
+  if (existingAny && existingAny.length > 0) {
     return Response.json({
       success: false,
       message: "A retake token already exists for this name (and exam if specified).",
-      status: existingAny.status
+      status: existingAny[0].status
     });
   }
-
   // Génère un nouveau token
   const tokenId = `RETAKE-${randomUUID().slice(0, 8).toUpperCase()}`;
   const newToken = {
     tokenId,
     examId: body.examId || null,
-    fullName: body.fullName,
+    fullName: normalizedFullName,
     status: "unused",
     createdAt: new Date().toISOString()
   };
-  retakes.push(newToken);
-
-  // Écrit le fichier JSON (MVP, pas de gestion de concurrence)
-  await fs.writeFile(RETAKES_PATH, JSON.stringify(retakes, null, 2), "utf-8");
+  await supabase.from('retake_tokens').insert([newToken]);
 
   // Envoi d'un email d'encouragement avec lien vers les learning paths (sans code retake)
   if (body.email) {
