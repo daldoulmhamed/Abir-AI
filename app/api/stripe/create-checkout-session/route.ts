@@ -7,10 +7,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2026-01-28.clover',
 });
 
-export async function POST(req: NextRequest) {
   const { examId, priceId, userId } = await req.json();
 
-  if (!examId || !priceId || !userId) {
+  if (!examId || !priceId) {
     return NextResponse.json(
       { error: 'Missing parameters' },
       { status: 400 }
@@ -24,7 +23,7 @@ export async function POST(req: NextRequest) {
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/verify-info?examId=${examId}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/certifications/${examId}`,
-      metadata: { userId, examId },
+      metadata: { userId: userId || '', examId },
     });
 
     return NextResponse.json({ url: session.url });

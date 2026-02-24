@@ -28,7 +28,31 @@ export async function POST(req: NextRequest) {
   }
 
   if (event.type === 'checkout.session.completed') {
-    console.log('Payment confirmed');
+    const session = event.data.object as Stripe.Checkout.Session;
+    let userId = session.metadata?.userId;
+    const examId = session.metadata?.examId;
+    const email = session.customer_details?.email || session.customer_email;
+
+    // Si userId absent, créer un nouvel utilisateur
+    if (!userId && email) {
+      // Exemple : création d'un utilisateur dans Supabase
+      const { data, error } = await supabase
+        .from('users')
+        .insert([{ email }])
+        .select();
+      if (data && data.length > 0) {
+        userId = data[0].id;
+      }
+    }
+
+    // Associer l'achat à l'utilisateur
+    if (userId && examId) {
+      await supabase.from('exam_access').insert([
+        { user_id: userId, exam_id: examId }
+      ]);
+    }
+
+    console.log('Payment confirmed', { userId, examId, email });
   }
 
   return NextResponse.json({ received: true });
