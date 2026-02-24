@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const BADGE_MAP: Record<string, string> = {
   "ai-productivity-github-copilot": "/images/ai-productivity-github-copilot.png",
@@ -68,14 +68,6 @@ const TRUST_POINTS = [
 ];
 
 const ATTEMPT_KEY = 'abirai_examAttempts_ai-productivity-github-copilot';
-const [attemptsLeft, setAttemptsLeft] = useState(2);
-
-useEffect(() => {
-  if (typeof window !== "undefined") {
-    const attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
-    setAttemptsLeft(2 - attempts);
-  }
-}, []);
 
 import { Suspense } from "react";
 
@@ -83,7 +75,6 @@ function AiProductivityCopilotExamPageInner() {
   const badgeUrl = BADGE_MAP["ai-productivity-github-copilot"];
   const router = useRouter();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
-  const [attemptsLeft, setAttemptsLeft] = useState(2);
   const [isChecking, setIsChecking] = useState(true);
   const [isAccessOpen, setIsAccessOpen] = useState(false);
   const [isVoucherOpen, setIsVoucherOpen] = useState(false);

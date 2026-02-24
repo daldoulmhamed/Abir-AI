@@ -124,8 +124,6 @@ export default function AiGovernanceResponsibleAiExamPage() {
     []
   );
 
-  const EXAM_STATE_KEY = 'examState-ai-governance-responsible-ai-foundations';
-
   useEffect(() => {
     const runAccessCheck = async () => {
       // Placeholder access check. Replace with a real API call.
@@ -138,24 +136,12 @@ export default function AiGovernanceResponsibleAiExamPage() {
     runAccessCheck();
   }, [router]);
 
-  // Gestion stricte des tentatives (2 max, reset avec retake)
+  // Harmonisation logique accès/retake/voucher :
   const ATTEMPT_KEY = 'abirai_examAttempts_ai-governance-responsible-ai-foundations';
-  const [attemptsLeft, setAttemptsLeft] = useState(2);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
-      setAttemptsLeft(2 - attempts);
-    }
-  }, []);
-
-  // Lors de l'accès (paiement/voucher/retake), réinitialise à 0
-  const handleAccessGranted = () => {
-    setHasAccess(true);
-    if (typeof window !== "undefined") {
-      localStorage.setItem(ATTEMPT_KEY, '0');
-      setAttemptsLeft(2);
-    }
+  const EXAM_STATE_KEY = 'examState-ai-governance-responsible-ai-foundations';
+  // Harmonisé : Start Exam ouvre toujours la modale d'accès (Pay/Voucher)
+  const handleStartExam = () => {
+    setIsAccessOpen(true);
   };
 
   const handleVoucherSubmit = async (event: FormEvent) => {
@@ -192,11 +178,6 @@ export default function AiGovernanceResponsibleAiExamPage() {
 
   const handleIdentityValidated = () => {
     router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
-  };
-
-  // Ajoute la fonction handleStartExam pour ouvrir la modale d'accès
-  const handleStartExam = () => {
-    setIsAccessOpen(true);
   };
 
   return (

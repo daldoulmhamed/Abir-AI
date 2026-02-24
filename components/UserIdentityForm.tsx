@@ -31,7 +31,6 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
   };
 
   if (locked) {
-    // Affichage supprimé : ne montre plus l'identité verrouillée
     return null;
   }
 
