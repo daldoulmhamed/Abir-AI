@@ -200,6 +200,10 @@ export default function GenerativeAiBusinessOperationsExamPage() {
     }
   };
 
+  const handleIdentityValidated = () => {
+    router.push("/certifications/generative-ai-business-operations/exam/start");
+  };
+
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
       {/* Hero */}

@@ -200,6 +200,7 @@ export default function GenerativeAIPractitionerExamPage() {
   const [identityValidated, setIdentityValidated] = useState(false);
   const handleIdentityValidated = () => {
     setIdentityValidated(true);
+    router.push("/certifications/generative-ai-practitioner/exam/start");
   };
 
   return (

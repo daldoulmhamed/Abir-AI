@@ -155,6 +155,10 @@ function AiProductivityCopilotExamPageInner() {
     }
   };
 
+  const handleIdentityValidated = () => {
+    router.push("/certifications/ai-productivity-github-copilot/exam/start");
+  };
+
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
       {/* Hero section */}

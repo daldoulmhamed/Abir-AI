@@ -176,6 +176,10 @@ export default function AiGovernanceResponsibleAiExamPage() {
     setIsRetakeRedeeming(false);
   };
 
+  const handleIdentityValidated = () => {
+    router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
+  };
+
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
       {/* Hero */}
