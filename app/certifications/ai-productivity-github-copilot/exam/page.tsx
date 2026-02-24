@@ -1,9 +1,9 @@
 "use client";
 
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const BADGE_MAP: Record<string, string> = {
   "ai-productivity-github-copilot": "/images/ai-productivity-github-copilot.png",
