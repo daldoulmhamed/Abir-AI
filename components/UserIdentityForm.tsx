@@ -45,27 +45,29 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
       <h2 className={styles.title}>Identity Confirmation</h2>
       <p className={styles.explanation}>Please confirm your full name (required) and email (optional). Your name will be locked after validation to ensure certificate security.</p>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label className={styles.label}>
-          Full Name <span className={styles.required}>*</span>
-          <input
-            type="text"
-            value={fullName}
-            onChange={e => setFullNameState(e.target.value)}
-            required
-            className={styles.input}
-            autoComplete="name"
-          />
-        </label>
-        <label className={styles.label}>
-          Email (optional)
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmailState(e.target.value)}
-            className={styles.input}
-            autoComplete="email"
-          />
-        </label>
+        <div className={styles.formRow}>
+          <label className={styles.label}>
+            Full Name <span className={styles.required}>*</span>
+            <input
+              type="text"
+              value={fullName}
+              onChange={e => setFullNameState(e.target.value)}
+              required
+              className={styles.input}
+              autoComplete="name"
+            />
+          </label>
+          <label className={styles.label}>
+            Email (optional)
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmailState(e.target.value)}
+              className={styles.input}
+              autoComplete="email"
+            />
+          </label>
+        </div>
         <button type="submit" className={styles.button}>Confirm Identity</button>
       </form>
     </div>
