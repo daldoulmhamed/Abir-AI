@@ -124,38 +124,26 @@ export default function GenerativeAiBusinessOperationsExamPage() {
     []
   );
 
-  // Ajout : clé de compteur unique
+  // Gestion stricte des tentatives (2 max, reset avec retake)
   const ATTEMPT_KEY = 'abirai_examAttempts_generative-ai-business-operations';
-  // Pour compatibilité avec les autres examens : lecture du cookie attempts
-  function getAttemptsLeft() {
-    if (typeof document !== 'undefined') {
-      const match = document.cookie.match(/exam_attempts_generative-ai-business-operations=([0-9]+)/);
-      if (match) return parseInt(match[1], 10);
-    }
-    // fallback localStorage (pour compatibilité)
-    return parseInt(localStorage.getItem(ATTEMPT_KEY) || '2', 10);
-  }
-
-  function setAttemptsLeft(n: number) {
-    if (typeof document !== 'undefined') {
-      document.cookie = `exam_attempts_generative-ai-business-operations=${n}; path=/; max-age=2592000`;
-    }
-    localStorage.setItem(ATTEMPT_KEY, String(n));
-  }
+  const [attemptsLeft, setAttemptsLeft] = useState(2);
 
   useEffect(() => {
-    const runAccessCheck = async () => {
-      // Placeholder access check. Replace with a real API call.
-      const access = await checkExamAccess();
-      setHasAccess(access);
-      setIsChecking(false);
-      // Ne pas rediriger automatiquement, laisser l'utilisateur choisir paiement/voucher/retake
-    };
+    if (typeof window !== "undefined") {
+      const attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
+      setAttemptsLeft(2 - attempts);
+    }
+  }, []);
 
-    runAccessCheck();
-  }, [router]);
+  // Lors de l'accès (paiement/voucher/retake), réinitialise à 0
+  const handleAccessGranted = () => {
+    setHasAccess(true);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(ATTEMPT_KEY, '0');
+      setAttemptsLeft(2);
+    }
+  };
 
-  // Harmonisé : Start Exam ouvre toujours la modale d'accès (Pay/Voucher)
   const handleStartExam = () => {
     setIsAccessOpen(true);
   };
@@ -191,13 +179,9 @@ export default function GenerativeAiBusinessOperationsExamPage() {
   };
 
   const handleRetake = () => {
-    let attempts = getAttemptsLeft();
-    if (attempts > 1) {
-      setAttemptsLeft(attempts - 1);
-      window.location.href = "/certifications/generative-ai-business-operations/exam/start?retake=1";
-    } else {
-      alert("No retake attempts remaining");
-    }
+    let attempts = parseInt(localStorage.getItem(ATTEMPT_KEY) || '0', 10);
+    setAttemptsLeft(2 - attempts);
+    window.location.href = "/certifications/generative-ai-business-operations/exam/start?retake=1";
   };
 
   const handleIdentityValidated = () => {
