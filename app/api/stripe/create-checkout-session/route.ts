@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
+  // examId = slug de la certification
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
