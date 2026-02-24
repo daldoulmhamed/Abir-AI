@@ -164,7 +164,6 @@ export default function GenerativeAIPractitionerExamPage() {
             clearIdentity();
           } catch {}
         }
-        router.push("/certifications/generative-ai-practitioner/exam/start");
       } else {
         setVoucherError(result.message);
       }
@@ -190,12 +189,15 @@ export default function GenerativeAIPractitionerExamPage() {
         localStorage.setItem(ATTEMPT_KEY, '0');
         setAttemptsLeft(2);
       }
-      router.push("/certifications/generative-ai-practitioner/exam/start");
     } else {
       setRetakeError("The retake code is invalid or expired.");
     }
 
     setIsRetakeRedeeming(false);
+  };
+
+  const handleIdentityValidated = () => {
+    router.push("/certifications/generative-ai-practitioner/exam/start");
   };
 
   return (
