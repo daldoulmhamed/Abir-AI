@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import UserIdentityForm from "@/components/UserIdentityForm";
 
 const BADGE_MAP: Record<string, string> = {
   "ai-productivity-github-copilot": "/images/ai-productivity-github-copilot.png",
@@ -196,8 +197,9 @@ export default function GenerativeAIPractitionerExamPage() {
     setIsRetakeRedeeming(false);
   };
 
+  const [identityValidated, setIdentityValidated] = useState(false);
   const handleIdentityValidated = () => {
-    router.push("/certifications/generative-ai-practitioner/exam/start");
+    setIdentityValidated(true);
   };
 
   return (
@@ -477,6 +479,16 @@ export default function GenerativeAIPractitionerExamPage() {
           </div>
         </div>
       ) : null}
+
+      {/* Formulaire d'identité après accès */}
+      {hasAccess && !identityValidated && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
+            <h3 className="text-lg font-semibold mb-4">Validation d'identité</h3>
+            <UserIdentityForm onValidated={handleIdentityValidated} />
+          </div>
+        </div>
+      )}
 
       {/* Voucher modal placeholder */}
       {isVoucherOpen ? (
