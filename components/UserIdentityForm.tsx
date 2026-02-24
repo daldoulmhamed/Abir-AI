@@ -31,13 +31,8 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
   };
 
   if (locked) {
-    return (
-      <div className={styles.locked}>
-        <p><strong>Full Name:</strong> {fullName}</p>
-        {email && <p className="email"><strong>Email:</strong> {email}</p>}
-        <p className="info">Your identity is locked to protect your certificates and prevent abuse.</p>
-      </div>
-    );
+    // Affichage supprimé : ne montre plus l'identité verrouillée
+    return null;
   }
 
   return (
