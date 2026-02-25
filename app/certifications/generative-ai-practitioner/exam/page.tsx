@@ -481,7 +481,7 @@ export default function GenerativeAIPractitionerExamPage() {
         </div>
       ) : null}
 
-      {/* Formulaire d'identité après accès */}
+      {/* Formulaire d'identité uniquement après accès (paiement ou voucher) */}
       {hasAccess && !identityValidated && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
           <div className="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
