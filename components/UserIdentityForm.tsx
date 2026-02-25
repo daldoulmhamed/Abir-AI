@@ -9,15 +9,11 @@ interface UserIdentityFormProps {
 const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
   const [fullName, setFullNameState] = useState('');
   const [email, setEmailState] = useState('');
-  const [locked, setLocked] = useState(false);
 
   useEffect(() => {
     const name = getFullName() || '';
     setFullNameState(name);
     setEmailState(getEmail() || '');
-    // Si nom spécial, jamais verrouillé
-    const specialNames = ['dal admin abir'];
-    setLocked(isFullNameLocked() && !specialNames.includes(name.toLowerCase()));
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -25,19 +21,13 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
     if (!fullName.trim()) return;
     setFullName(fullName);
     setEmail(email);
-    lockFullName();
-    setLocked(true);
     if (onValidated) onValidated(getUserId(), fullName, email);
   };
-
-  if (locked) {
-    return null;
-  }
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Identity Confirmation</h2>
-      <p className={styles.explanation}>Please confirm your full name (required) and email (optional). Your name will be locked after validation to ensure certificate security.</p>
+      <p className={styles.explanation}>Please confirm your full name (required) and email (optional).</p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.formRow}>
           <label className={styles.label}>
