@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import UserIdentityForm from "@/components/UserIdentityForm";
 
 const BADGE_MAP: Record<string, string> = {
   "ai-productivity-github-copilot": "/images/ai-productivity-github-copilot.png",
@@ -118,6 +119,7 @@ export default function AiGovernanceResponsibleAiExamPage() {
   const [retakeCode, setRetakeCode] = useState("");
   const [retakeError, setRetakeError] = useState<string | null>(null);
   const [isRetakeRedeeming, setIsRetakeRedeeming] = useState(false);
+  const [identityValidated, setIdentityValidated] = useState(false);
 
   const priceLabel = useMemo(
     () => `${EXAM_DETAILS.price}${EXAM_DETAILS.currency}`,
@@ -176,9 +178,20 @@ export default function AiGovernanceResponsibleAiExamPage() {
     setIsRetakeRedeeming(false);
   };
 
+  // Affichage du formulaire d'identité uniquement après accès (paiement ou voucher)
+  // Ne jamais afficher sur retake ou page start exam
   const handleIdentityValidated = () => {
+    setIdentityValidated(true);
     router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
   };
+  {hasAccess && !identityValidated && (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+      <div className="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
+        <h3 className="text-lg font-semibold mb-4">Validation d'identité</h3>
+        <UserIdentityForm onValidated={handleIdentityValidated} />
+      </div>
+    </div>
+  )}
 
   return (
     <main className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
