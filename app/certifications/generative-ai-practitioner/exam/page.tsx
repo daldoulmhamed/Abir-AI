@@ -165,6 +165,8 @@ export default function GenerativeAIPractitionerExamPage() {
             clearIdentity();
           } catch {}
         }
+        // Rediriger vers la page de certification finale (start) pour afficher le formulaire d'identité
+        router.push("/certifications/generative-ai-practitioner/exam/start");
       } else {
         setVoucherError(result.message);
       }
@@ -190,6 +192,8 @@ export default function GenerativeAIPractitionerExamPage() {
         localStorage.setItem(ATTEMPT_KEY, '0');
         setAttemptsLeft(2);
       }
+      // Rediriger vers la page de certification finale (start) pour afficher le formulaire d'identité
+      router.push("/certifications/generative-ai-practitioner/exam/start");
     } else {
       setRetakeError("The retake code is invalid or expired.");
     }
@@ -481,15 +485,7 @@ export default function GenerativeAIPractitionerExamPage() {
         </div>
       ) : null}
 
-      {/* Formulaire d'identité uniquement après accès (paiement ou voucher) */}
-      {hasAccess && !identityValidated && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-          <div className="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 shadow-xl">
-            <h3 className="text-lg font-semibold mb-4">Validation d'identité</h3>
-            <UserIdentityForm onValidated={handleIdentityValidated} />
-          </div>
-        </div>
-      )}
+      {/* Formulaire d'identité supprimé : il sera affiché uniquement sur la page de certification finale (exam/start) */}
 
       {/* Voucher modal placeholder */}
       {isVoucherOpen ? (

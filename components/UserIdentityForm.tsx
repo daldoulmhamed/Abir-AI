@@ -29,18 +29,21 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
       <h2 className={styles.title}>Identity Confirmation</h2>
       <p className={styles.explanation}>Please confirm your full name (required) and email (optional).</p>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.formRow}>
-          <label className={styles.label}>
-            Full Name <span className={styles.required}>*</span>
-            <input
-              type="text"
-              value={fullName}
-              onChange={e => setFullNameState(e.target.value)}
-              required
-              className={styles.input}
-              autoComplete="name"
-            />
+        <div className={styles.formColumn}>
+          <label className={styles.labelRow}>
+            <span>Full Name</span>
+            <span className={styles.required}>*</span>
           </label>
+          <input
+            type="text"
+            value={fullName}
+            onChange={e => setFullNameState(e.target.value)}
+            required
+            className={styles.input}
+            autoComplete="name"
+          />
+        </div>
+        <div className={styles.formColumn}>
           <label className={styles.label}>
             Email (optional)
             <input
@@ -52,7 +55,7 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
             />
           </label>
         </div>
-        <button type="submit" className={styles.button}>Confirm Identity</button>
+        <button type="submit" className={styles.button}>Confirm & Start</button>
       </form>
     </div>
   );

@@ -67,8 +67,15 @@ export async function POST(request: Request) {
     });
   }
 
-  // On autorise la demande d'un voucher à chaque fois, même si déjà utilisé
+  // Vérifier si le voucher a déjà été utilisé (cookie)
   const cookieStore = await cookies();
+  const voucherUsed = cookieStore.get(`voucher_used_${voucherCode}`);
+  if (voucherUsed?.value === "used") {
+    return Response.json({
+      success: false,
+      message: "Ce voucher a déjà été utilisé pour débloquer un examen."
+    }, { status: 403 });
+  }
   // (On ne bloque plus sur le cookie 'voucher_used_${voucherCode}')
 
   // Marquer le voucher comme utilisé

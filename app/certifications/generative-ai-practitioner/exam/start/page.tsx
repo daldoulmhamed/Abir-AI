@@ -384,6 +384,7 @@ export default function GenerativeAIPractitionerExamStartPage() {
   useEffect(() => {
     // Toujours demander l'identité avant l'examen, sauf si déjà verrouillé
     if (typeof window !== "undefined") {
+      // Si retake, on ne demande pas l'identité
       const locked = localStorage.getItem('abirai_fullNameLocked') === '1';
       setIdentityReady(locked);
     } else {
@@ -536,6 +537,11 @@ export default function GenerativeAIPractitionerExamStartPage() {
   const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
 
   if (!identityReady) {
+    // Ne pas afficher le formulaire si abirai_fullNameLocked est déjà défini (cas retake)
+    if (typeof window !== "undefined" && localStorage.getItem('abirai_fullNameLocked') === '1') {
+      // Identité déjà validée, ne rien afficher
+      return null;
+    }
     return (
       <main className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="max-w-md w-full bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
