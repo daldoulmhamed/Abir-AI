@@ -399,6 +399,8 @@ export default function CopilotExamStartPage() {
 
   // Charger l’état sauvegardé au démarrage
   useEffect(() => {
+    // Réinitialise l'état d'examen à chaque accès (nouvelle session)
+    localStorage.removeItem(STORAGE_KEY);
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {

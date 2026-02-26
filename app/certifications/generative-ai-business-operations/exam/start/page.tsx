@@ -383,6 +383,8 @@ export default function GenerativeAIBusinessOperationsExamStartPage() {
 
                   // Charger l’état sauvegardé au démarrage (jamais de reset ici)
                   useEffect(() => {
+                    // Réinitialise l'état d'examen à chaque accès (nouvelle session)
+                    localStorage.removeItem(STORAGE_KEY);
                     const saved = localStorage.getItem(STORAGE_KEY);
                     if (saved) {
                       try {
