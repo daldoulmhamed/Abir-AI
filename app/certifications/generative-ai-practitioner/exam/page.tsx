@@ -160,6 +160,8 @@ export default function GenerativeAIPractitionerExamPage() {
         setAttemptsLeft(2);
         if (typeof window !== "undefined") {
           localStorage.setItem(ATTEMPT_KEY, '0');
+              // Ajout : suppression de l'état d'examen
+              localStorage.removeItem('examState-generative-ai-practitioner');
           try {
             const { clearIdentity } = await import("../../../../utils/userIdentity");
             clearIdentity();

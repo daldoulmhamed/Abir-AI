@@ -173,7 +173,9 @@ export default function GenerativeAiBusinessOperationsExamPage() {
         if (typeof window !== "undefined") {
           localStorage.setItem(ATTEMPT_KEY, '0');
           document.cookie = `exam_attempts_generative-ai-business-operations=0; path=/; max-age=2592000`;
-          localStorage.removeItem('examState-generative-ai-business-operations');
+            // Ajout de la suppression de l'état d'examen
+            localStorage.removeItem('examState-generative-ai-business-operations');
+            // Fin de l'ajout
           try {
             const { clearIdentity } = await import("../../../../utils/userIdentity");
             clearIdentity();

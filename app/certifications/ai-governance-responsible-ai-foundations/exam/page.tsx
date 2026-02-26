@@ -155,8 +155,10 @@ export default function AiGovernanceResponsibleAiExamPage() {
       if (result.success) {
         // Reset le compteur, l'état d'examen et l'identité à chaque voucher
         localStorage.setItem(ATTEMPT_KEY, '0');
-        localStorage.removeItem(EXAM_STATE_KEY);
-        localStorage.removeItem('abirai_fullNameLocked'); // Suppression identité
+            localStorage.removeItem(EXAM_STATE_KEY); // Suppression état d'examen
+            localStorage.removeItem('abirai_fullNameLocked'); // Suppression identité
+            // Ajout : suppression de l'état d'examen
+            localStorage.removeItem('examState-ai-governance-responsible-ai-foundations');
         setHasAccess(true);
         setIsVoucherOpen(false);
         router.push("/certifications/ai-governance-responsible-ai-foundations/exam/start");
