@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: 1 }],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/certifications/${examId}/exam`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/certifications/${examId}/exam/start`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/certifications/${examId}`,
       metadata: { examId },
     });
