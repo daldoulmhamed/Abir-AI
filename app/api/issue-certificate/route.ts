@@ -5,28 +5,53 @@ import QRCode from 'qrcode';
 import { sendMail } from '@/utils/email';
 
 export async function POST(req: NextRequest) {
+  let lastStep = 'start';
   try {
+    lastStep = 'input validation';
     const { fullName, certificationTitle, certificationId, issueDate, email } = await req.json();
     if (!fullName || !certificationTitle || !certificationId) {
+      console.error('[CERTIFICATE] Validation error:', { fullName, certificationTitle, certificationId });
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
-    // Génération du numéro de série unique
-    const certificateSerial = generateCertificateSerial(certificationId.toUpperCase());
-    // Génération de l'URL de vérification (URL complète)
+    lastStep = 'serial generation';
+    // Générer le numéro de série à partir de la table certifications
+    const { createClient } = require('@supabase/supabase-js');
+    const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+    // Récupérer le dernier serial_number pour ce certificat
+    const year = new Date().getFullYear();
+    const certCode = certificationId.toUpperCase();
+    const { data: lastSerialRow, error: serialError } = await supabase
+      .from('certifications')
+      .select('serial_number')
+      .eq('certification_id', certCode)
+      .eq('year', year)
+      .order('serial_number', { ascending: false })
+      .limit(1);
+    let lastSerial = 0;
+    if (serialError) {
+      console.error('[CERTIFICATE] Supabase serial fetch error:', serialError);
+    } else if (lastSerialRow && lastSerialRow.length > 0) {
+      lastSerial = lastSerialRow[0].serial_number || 0;
+    }
+    const newSerial = lastSerial + 1;
+    // Générer le numéro de série formaté
+    function padId(id: number): string { return id.toString().padStart(6, '0'); }
+    const certificateSerial = `ABIR-${certCode}-${year}-${padId(newSerial)}`;
+    lastStep = 'verification url';
     const verificationUrl = buildVerificationUrl(certificateSerial);
-    // --- Génération du QR code ---
-    let qrCodeDataUrl: string | undefined = undefined;
+    lastStep = 'qr code generation';
+    let qrCodeDataUrl = undefined;
     try {
       qrCodeDataUrl = await QRCode.toDataURL(verificationUrl);
     } catch (qrErr) {
+      console.error('[CERTIFICATE] QR code error:', qrErr);
       qrCodeDataUrl = undefined;
     }
     const date = issueDate || new Date().toISOString().slice(0, 10);
-    // Ajout du certificat dans Supabase
+    lastStep = 'supabase insert';
     try {
-      const { createClient } = require('@supabase/supabase-js');
-      const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-      await supabase.from('certificates').insert([
+      // Insérer le nouveau certificat dans la table certificates
+      const { error: supabaseError } = await supabase.from('certificates').insert([
         {
           status: 'Valid',
           fullName,
@@ -37,12 +62,24 @@ export async function POST(req: NextRequest) {
           qrCodeDataUrl,
         }
       ]);
-    } catch (err) {}
-
-    // Génération du PDF (appel API interne)
+      // Mettre à jour la table certifications avec le nouveau serial_number
+      const { error: updateError } = await supabase
+        .from('certifications')
+        .update({ serial_number: newSerial })
+        .eq('certification_id', certCode)
+        .eq('year', year);
+      if (supabaseError) {
+        console.error('[CERTIFICATE] Supabase error:', supabaseError);
+      }
+      if (updateError) {
+        console.error('[CERTIFICATE] Supabase update error:', updateError);
+      }
+    } catch (err) {
+      console.error('[CERTIFICATE] Supabase exception:', err);
+    }
+    lastStep = 'pdf generation';
     let pdfBuffer: Buffer | null = null;
     try {
-      // Détection automatique de l'URL de base (Vercel ou local)
       let baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
       if (!baseUrl) {
         if (process.env.VERCEL_URL) {
@@ -51,7 +88,6 @@ export async function POST(req: NextRequest) {
           baseUrl = 'http://localhost:3000';
         }
       }
-      // Suppression du slash final si présent
       baseUrl = baseUrl.replace(/\/$/, '');
       console.log('[PDF] Base URL utilisé:', baseUrl);
       const fetchUrl = `${baseUrl}/api/certificate-serial/generate-pdf`;
@@ -73,13 +109,13 @@ export async function POST(req: NextRequest) {
         pdfBuffer = Buffer.from(arrayBuffer);
         console.log('[PDF] PDF généré avec succès');
       } else {
-        console.error('[PDF] Erreur lors de la génération du PDF:', await res.text());
+        const pdfErrorText = await res.text();
+        console.error('[PDF] Erreur lors de la génération du PDF:', pdfErrorText);
       }
     } catch (err) {
       console.error('[PDF] Exception lors de la génération du PDF:', err);
     }
-
-    // Envoi de l'email automatique si email fourni
+    lastStep = 'email sending';
     if (email) {
       try {
         await sendMail({
@@ -88,9 +124,11 @@ export async function POST(req: NextRequest) {
           html: `<p>Congratulations, <b>${fullName}</b>!<br>Your certificate is attached.<br>You can verify your achievement here: <a href="${verificationUrl}">${verificationUrl}</a>.<br><br>Keep learning and growing with our <a href="https://abir-ai.com/learn">learning paths</a>!</p>`,
           attachments: pdfBuffer ? [{ filename: `certificate-${certificateSerial}.pdf`, content: pdfBuffer }] : [],
         });
-      } catch (err) {}
+      } catch (err) {
+        console.error('[CERTIFICATE] Email error:', err);
+      }
     }
-
+    lastStep = 'response';
     return NextResponse.json({
       status: 'Issued',
       fullName,
@@ -101,6 +139,7 @@ export async function POST(req: NextRequest) {
       qrCodeDataUrl,
     });
   } catch (err) {
-    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+    console.error(`[CERTIFICATE] Exception at step '${lastStep}':`, err);
+    return NextResponse.json({ error: `Server error at step '${lastStep}'` }, { status: 500 });
   }
 }
