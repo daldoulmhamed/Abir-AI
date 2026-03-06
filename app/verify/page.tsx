@@ -14,24 +14,27 @@ export default function CertificateVerificationPage() {
   }>(null);
   const [error, setError] = useState("");
 
-  const handleVerify = (e: React.FormEvent) => {
+  const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setResult(null);
     setError("");
-    setTimeout(() => {
-      const cert = certificates.find(
-        (c) => c.certificateSerial.trim().toUpperCase() === serial.trim().toUpperCase()
-      );
-      if (cert && cert.status === "Valid") {
-        setResult(cert);
-      } else if (cert && cert.status === "Revoked") {
-        setError("❌ Ce certificat a été révoqué.");
+    try {
+      const res = await fetch("/api/verify-certificate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ serial }),
+      });
+      const data = await res.json();
+      if (res.ok && data.status === "Valid") {
+        setResult(data);
       } else {
-        setError("❌ Certificate not found or invalid serial number");
+        setError(data.error || "❌ Certificate not found or invalid serial number");
       }
-      setLoading(false);
-    }, 800); // Simulate loading
+    } catch (err) {
+      setError("❌ Erreur de vérification. Veuillez réessayer.");
+    }
+    setLoading(false);
   };
 
   return (
