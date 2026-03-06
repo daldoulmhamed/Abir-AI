@@ -144,7 +144,7 @@ function CertificateInfoForm({ onConfirm, mode = "certificate", certificationId,
           // Ajout systématique du slug pour l'affichage du badge (dès la réception)
           setIssuedCertificate({ ...(cert as any), certificationSlug });
         } catch (err: any) {
-          setIssueError("Erreur lors de l'émission du certificat. Veuillez réessayer ou contacter le support.");
+          setIssueError("Error issuing certificate. Please try again or contact support.");
         } finally {
           setIssuing(false);
         }

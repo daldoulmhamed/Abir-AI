@@ -51,7 +51,12 @@ export async function POST(req: NextRequest) {
           baseUrl = 'http://localhost:3000';
         }
       }
-      const res = await fetch(`${baseUrl}/api/certificate-serial/generate-pdf`, {
+      // Suppression du slash final si présent
+      baseUrl = baseUrl.replace(/\/$/, '');
+      console.log('[PDF] Base URL utilisé:', baseUrl);
+      const fetchUrl = `${baseUrl}/api/certificate-serial/generate-pdf`;
+      console.log('[PDF] URL de fetch:', fetchUrl);
+      const res = await fetch(fetchUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -62,11 +67,17 @@ export async function POST(req: NextRequest) {
           qrCodeDataUrl,
         })
       });
+      console.log('[PDF] Réponse API:', res.status, res.statusText);
       if (res.ok) {
         const arrayBuffer = await res.arrayBuffer();
         pdfBuffer = Buffer.from(arrayBuffer);
+        console.log('[PDF] PDF généré avec succès');
+      } else {
+        console.error('[PDF] Erreur lors de la génération du PDF:', await res.text());
       }
-    } catch (err) {}
+    } catch (err) {
+      console.error('[PDF] Exception lors de la génération du PDF:', err);
+    }
 
     // Envoi de l'email automatique si email fourni
     if (email) {
