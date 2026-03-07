@@ -9,9 +9,9 @@ export async function POST(req: NextRequest) {
     const { createClient } = require('@supabase/supabase-js');
     const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
     const { data, error } = await supabase
-      .from('certificates')
+      .from('certifications')
       .select('*')
-      .eq('certificateSerial', serial.trim().toUpperCase())
+      .eq('serial_number', serial.trim().toUpperCase())
       .limit(1);
     if (error) {
       return NextResponse.json({ error: 'Supabase error' }, { status: 500 });
@@ -24,11 +24,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Ce certificat a été révoqué.' }, { status: 403 });
     }
     return NextResponse.json({
-      status: cert.status,
-      fullName: cert.fullName,
-      certificationTitle: cert.certificationTitle,
-      issueDate: cert.issueDate,
-      certificateSerial: cert.certificateSerial,
+      status: cert.status || 'Valid',
+      fullName: cert.full_name,
+      certificationTitle: cert.certification_title,
+      issueDate: cert.issued_at,
+      certificateSerial: cert.serial_number,
     });
   } catch (err) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

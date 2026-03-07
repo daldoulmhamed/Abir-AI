@@ -45,7 +45,7 @@ export default function ExamResultPage() {
   const [result, setResult] = useState(initialResult);
   const [userFullName, setUserFullName] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
-  const [certificateSerial, setCertificateSerial] = useState("");
+  const [certificateSerial, setCertificateSerial] = useState(""); // sera rempli par l’API
   const [retakeError, setRetakeError] = useState<string | null>(null);
   const [loadingRetake, setLoadingRetake] = useState(false);
   const router = useRouter();

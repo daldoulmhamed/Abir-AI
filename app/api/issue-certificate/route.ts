@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateCertificateSerial } from '@/utils/generateCertificateSerial.server';
+// import supprimé : génération du numéro de série côté Supabase
 import { buildVerificationUrl } from '@/data/certificateVerificationData';
 import QRCode from 'qrcode';
 import { sendMail } from '@/utils/email';
@@ -14,29 +14,27 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
     lastStep = 'serial generation';
-    // Générer le numéro de série à partir de la table certifications
+    // Nouvelle logique : insertion dans Supabase, génération automatique du serial_number
     const { createClient } = require('@supabase/supabase-js');
     const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-    // Récupérer le dernier serial_number pour ce certificat
-    const year = new Date().getFullYear();
-    const certCode = certificationId.toUpperCase();
-    const { data: lastSerialRow, error: serialError } = await supabase
+    const date = issueDate || new Date().toISOString().slice(0, 10);
+    // Insérer la ligne dans certifications, laisser le trigger générer serial_number
+    const { data: insertData, error: insertError } = await supabase
       .from('certifications')
-      .select('serial_number')
-      .eq('certification_id', certCode)
-      .eq('year', year)
-      .order('serial_number', { ascending: false })
-      .limit(1);
-    let lastSerial = 0;
-    if (serialError) {
-      console.error('[CERTIFICATE] Supabase serial fetch error:', serialError);
-    } else if (lastSerialRow && lastSerialRow.length > 0) {
-      lastSerial = lastSerialRow[0].serial_number || 0;
+      .insert([
+        {
+          full_name: fullName,
+          certification_title: certificationTitle,
+          issued_at: date,
+        }
+      ])
+      .select()
+      .single();
+    if (insertError || !insertData) {
+      console.error('[CERTIFICATE] Supabase insert error:', insertError);
+      return NextResponse.json({ error: 'Erreur lors de la création du certificat' }, { status: 500 });
     }
-    const newSerial = lastSerial + 1;
-    // Générer le numéro de série formaté
-    function padId(id: number): string { return id.toString().padStart(6, '0'); }
-    const certificateSerial = `ABIR-${certCode}-${year}-${padId(newSerial)}`;
+    const certificateSerial = insertData.serial_number;
     lastStep = 'verification url';
     const verificationUrl = buildVerificationUrl(certificateSerial);
     lastStep = 'qr code generation';
@@ -47,36 +45,8 @@ export async function POST(req: NextRequest) {
       console.error('[CERTIFICATE] QR code error:', qrErr);
       qrCodeDataUrl = undefined;
     }
-    const date = issueDate || new Date().toISOString().slice(0, 10);
-    lastStep = 'supabase insert';
-    try {
-      // Insérer le nouveau certificat dans la table certificates
-      const { error: supabaseError } = await supabase.from('certificates').insert([
-        {
-          status: 'Valid',
-          fullName,
-          certificationTitle,
-          issueDate: date,
-          certificateSerial,
-          verificationUrl,
-          qrCodeDataUrl,
-        }
-      ]);
-      // Mettre à jour la table certifications avec le nouveau serial_number
-      const { error: updateError } = await supabase
-        .from('certifications')
-        .update({ serial_number: newSerial })
-        .eq('certification_id', certCode)
-        .eq('year', year);
-      if (supabaseError) {
-        console.error('[CERTIFICATE] Supabase error:', supabaseError);
-      }
-      if (updateError) {
-        console.error('[CERTIFICATE] Supabase update error:', updateError);
-      }
-    } catch (err) {
-      console.error('[CERTIFICATE] Supabase exception:', err);
-    }
+    // Facultatif : insérer dans une table certificates si besoin, ou ignorer si tout est dans certifications
+    // Réponse API
     lastStep = 'pdf generation';
     let pdfBuffer: Buffer | null = null;
     try {
@@ -134,7 +104,7 @@ export async function POST(req: NextRequest) {
       fullName,
       certificationTitle,
       issueDate: date,
-      certificateSerial,
+      certificateSerial, // serial_number généré par Supabase
       verificationUrl,
       qrCodeDataUrl,
     });
