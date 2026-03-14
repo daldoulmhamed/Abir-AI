@@ -1,15 +1,8 @@
 
-import nodemailer from 'nodemailer';
 
-export const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: 'abir.ai.contact@gmail.com',
-    pass: process.env.GMAIL_APP_PASSWORD,
-  },
-});
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendMail({
   to,
@@ -22,11 +15,13 @@ export async function sendMail({
   html: string;
   attachments?: any[];
 }) {
-  return transporter.sendMail({
-    from: 'abir.ai.contact@gmail.com',
+  // Resend attend des champs différents pour les pièces jointes
+  // et le champ 'from' doit être un email vérifié sur Resend
+  return resend.emails.send({
+    from: process.env.RESEND_FROM_EMAIL || "Abir AI <onboarding@resend.dev>",
     to,
     subject,
     html,
-    attachments,
+    attachments: attachments.length ? attachments : undefined,
   });
 }
