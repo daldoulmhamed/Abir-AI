@@ -18,7 +18,7 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName.trim()) return;
+    if (!fullName.trim() || !email.trim()) return;
     setFullName(fullName);
     setEmail(email);
     if (onValidated) onValidated(getUserId(), fullName, email);
@@ -27,7 +27,7 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Identity Confirmation</h2>
-      <p className={styles.explanation}>Please confirm your full name (required) and email (optional).</p>
+      <p className={styles.explanation}>Please confirm your full name <b>(required)</b> and email <b>(required)</b>.</p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.formColumn}>
           <label className={styles.labelRow}>
@@ -44,16 +44,18 @@ const UserIdentityForm: React.FC<UserIdentityFormProps> = ({ onValidated }) => {
           />
         </div>
         <div className={styles.formColumn}>
-          <label className={styles.label}>
-            Email (optional)
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmailState(e.target.value)}
-              className={styles.input}
-              autoComplete="email"
-            />
+          <label className={styles.labelRow}>
+            <span>Email</span>
+            <span className={styles.required}>*</span>
           </label>
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmailState(e.target.value)}
+            required
+            className={styles.input}
+            autoComplete="email"
+          />
         </div>
         <button type="submit" className={styles.button}>Confirm & Start</button>
       </form>
